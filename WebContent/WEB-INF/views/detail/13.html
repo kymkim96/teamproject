@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>심판</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  		<link rel="stylesheet" href="../../resources/css/template.css">
+  		<script type="text/javascript">
+  		$(()=>{
+  			$("#btnmainInfo").click(()=>{
+  				$(".mainInfo").show();
+				$(".memberReview").hide();
+  			});
+  			
+  			$("#btnmemberReview").click(()=>{
+  				$(".mainInfo").hide();
+				$(".memberReview").show();
+		
+  			});
+  			
+  			let var1 =0;
+  			
+  			$("#plus").click(()=>{
+  				++var1;
+  				console.log(var1);
+  				$("#amount").text(var1);
+  			});
+  			
+			$("#minus").click(()=>{
+  				--var1;
+  				console.log(var1);
+  				if(var1<0){
+  					var1 = 0;
+  				}
+  				$("#amount").text(var1);
+  			});
+  			
+  		}); /*레디안에 넣어*/
+  			
+  		</script>
+		
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<header>
+				<div id="headerul1">
+
+					<button class="btn btn-sm">영업점안내</button>
+					<button class="btn btn-sm">고객센터</button>
+					<button class="btn btn-Light"><a href="../../view/admin/Update.html">수정</a></button>
+					<button class="btn btn-Light"><a href="../../view/admin/Create.html">등록</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">나의쇼핑</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">쇼핑카트</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">회원가입</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">로그인</a></button>
+
+					<br/>
+				</div>
+
+
+				<div id="divheader">
+					<h1><a href="../../index.html"><img src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+
+
+					<div id="divheader2">
+						<input id="석봉갓" width="500px" type="text" placeholder="찾고자 하는 도서를 입력해주세요.">
+						<img  src="../../resources/img/검색.PNG">
+					</div>
+
+
+				</div>
+
+				<ul id="headerul2">
+					<button class="btn btn-sm"><a href="../../view/list/book_list1.html">현대소설</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list2.html">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list3.html">해외소설</a></button>
+
+
+				</ul>
+
+			</header>
+		
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="second">
+				<div class="detail" id="pic1">
+					<img alt="book.jpg" 
+					src="http://image.kyobobook.co.kr/images/book/xlarge/405/x9788932920405.jpg" height="500px">
+				</div>
+				
+				<div class="detail" id="info">
+					<div id="detail_info">
+						<ul>
+							<h2> 심판 </h2>
+							<h4> 원제 : Bienvenue au paradis
+								&nbsp;&nbsp;
+								</h4>
+							
+							<li><div id="infoL">지은이 :  </div> <div id="infoR"> 베르나르 베르베르</div></li>
+							<li><div id="infoL">옮긴이 :  </div> <div id="infoR"> 전미연 </div></li>
+							<li><div id="infoL">출판사 :  </div> <div id="infoR"> 열린책들 </div></li>				
+
+						</ul>
+						<hr/>
+					</div>
+					
+					<div id="detail_info">
+						<ul>
+							<li><div id="infoL">정가 : </div> <div id="infoR">12,800원</div></li>
+							<li><div id="infoL">판매가격 : </div><div id="infoR">
+								<div style="display: inline; font-size: 25px; color: red;">11,520원</div>
+								<div style="display: inline;">[10% 할인]</div></div>
+								
+								</li>
+							<li><div id="infoL">배송비 : </div> <div id="infoR">무료</div></li>
+							
+						</ul><hr/>
+					</div>
+					<div id="detail_info">
+						<!-- 수량 업다운 자바스크립트에서 배운거로 할 수 있는건가?! -->
+						
+						<p  style="display: inline-block; width: 60px; margin-left: 30px; font-size: 15px;">수량 : </p>
+						<p id="amount" style=" display: inline-block; width: 60px;"> 0</p>
+						<button id="plus" style="background-color:#917354; color: white; "> + </button>
+						<button id="minus" style="background-color:#917354; color: white; "> - </button>
+						<hr/>
+					</div>	
+					
+					<button  type="button" onclick="location.href='../cart/Cart.html' " class="btn btn-lg" 
+					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
+					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
+				</div>				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="chooseBox">
+				<button id="btnmainInfo" class="btn btn-lg" style="background-color:#917354; color: white; "> 상세정보 </button>
+				<button id="btnmemberReview" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 회원리뷰 </button>
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="mainInfo">
+				<div class ="subInfo" id="intro" style="margin-botton: 20px;"><h4> 책 소개 </h4>	<hr/>
+					
+					죽고 난 다음에 시작되는 특별한 심판!<br/>
+					한국 독자들이 사랑하는 베스트셀러 작가 베르나르 베르베르의 신작 『심판』이 프랑스 문학 전문 번역가 전미연의 번역으로 열린책들에서 출간되었다. 
+					『심판』은 베르베르가 『인간』 이후 다시 한번 시도한 희곡이며, 천국에 있는 법정을 배경으로 판사 · 
+					검사 · 변호사 · 피고인이 펼치는 설전을 유쾌하게 그려 냈다. 베르베르 특유의 상상력과 유머가 빛나는 이 작품은 희곡이면서도 마치 소설처럼 읽힌다.
+					 원제는 "천국에 오신 것을 환영합니다Bienvenue au paradis"이며 2015년 프랑스에서 출간되어 4만 부 이상 판매되었다.
+					  프랑스에서는 2017년, 2018년, 2019년 세 차례에 걸쳐 무대에 올려진 바 있다.
+					</div>
+				
+				<div class ="subInfo" id="writer" style="margin-bottom: 10px;"><h4> 저자 </h4><hr/>
+				
+				베르나르 베르베르<br/>
+				구분 : 저서<br/>
+				국적 : 프랑스<br/>
+				
+				<br/>베르나르 베르베르는 일곱 살 때부터 단편소설을 쓰기 시작한 타고난 글쟁이다. 
+				1961년 프랑스 툴루즈에서 태어나 법학을 전공하고 국립 언론 학교에서 저널리즘을 공부했다. "별들의 전쟁"" 세대에 속하는 그는, 
+				고등학교 때 만화와 시나리오에 탐닉하면서 만화로 된 신문 「유포리」를 발행하였고, 이후 올더스 헉슬리와 H. G. 웰스를 사숙하면서 소설과 과학을 익혔다.
+				 대학 졸업 후에는 『르 누벨 옵세르바퇴르』에서 저널리스트로 활동하면서 과학 잡지에 개미에 관한 평론을 발표해 오다가, 
+				 드디어 1991년 120여 회의 개작을 거친 『개미』를 출간, 전 세계 독자들을 사로잡으며 단숨에 주목받는 "프랑스의 천재 작가"
+				  떠올랐다.5이후에도 세계 밖에서 세계를 들여다보게 하는 『상대적이며 절대적인 지식의 백과사전』, 
+				  죽음과 삶을 넘나드는 영계 탐사단을 소재로 한 『타나토노트』, 인류 진화의 수수께끼를 본격적으로 탐구한 과학 
+				  스릴러 『아버지들의 아버지』, 천사들의 관점을 통해 무한히 높은 곳에서 인간을 관찰하는 『천사들의 제국』
+				  , 뇌에 관한 최신 연구 성과를 바탕으로 인간 탐구의 새로운 지평을 보여 준 『뇌』, 허를 찌르는 반전으로 우리의 상식을 깨는 『나무』
+				  , 거대한 우주 범선을 타고 희망을 찾아 떠나는 14만 4천 명의 이야기 『파피용』, 신들의 게임을 통해 인간 세상을 우의적으로 풍자한
+				   『신』, 작가 자신의 과거와 미래의 상상을 소재로 한 단편집 『파라다이스』 등으로 프랑스 내에서는 물론 전 세계적으로 가장 많이 읽히는 
+				   작가 중 한 사람으로 자리를 굳혔다. 그의 작품은 35개 언어로 번역되었으며, 2천3백만 부 가까이 판매되었다
+				<br/><br/>
+				</div>
+				
+				<div class ="subInfo" id="index" style="margin-bottom: 10px;"><h4> 목차 </h4>
+				<hr/><p>
+					제1막 천국 도착<br/>
+					제2막 지난 생의 대차 대조표<br/>
+					제3막 다음 생을 위한 준비<br/>
+
+					옮긴이의 말<br/>
+
+				</p>
+					
+				</div>
+				
+				
+			</div>
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="memberReview">
+				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+				color: #917354;"><h4> 회원리뷰 </h4><hr/>
+				
+				</div>
+			
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;">bo**jin |   </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2020-10-20</div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p> 					
+						영혼의 세계에서 영혼번호 103-683의 심판이 벌어진다.
+						재판정은 지난 생의 대차대조표를 참조하면서 피고인의 다음 생애를 결정한다.
+						그런데 지상에서의 가치관과 영혼의 세계에서의 삶의 기준이 다르고 수호천사인 변호사와 냉정한 검사와의 의견차이로 재판은 난항을 거듭한다.
+						하지만 지상에서의 삭막하고 피폐한 법정과 달리 천상에서의 재판은 유머와 농담으로 가득하다.
+						 
+						
+						'심판'은 인간이 죽은 후에 다시 환생하기까지 과정을 풍자적으로 그려내고 있다.
+						여기에는 삶에 대한 집착을 해체시키는 동양종교 사상에 대한 저자의 관심이 다분이 녹아 있다.
+						윤회를 통해 반복되는 인생은 시지프스의 신화와 같은 절대절명의 운명이 아니라 평이한 일상이 돌아가듯 대수롭지 않는 사건이라고 말해주는 것 같다.
+						때문에 삶은 그리 심각하게 생각할 필요도 없고 크게 놀라거나 실망할 일도 아니라는 작가의 인생관이 웃음과 해학으로 극화되었다고 볼 수 있다.
+						
+						</p></div>
+					<hr/>
+				</div>
+				
+				
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> wi**gen77 </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;">  2015-12-03 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p> 					
+					수술 중 사망한 주인공이 자신이 죽었다는 사실을 알지 못하고 천국에 도착한다는 설정.
+					변호사, 검사, 판사를 만나면서 자신의 인생을 이야기한다.
+					주인공이 자신의 인생을 돌아보는 절차를 보면서 많은 생각이 든다.
+					아나톨은 자신이 좋은 학생이었고 시민이었으며 좋은 남편이었다고 주장하고
+					아나톨의 수호천사인 카롤린도 그가 잘한 것들을 열심히 부각시키려 노력하는데
+					검사 베르트랑이 여러 죄를 들추어내는 모습을 보면서
+					내 인생도 들여다보는 시간을 가져본다.
+					 
+					죽음을 통해 삶을 들여다본다는 설정은 다소 흔하긴 하지만 내 인생이 심판받는다고 생각하면
+					어떤 기분일지 계속 고민해보게 한다.
+					 
+					"피숑씨, 당신은 배우자를 잘못 택했고, 직업을 잘못 택했고, 삶을 잘못 택했어요. 존재의 완벽한
+					시나리오를 포기했어요. 순응주의에 빠져서. 그저 남들과 똑같이 살려고만 했죠. 당신에게
+					특별한 운명이 주어졌다는 사실을 몰랐어요
+					</p></div>
+						<hr/>
+				</div>
+				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<footer>
+	
+				<ul class="headerul2">
+					
+					<button class="btn btn-sm">회사소개</button>
+					<button class="btn btn-sm">이용약관</button>
+					<button class="btn btn-sm">개인정보 처리방침</button>
+					<button class="btn btn-sm">출판사를 위한안내</button>
+					<button type="button" class="btn btn-sm ">광고안내</button>
+					<button type="button" class="btn btn-sm ">SCM</button>
+	
+				</ul>
+				<div id="divf1">
+					
+					<h1><a href="../../index.html"><img id="divf1a"src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+	
+					<div id="divf2">
+						<p id= "divf2p1">고객문의 : 1577-4030(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</p>
+						<div id="divf3">
+							<div id="divf4">
+							<p>회사명 : (주)용권문고</p>
+							<p>대표이사 : 허민</p>
+							<p>개인정보 관리 책임자 : 양미연 김태연</p>
+							<p>E-mail : drakwon_cs@bnl.co.kr</p>
+							</div>
+							<div id="divf5">
+							<p>소재지 : 서울 송파구 중대로 135, 서관 12층 원 밀리언 드림스</p>
+							<p>사업자 등록번호 : 120-81-02543</p>
+							<p>통신판매업 신고번호 : 제2016-서울서초-1668호</p>
+							<p>물류센터 : (우 10881)경기도 파주시 문발로 77</p>
+							</div>
+							
+							
+						</div>
+						<div><p id="divf2p2">copyright ⓒ 권소영 김서연 김시경 김영훈 All Rights Reserved </p></div>
+					</div>
+				</div>
+																	
+			</footer>
+		</div>
+		
+	</body>
+</html>

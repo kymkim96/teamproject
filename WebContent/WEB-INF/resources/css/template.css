@@ -1,0 +1,329 @@
+@font-face {
+    font-family: 'HangeulNuri-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; 
+}
+/* 
+  색상표 
+#917354
+#998064
+#B8A791
+ */
+#wrapper{
+	width: 1500px;
+	margin: 0px auto;
+	font-family: 'NanumSquareRound';
+	
+	
+}
+		
+/* .first{
+	width: 80%;
+	height: 100px;
+	margin: 10px auto;
+	display: flex;
+	flex-direction: row;
+	background-color: #B8A791;
+} */
+
+
+header {
+   background-color: white;
+   color: #364fc7;
+   
+   font-size: 35px;
+   padding: 30px;
+   display: flex;
+   flex-direction: column;
+
+   padding-bottom: 10px;
+}
+
+#headerul1{
+   
+   display:flex;
+   flex-direction:row-reverse;
+   border-bottom: 2px solid grey;
+   text-type: none;
+   border-bottom: 2px solid grey;
+}
+
+#headerul1 a{
+				color:black;
+			}
+
+#headerul1 button {
+	
+	
+	
+}
+
+#석봉갓{
+	display:inline-block;
+	width:400px; 
+	height: 40px;
+	/* margin : 20px; */
+	margin-left: 50px;
+	font-size: 16px;
+}
+
+
+
+
+
+.headerul2 {
+	border-top: 2px solid grey;
+	border-bottom: 2px solid grey;
+	text-align: center;
+/* 	background-color: #998064; */
+}
+
+
+.headerul2 li {
+	background: white;
+	display: inline-block;
+	font-size: 0.6rem;
+	padding: 10px;
+	margin-right: 20px;
+}
+
+#divheader {
+	margin: 0px auto;
+	width:70%;
+	display: flex;
+	text-align: center;
+}
+
+#divheader2 {
+	width: 70%;
+	padding: 25px;
+	text-align: center;
+
+}
+#headerul2 {
+	border-top: 2px solid grey;
+				border-bottom: 2px solid grey;
+				text-align: center;
+			}
+			
+#headerul2 a{
+			
+				color: black;
+			}
+			
+
+#logo{
+	height: 80%;
+	border: 2px solid black;
+	flex: 2;
+	text-align: center;
+	
+}
+
+#search{
+	border: 2px solid black;
+	height: 50%;
+	flex:7;
+	
+}
+
+.second{
+	width: 70%; 
+	margin: 10px auto;
+	display: flex;
+	flex-direction: row;
+	
+}
+
+.detail{
+	margin-top: 20px;	
+}
+
+.detail #pic1{
+	flex: 3;
+}
+
+.detail #pic1 img{
+	box-shadow: 0 4px 8px 0 #dae0e5;
+}
+
+
+
+.detail #info{
+	flex: 7;
+}
+
+
+#detail_info{
+	margin: 30px;
+	/* border: 2px solid black; */
+}
+
+#detail_info h2{
+	font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+	color: #917354;
+}
+
+#detail_info hr{
+	border: 1px solid #999999;
+	background-color : #999999;
+}
+
+#detail_info li{
+	display: flex;
+	flex-direction: row;
+	vertical-align: center;
+}
+
+
+
+#infoL{ 
+	flex: 2;
+	display:inline-block;
+	width: 100px; 
+	text-align:left;
+	align-items: center;
+}
+
+#infoR{ 
+	flex: 10;
+	display:inline-block;
+	width: 500px; 
+}
+			
+.chooseBox{
+	width:70%;
+	margin: 50px auto 0px;
+}
+
+.memberReview{
+	width:70%;
+	margin: 10px auto;
+}
+.set{
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+}
+
+#pic2{
+	flex: 2;
+	display:inline-block;
+	/* border: 1px solid black; */
+	text-align: center;
+}
+#pic2 img{
+	width:90%;
+	margin: 5% auto;
+	box-shadow: 0 4px 8px 0 #dae0e5;
+}
+
+#pic2 ul{
+	margin-top:20px;
+	margin-left:20px;
+	text-align: left;
+}
+
+#review{
+	flex:7;
+	/* border: 1px solid black; */
+	border-left: 1px dotted #917354;
+	box-sizing:border-box;
+	padding:15px
+}
+
+#review p{ 
+	display: inline-block;
+}
+
+.mainInfo{
+	margin-top: 20px;
+	
+	width: 70%;
+	margin: 10px auto;
+}
+
+.mainInfo h4{
+	margin-left: 5px;
+	font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+	color: #917354;
+}
+
+.subInfo{
+	margin-top: 30px;
+}
+
+
+
+footer {
+	background-color: white;
+	padding: 10px;
+	text-align: center;
+	
+	display:flex;
+	flex-direction: column;
+	
+}
+
+#divf1{
+	display:flex;
+	padding-left:220px;
+	
+
+}
+
+#divf2 {
+	color:black;
+	width:1000px;
+	display:flex;
+	flex-direction: column;
+	text-align: left;
+	padding-left: 50px;
+}
+#divf2p1{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+}
+#divf2p2{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+}
+
+#divf3 {
+	display: flex;
+	padding-bottom: 20px;
+	height:145px;
+	
+	
+}
+
+#divf4 {
+
+	border-right: 1px solid grey; 
+	font-size: small;
+	margin : 5px;
+	padding-right : 20px;
+}
+#divf5 {
+	
+	padding-left :10px;
+	font-size: small;
+}
+			
+	  			
+			  		
+  		

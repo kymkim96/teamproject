@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  		<link rel="stylesheet" href="../../resources/css/template.css">
+  		<script type="text/javascript">
+  		$(()=>{
+  			$("#btnmainInfo").click(()=>{
+  				$(".mainInfo").show();
+				$(".memberReview").hide();
+  			});
+  			
+  			$("#btnmemberReview").click(()=>{
+  				$(".mainInfo").hide();
+				$(".memberReview").show();
+		
+  			});
+  			
+  			let var1 =0;
+  			
+  			$("#plus").click(()=>{
+  				++var1;
+  				console.log(var1);
+  				$("#amount").text(var1);
+  			});
+  			
+			$("#minus").click(()=>{
+  				--var1;
+  				console.log(var1);
+  				if(var1<0){
+  					var1 = 0;
+  				}
+  				$("#amount").text(var1);
+  			});
+  			
+  		}); /*레디안에 넣어*/
+  			
+  		</script>
+		
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<header>
+				<div id="headerul1">
+
+					<button class="btn btn-sm">영업점안내</button>
+					<button class="btn btn-sm">고객센터</button>
+					<button class="btn btn-Light"><a href="../../view/admin/Update.html">수정</a></button>
+					<button class="btn btn-Light"><a href="../../view/admin/Create.html">등록</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">나의쇼핑</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">쇼핑카트</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">회원가입</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">로그인</a></button>
+
+					<br/>
+				</div>
+
+
+				<div id="divheader">
+					<h1><a href="../../index.html"><img src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+
+
+					<div id="divheader2">
+						<input id="석봉갓" width="500px" type="text" placeholder="찾고자 하는 도서를 입력해주세요.">
+						<img  src="../../resources/img/검색.PNG">
+					</div>
+
+
+				</div>
+
+				<ul id="headerul2">
+					<button class="btn btn-sm"><a href="../../view/list/book_list1.html">현대소설</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list2.html">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list3.html">해외소설</a></button>
+
+
+				</ul>
+
+			</header>
+	
+		
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="second">
+				<div class="detail" id="pic1">
+					<img alt="book.jpg" 
+					src="../../resources/img/기대신간.jpg" height="500px">
+				</div>
+				
+				<div class="detail" id="info">
+					<div id="detail_info">
+						<ul>
+							<h2> 82년생 김지영 </h2>
+							<h4> 조남주 장편소설
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;
+								</h4>
+							
+							<li><div id="infoL">지은이 :  </div> <div id="infoR"> 조남주 지음</div></li>
+							<li><div id="infoL">출판사 :  </div> <div id="infoR"> 민으</div></li>				
+
+						</ul>
+						<hr/>
+					</div>
+					
+					<div id="detail_info">
+						<ul>
+							<li><div id="infoL">정가 : </div> <div id="infoR">23,000원</div></li>
+							<li><div id="infoL">판매가격 : </div><div id="infoR">
+								<div style="display: inline; font-size: 25px; color: red;">20,700원</div>
+								<div style="display: inline;">[10% 할인]</div></div>
+								
+								</li>
+							<li><div id="infoL">배송비 : </div> <div id="infoR">무료</div></li>
+							
+						</ul><hr/>
+					</div>
+					<div id="detail_info">
+						<!-- 수량 업다운 자바스크립트에서 배운거로 할 수 있는건가?! -->
+						
+						<p  style="display: inline-block; width: 60px; margin-left: 30px; font-size: 15px;">수량 : </p>
+						<p id="amount" style=" display: inline-block; width: 60px;"> 0</p>
+						<button id="plus" style="background-color:#917354; color: white; "> + </button>
+						<button id="minus" style="background-color:#917354; color: white; "> - </button>
+						<hr/>
+					</div>	
+					
+					<button  type="button" onclick="location.href='../cart/Cart.html' " class="btn btn-lg" 
+					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
+					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
+				</div>				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="chooseBox">
+				<button id="btnmainInfo" class="btn btn-lg" style="background-color:#917354; color: white; "> 상세정보 </button>
+				<button id="btnmemberReview" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 회원리뷰 </button>
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="mainInfo">
+				<div class ="subInfo" id="intro" style="margin-botton: 20px;"><h4> 책 소개 </h4>	<hr/>
+					"★ 시티, JP모건 출신 미국 주식 유튜버 ‘뉴욕주민’의 첫 책! ★ <br/>
+					★ 미국 주식 공시·재무제표 완전 분석! ★<br/>
+					★ 한국 대표 투자 전문가들의 강력 추천! ★<br/><br/>
+					
+					“이 책을 읽기 전에는 절대 미국 주식시장에 뛰어들지 마라!”<br/>
+					신뢰도 1위 미국 주식 분석의 끝판왕, 유튜버 ‘뉴욕주민’이 말하는 투자의 기본!<br/>
+					IT주, 소비유통주, 리츠주, 배당주 등 가장 핫한 주식들의 깊이 있는 분석 대공개!<br/><br/>
+					
+					“지금이 바로 미국 주식에 투자할 적기다!”<br/>
+					미국 주식시장으로 부의 대이동이 시작된다!<br/><br/>
+					
+					2020년 3월 9일 코로나19발 증시 폭락의 첫날, 저자는 
+					현직 헤지펀드 매니저로서 사상 최악의 폭락장을 월스트리트에서 실시간으로 지켜봤다. 
+					저자는 이를 10년에 한 번 돌아오는 기회라고 여기고, 뉴욕에서 살 집을 마련하기 위해 
+					모아둔 돈을 망설임 없이 주식시장에 투자했다.
+					이러한 현상은 전 세계적으로 벌어졌다. 한국의 ‘동학개미’는 물론 미국의 ‘로빈후드 
+					군단’ 등 수많은 개인투자자들이 주식시장에 몰려들었다. 이로 인한 유동성 폭발로 
+					아찔했던 폭락 뒤에 ‘비이성적 과열’의 급상승세가 이어졌고, 9월 초 주춤하는 조정세를 
+					보이며 투자자의 가슴을 졸이더니, 11월 24일에는 마침내 다우지수가 역사상 처음으로 
+					3만을 돌파하는 기염을 토했다.
+					현재의 주식시장은 월가 10년 경력의 저자조차 놓치고 싶지 않은 기회임이 분명하다.
+					 하지만 이 기회를 제대로 활용해 수익을 얻기 위해선 감정이나 시류에 휩쓸리지 
+					않는 투자를 해야 한다는 것 또한 자명하다. 월가에서 일하는 동안 저자는 미국 
+					주식시장이 투자자에게 얼마나 많은 정보를 오픈하고 있는지 실감했고, 헤지펀드 
+					트레이드로서 시장을 뛰어넘어 수익을 얻는 리스크 헤지법을 익혔다. 저자는 월가에서 
+					배운 지식과 투자 전략들이 보다 큰 수익을 꿈꾸며 미국 주식을 시작한 한국 투자자들에게 
+					도움이 될 수 있다고 보았다. ‘금융 지식의 보편화’를 지향하며 ‘뉴욕주민’이라는 유튜브 
+					채널을 시작하고 《뉴욕주민의 진짜 미국식 주식투자》를 집필한 이유다.
+					이 책에서 저자는 쉽게 접하기 힘든 미국 주식시장의 변동성 속에서 투자 경험을 쌓고 
+					더 높은 수익을 얻는 데 꼭 필요한 정보만을 담았다. 객관적 정보의 중요성과 원칙을 
+					지키는 투자를 강조한 미국 주식투자의 정석이다."
+					
+					<br/><br/>
+				</div>
+				<div class ="subInfo" id="writer" style="margin-bottom: 10px;"><h4> 저자 </h4><hr/>
+				
+				뉴욕주민 <br/>
+				<br/>
+				월스트리트 트레이더인 저자가 한국 투자자에게 미국 주식을 적극 추천하는 
+				이유는 두 가지다. 10여 년의 금융권 커리어를 쌓으며 미국, 유럽, 일본, 홍콩 등 
+				선진 자본시장을 두루 접했던 저자가 보기에 미국 주식시장만큼 주주친화적인 
+				시장은 존재하지 않기 때문이고, 다른 하나는 제도적인 투명성이 개인투자자에게 
+				유리한 시장이기 때문이다.
+				저자는 금융 지식이 복잡한 전문 지식이 아닌 누구나 갖추어야 할 기본 소양이 
+				된 시대가 왔다고 생각한다. 그래서 월가에서 배운 지식과 투자 원칙, 트레이딩 
+				전략들을 보다 큰 수익을 꿈꾸며 미국 주식을 시작한 한국 투자자들과 공유하는 
+				것으로 도움을 주고 싶었다. ‘금융 지식의 보편화’를 지향하며 ‘뉴욕주민’이라는 
+				유튜브 채널을 시작한 이유다. 월가의 자본을 움직이는 헤지펀드에서 일하면서 
+				쌓은 경험과 투자 철학을 모국의 투자자들에게 나누어주는 일에 일종의 사명감을 
+				갖게 되었다는 그는, 현재 8만 명의 구독자들과 소통하며 배움을 나누고 있다.
+				전문적인 자료와 현장 경험, 실무를 통해서만 얻을 수 있는 저자만의 인사이트와 
+				쉬운 설명은 미국 주식시장에 대한 깊이 있는 정보에 목말라 있던 한국 투자자들에게 
+				뜨거운 호응을 얻었다. 그 독보적인 콘텐츠는 해외 투자 관련 커뮤니티에서 입소문이 
+				퍼져 51개의 동영상만으로 누적 조회수 245만 회를 기록했다.
+				저자는 민족사관고등학교를 졸업하고 아이비리그에 속하는 펜실베이니아대학교를 
+				조기졸업, 예일대학교에서 석사 학위를 받았다. 맥킨지 경영 컨설턴트로 사회생활을 
+				시작해 투자은행 JP 모건과 시티 그룹의 인수합병(M&A)부서에서 뱅커로 일하며 
+				월가에 자리를 잡았고, 부동산 사모펀드를 거쳐 롱숏 전략(Equity Long/Short)을 
+				구사하는 헤지펀드로 이직하며 월가 트레이더로서 커리어를 쌓아왔다. 또한 교육에 
+				관심이 많아 매년 여름, 모건스탠리 등 10여 곳의 월스트리트 투자은행을 방문하며 
+				수백 명의 직원들을 대상으로 기업 분석과 재무 모델링 강의를 해오고 있다.
+				이 책은 미국 주식에 투자하기 전 알아야 할 기본 지식을 비롯해 미국 상장 기업 공시의
+				 종류와 해설, 섹터별 재무제표 분석법, IPO나 M&A 등의 기업활동에 따른 주가흐름 
+				읽는 법 등 투자자라면 누구나 얻을 수 있지만 알지 못했던 정보들 속에서 투자의 
+				기회를 찾고 수익으로 연결시키는 노하우를 담고 있다. 이 책을 통해 한국 투자자들이 
+				미국 주식시장을 이해하고 감정이나 시류에 휩쓸리지 않는 성공적인 투자의 길을 찾길 바란다"
+				<br/><br/>
+				</div>
+				
+				<div class ="subInfo" id="index" style="margin-bottom: 10px;"><h4> 목차 </h4>
+				<hr/><p>
+				프롤로그 | 왜 미국 주식인가?<br/><br/>
+				
+				제1장 비무장 상태로 미국 주식시장에 뛰어들지 마라<br/>
+				
+				제2장 현실적인 미국 주식투자 전략<br/>
+				
+				제3장 사례로 보는 미국 기업 공시의 모든 것<br/>
+				
+				제4장 아는 만큼 보이는 재무제표, 보이는 만큼 커지는 투자수익<br/>
+				
+				제5장 미국 주식 특수 상황별 체크리스트<br/>
+				
+				제6장 시장과 시간이 검증한 포트폴리오 전략<br/><br/>
+				
+				부록 1. 미국 주식 공시 캘린더<br/>
+				부록 2. 미국 주식 관련 유용한 사이트<br/>
+				</p>
+					
+				</div>
+				
+				
+			</div>
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="memberReview">
+				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+				color: #917354;"><h4> 회원리뷰 </h4><hr/>
+				
+				</div>
+			
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> pr**0612 </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2020-12-21 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						대한민국 개인투자자들의 해외 주식 상위 매수 1위 종목은 테슬라이다. 
+						테슬라는 12월 18일 s&p 500지수에 성공적으로 편입되었다. 미국 시장의 
+						지수를 견인하는 대표 기업으로 인정받은 것이다. 테슬라는 올해 초 86달러에서 
+						편입 날인 12월 18일 기준으로 696달러로 8배 넘게 상승했다. 재밌는 것은 
+						국내 투자자들의 테슬라 주식 보유량인데 해외 대형 기관투자인 jp 모건이나 
+						골드만삭스의 투자비율만큼 투자하고 있다는 것이다. 괜히 서학 개미라는 말이 
+						나오는 게 아니다. 미국 주식시장에 대한 개인들 직접투자가 과거 어느 때보다 
+						많이 늘어났다. 늘어난 투자자와 투자 금액과 더불어 미국 주식시장에 대한 
+						기본적인 투자 상식도 병행되어야 할 것이다. <뉴욕 주민의 진짜 미국식 주식투자>
+						는 월스트리트에서 jp 모건과 시티그룹, 부동산 사모펀드에서 금융 경험을 쌓았으며 
+						현재 헤지펀드에서 월가 트레이더로 활동하며 한국 투자자들을 위해 미국 
+						주식강의 유튜버로 활동하고 있는 뉴욕 주민이 낸 책이다.
+					</p></div>
+					<hr/>
+				</div>
+				
+				
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> jj**1230 </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2020-12-21  </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+							2020년의 미국 주식시장은 그야말로 롤러코스터 증시였다. 3월 19일의 
+							팬데믹발 폭락장의 충격은 빠르게 잊혀졌고 11월 24일에는 결국 다우지수가 
+							역사상 처음으로 3만을 돌파했다. 미국 주식시장에 큰 부의 기회가 있음을 
+							누구도 부정할 수 없는 시기인 것이다. 하지만 언어 장벽과 복잡한 금융 
+							시스템은 한국 투자자들을 망설이게 하는 요인이다. 이때 미국 시장을 
+							먼저 겪은 투자자들이 입을 모아 추천하는 유튜버가 있다. 시티 그룹,
+							 JP 모건 등 글로벌 투자은행을 비롯해 사모펀드, 헤지펀드를 거치며 
+							세계 주식시장의 중심 월가에서 치열한 트레이딩을 해온 유튜버 ‘
+							뉴욕주민’이다. 시장에 대한 폭넓은 이해와 현장 경험을 바탕으로 
+							미국 주식투자에 뛰어들기 전 꼭 알아야 할 기본 지식을 알려주는 
+							콘텐츠들은 해외 투자 커뮤니티를 통해 빠르게 입소문이 퍼져 현재 
+							8만 명의 구독자수와 51개의 동영상만으로 누적 조회수 245만 회를 
+							기록했다. 《뉴욕주민의 진짜 미국식 주식투자》는 그중에서도 가장 
+							중요한 내용만을 엄선해 한 권의 책에 담았다. 현재 미국 증시는 물론 
+							한국 투자자들에게도 뜨거운 관심을 받고 있는 IT주, 소비유통주, 리츠주, 
+							호텔주, 스팩주, 배당주 등 섹터별, 테마별 주식들에 대한 깊이 있는 분석과 
+							이를 내 투자에 활용하기 위해 눈여겨봐야 할 기업 공시와 재무제표 
+							분석법을 알려준다. 아마존 등의 사례를 통한 가치평가 방법, 다양한 방어자산을
+							 활용한 포트폴리오 전략 등 실전 투자 노하우들도 가득하다. 독보적인
+							 인사이트를 담은 이 책은 미국 주식 입문자는 물론 다양한 미국의 
+							금융상품과 발전된 미국 자본시장을 투자에 활용하고자 하는 기존의 해외
+							 투자자들에게도 큰 도움이 될 것이다.
+					</p></div>
+					<hr/>
+				</div>
+				
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> ki**sm</div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;">2020-12-20 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						아마도 이 책이 올해 마지막 투자 관련 책이 되지 않을까 생각된다. 
+						미국주식관련해서는 미국주식에 미치다에서 나온 미국주식이 답이다라는 
+						책을 읽었었고, 이 책이 미국주식 관련해서는 두번째 책이다. 뉴욕주민이라는
+						 닉네임을 가지고 있는 미국 헤지펀드에서 근무하고 있는 직원이 쓴 
+						책으로 개인적으론 헤지펀드 매니저로서의 일상생활 관련된 챕터라 
+						가장 흥미로웠다. 애초에 두권의 책을 기획하고 있었다고 하니 다음에
+						 나올책이 아마 헤지펀드 매니저로서의 삶에서 나오는 경험담들이 더
+						 자세히 들어있지 않을까 하여 기대하고 있다. 이 책에서는 미국주식을
+						 투자하면서 주의해야할 점, 팁같은 것을 자세히 제시하고 있다. 
+						개인적으로 수소트럭 업체인 니콜라를 소액이지만, 테슬라가 될 것을 기대하고 
+						투자한 뼈아픈 경험이 떠올랐던 스팩주관련내용이 흥미로웠다. 일종의 우회상장
+						 기법으로 투자자금을 모아 스팩이라는 페이퍼컴퍼니를 만들어 상장시킨뒤,
+						 이 스팩이 상장이후 적당한 기업을 물색하여 인수합병을 시도하고, 인수합병된
+						 기업의 이름과 티커를 사용하는 방식이다.
+					</p></div>
+					<hr/>
+				</div>
+				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<footer>
+	
+				<ul class="headerul2">
+					
+					<button class="btn btn-sm">회사소개</button>
+					<button class="btn btn-sm">이용약관</button>
+					<button class="btn btn-sm">개인정보 처리방침</button>
+					<button class="btn btn-sm">출판사를 위한안내</button>
+					<button type="button" class="btn btn-sm ">광고안내</button>
+					<button type="button" class="btn btn-sm ">SCM</button>
+	
+				</ul>
+				<div id="divf1">
+					
+				<h1><a href="../../index.html"><img id="divf1a"src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+	
+					<div id="divf2">
+						<p id= "divf2p1">고객문의 : 1577-4030(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</p>
+						<div id="divf3">
+							<div id="divf4">
+							<p>회사명 : (주)용권문고</p>
+							<p>대표이사 : 허민</p>
+							<p>개인정보 관리 책임자 : 양미연 김태연</p>
+							<p>E-mail : drakwon_cs@bnl.co.kr</p>
+							</div>
+							<div id="divf5">
+							<p>소재지 : 서울 송파구 중대로 135, 서관 12층 원 밀리언 드림스</p>
+							<p>사업자 등록번호 : 120-81-02543</p>
+							<p>통신판매업 신고번호 : 제2016-서울서초-1668호</p>
+							<p>물류센터 : (우 10881)경기도 파주시 문발로 77</p>
+							</div>
+							
+							
+						</div>
+						<div><p id="divf2p2">copyright ⓒ 권소영 김서연 김시경 김영훈 All Rights Reserved </p></div>
+					</div>
+				</div>
+																	
+			</footer>
+								
+		</div>
+		
+	</body>
+</html>

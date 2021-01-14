@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 업데이트</title>
+    <link rel="stylesheet" href="../../resources/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        @font-face {
+            font-family: 'NanumSquareRound';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0 auto;
+            overflow-x: scroll;
+            width: 1500px;
+            font-family: NanumSquareRound;
+        }
+
+        .div1 {
+            margin: 0px auto;
+            width: 1500px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            font-family: 'NanumSquareRound';
+            padding-bottom : 30px;
+        }
+
+        header {
+            background-color: white;
+            color: #364fc7;
+
+            font-size: 35px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+
+            padding-bottom: 10px;
+        }
+
+        #headerul1{
+
+            display:flex;
+            flex-direction:row-reverse;
+            text-type: none;
+            text-decoration: none;
+            border-bottom: 2px solid grey;
+        }
+
+
+        #headerul1 a{
+            color:black;
+        }
+
+
+
+        #headerul2 {
+            border-top: 2px solid grey;
+            border-bottom: 2px solid grey;
+            text-align: center;
+        }
+
+        #headerul2 a{
+
+            color: black;
+        }
+
+        #석봉갓{
+            display: inline-block;
+            width: 400px;
+            height: 40px;
+            margin : 20px;
+            margin-left: 50px;
+            font-size: 1rem;
+        }
+
+
+
+        .headerul2 li {
+            background: white;
+            display: inline-block;
+            font-size: 0.6rem;
+            padding: 10px;
+            margin-right: 20px;
+        }
+
+        #divheader {
+            display: flex;
+            text-align: center;
+            padding-left: 250px;
+        }
+
+        #divheader2 {
+            padding: 25px;
+        }
+
+        footer {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+
+            display:flex;
+            flex-direction: column;
+
+        }
+        .headerul2 {
+            border-top: 2px solid grey;
+            border-bottom: 2px solid grey;
+            text-align: center;
+        }
+
+        #divf1{
+            display:flex;
+            padding-left:220px;
+
+
+        }
+
+        #divf2 {
+            color:black;
+            width:1000px;
+            display:flex;
+            flex-direction: column;
+            text-align: left;
+            padding-left: 50px;
+        }
+        #divf2p1{
+            font-family: 'NEXON Lv1 Gothic OTF Bold';
+        }
+        #divf2p2{
+            font-family: 'NEXON Lv1 Gothic OTF Bold';
+        }
+
+        #divf3 {
+            display: flex;
+            padding-bottom: 20px;
+            height:145px;
+
+
+        }
+
+        #divf4 {
+
+            border-right: 1px solid grey;
+            font-size: small;
+            margin : 5px;
+            padding-right : 20px;
+        }
+        #divf5 {
+
+            padding-left :10px;
+            font-size: small;
+        }
+    </style>
+</head>
+    <body>
+        <div class="div1">
+            <header>
+                <div id="headerul1">
+
+                    <button class="btn btn-sm">영업점안내</button>
+                    <button class="btn btn-sm">고객센터</button>
+                    <button class="btn btn-Light"><a href="../../view/admin/Update.html">수정</a></button>
+                    <button class="btn btn-Light"><a href="../../view/admin/Create.html">등록</a></button>
+                    <button class="btn btn-light"><a href="../../view/cart/Cart.html">나의쇼핑</a></button>
+                    <button class="btn btn-light"><a href="../../view/cart/Cart.html">쇼핑카트</a></button>
+                    <button class="btn btn-Light"><a href="../../view/auth/auth.html">회원가입</a></button>
+                    <button class="btn btn-Light"><a href="../../view/auth/auth.html">로그인</a></button>
+
+                    <br/>
+                </div>
+
+
+                <div id="divheader">
+                    <h1><a href="../../index.html"><img src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+
+
+                    <div id="divheader2">
+                        <input id="석봉갓" width="500px" type="text" placeholder="찾고자 하는 도서를 입력해주세요.">
+                        <img  src="../../resources/img/검색.PNG">
+                    </div>
+
+
+                </div>
+
+                <ul id="headerul2">
+                    <button class="btn btn-sm"><a href="../../view/list/book_list1.html">현대소설</a></button>
+                    <button class="btn btn-sm"><a href="../../view/list/book_list2.html">자기개발서</a></button>
+                    <button class="btn btn-sm"><a href="../../view/list/book_list3.html">해외소설</a></button>
+
+
+                </ul>
+            </header>
+        </div>
+
+        <!-- 기본 필드 입력 -->
+        <div class="content">
+            <div id="basic_field_layout">
+                <h2><b>기본 필드 입력</b></h2>
+                <div id="basic_first">
+                    <div id="basic_first_left">
+                        <div class="form-group">
+                            <label for="title">제목:</label>
+                            <input type="text" class="form-control" id="title" value="은교">
+                        </div>
+                        <div class="form-group">
+                            <label for="writer">작가:</label>
+                            <input type="text" class="form-control" id="writer" value="박범신">
+                        </div>
+                        <div class="form-group">
+                            <label for="translator">옮긴이:</label>
+                            <input type="text" class="form-control" id="translator" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">정가:</label>
+                            <input type="text" class="form-control" id="price" value="13,500원">
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher">출판사:</label>
+                            <input type="text" class="form-control" id="publisher" value="문학동네">
+                        </div>
+                        <div class="form-group">
+                            <label for="isbn">ISBN:</label>
+                            <input type="text" class="form-control" id="isbn" value="9788954610681">
+                        </div>
+                    </div>
+                    <div id="basic_first_image">
+                        <div class="input_item">
+                            <div class="form-group">
+                                <label for="img_url">이미지 URL 업로드:</label>
+                                <input type="file" id="img_url" name="img_rul"/>
+                            </div>
+                        </div>
+                        <div id="basic_first_image_thumbnail">
+                            <img width="300px" src="../../resources/img/은교.jpg" class="img-thumbnail" alt="미리보기">
+                        </div>
+                    </div>
+                </div>
+                <div id="basic_second">
+                    <div class="content">
+                        <div class="form-group">
+                            <label for="page">쪽수:</label>
+                            <input type="text" class="form-control" id="page" value="406쪽">
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">무게:</label>
+                            <input type="text" class="form-control" id="weight" value="0.5kg">
+                        </div>
+                        <div class="form-group">
+                            <label for="size">크기:</label>
+                            <input type="text" class="form-control" id="size" value="128 X 188">
+                        </div>
+                    </div>
+                    <div class="book_information">
+                        <label for="information">책 소개:</label>
+                        <textarea class="form-control" rows="5" cols="70" id="information"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카테고리 선택 -->
+            <div id="category_layout">
+                <h2>카테고리 선택</h2>
+                <div id="category_first">
+                    <table class="category_table">
+                        <tr>
+                            <td class="category_items">카테고리1</td>
+                            <td class="category_items">카테고리2</td>
+                            <td class="category_items">카테고리3</td>
+                        </tr>
+                        <tr>
+                            <td class="category_items">카테고리4</td>
+                            <td class="category_items">카테고리5</td>
+                            <td class="category_items">카테고리6</td>
+                        </tr>
+                        <tr>
+                            <td class="category_items">카테고리7</td>
+                            <td class="category_items">카테고리8</td>
+                            <td class="category_items">카테고리9</td>
+                        </tr>
+                    </table>
+                    <ul id="category_first_right">
+                        <li>
+                            <div class="form-group">
+                                <input readonly class="form-control" id="category_select" value="카테고리1">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-group">
+                                <label for="new_category">새로운 카테고리 입력:</label>
+                                <input type="text" class="form-control" id="new_category" value="카테고리10">
+                            </div>
+                        </li>
+                        <li>
+                            <button type="button" id="btn-category-add" class="btn btn-outline-secondary">추가</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 출간일 선택 -->
+            <div id="publication_date_layout">
+                <h2>출간일 선택</h2>
+                <div id="date_first">
+                    <table id="calendar">
+                        <tr>
+                            <td id="calendar_items_top" colspan="7">
+                                <div>
+                                    <input type="date" id="datePicker" name="datePicker"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items">일</td>
+                            <td class="calendar_items">월</td>
+                            <td class="calendar_items">화</td>
+                            <td class="calendar_items">수</td>
+                            <td class="calendar_items">목</td>
+                            <td class="calendar_items">금</td>
+                            <td class="calendar_items">토</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items">1</td>
+                            <td class="calendar_items">2</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items">3</td>
+                            <td class="calendar_items">4</td>
+                            <td class="calendar_items">5</td>
+                            <td class="calendar_items">6</td>
+                            <td class="calendar_items">7</td>
+                            <td class="calendar_items">8</td>
+                            <td class="calendar_items">9</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items">10</td>
+                            <td class="calendar_items">11</td>
+                            <td class="calendar_items">12</td>
+                            <td class="calendar_items">13</td>
+                            <td class="calendar_items">14</td>
+                            <td class="calendar_items">15</td>
+                            <td class="calendar_items">16</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items">17</td>
+                            <td class="calendar_items">18</td>
+                            <td class="calendar_items">19</td>
+                            <td class="calendar_items">20</td>
+                            <td class="calendar_items">21</td>
+                            <td class="calendar_items">22</td>
+                            <td class="calendar_items">23</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items">24</td>
+                            <td class="calendar_items">25</td>
+                            <td class="calendar_items">26</td>
+                            <td class="calendar_items">27</td>
+                            <td class="calendar_items">28</td>
+                            <td class="calendar_items">29</td>
+                            <td class="calendar_items">30</td>
+                        </tr>
+                        <tr>
+                            <td class="calendar_items">31</td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                            <td class="calendar_items"></td>
+                        </tr>
+                    </table>
+                    <ul style="list-style-type: none">
+                        <li>
+                            <div class="form-group">
+                                <label for="selectedDate">선택한 출간일:</label>
+                                <input readonly class="form-control" id="selectedDate" value="2021년 1월 9일">
+                            </div>
+                        </li>
+                        <li>
+                            <button type="button" id="btn-ini" class="btn btn-outline-secondary">초기화</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="finish_line">
+                <button type="button" id="btn-update" class="btn btn-outline-secondary btn-lg" style="margin-right: 10px;">수정</button>
+                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg">임시저장</button>
+            </div>
+        </div>
+
+        <div class="div1">
+            <footer>
+
+                <ul class="headerul2">
+
+                    <button class="btn btn-sm">회사소개</button>
+                    <button class="btn btn-sm">이용약관</button>
+                    <button class="btn btn-sm">개인정보 처리방침</button>
+                    <button class="btn btn-sm">출판사를 위한안내</button>
+                    <button type="button" class="btn btn-sm ">광고안내</button>
+                    <button type="button" class="btn btn-sm ">SCM</button>
+
+                </ul>
+                <div id="divf1">
+
+                    <h1><a href="../../index.html"><img id="divf1a"src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+
+
+                    <div id="divf2">
+                        <p id= "divf2p1">고객문의 : 1577-4030(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</p>
+                        <div id="divf3">
+                            <div id="divf4">
+                                <p>회사명 : (주)용권문고</p>
+                                <p>대표이사 : 허민</p>
+                                <p>개인정보 관리 책임자 : 양미연 김태연</p>
+                                <p>E-mail : drakwon_cs@bnl.co.kr</p>
+                            </div>
+                            <div id="divf5">
+                                <p>소재지 : 서울 송파구 중대로 135, 서관 12층 원 밀리언 드림스</p>
+                                <p>사업자 등록번호 : 120-81-02543</p>
+                                <p>통신판매업 신고번호 : 제2016-서울서초-1668호</p>
+                                <p>물류센터 : (우 10881)경기도 파주시 문발로 77</p>
+                            </div>
+
+
+                        </div>
+                        <div><p id="divf2p2">copyright ⓒ 권소영 김서연 김시경 김영훈 All Rights Reserved </p></div>
+                    </div>
+
+                </div>
+            </footer>
+        </div>
+
+    </body>
+</html>

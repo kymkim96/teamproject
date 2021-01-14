@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>"대화의 품격"</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  		<link rel="stylesheet" href="../../resources/css/template.css">
+  		<script type="text/javascript">
+  		$(()=>{
+  			$("#btnmainInfo").click(()=>{
+  				$(".mainInfo").show();
+				$(".memberReview").hide();
+  			});
+  			
+  			$("#btnmemberReview").click(()=>{
+  				$(".mainInfo").hide();
+				$(".memberReview").show();
+		
+  			});
+  			
+  			let var1 =0;
+  			
+  			$("#plus").click(()=>{
+  				++var1;
+  				console.log(var1);
+  				$("#amount").text(var1);
+  			});
+  			
+			$("#minus").click(()=>{
+  				--var1;
+  				console.log(var1);
+  				if(var1<0){
+  					var1 = 0;
+  				}
+  				$("#amount").text(var1);
+  			});
+  			
+  		}); /*레디안에 넣어*/
+  			
+  		</script>
+		
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<header>
+				<div id="headerul1">
+
+					<button class="btn btn-sm">영업점안내</button>
+					<button class="btn btn-sm">고객센터</button>
+					<button class="btn btn-Light"><a href="../../view/admin/Update.html">수정</a></button>
+					<button class="btn btn-Light"><a href="../../view/admin/Create.html">등록</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">나의쇼핑</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">쇼핑카트</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">회원가입</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">로그인</a></button>
+
+					<br/>
+				</div>
+
+
+				<div id="divheader">
+					<h1><a href="../../index.html"><img src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+
+
+					<div id="divheader2">
+						<input id="석봉갓" width="500px" type="text" placeholder="찾고자 하는 도서를 입력해주세요.">
+						<img  src="../../resources/img/검색.PNG">
+					</div>
+
+
+				</div>
+
+				<ul id="headerul2">
+					<button class="btn btn-sm"><a href="../../view/list/book_list1.html">현대소설</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list2.html">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list3.html">해외소설</a></button>
+
+
+				</ul>
+
+			</header>
+		
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="second">
+				<div class="detail" id="pic1">
+					<img alt="book.jpg" 
+					src="../../resources/img/금주의이벤트.jpg" height="500px">
+				</div>
+				
+				<div class="detail" id="info">
+					<div id="detail_info">
+						<ul>
+							<h2>대화의 품격</h2>
+							<h4>온택트(Ontact)시대에 더욱 소중한
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;
+								</h4>
+							
+							<li><div id="infoL">지은이 :  </div> <div id="infoR">이서정</div></li>
+							<li><div id="infoL">출판사 :  </div> <div id="infoR">위북</div></li>
+											
+						</ul>
+						<hr/>
+					</div>
+					
+					<div id="detail_info">
+						<ul>
+							<li><div id="infoL">정가 : </div> <div id="infoR">15,000원</div></li>
+							<li><div id="infoL">판매가격 : </div><div id="infoR">
+								<div style="display: inline; font-size: 25px; color: red;">13,500원</div>
+								<div style="display: inline;">[10% 할인]</div></div>
+								
+								</li>
+							<li><div id="infoL">배송비 : </div> <div id="infoR">무료</div></li>
+							
+						</ul><hr/>
+					</div>
+					<div id="detail_info">
+						<!-- 수량 업다운 자바스크립트에서 배운거로 할 수 있는건가?! -->
+						
+						<p  style="display: inline-block; width: 60px; margin-left: 30px; font-size: 15px;">수량 : </p>
+						<p id="amount" style=" display: inline-block; width: 60px;"> 0</p>
+						<button id="plus" style="background-color:#917354; color: white; "> + </button>
+						<button id="minus" style="background-color:#917354; color: white; "> - </button>
+						<hr/>
+					</div>	
+					
+					<button  type="button" onclick="location.href='../cart/Cart.html' " class="btn btn-lg" 
+					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
+					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
+				</div>				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="chooseBox">
+				<button id="btnmainInfo" class="btn btn-lg" style="background-color:#917354; color: white; "> 상세정보 </button>
+				<button id="btnmemberReview" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 회원리뷰 </button>
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="mainInfo">
+				<div class ="subInfo" id="intro" style="margin-botton: 20px;"><h4> 책 소개 </h4>	<hr/>
+					언택트 시대에도 대화는 계속된다<br/>
+					‘탈(mask)커뮤니케이션’을 위한 대화의 기술<br/>
+					댓글은 삭제돼도 품격은 그대로 남는다<br/><br/>
+					
+					손가락이 키보드 위를 달리는 속도, 엄지가 키패드를 치는 속도가 
+					생각의 속도를 앞지르고 있다. 상대에 대한 배려 없이 걸러지지 않고 전송된
+					 한 줄 때문에 하루 종일 찜찜한 기분을 떨칠 수 없고, 관계 맺기를 더욱 버겁게 
+					만든다. SNS에서 삭제는 오직 ‘나에게서만 삭제’일 뿐이다. 상대의 화면에는 
+					영원히 삭제되지 않은 채 남아 있다. 이러한 시대에 대화의 기술은 더더욱 중요하다.
+					≪이기는 대화법≫으로 50만 독자들의 소통에 도움을 준 이서정 작가는 대화가 
+					점점 줄어드는 상황에서 더욱 중요한 대화법을 소개한다. 누구나 맞닥뜨릴 수 
+					있는 일상적인 상황에서 간단하게 활용할 수 있는 108가지의 대화법,
+					특히 비대면 시대에 말의 연비를 높여서 효과적으로 대화하는 방법을 소개한다."<br/><br/>
+				
+				
+				</div>
+				<div class ="subInfo" id="writer" style="margin-bottom: 10px;"><h4> 저자 </h4><hr/>
+				이서정<br/><br/>
+					말은 그 사람의 품격이다’라는 신념을 가지고 오랫동안 화술, 
+					대화법 전문 작가로 활동해오고 있다. 국내에 화술 분야에 대한 
+					정보가 거의 없던 시절부터 대화법 관련 자기계발서를 기획하고 연구하며 집필했다
+					. 그중 《이기는 대화》는 베스트셀러 이자 스테디셀러로 50만 독자들에게 
+					선택을 받았다. 현재는 갑작스럽게 맞이하게 된 온택트(Ontact, 온라인으로 대면)
+					 시대에 대화의 기술이 더욱 중요하다는 생각으로 비대면 시대의 소통될 
+					대화법에 대한 고민을 하고 있다. ‘의사소통에 제한적 일 수밖에 없는 비대면 
+					대화를 매끄럽게 이끌어가기 위해 어떻게 해야 할까’라는 문제에 대한 해결책의 
+					일부를 이 책의 부 록으로 실었다. 주요 저서로 《일급 대화》, 
+					《코트라와 함께 하 는 이것이 협상이다》, 《마법의 비즈니스 화술》, 
+					《세상에서 가장 듣고 싶은 위로의 말》, 《지독하게 매달려라》, 
+					《10년만 젊었으면 꼭 해야 될 54가지》 등이 있다.' <br/>
+				</div>
+				
+				<div class ="subInfo" id="index" style="margin-bottom: 10px;"><h4> 목차 </h4>
+				<hr/><p>
+				프롤로그 <br/><br/>
+				
+				CHAPTER 1 말의 인상<br/>
+				CHAPTER 2 가슴을 흔드는 말<br/>
+				CHAPTER 3 말의 색깔<br/>
+				CHAPTER 4 참된 말, 아름다운 말<br/>
+				CHAPTER 5 말의 품격<br/>
+				CHAPTER 6 말의 태도<br/>
+				권말부록 : 비대면 시대 대화법<br/>
+				</p>
+					
+				</div>
+				
+				
+			</div>
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="memberReview">
+				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+				color: #917354;"><h4> 회원리뷰 </h4><hr/>
+				
+				</div>
+			
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> sa**0205</div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2021-01-08 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						코로나로 어둡고 힘든 시기를 1년동안이나 지나고 있다.
+						막연하게 백신을 기다리고 , 치료제도 기다리고 있지만
+						매월, 하루를 견디기에 지치고 힘들다.
+						마케팅 부서에 근무 하면서
+						어딜가서 밥을 한번 먹기도 커피를 한잔 하기도 힘들어지고
+						무엇보다 마스크를 하고 다니기에
+						얼굴을 알리는 , 의사소통을 해가며 상품을 홍보해야하는 일이
+						갑갑 하기만 하다
+						이번 대화의품격을 읽으면서
+						2021년 새롭게 마음을 다지면서 일하고
+						무엇보다 대화의격과 의사전달력이 좋아짐을 확인할수 있었다
+						권말 부록 <비대면시대 대화법>은 지금 
+						우리가 처한 현실에 밀접하게 다가오는 백미다.
+						말에도 향기가 있고 색깔이 있다는 카피도 정말 와닿았다
+						문자 메시지 예절
+						줄임말이나 은어 등은 어르신들이 모르는 경우가 많아서 맞춤법을 맞추고 신조어를 쓰지 않는다.
+						친절한 표현을 사용한다. 공손한 표현과 말투로 표현한다.
+						문자가 오면 바로 연락을 취하도록 한다.
+						한 번 더 생각하고 보낸다.
+					</p></div>
+					<hr/>
+				</div>
+				
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> bo**les2</div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2021-01-08 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						인간관계를 형성하고 유지하는데 필요한 것 중의 하나가 
+						상호간의 대화라고 생각합니다. 그리고, 우리나라에서는 속담에 
+						‘말 한마디로 천냥 빛을 갚는다’는
+						말이나 아 다르고 어 다르다는 것처럼 말의 중요성을 강조하고 있습니다
+						. 2020년 초에 발생한 코로나19 바이러스로 인하여 사회적 활동이 제한되고, 
+						언택트 활동이 늘어나면서
+						생기는 스트레스 중의 하나가 말을 주고 받을 수 있는 
+						만남이 부족하기 때문일 것입니다. 이처럼 대화는
+						단순한 의사 전달 이상의 의미가 있는 활동이라 생각합니다. 코로나19가
+						아직도 유행하고 있는 현재와 같은 시기에, 대화의 소중함을 느끼고 좀 
+						더 품격있는 대화를 할 수 있는
+						공부를 한다면 온택트 시대에 도움이 되리라 생각되었고, 이 
+						책에서 많은 것을 배울 수 있을 것입니다.
+						
+						책은 총 여섯 챕터로 구성되어 있으며, 말이 주는 인상, 감정, 
+						색깔, 품격, 태도에 대하여 이야기하고 있습니다. 마지막에 실린 부록에는 비대면
+						시대 대화법은 SNS, 문자, 전화 등으로 소통하는데 도움이
+						되는 내용들이 담겨 있습니다. 다른 사람에게 좋은 인상을 남기기 
+						위해서, 또는 돈도 들지 않는데 라는 생각으로 진심이 담기지 않은 
+						겉치레 식의 칭찬을 하는 경우가 가끔 발생합니다. 이는 칭찬하는 
+						사람에게 호의적으로 대하는 것이기 때문입니다. 하지만, 진심이 
+						담기지 않는 것은 비아냥거리는 느낌이 될 수 있기 때문에 오히려 
+						하지 않는 것이 좋다고 합니다. 이에 대해 저자는 칭찬할 때의 4가지 
+						기술을 알려주고 있습니다. 여기에서도 과장 없고, 구체적이고,
+						진실해야 한다는 부분을 찾을 수 있습니다. 즉, 칭찬할
+						때도 그냥 입바른 소리가 아니라 예의를 갖추면서 상대편의 
+						마음에 닿도록 하는 기술이 필요하다는 것을 알 수 있었습니다.
+					</p></div>
+					<hr/>
+				</div>
+				
+				
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> ab**710 </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2021-01-04 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						의논하듯 말하라.부탁하는 식으로 말하라.웃음을 띠고 말하라.
+						상대의 장점을 말하라.상대의 실패에 동참하라.상대 입장에서 서서 말하라.
+						자기의 실수는 과감히 인정하라.너그럽게 생각하고 생각의 폭을 넓혀 
+						상대를 이해하려 하라.명료한 말을 사용하라.상대가 하는 말을 주의 깊게 들어라.
+						이처럼 환영받는 화법이 따로 있다는 것이다.이 중에서 상대의 입장에 서서
+						 이야기하라는 부분이 나온다.대개 이 말은 쉽다. 그러데 남과 이야기할 때 
+						정작 우리는 이것을 실천하지 못한다,.
+						신념이 다른 종교 이야기에서 나는 기독교 신자, 상대는 불교신자라고 
+						해보자신념을 말하는 종교 이야기에서 과연 상대 입장에서 이야기할 수 
+						있을까?그야 뭐 종교나 정치는 이야기는 하지말라고 저자가 말하고 있다.
+						그런데 믿음이 다른 종교 이야기에서 토론을 하다가 신념의 문제에서 
+						상대의 입장을 배려하는 여유와 아량이 생길까.. 그래서 생각해봤다.
+						 이럴 때 바로 화법의 진가가 발휘된다는 것을상대의 신념과 믿음에 
+						대한 이해와 공감을 해주고 대화나 토론을 끌어간다면 그 대화의 진가가 
+						올곳이 빛난다는 것을....토론의 현장을 보면 상대의견과 다를 때 그걸 
+						상대에게 주지시키고 강요하듯 설득하려 하면보는 이들이 눈살을 찌푸려진다. 
+						대신 의견이 다른 상대의 생각과 주장을 이해하고 공감한 다음 덧붙여 나의
+						 의견을 보탤 때 얼마나 합리적인 모습인지를....
+						
+						정말로 일상에서 우리가 지켜야 할 화법을 명징하게 설명해주고 제시해주는
+						 이 책에서말의 태도를 바로 익혀야겠다고 느꼈다
+					</p></div>
+					<hr/>
+				</div>
+				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<footer>
+	
+				<ul class="headerul2">
+					
+					<button class="btn btn-sm">회사소개</button>
+					<button class="btn btn-sm">이용약관</button>
+					<button class="btn btn-sm">개인정보 처리방침</button>
+					<button class="btn btn-sm">출판사를 위한안내</button>
+					<button type="button" class="btn btn-sm ">광고안내</button>
+					<button type="button" class="btn btn-sm ">SCM</button>
+	
+				</ul>
+				<div id="divf1">
+					
+				<h1><a href="../../index.html"><img id="divf1a"src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+	
+	
+					<div id="divf2">
+						<p id= "divf2p1">고객문의 : 1577-4030(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</p>
+						<div id="divf3">
+							<div id="divf4">
+							<p>회사명 : (주)용권문고</p>
+							<p>대표이사 : 허민</p>
+							<p>개인정보 관리 책임자 : 양미연 김태연</p>
+							<p>E-mail : drakwon_cs@bnl.co.kr</p>
+							</div>
+							<div id="divf5">
+							<p>소재지 : 서울 송파구 중대로 135, 서관 12층 원 밀리언 드림스</p>
+							<p>사업자 등록번호 : 120-81-02543</p>
+							<p>통신판매업 신고번호 : 제2016-서울서초-1668호</p>
+							<p>물류센터 : (우 10881)경기도 파주시 문발로 77</p>
+							</div>
+							
+							
+						</div>
+						<div><p id="divf2p2">copyright ⓒ 권소영 김서연 김시경 김영훈 All Rights Reserved </p></div>
+					</div>
+				</div>
+																	
+			</footer>
+											
+			
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+footer {
+	background-color: white;
+	padding: 10px;
+	text-align: center;
+	
+	display:flex;
+	flex-direction: column;
+	
+}
+.headerul2 {
+	border-top: 2px solid grey;
+	border-bottom: 2px solid grey;
+	text-align: center;
+}
+
+
+#divf1{
+	display:flex;
+	padding-left:180px;
+	
+
+}
+#divf1a{
+
+	margin:30px;
+}
+
+#divf2 {
+	color:black;
+	width:1000px;
+	display:flex;
+	flex-direction: column;
+	text-align: left;
+	padding-left:0px;
+}
+#divf2p1{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+}
+#divf2p2{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	font-size: x-small;
+}
+
+#divf3 {
+	display: flex;
+	padding-bottom: 20px;
+	height:145px;
+	
+	
+}
+
+#divf4 {
+
+	border-right: 1px solid grey; 
+	font-size: small;
+	margin : 5px;
+	padding-right : 20px;
+}
+#divf5 {
+	
+	padding-left :10px;
+	font-size: small;
+}

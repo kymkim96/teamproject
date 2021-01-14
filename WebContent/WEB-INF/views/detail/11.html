@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>사람은 무엇으로 성장하는가</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  		<link rel="stylesheet" href="../../resources/css/template.css">
+  		<script type="text/javascript">
+  		$(()=>{
+  			$("#btnmainInfo").click(()=>{
+  				$(".mainInfo").show();
+				$(".memberReview").hide();
+  			});
+  			
+  			$("#btnmemberReview").click(()=>{
+  				$(".mainInfo").hide();
+				$(".memberReview").show();
+		
+  			});
+  			
+  			let var1 =0;
+  			
+  			$("#plus").click(()=>{
+  				++var1;
+  				console.log(var1);
+  				$("#amount").text(var1);
+  			});
+  			
+			$("#minus").click(()=>{
+  				--var1;
+  				console.log(var1);
+  				if(var1<0){
+  					var1 = 0;
+  				}
+  				$("#amount").text(var1);
+  			});
+  			
+  		}); /*레디안에 넣어*/
+  			
+  		</script>
+		
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<header>
+				<div id="headerul1">
+
+					<button class="btn btn-sm">영업점안내</button>
+					<button class="btn btn-sm">고객센터</button>
+					<button class="btn btn-Light"><a href="../../view/admin/Update.html">수정</a></button>
+					<button class="btn btn-Light"><a href="../../view/admin/Create.html">등록</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">나의쇼핑</a></button>
+					<button class="btn btn-light"><a href="../../view/cart/Cart.html">쇼핑카트</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">회원가입</a></button>
+					<button class="btn btn-Light"><a href="../../view/auth/auth.html">로그인</a></button>
+
+					<br/>
+				</div>
+
+
+				<div id="divheader">
+					<h1><a href="../../index.html"><img src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+
+
+					<div id="divheader2">
+						<input id="석봉갓" width="500px" type="text" placeholder="찾고자 하는 도서를 입력해주세요.">
+						<img  src="../../resources/img/검색.PNG">
+					</div>
+
+
+				</div>
+
+				<ul id="headerul2">
+					<button class="btn btn-sm"><a href="../../view/list/book_list1.html">현대소설</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list2.html">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="../../view/list/book_list3.html">해외소설</a></button>
+
+
+				</ul>
+
+			</header>
+	
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="second">
+				<div class="detail" id="pic1">
+					<img alt="book.jpg" 
+					src="http://image.kyobobook.co.kr/images/book/xlarge/084/x9788997575084.jpg" height="500px">
+				</div>
+				
+				<div class="detail" id="info">
+					<div id="detail_info">
+						<ul>
+							<h2> 사람은 무엇으로 성장하는가 </h2>
+							<h4> 30년간 500만 리더들의 삶을 바꾼 기적의 성장 프로젝트
+								&nbsp;&nbsp;
+								</h4>
+							
+							<li><div id="infoL">지은이 :  </div> <div id="infoR"> 찰스 두히그</div></li>
+							<li><div id="infoL">옮긴이 :  </div> <div id="infoR"> 김고명</div></li>
+							<li><div id="infoL">감수자 :  </div> <div id="infoR"> 전옥표</div></li>
+							<li><div id="infoL">출판사 :  </div> <div id="infoR"> 비즈니스북스</div></li>				
+
+						</ul>
+						<hr/>
+					</div>
+					
+					<div id="detail_info">
+						<ul>
+							<li><div id="infoL">정가 : </div> <div id="infoR">14,500원</div></li>
+							<li><div id="infoL">판매가격 : </div><div id="infoR">
+								<div style="display: inline; font-size: 25px; color: red;">13,050원</div>
+								<div style="display: inline;">[10% 할인]</div></div>
+								
+								</li>
+							<li><div id="infoL">배송비 : </div> <div id="infoR">무료</div></li>
+							
+						</ul><hr/>
+					</div>
+					<div id="detail_info">
+						<!-- 수량 업다운 자바스크립트에서 배운거로 할 수 있는건가?! -->
+						
+						<p  style="display: inline-block; width: 60px; margin-left: 30px; font-size: 15px;">수량 : </p>
+						<p id="amount" style=" display: inline-block; width: 60px;"> 0</p>
+						<button id="plus" style="background-color:#917354; color: white; "> + </button>
+						<button id="minus" style="background-color:#917354; color: white; "> - </button>
+						<hr/>
+					</div>	
+					
+					<button  type="button" onclick="location.href='../cart/Cart.html' " class="btn btn-lg" 
+					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
+					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
+				</div>				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="chooseBox">
+				<button id="btnmainInfo" class="btn btn-lg" style="background-color:#917354; color: white; "> 상세정보 </button>
+				<button id="btnmemberReview" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 회원리뷰 </button>
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			<div class="mainInfo">
+				<div class ="subInfo" id="intro" style="margin-botton: 20px;"><h4> 책 소개 </h4>	<hr/>
+						자기계발의 새로운 프레임을 제시하는 긍정 수업!<br/><br/>
+						30년간 500만 리더들의 삶을 바꾼 기적의 성장 프로젝트『사람은 무엇으로 성장하는가』.
+						 세계 최고의 리더십 구루라 칭송받는 존 맥스웰이 500만 명이 넘는 리더들을 교육시킨 
+						 경험을 바탕으로 사람들을 생의 끝까지 성장할 수 있도록 도와주는 15가지 ‘성장 불변의 법칙’
+						 을 오롯이 담아냈다. 저자는 열심히 일한다고 모두가 성공하는 것이 아니듯이 어른이 된다고 
+						 내적인 성장까지 저절로 이루어지는 것은 아니라고 충고하며, 진정한 어른이 되기 위해서는 힘들고 
+						 고달플 때 잠시 주저앉아 마음을 다독이고 다시금 일어나 나아가도록 만드는 힘, ‘성장’이 필요하다고 조언한다. 
+						 나아갈 방향이 제대로 보이지 않아 막막한 독자들에게 내면에 잠든 잠재력과 가능성의 거인을 
+						 깨울 수 있는 구체적인 해답을 제시한다.<br/><br/>
+				</div>
+				
+				<div class ="subInfo" id="writer" style="margin-bottom: 10px;"><h4> 저자 </h4><hr/>
+				
+					존 맥스웰<br/>
+					구분 : 저서<br/>
+					국적 : 미국<br/>
+					분류 : 인문/철학자 , 역사/종교학자 , 경제/경영/자기계발 저자 , 아동/청소년 문학가 , 기타<br/>
+
+				<br/>
+				지은 책으로는 《존 맥스웰의 위대한 영향력》, 《존 맥스웰 리더십 불변의 법칙》, 《리더십 골드》, 《최고의 나》, 
+				《모든 리더들이 알아야 할 리더십 101》, 《360도 리더》, 《생각의 법칙 10+1》, 《당신 안에 잠재된 리더십을 키워라》
+				, 《존 맥스웰의 행동리더십》, 《꿈이 나에게 묻는 열 가지 질문》, 《어떻게 배울 것인가》 외 다수가 있다.				
+				<br/><br/>
+				</div>
+				
+				<div class ="subInfo" id="index" style="margin-bottom: 10px;"><h4> 목차 </h4>
+				<hr/><p>
+						프롤로그_ 내일이 더 멋진 삶을 위해 <br/>
+						제1장. 의도성의 법칙_ 당신은 당신의 인생을 좀 더 멋지게 만들 의무가 있다 <br/>
+						제2장. 인지의 법칙_ 좋아하는 것보다는 잘하는 것을 찾아야 행복해질 수 있다<br/>
+						제3장. 거울의 법칙_ 자신의 가치를 들여다보는 사람은 무너지지 않는다<br/>
+						제4장. 되돌아보기의 법칙_ 지금 잠시 멈춰도 인생이 더디 가는 것은 아니다<br/>
+						제5장. 끈기의 법칙_ 성공하는 모든 사람의 공통점은 1만 시간의 성실함이다<br/>
+						제6장. 환경의 법칙_ 당신 자신을 좋은 사람들 속에 놓아두어라<br/>
+						제7장. 계획의 법칙_ 오늘의 행동이 미래의 비전이 된다<br/>
+						제8장. 고통의 법칙_ 아프다, 아프다, 아프다. 그러니 나는 더 성장할 것이다<br/>
+						제9장. 사다리의 법칙_ 결국 사람들은 성품이 좋은 사람을 찾아가게 되어 있다<br/>
+						제10장. 고무줄의 법칙_ 인생의 스트레칭을 잘하고 있는가<br/>
+						제11장. 내려놓음의 법칙_ 당신은 오늘 하루 동안 무엇을 포기했는가<br/>
+						제12장. 호기심의 법칙_ 인생을 신기한 것이 가득한 곳으로 만들어라<br/>
+						제13장. 본보기의 법칙_ 닮고 싶은 사람, 닮고 싶은 인생을 찾았는가<br/>
+						제14장. 확장의 법칙_ 당신 안에 감춰 둔 가능성의 끝은 대체 어디인가<br/>
+						제15장. 공헌의 법칙_ 더 많은 사람들과 함께 만드는 더 행복한 세상<br/><br/>
+						에필로그<br/>
+						감수 및 해설_ 가능성, 당신이 지닌 가장 위대한 힘(전옥표 위닝경영연구소 대표)<br/>
+						주석<br/>
+				</p>
+					
+				</div>
+				
+				
+			</div>
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<div class="memberReview">
+				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+				color: #917354;"><h4> 회원리뷰 </h4><hr/>
+				
+				</div>
+			
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> he**ynet </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> 2014-02-07</div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						15가지 성장 프로그램,
+						의도성의 법칙, 인지의 법칙, 거울의 법칙, 되돌아보기의 법칙, 끈기의 법칙, 환경의 법칙,
+						 계획의 법칙, 고통의 법칙, 사다리의 법칙, 고무줄의 법칙, 내려놓음의 법칙, 호기심의 법칙, 
+						 본보기의 법칙, 확장의 법칙, 공헌의 법칙.
+						 
+						제목 및 일부 내용만 보아서는 최근에 읽었던 '멈추면 비로서 보이는 것들', '아웃라이어', 
+						'행복은 호기심을 타고온다'. '자기혁명', 그리고 약간의 철학서,  등등을 혼합해서 보는 듯 하다. 
+						하지만, 세부적으로 들어가면 독특한 측면이 있으며 간결하게 정리되어 있어 읽기에 부담도 없으며 이해도 쉽다.
+						 
+						변화가 빠른 현대를 살아가면서 성장의 필요성을 한 번이라도 실감했다면 책의 내용이 확~다가옴을 느낄 수 있을 것이다.
+						 또 우연한 성장에서 의도적 성장으로의 전환이 필요함을 알게 될 것이다. 
+						 그러나 외국 저자로서는 쉽게 다루지 않는 되돌아보기의 법칙, 내려놓음의 법칙
+						  등 동양적인 사상을 포함한 다양한 법칙을 논리적 간결함으로 표현하여,
+						   이해라는 측면에서는 큰 무리가 없어 보인다. 마직막에 공헌의 법칙이 있는것은 조금 의외가 아닌가. 
+						   그러나, 논리적인 부분이 강한 반면 감성적인 부분이 약해 이해를 넘어 독자의 마음까지 움직이기에는 한계가 있어 보인다.</p></div>
+					<hr/>
+				</div>
+				
+				
+				<div class="set">
+					<div id="pic2">
+					<ul  style="list-style: none; ">
+							<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> ci**l765 </div></li>
+							<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
+							<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;">  2013-09-16 </div></li>
+							
+					</ul>
+					</div>
+					<div id="review"><p>
+						이 책은 최고의 리더십 전문가 존 맥스웰의 새로운 성장에 관한 책이다. 
+						이 책은 원하는 것을 얻기 위해 어디서부터, 어떻게 해야 할 지 모르는 많은 사람들에게 
+						자기 안에 잠들어 있는 가능성을 깨우는 방법을 제시하고 있다.
+						그 성장을 위한 특별한 15가지의 법칙을 전달한다. 이 법칙은 성장에 대한 강한 의지를 갖고 매진하는 것,
+						 좋은 환경 속으로 자신을 이끌며, 조언과 응원을 아끼지 않을 멘토를 찾는 것, 
+						 또한 실패와 고통을 극복하고 자신이 이룬 것들을 통해 다른 사람의 삶도 되돌아볼 
+						 수 있는 삶을 사는 것 등등 이다.저자는 단순한 방법론이 아니라 인생을 살아가는데 꼭 
+						 필요한 원리를 제시한다. 열심히 일하는 것만으로 성공할 수 있다는 기존의 상식을 비판하고 
+						 가야할 목적지에 이르는 기본 원리를 알려준다. 이 책을 내 안의 두려움을 이기는 
+						 구체적인 방안과 함께 행복와 성공에 이르는 강력한 영감을 얻을 수 있기를 바란다...
+						
+						</p></div>
+					<hr/>
+				</div>
+				
+			</div>
+			
+			<!-- --------------------------------------------------------------------------------------------------------------- -->
+			
+			<footer>
+	
+				<ul class="headerul2">
+					
+					<button class="btn btn-sm">회사소개</button>
+					<button class="btn btn-sm">이용약관</button>
+					<button class="btn btn-sm">개인정보 처리방침</button>
+					<button class="btn btn-sm">출판사를 위한안내</button>
+					<button type="button" class="btn btn-sm ">광고안내</button>
+					<button type="button" class="btn btn-sm ">SCM</button>
+	
+				</ul>
+				<div id="divf1">
+					
+					<h1><a href="../../index.html"><img id="divf1a"src="../../resources/img/omd.png" width="350px" height="100px"></a></h1>
+	
+	
+					<div id="divf2">
+						<p id= "divf2p1">고객문의 : 1577-4030(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</p>
+						<div id="divf3">
+							<div id="divf4">
+							<p>회사명 : (주)용권문고</p>
+							<p>대표이사 : 허민</p>
+							<p>개인정보 관리 책임자 : 양미연 김태연</p>
+							<p>E-mail : drakwon_cs@bnl.co.kr</p>
+							</div>
+							<div id="divf5">
+							<p>소재지 : 서울 송파구 중대로 135, 서관 12층 원 밀리언 드림스</p>
+							<p>사업자 등록번호 : 120-81-02543</p>
+							<p>통신판매업 신고번호 : 제2016-서울서초-1668호</p>
+							<p>물류센터 : (우 10881)경기도 파주시 문발로 77</p>
+							</div>
+							
+							
+						</div>
+						<div><p id="divf2p2">copyright ⓒ 권소영 김서연 김시경 김영훈 All Rights Reserved </p></div>
+					</div>
+				</div>
+																	
+			</footer>
+		</div>
+		
+	</body>
+</html>

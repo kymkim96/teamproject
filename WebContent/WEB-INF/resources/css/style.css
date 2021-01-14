@@ -1,0 +1,353 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#basic_field_layout {
+    display: flex;
+    width: 1030px;
+    padding: 30px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+#basic_first {
+    display: flex;
+    width: 940px;
+    /*flex: 1;*/
+}
+
+#basic_first_left {
+    padding: 50px;
+    border: 1px solid #998064;
+    box-sizing: border-box;
+    flex: 1;
+    align-items: center;
+}
+
+#basic_first_left > ul, #basic_first_image > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#basic_first_image {
+    display: flex;
+    padding: 50px;
+    margin-left: 10px;
+    border: 1px solid #998064;
+    box-sizing: border-box;
+    flex: 3.8;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input_button {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid #748ffc;
+    align-items: center;
+    cursor: pointer;
+}
+
+.input_button:hover {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+.input_image_url {
+    display: flex;
+    width: 300px;
+    height: 30px;
+    padding-left: 5px;
+    margin-right: 20px;
+    border: 1px solid #748ffc;
+    align-items: center;
+}
+
+#basic_first_image_thumbnail {
+    display: flex;
+    margin-left: 50px;
+    padding: 10px;
+    border: 1px solid #998064;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+#basic_second {
+    display: flex;
+    /*flex: 1;*/
+    width: 940px;
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid #998064;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.input_text {
+    display: flex;
+    height: 30px;
+    margin-right: 10px;
+    align-items: center;
+}
+
+.input_box {
+    display: flex;
+    width: 200px;
+    height: 30px;
+    padding-left: 5px;
+    margin-right: 20px;
+    border: 1px solid #748ffc;
+    align-items: center;
+    cursor: pointer;
+}
+
+.input_item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.input_long_text {
+    width: 50%;
+    height: 500px;
+    padding-top: 0px;
+    padding-left: 5px;
+    border: 1px solid #748ffc;
+    cursor: pointer;
+}
+
+#category_layout {
+    margin-bottom: 20px;
+    margin-right: 30px;
+}
+
+#category_first {
+    border: 1px solid #998064;
+    box-sizing: border-box;;
+    display: flex;
+    flex: 1;
+    width: 940px;
+    padding: 60px;
+}
+
+.category_table {
+    width: 500px;
+    border-collapse: separate;
+    border-spacing: 30px;
+}
+
+.category_items {
+    height: 70px;
+    border: 1px solid #998064;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.category_items:hover {
+    background-color: #B8A791;
+    color: white;
+    cursor: pointer;
+}
+
+#category_first_right {
+    list-style-type: none;
+    padding-top: 50px;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+#category_first_right li {
+    margin-bottom: 20px;
+}
+
+#publication_date_layout {
+    display: flex;
+    padding: 30px;
+    width: 940px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+#date_first {
+    display: flex;
+    width: 940px;
+    padding: 80px;
+    border: 1px solid #998064;
+    flex: 1;
+}
+
+#calendar {
+    width: 500px;
+    margin-right: 100px;
+    border-collapse: collapse;
+}
+
+.calendar_items {
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.calendar_items:hover {
+    background-color: #B8A791;
+    color: white;
+    cursor: pointer;
+}
+
+#calendar_items_top {
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#calendar_items_top > div {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#input_button_date {
+    display: flex;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #748ffc;
+    align-items: center;
+    cursor: pointer;
+}
+
+#input_button_date:hover {
+    background-color: #3b5bdb;
+    color: white;
+}
+
+#finish_line {
+    display: flex;
+    padding-bottom: 100px;
+    justify-content: space-between;
+}
+
+.book_information {
+    margin-left: 30px;
+}
+/*---------------------------------------------*/
+/*
+    쇼핑카트 스타일시트
+ */
+.menubar {
+    display: flex;
+    width: 960px;
+    border-bottom: 1px solid #ced4da;
+}
+
+.menubar span {
+    margin-left: 5px;
+}
+
+.general_info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 960px;
+    height: 100px;
+    margin-top: 5px;
+    border: 1px solid #ced4da;
+    background-color: #fcfcfc;
+}
+
+.shopping_cart_title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.cart_view {
+    border-bottom: 1px solid #ced4da;
+    margin-bottom: 50px;
+}
+
+.cart_view_title {
+    display: flex;
+    width: 470px;
+    height: 50px;
+    margin-bottom: 30px;
+    color: #998064;
+    border: 2px solid #998064;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart_product_name {
+    display: flex;
+    width: 200px;
+}
+
+.cart_product_name > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#item_count {
+    display: block;
+    width: 50px;
+    margin-bottom: 5px;
+}
+
+#button_wishlist {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.item_count_result {
+    float: left;
+}
+
+.item_price_result {
+    float: right;
+}
+
+.price_table {
+    width: 940px;
+}
+
+.price_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-top: 2px solid black;
+    background-color: #999999;
+    color: white;
+    border-bottom: 1px dotted #ced4da;
+    border-right: 1px solid #ced4da;
+}
+
+.price_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #f9fbf5;
+    border-bottom: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+}
+
+.price_accumulate {
+    background-color: #f7f7f7;
+    padding-top: 10px;
+}
+
+.expected_date_info {
+    padding-top: 10px;
+}
+
+.button_line {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+
