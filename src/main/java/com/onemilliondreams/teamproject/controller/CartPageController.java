@@ -5,18 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/book-admin")
-public class BookAdminPageController {
+@RequestMapping("/cart")
+public class CartPageController {
 
-	@GetMapping("/create")
-	public String create() {
+	@GetMapping("/")
+	public String index() {
 		
-		return "admin/BookCreate";
-	}
-	
-	@GetMapping("/update")
-	public String update() {
-		
-		return "admin/BookUpdate";
+		return "cart/Cart";
 	}
 }
