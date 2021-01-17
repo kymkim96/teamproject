@@ -1,7 +1,7 @@
 $(() => {
     $("#home_link")
         .click(() => {
-            window.location.href = "../../index.html";
+            window.location.href = "<%=application.getContextPath()%>/";
         })
     $("#home_link").hover(() => {
         $("#home_link").css({

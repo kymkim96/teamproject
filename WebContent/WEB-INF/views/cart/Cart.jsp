@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +13,43 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_sigyung.css">
+		<script>
+			$(() => {
+			    $("#home_link")
+			        .click(() => {
+			            window.location.href = "<%=application.getContextPath()%>/";
+			        })
+			    $("#home_link").hover(() => {
+			        $("#home_link").css({
+			            "color": "#917354",
+			            "cursor": "pointer",
+			        })
+			    }, () => {
+			        $("#home_link").css({
+			            "color": "black",
+			        })
+			    });
+	
+			    $(".detail_1_link").click(() => {
+			        window.location.href = "../../view/detail/7.html";
+			    });
+			    $(".detail_1_link").hover(() => {
+			        $(".detail_1_link").css({
+			            "color": "#917354",
+			            "cursor": "pointer",
+			            "text-decoration": "underline"
+			        })
+			    }, () => {
+			        $(".detail_1_link").css({
+			            "color": "black",
+			        })
+			    });
+	
+			    $("#list_home_link").click(() => {
+			        window.location.href = "../../view/list/book_list1.html";
+			    });
+			});
+		</script>
 	</head>
 	<body>	
 		<div id="layout">
@@ -51,35 +91,50 @@
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                            <tr>
-	                                <td>
-	                                    <div class="cart_product_name">
-	                                        <img class="detail_1_link" src="<%=application.getContextPath()%>/resources/img/은교_작은사이즈.jpg" width="50px">
-	                                        <div style="margin-left: 5px">
-	                                            <div class="detail_1_link">[도서] 은교</div>
-	                                            <div>박범신 | 문학동네</div>
-	                                        </div>
-	                                    </div>
-	                                </td>
-	                                <td class="align-middle">2021년 01월 14일(목)</td>
-	                                <td class="align-middle">12,150원</td>
-	                                <td>
-	                                    <div>
-	                                        <input type="number" id="item_count" name="item_count"/>
-	                                        <button class="btn btn-outline-secondary btn-sm">수정</button>
-	                                    </div>
-	                                </td>
-	                                <td class="align-middle">12,150원</td>
-	                                <td>
-	                                    <div>
-	                                        <button id="button_wishlist" class="btn btn-outline-secondary btn-sm">위시리스트</button>
-	                                        <button class="btn btn-outline-secondary btn-sm">삭제</button>
-	                                    </div>
-	                                </td>
-	                                <td class="align-middle">
-	                                    <input type="checkbox" id="cart_item" name="cart_item"/>
-	                                </td>
-	                            </tr>
+	                        	
+	                        	<c:forEach var="requestDto" items="${sessionCartList}">
+		                        	<tr>
+		                                <td>
+		                                    <div class="cart_product_name">
+		                                        <img 
+		                                        class="detail_1_link" 
+		                                        src="${requestDto.imgLink}"
+		                                        width="50px"
+		                                        alt="<%=application.getContextPath()%>/resources/img/은교_작은사이즈.jpg">
+		                                        <div style="margin-left: 5px">
+		                                            <div class="detail_1_link">${requestDto.title}</div>
+		                                            <div>${requestDto.writer} | ${requestDto.publisher}</div>
+		                                        </div>
+		                                    </div>
+		                                </td>
+		                                <td class="align-middle">
+		                                	<%
+	                                		Calendar calendar = Calendar.getInstance();
+	                                		calendar.setTime(new Date());
+	                                		calendar.add(Calendar.DATE, 2);
+		                                	%>
+		                                	<fmt:formatDate value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd"/>
+		                                </td>
+		                                <td class="align-middle">${requestDto.price}</td>
+		                                <td>
+		                                    <div>
+		                                        <input type="number" id="item_count" name="item_count" value="${requestDto.count}"/>
+		                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
+		                                    </div>
+		                                </td>
+		                                <td class="align-middle">${requestDto.price * requestDto.count}</td>
+		                                <td>
+		                                    <div>
+		                                        <button id="button_wishlist" class="btn btn-outline-secondary btn-sm">위시리스트</button>
+		                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="sessionDeregister">삭제</button>
+		                                    </div>
+		                                </td>
+		                                <td class="align-middle">
+		                                    <input type="checkbox" id="cart_item" name="cart_item"/>
+		                                </td>
+		                            </tr>
+	                        	</c:forEach>
+	                            
 	                            <tr>
 	                                <td colspan="7">
 	                                    <div>
@@ -168,8 +223,6 @@
 	            </div>
 	        </div>
 
-        	<script src="<%=application.getContextPath()%>/resources/js/cartLink.js"></script>
-			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>
 		</div>
 	</body>
