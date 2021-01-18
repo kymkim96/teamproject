@@ -27,7 +27,7 @@
 				</ul>
 				<div id="divf1">
 					
-				<h1><a href="<%=application.getContextPath()%>/index"><img id="divf1a"src="<%=application.getContextPath()%>/resources/img/omd.png" width="350px" height="100px"></a></h1>
+				<a href="index"><img id="divf1a"src="<%=application.getContextPath()%>/resources/img/omd.png" width="350px" height="100px"></a>
 	
 					<div id="divf2">
 						<p id= "divf2p1">고객문의 : 1577-4030(발신자 부담) 평일 9시~18시(토요일,일요일,공휴일 휴무)</p>
