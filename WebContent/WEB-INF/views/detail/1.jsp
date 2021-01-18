@@ -71,7 +71,7 @@
 						<hr/>
 					</div>	
 					
-					<button  type="button" onclick="location.href='<%=application.getContextPath() %>/cart/Cart' " class="btn btn-lg" 
+					<button  type="button" onclick="location.href='<%=application.getContextPath() %>/cart/index' " class="btn btn-lg" 
 					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
 					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
 				</div>				
