@@ -10,7 +10,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.mycompany">
+	<logger name="com.onemilliondreams.teamproject">
 		<!-- 로그 레벨 : debug < info < warn < error -->
 		<level value="info" />
 	</logger>

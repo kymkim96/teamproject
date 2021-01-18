@@ -13,9 +13,9 @@
 	</head>
 	<body>	
 		<div id="layout">
-			<%@ include file="/WEB-INF/views/common/Header.jsp" %>
+		<%@ include file="/WEB-INF/views/common/Header.jsp" %>
 			
-			<!-- 기본 필드 입력 -->
+		<!-- 기본 필드 입력 -->
         <div class="content">
             <div id="basic_field_layout">
                 <h2><b>기본 필드 입력</b></h2>
@@ -46,15 +46,22 @@
                             <input type="text" class="form-control" id="isbn" value="9788954610681">
                         </div>
                     </div>
-                    <div id="basic_first_image">
+                    <div id="basic_first_right">
                         <div class="input_item">
                             <div class="form-group">
-                                <label for="img_url">이미지 URL 업로드:</label>
-                                <input type="file" id="img_url" name="img_rul"/>
+                                <label for="imgUrl">이미지 URL 업로드:</label>
+                                <input type="file" id="imgUrl" name="imgUrl"/>
                             </div>
                         </div>
-                        <div id="basic_first_image_thumbnail">
-                            <img width="300px" src="<%=application.getContextPath()%>/resources/img/은교.jpg" class="img-thumbnail" alt="미리보기">
+                        <div class="input_item">
+                            <div class="form-group">
+                                <label for="bestSeller">베스트셀러 여부:</label>
+                                <input type="checkbox" id="bestSeller" name="bestSeller"/>
+                            </div>
+                        </div>
+                        <div class="input_item_inner_list">
+                            <%@ include file="/WEB-INF/views/admin/form/VideoUrlForm.jsp" %>
+                            <script src="<%=application.getContextPath()%>/resources/js/modifyVideoUrl.js"></script>
                         </div>
                     </div>
                 </div>
@@ -80,133 +87,61 @@
                 </div>
             </div>
 
-            <!-- 카테고리 선택 -->
-            <div id="category_layout">
-                <h2>카테고리 선택</h2>
-                <div id="category_first">
-                    <table class="category_table">
-                        <tr>
-                            <td class="category_items">카테고리1</td>
-                            <td class="category_items">카테고리2</td>
-                            <td class="category_items">카테고리3</td>
-                        </tr>
-                        <tr>
-                            <td class="category_items">카테고리4</td>
-                            <td class="category_items">카테고리5</td>
-                            <td class="category_items">카테고리6</td>
-                        </tr>
-                        <tr>
-                            <td class="category_items">카테고리7</td>
-                            <td class="category_items">카테고리8</td>
-                            <td class="category_items">카테고리9</td>
-                        </tr>
-                    </table>
-                    <ul id="category_first_right">
-                        <li>
-                            <div class="form-group">
-                                <input readonly class="form-control" id="category_select" value="카테고리1">
-                            </div>
-                        </li>
-                        <li>
-                            <div class="form-group">
-                                <label for="new_category">새로운 카테고리 입력:</label>
-                                <input type="text" class="form-control" id="new_category" value="카테고리10">
-                            </div>
-                        </li>
-                        <li>
-                            <button type="button" id="btn-category-add" class="btn btn-outline-secondary">추가</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 출간일 선택 -->
-            <div id="publication_date_layout">
-                <h2>출간일 선택</h2>
-                <div id="date_first">
-                    <table id="calendar">
-                        <tr>
-                            <td id="calendar_items_top" colspan="7">
-                                <div>
-                                    <input type="date" id="datePicker" name="datePicker"/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items">일</td>
-                            <td class="calendar_items">월</td>
-                            <td class="calendar_items">화</td>
-                            <td class="calendar_items">수</td>
-                            <td class="calendar_items">목</td>
-                            <td class="calendar_items">금</td>
-                            <td class="calendar_items">토</td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items">1</td>
-                            <td class="calendar_items">2</td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items">3</td>
-                            <td class="calendar_items">4</td>
-                            <td class="calendar_items">5</td>
-                            <td class="calendar_items">6</td>
-                            <td class="calendar_items">7</td>
-                            <td class="calendar_items">8</td>
-                            <td class="calendar_items">9</td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items">10</td>
-                            <td class="calendar_items">11</td>
-                            <td class="calendar_items">12</td>
-                            <td class="calendar_items">13</td>
-                            <td class="calendar_items">14</td>
-                            <td class="calendar_items">15</td>
-                            <td class="calendar_items">16</td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items">17</td>
-                            <td class="calendar_items">18</td>
-                            <td class="calendar_items">19</td>
-                            <td class="calendar_items">20</td>
-                            <td class="calendar_items">21</td>
-                            <td class="calendar_items">22</td>
-                            <td class="calendar_items">23</td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items">24</td>
-                            <td class="calendar_items">25</td>
-                            <td class="calendar_items">26</td>
-                            <td class="calendar_items">27</td>
-                            <td class="calendar_items">28</td>
-                            <td class="calendar_items">29</td>
-                            <td class="calendar_items">30</td>
-                        </tr>
-                        <tr>
-                            <td class="calendar_items">31</td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                            <td class="calendar_items"></td>
-                        </tr>
-                    </table>
-                    <ul style="list-style-type: none">
-                        <li>
-                            <div class="form-group">
-                                <label for="selectedDate">선택한 출간일:</label>
-                                <input readonly class="form-control" id="selectedDate" value="2021년 1월 9일">
-                            </div>
-                        </li>
-                        <li>
-                            <button type="button" id="btn-ini" class="btn btn-outline-secondary">초기화</button>
-                        </li>
-                    </ul>
+          	<!-- 카테고리  및 출간일 선택 -->
+            <div id="category_calander_layout">
+                <h2>카테고리 및 출간일 선택</h2>
+                <div id="category_calander_content">
+                    
+                    <div id="category_calander_first">
+                    	<table class="category_table">
+	                        <tr>
+	                            <td class="category_items">카테고리1</td>
+	                            <td class="category_items">카테고리2</td>
+	                            <td class="category_items">카테고리3</td>
+	                        </tr>
+	                        <tr>
+	                            <td class="category_items">카테고리4</td>
+	                            <td class="category_items">카테고리5</td>
+	                            <td class="category_items">카테고리6</td>
+	                        </tr>
+	                        <tr>
+	                            <td class="category_items">카테고리7</td>
+	                            <td class="category_items">카테고리8</td>
+	                            <td class="category_items">카테고리9</td>
+	                        </tr>
+	                    </table>
+	                    <ul id="category_first_right">
+	                        <li>
+	                            <div class="form-group">
+	                                <input readonly class="form-control" id="category_select" name="category_select">
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <div class="form-group">
+	                                <label for="new_category">새로운 카테고리 입력:</label>
+	                                <input type="text" class="form-control" id="new_category" name="new_category">
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <button type="button" id="btn-category-add" class="btn btn-outline-secondary">추가</button>
+	                        </li>
+	                    </ul>
+                    </div>
+                    
+                    <div id="date_first">
+                              <input type="date" id="datePicker" name="datePicker"/>
+                              <ul id="date_first_right">
+	                        <li>
+	                            <div class="form-group">
+	                                <label for="selectedDate">선택한 출간일:</label>
+	                                <input readonly class="form-control" id="selectedDate">
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <button type="button" id="btn-ini" class="btn btn-outline-secondary">초기화</button>
+	                        </li>
+	                    </ul>
+                    </div>
                 </div>
             </div>
 

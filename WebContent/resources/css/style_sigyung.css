@@ -45,14 +45,13 @@
     padding: 0;
 }
 
-#basic_first_image {
+#basic_first_right {
     display: flex;
     padding: 50px;
     margin-left: 10px;
     border: 1px solid #998064;
     box-sizing: border-box;
     flex: 3.8;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
 }
@@ -68,25 +67,6 @@
 .input_button:hover {
     background-color: #3b5bdb;
     color: white;
-}
-
-.input_image_url {
-    display: flex;
-    width: 300px;
-    height: 30px;
-    padding-left: 5px;
-    margin-right: 20px;
-    border: 1px solid #748ffc;
-    align-items: center;
-}
-
-#basic_first_image_thumbnail {
-    display: flex;
-    margin-left: 50px;
-    padding: 10px;
-    border: 1px solid #998064;
-    box-sizing: border-box;
-    align-items: center;
 }
 
 #basic_second {
@@ -123,6 +103,12 @@
     margin-bottom: 10px;
 }
 
+.input_item_inner_list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
 .input_long_text {
     width: 50%;
     height: 500px;
@@ -132,17 +118,19 @@
     cursor: pointer;
 }
 
-#category_layout {
+#category_calander_layout {
     margin-bottom: 50px;
 }
 
-#category_first {
+#category_calander_content {
     border: 1px solid #998064;
     box-sizing: border-box;;
-    display: flex;
-    flex: 1;
     width: 940px;
     padding: 60px;
+}
+
+#category_calander_first {
+    display: flex;
 }
 
 .category_table {
@@ -175,70 +163,23 @@
     margin-bottom: 20px;
 }
 
-#publication_date_layout {
-    display: flex;
-    width: 940px;
-    margin-bottom: 50px;
-    flex-direction: column;
-}
-
 #date_first {
     display: flex;
-    width: 940px;
-    padding: 80px;
-    border: 1px solid #998064;
-    flex: 1;
+    padding: 30px;
+    justify-content: space-around;
+    align-items: baseline;
 }
 
-#calendar {
-    width: 500px;
-    margin-right: 100px;
-    border-collapse: collapse;
-}
-
-.calendar_items {
-    height: 50px;
-    border: 1px solid black;
-    text-align: center;
-}
-
-.calendar_items:hover {
-    background-color: #B8A791;
-    color: white;
-    cursor: pointer;
-}
-
-#calendar_items_top {
-    height: 50px;
-    border: 1px solid black;
-    text-align: center;
-}
-
-#calendar_items_top > div {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-#input_button_date {
-    display: flex;
-    height: 30px;
-    padding: 5px;
-    border: 1px solid #748ffc;
-    align-items: center;
-    cursor: pointer;
-}
-
-#input_button_date:hover {
-    background-color: #3b5bdb;
-    color: white;
+#date_first_right {
+	list-style-type: none;
+    box-sizing: border-box;
+    padding: 0;
 }
 
 #finish_line {
     display: flex;
     padding-bottom: 100px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .book_information {

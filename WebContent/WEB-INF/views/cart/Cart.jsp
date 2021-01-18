@@ -77,7 +77,7 @@
 	                                    </div>
 	                                </td>
 	                                <td class="align-middle">
-	                                    <input type="checkbox" id="cart_item" name="cart_item"/>
+	                                    <input type="checkbox" id="cartItem" name="cartItem"/>
 	                                </td>
 	                            </tr>
 	                            <tr>
