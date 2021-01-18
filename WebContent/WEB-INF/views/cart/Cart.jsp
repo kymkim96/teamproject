@@ -92,6 +92,7 @@
 	                        </thead>
 	                        <tbody>
 	                            
+	                            
 	                            <c:if test="${afterSize > 0}">
 		                            <c:forEach var="requestDto" items="${sessionCartList}">
 			                        	<tr>
