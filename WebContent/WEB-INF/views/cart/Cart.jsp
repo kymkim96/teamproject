@@ -92,60 +92,70 @@
 	                        </thead>
 	                        <tbody>
 	                            
-	                        	<c:forEach var="requestDto" items="${sessionCartList}">
-		                        	<tr>
-		                                <td>
-		                                    <div class="cart_product_name">
-		                                        <img 
-		                                        class="detail_1_link" 
-		                                        src="${requestDto.imgLink}"
-		                                        width="50px"
-		                                        alt="default image">
-		                                        <div style="margin-left: 5px">
-		                                            <div class="detail_1_link">${requestDto.title}</div>
-		                                            <div>${requestDto.writer} | ${requestDto.publisher}</div>
-		                                        </div>
-		                                    </div>
-		                                </td>
-		                                <td class="align-middle">
-		                                	<%
-	                                		Calendar calendar = Calendar.getInstance();
-	                                		calendar.setTime(new Date());
-	                                		calendar.add(Calendar.DATE, 2);
-		                                	%>
-		                                	<fmt:formatDate value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd"/>
-		                                </td>
-		                                <td class="align-middle">${requestDto.price}</td>
-		                                <td>
-		                                    <div>
-		                                        <input type="number" id="item_count" name="item_count" value="${requestDto.count}"/>
-		                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
-		                                    </div>
-		                                </td>
-		                                <td class="align-middle">${requestDto.price * requestDto.count}</td>
-		                                <td>
-		                                    <div>
-		                                        <button id="button_wishlist" class="btn btn-outline-secondary btn-sm">위시리스트</button>
-		                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="sessionDeregister">삭제</button>
-		                                    </div>
-		                                    <script>
-		                                    	<%-- $("#sessionDeregister").click(function() {
-		                                    		$.ajax({
-		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
-		                                    			method: "post",
-		                                    			data: {
-		                                    				id: "<c:out value='${requestDto.id}'/>"
-		                                    			},
-		                                    		});
-		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
-		                                    	}); --%>
-		                                    </script>
-		                                </td>
-		                                <td class="align-middle">
-		                                    <input type="checkbox" id="cart_item" name="cart_item"/>
-		                                </td>
-		                            </tr>
-	                        	</c:forEach>
+	                            <c:if test="${afterSize > 0}">
+		                            <c:forEach var="requestDto" items="${sessionCartList}">
+			                        	<tr>
+			                                <td>
+			                                    <div class="cart_product_name">
+			                                        <img 
+			                                        class="detail_1_link" 
+			                                        src="${requestDto.imgLink}"
+			                                        width="50px"
+			                                        alt="default image">
+			                                        <div style="margin-left: 5px">
+			                                            <div class="detail_1_link">${requestDto.title}</div>
+			                                            <div>${requestDto.writer} | ${requestDto.publisher}</div>
+			                                        </div>
+			                                    </div>
+			                                </td>
+			                                <td class="align-middle">
+			                                	<%
+		                                		Calendar calendar = Calendar.getInstance();
+		                                		calendar.setTime(new Date());
+		                                		calendar.add(Calendar.DATE, 2);
+			                                	%>
+			                                	<fmt:formatDate value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd"/>
+			                                </td>
+			                                <td class="align-middle">${requestDto.price}</td>
+			                                <td>
+			                                    <div>
+			                                        <input type="number" id="item_count" name="item_count" value="${requestDto.count}"/>
+			                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
+			                                    </div>
+			                                </td>
+			                                <td class="align-middle">${requestDto.price * requestDto.count}</td>
+			                                <td>
+			                                    <div>
+			                                        <button id="button_wishlist" class="btn btn-outline-secondary btn-sm">위시리스트</button>
+			                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="sessionDeregister">삭제</button>
+			                                    </div>
+			                                    <script>
+			                                    	<%-- $("#sessionDeregister").click(function() {
+			                                    		$.ajax({
+			                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
+			                                    			method: "post",
+			                                    			data: {
+			                                    				id: "<c:out value='${requestDto.id}'/>"
+			                                    			},
+			                                    		});
+			                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
+			                                    	}); --%>
+			                                    </script>
+			                                </td>
+			                                <td class="align-middle">
+			                                    <input type="checkbox" id="cart_item" name="cart_item"/>
+			                                </td>
+			                            </tr>
+		                        	</c:forEach>
+	                            </c:if>
+	                            
+	                            <c:if test="${size <= 0}">
+	                            	<tr>
+	                            		<td colspan="7">
+	                            			현재 장바구니에 저장된 품목이 없습니다
+	                            		</td>
+	                            	</tr>
+	                            </c:if>
 	                            
 	                            <tr>
 	                                <td colspan="7">
