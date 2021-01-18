@@ -27,9 +27,9 @@ public class CartPageController {
 	public String index(HttpSession session) {
 		
 //		session.invalidate(); 
-		Integer size = (Integer) session.getAttribute("size");
+		Integer size = (Integer) session.getAttribute("afterSize");
 		if (size == null) {
-			session.setAttribute("size", 0);
+			session.setAttribute("afterSize", 0);
 		}
 		
 		return "cart/Cart";
@@ -42,15 +42,33 @@ public class CartPageController {
 
 		List<CartCreateRequestDto> list = new ArrayList<>();
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
-		
+
 		if (list == null) {
-			List<CartCreateRequestDto> newList = new ArrayList<CartCreateRequestDto>();
-			newList.add(requestDto);
+			List<CartCreateRequestDto> newList = new ArrayList<>();
+			
+			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
+			requestDtoInList.setTitle(requestDto.getTitle());
+			requestDtoInList.setWriter(requestDto.getWriter());
+			requestDtoInList.setPublisher(requestDto.getPublisher());
+			requestDtoInList.setId(requestDto.getId());
+			requestDtoInList.setCount(requestDto.getCount());
+			requestDtoInList.setImgLink(requestDto.getImgLink());
+			
+			newList.add(requestDtoInList);
+			Integer size = newList.size();
 			session.setAttribute("sessionCartList", newList);
-			session.setAttribute("size", list.size());
+			session.setAttribute("afterSize", newList.size());
 		} else {
-			session.setAttribute("sessionCartList", list.add(requestDto));
-			session.setAttribute("size", list.size());
+			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
+			requestDtoInList.setTitle(requestDto.getTitle());
+			requestDtoInList.setWriter(requestDto.getWriter());
+			requestDtoInList.setPublisher(requestDto.getPublisher());
+			requestDtoInList.setId(requestDto.getId());
+			requestDtoInList.setCount(requestDto.getCount());
+			requestDtoInList.setImgLink(requestDto.getImgLink());
+			
+			session.setAttribute("sessionCartList", list.add(requestDtoInList));
+			session.setAttribute("afterSize", list.size());
 		}
 		
 		return "redirect:/cart/index";
@@ -71,7 +89,7 @@ public class CartPageController {
 		}
 		
 		int afterSize = list.size();
-		session.setAttribute("size", afterSize);
+		session.setAttribute("afterSize", afterSize);
 		
 		session.setAttribute("sessionCartList", list);
 		

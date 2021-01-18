@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/list")
-public class listController {
+public class ListController {
 	
 	private static final Logger logger = LoggerFactory.getLogger("listController.class");
 	
