@@ -25,12 +25,12 @@
 #998064
 #B8A791
  */
-#wrapper{
-	width: 1500px;
-	margin: 0px auto;
-	font-family: 'NanumSquareRound';
-	
-	
+ 
+#layout {
+    margin: 0 auto;
+    overflow-x: scroll;
+    width: 1500px;
+    font-family: NanumSquareRound;
 }
 		
 /* .first{
