@@ -14,7 +14,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_sigyung.css">
 		<script>
-			$(() => {
+			$(function() {
 			    $("#home_link")
 			        .click(() => {
 			            window.location.href = "<%=application.getContextPath()%>/";
@@ -91,7 +91,7 @@
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	
+	                            
 	                        	<c:forEach var="requestDto" items="${sessionCartList}">
 		                        	<tr>
 		                                <td>

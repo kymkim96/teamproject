@@ -7,9 +7,15 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+<<<<<<< HEAD
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/spring/dispatcher/ch01_component_scan.xml</config>
+=======
+		<config>src/main/resources/spring/root/multipart_resolver.xml</config>
+	</configs>
+	<autoconfigs>
+>>>>>>> branch 'master' of https://github.com/kymkim96/teamproject.git
 	</autoconfigs>
 	<configSets>
 	</configSets>

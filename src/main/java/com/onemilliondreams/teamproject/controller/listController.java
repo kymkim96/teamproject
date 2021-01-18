@@ -3,6 +3,7 @@ package com.onemilliondreams.teamproject.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -29,6 +30,8 @@ public class listController {
 		logger.info("실행");
 		return "list/book_list3";
 	}
-
+	
+	
+	
 
 }
