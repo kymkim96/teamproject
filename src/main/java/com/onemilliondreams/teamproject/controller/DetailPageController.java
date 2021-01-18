@@ -17,4 +17,5 @@ public class DetailPageController {
 		return "detail/1";
 	}
 	
+
 }
