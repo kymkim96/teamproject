@@ -100,7 +100,7 @@
 		                                        class="detail_1_link" 
 		                                        src="${requestDto.imgLink}"
 		                                        width="50px"
-		                                        alt="<%=application.getContextPath()%>/resources/img/은교_작은사이즈.jpg">
+		                                        alt="default image">
 		                                        <div style="margin-left: 5px">
 		                                            <div class="detail_1_link">${requestDto.title}</div>
 		                                            <div>${requestDto.writer} | ${requestDto.publisher}</div>
@@ -128,6 +128,18 @@
 		                                        <button id="button_wishlist" class="btn btn-outline-secondary btn-sm">위시리스트</button>
 		                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="sessionDeregister">삭제</button>
 		                                    </div>
+		                                    <script>
+		                                    	<%-- $("#sessionDeregister").click(function() {
+		                                    		$.ajax({
+		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
+		                                    			method: "post",
+		                                    			data: {
+		                                    				id: "<c:out value='${requestDto.id}'/>"
+		                                    			},
+		                                    		});
+		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
+		                                    	}); --%>
+		                                    </script>
 		                                </td>
 		                                <td class="align-middle">
 		                                    <input type="checkbox" id="cart_item" name="cart_item"/>

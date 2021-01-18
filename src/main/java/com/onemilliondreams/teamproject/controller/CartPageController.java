@@ -7,6 +7,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +21,19 @@ import com.onemilliondreams.teamproject.dto.CartCreateRequestDto;
 @RequestMapping("/cart")
 public class CartPageController {
 
+	private static final Logger logger = LoggerFactory.getLogger(CartPageController.class);
+	
 	@GetMapping("/index")
-	public String index() {
+	public String index(HttpSession session) {
 		
+//		session.invalidate(); 
 		return "cart/Cart";
 	}
 	
 	@PostMapping("/session-register")
 	public String sessionRegister(CartCreateRequestDto requestDto, HttpSession session) {
+		
+		logger.info(requestDto.getTitle());
 
 		List<CartCreateRequestDto> list = new ArrayList<>();
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
@@ -48,11 +55,15 @@ public class CartPageController {
 		List<CartCreateRequestDto> list = new ArrayList<>();
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
 		
-		for (CartCreateRequestDto requestDto : list) {
-			if (requestDto.getId() == id) {
-				list.remove(requestDto);
-			}
-		}
+//		int size = list.size();
+//		
+//		for (int i=0; i<size; i++) {
+//			if (list.get(i).getId() == id) {
+//				list.remove(i);
+//			}
+//		}
+		
+		list.clear();
 		
 		session.setAttribute("sessionCartList", list);
 		
