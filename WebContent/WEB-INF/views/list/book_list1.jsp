@@ -68,9 +68,9 @@
 
 				<div id ="book_data" >
 					<ul id="data">
-						<li><h4><strong ><a href="<%=application.getContextPath()%>/detail/1">은교</a></strong></h4></li>
-						<li>박신범 | 문학동네 | 2010.04.06</li>
-						<li><h3><span class="price1">12,000원→ </span>
+						<li><h4><strong ><a href="<%=application.getContextPath()%>/detail/1">미스터 마켓2021</a></strong></h4></li>
+						<li>이한영, 김효진, 이다솔 외 저페이지22020년 11월</li>
+						<li><h3><span class="price1">17,000원→ </span>
 						<span class="price2">10,800원 (10%↓+5%P)</span></h3></li>
 						
 						<li>2010년 박범신의 신작 장편소설 『은교』 “이 소설로 나는 내 안의 욕망이라는 게 여전히<br />
