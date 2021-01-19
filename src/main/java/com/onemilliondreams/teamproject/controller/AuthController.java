@@ -39,12 +39,10 @@ public class AuthController {
 		
 		String uid= authdto.getUid();
 		String upassword = authdto.getUpassword();
-		if(uid != null) {
+		if(uid != "") {
 		session.setAttribute("loginStatus", uid);
-			logger.info("로그인성공");} else {
-				return "auth/auth";
-				
-			}
+			logger.info("로그인성공");} 
+			
 			return "redirect:/";
 		
 		
@@ -56,12 +54,9 @@ public class AuthController {
 		
 		String uaid= authdto.getUaid();
 		String uapassword = authdto.getUapassword();
-		if(uaid != null) {
+		if(uaid != "") {
 		session.setAttribute("loginStatus", uaid);
-			logger.info("로그인성공");} else {
-				return "auth/auth";
-				
-			}
+			logger.info("로그인성공");} 
 			return "redirect:/";
 		
 		
