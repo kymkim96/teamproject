@@ -1,5 +1,6 @@
 package com.onemilliondreams.teamproject.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,12 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.onemilliondreams.teamproject.dto.AuthDto;
+
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(AuthController.class);
 
+	
+	
+	
+	
 	@GetMapping("/login1")
 	public String login1() {
 		
@@ -26,17 +33,20 @@ public class AuthController {
 		return "redirect:/";
 	}
 	
+	
 	@PostMapping("/login2")
 	public String login2(String uid, String upassword, HttpSession session) {
-		if(!uid.equals("")&&!upassword.equals("")) {
-			
+		AuthDto authdto = new AuthDto();
+		authdto.setUid(uid);
+		authdto.setUpassword(upassword);
+		
+		
 		session.setAttribute("loginStatus", uid);
 			logger.info("로그인성공");
-		} else {
-			
-		}
+			return "redirect:/";
 		
-		return "redirect:/";
+		
+		
 	}
 		
 	

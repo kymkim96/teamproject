@@ -31,4 +31,11 @@ public class CommonController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/mr")
+	public String mr() {
+		
+		return "detail/1";
+	}
+	
+	
 }
