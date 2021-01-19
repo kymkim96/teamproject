@@ -59,6 +59,9 @@
 
 
 							<c:if test="${afterSize > 0}">
+								<script>
+									let id;
+								</script>
 								<c:forEach var="requestDto" items="${sessionCartList}">
 									<tr>
 										<td>
@@ -110,9 +113,9 @@
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm"
 													id="sessionDeregister">삭제</button>
-											</div> 
-											<script>
-		                                    	<%-- $("#sessionDeregister").click(function() {
+											</div>
+											<%-- <script>
+		                                    	$("#sessionDeregister").click(function() {
 		                                    		$.ajax({
 		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
 		                                    			method: "post",
@@ -121,8 +124,8 @@
 		                                    			},
 		                                    		});
 		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
-		                                    	}); --%>
-			                                </script>
+		                                    	});
+			                                </script> --%>
 										</td>
 										<td class="align-middle"><input type="checkbox"
 											class="cart_item_checkbox" name="cart_item_checkbox" />

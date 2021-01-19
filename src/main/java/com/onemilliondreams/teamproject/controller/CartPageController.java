@@ -80,6 +80,12 @@ public class CartPageController {
 			requestDtoInList.setCount(requestDto.getCount());
 			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
+			for (CartCreateRequestDto item : list) {
+				if (item.getId() == requestDto.getId()) {
+					return "cart/alert";
+				}
+			}
+			
 			list.add(requestDtoInList);
 			
 			session.setAttribute("sessionCartList", list);
@@ -95,9 +101,12 @@ public class CartPageController {
 		List<CartCreateRequestDto> list = new ArrayList<>();
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
 		
-		int size = list.size();
+		Integer size = list.size();
+		logger.info(size.toString());
 		
 		for (int i=0; i<size; i++) {
+			Integer temp = list.get(i).getId();
+			logger.info(temp.toString());
 			if (list.get(i).getId() == id) {
 				list.remove(i);
 			}

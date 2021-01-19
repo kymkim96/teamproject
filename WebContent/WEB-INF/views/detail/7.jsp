@@ -64,20 +64,26 @@
 					<script>
 					$("#goCart").click(function() {
 						const object = {
-								id: 1,
-							    title: "미스터 마켓2021",
-							    writer: "이한영 외",
-							    publisher: "출판사",
+								id: 7,
+							    title: "은교",
+							    writer: "박범신",
+							    publisher: "문학동네",
 							    price: 15300,
 							    count: 1,
-							    imgLink: "http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg",
+							    imgLink: "http://image.kyobobook.co.kr/images/book/xlarge/681/x9788954610681.jpg",
 							}
 							$.ajax({
 								url: "<%=application.getContextPath()%>/cart/session-register",
 								method: "post",
 								data: object,
 								success: (data) => {
-									window.location.href = "<%=application.getContextPath()%>/cart/index";
+									if (data) {
+										if (data.indexOf("alert.jsp") != -1) {
+											$("#goCartResult").html(data);
+										} else {
+											window.location.href = "<%=application.getContextPath()%>/cart/index";
+										}
+									}
 								},
 							});
 					});
