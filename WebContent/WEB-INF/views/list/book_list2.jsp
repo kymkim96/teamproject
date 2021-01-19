@@ -12,52 +12,40 @@
 				<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_soyoung.css">
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/header.css">
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/footer.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	</head>
 	
 	
 <body>
-	
+	<div id="layout">
 		<%@include file="/WEB-INF/views/common/Header.jsp" %>
-	
-		
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->		
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-
-		
-		<section>
 
 			<article>
 			
-			<h3>자기개발서</h3>
-			
-			<div id="munu">
-				<a href="#"><h5>현대소설</h5></a> 
-				<a href="#"><h5>베스트셀러</h5></a>
-				<a href="#"><h5>새로나온 책</h5></a> 
-				<a href="#"><h5>반디추천</h5></a>
-			</div>
-			
-			
-			
-			<div id="add">	
-				<strong>자기계발서</strong>에 <strong>총 12,287권</strong>의 상품이 등록되어 있습니다.
-				<div id = "choose">
-					<label><input type="checkbox" class="chk" value="all">전체</label>
-					<button class="chk">쇼핑카트담기</button>
-					<button class="chk">위시리스트</button> 
+				<h3>자기개발서</h3>
+				
+				<div id="munu">
+					<a href="#"><h5>현대소설</h5></a> 
+					<a href="#"><h5>베스트셀러</h5></a>
+					<a href="#"><h5>새로나온 책</h5></a> 
+					<a href="#"><h5>반디추천</h5></a>
 				</div>
-			</div>
+				
+			
+			
+				<div id="add">	
+					<strong>자기계발서</strong>에 <strong>총 12,287권</strong>의 상품이 등록되어 있습니다.
+					<div id = "choose">
+						<label><input type="checkbox" class="chk" value="all">전체</label>
+						<button class="chk">쇼핑카트담기</button>
+						<button class="chk">위시리스트</button> 
+					</div>
+				</div>
 
 
 
 
-			<div id="item">
+			<div id="item1">
 			
 				<a id="book_img" href="../../view/detail/10.html">
 					<img src="<%=application.getContextPath()%>/resources/img/develop1.jpg"></a>
@@ -106,7 +94,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="../../view/detail/11.html">
 				<img src="<%=application.getContextPath()%>/resources/img/develop2.jpg"></a>
@@ -151,7 +139,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="../../view/detail/12.html">
 				<img src="<%=application.getContextPath()%>/resources/img/develop3.jpg"></a>
@@ -198,7 +186,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/develop4.jpg"></a>
 
@@ -241,7 +229,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/develop5.jpg"></a>
 
@@ -287,7 +275,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/develop6.jpg"></a>
 
@@ -332,7 +320,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/develop7.jpg"></a>
@@ -376,7 +364,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/develop8.jpg"></a>
@@ -424,7 +412,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href=""><img
 					src="<%=application.getContextPath()%>/resources/img/develop9.jpg"></a>
@@ -468,7 +456,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href=""><img
 					src="<%=application.getContextPath()%>/resources/img/develop10.jpg"></a>
 
@@ -507,12 +495,9 @@
 			</div>
 		</article>
 	
-	</section>	
-		
-		
 			<%@include file="/WEB-INF/views/common/Footer.jsp" %>
 		
-		
+		</div>
 		
 	</body>
 </html>

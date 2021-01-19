@@ -17,14 +17,10 @@
 	
 	
 <body>
-		
-	<%@include file="/WEB-INF/views/common/Header.jsp" %>
+	<div id="layout">
+		<%@include file="/WEB-INF/views/common/Header.jsp" %>
 
-
-		
-		<section>
-
-			<article>
+		<article>
 			
 			<h3>해외소설</h3>
 			
@@ -49,7 +45,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 			
 				<a id="book_img" href="../../view/detail/13.html">
 					<img src="<%=application.getContextPath()%>/resources/img/foreign1.jpg"></a>
@@ -98,7 +94,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="../../view/detail/14.html">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign2.jpg"></a>
@@ -144,7 +140,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="../../view/detail/15.html">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign3.jpg"></a>
@@ -190,7 +186,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign4.jpg"></a>
 
@@ -233,7 +229,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign5.jpg"></a>
 
@@ -278,7 +274,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign6.jpg"></a>
 
@@ -323,7 +319,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign7.jpg"></a>
@@ -367,7 +363,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign8.jpg"></a>
@@ -412,7 +408,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign9.jpg"></a>
@@ -456,7 +452,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/foreign10.jpg"></a>
 
@@ -495,10 +491,10 @@
 			</div>
 		</article>
 	
-	</section>	
 	
 		<%@include file="/WEB-INF/views/common/Footer.jsp" %>
 		
+		</div>
 		
 	</body>
 </html>
