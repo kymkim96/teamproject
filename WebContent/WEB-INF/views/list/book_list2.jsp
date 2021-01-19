@@ -42,7 +42,10 @@
 				</div>
 			</div>
 
-
+			<div>
+			<br/>
+			</div>
+			
 			<div id="item1">
 			
 				<a id="book_img" href="../../view/detail/10.html">
@@ -71,7 +74,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch1" name="chBox" value="1"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
