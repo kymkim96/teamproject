@@ -20,78 +20,77 @@
    
          <%@include file="/WEB-INF/views/common/Header.jsp" %>
 
-         <article>
-            
-            
-            <h3>현대소설</h3>
-            
-            
-            <div id="munu">
-               <a href="#"><h5>현대소설</h5></a> 
-               <a href="#"><h5>베스트셀러</h5></a>
-               <a href="#"><h5>새로나온 책</h5></a> 
-               <a href="#"><h5>반디추천</h5></a>
-            </div>
-         
-         
-      
-            <div id="add">   
-               <strong>현대소설</strong>에 <strong>총 11,881권</strong>의 상품이 등록되어 있습니다.
-               <div id = "choose">
-                  <label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>         
-                     
-                  <button class="chk">쇼핑카트담기</button>
-                  <button class="chk">위시리스트</button> 
-               </div>
-            </div>
-            
-         <div>
-         <br/>
-         </div>
+			<article>
+				
+				
+				<h3>현대소설</h3>
+				
+				
+				<div id="munu">
+					<a href="#"><h5>현대소설</h5></a> 
+					<a href="#"><h5>베스트셀러</h5></a>
+					<a href="#"><h5>새로나온 책</h5></a> 
+					<a href="#"><h5>반디추천</h5></a>
+				</div>
+			
+			
+		
+				<div id="add">	
+					<strong>현대소설</strong>에 <strong>총 11,881권</strong>의 상품이 등록되어 있습니다.
+					<div id = "choose">
+						<label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>			
+							
+						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
+						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button> 
+					</div>
+				</div>
+				
+			<div>
+			<br/>
+			</div>
 
          <div id="item1">
          
             <a id="book_img" href="<%=application.getContextPath()%>/detail/1">
                <img src="http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg" width="200px"></a>
                   
-
-            <div id ="book_data" >
-               <ul id="data">
-                  <li><h4><strong ><a href="<%=application.getContextPath()%>/detail/1">은교</a></strong></h4></li>
-                  <li>박신범 | 문학동네 | 2010.04.06</li>
-                  <li><h3><span class="price1">12,000원→ </span>
-                  <span class="price2">10,800원 (10%↓+5%P)</span></h3></li>
-                  
-                  <li>2010년 박범신의 신작 장편소설 『은교』 “이 소설로 나는 내 안의 욕망이라는 게 여전히<br />
-                     눈물겹게 불타고 있음을 알았다!” (박범신) “연애소설이 예술가소설로 육박한 사례라고 하...
-                  </li>
-                  <li>
-                     <span class="fa fa-star checked"></span>
-                     <span class="fa fa-star checked"></span>
-                     <span class="fa fa-star checked"></span>
-                     <span class="fa fa-star checked"></span>
-                     <span class="fa fa-star"></span>
-                  </li>   
-               </ul>
-            </div>
-               
-               <div id ="shopping" >
-                  <ul id="bb">
-                     <li>
-                     <label><input type="checkbox" id="ch1" name="chBox" value="1"></label>
-                     
-                     
-                     <label for = "quantity">
-                     <input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1">
-                     </label>
-                     </li>   
-                     <li><button class="btn btn-primary" onclick="document.location='../../view/detail/7.html'">바로구매</button></li>
-                     <li><button class="btn btn-primary" onclick="document.location='../../view/cart/Cart.html'">쇼핑카트담기</button></li>
-                  </ul>
-               
-               </div>
-            
-         </div>
+				<div id ="book_data" >
+					<ul id="data">
+						<li><h4><strong ><a href="<%=application.getContextPath()%>/detail/1">미스터 마켓2021</a></strong></h4></li>
+						<li>이한영, 김효진, 이다솔 외 저페이지22020년 11월</li>
+						<li><h3><span class="price1">17,000원→ </span>
+						<span class="price2">10,800원 (10%↓+5%P)</span></h3></li>
+						
+						<li>2010년 박범신의 신작 장편소설 『은교』 “이 소설로 나는 내 안의 욕망이라는 게 여전히<br />
+							눈물겹게 불타고 있음을 알았다!” (박범신) “연애소설이 예술가소설로 육박한 사례라고 하...
+						</li>
+						<li>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+						</li>	
+					</ul>
+				</div>
+					
+					<div id ="shopping" >
+						<ul id="bb">
+							<li>
+							<label><input type="checkbox" id="ch1" name="chBox" value="1"></label>
+							
+							
+							<label for = "quantity">
+							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1">
+							</label>
+							</li>	
+							<li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>
+							<li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li>
+						</ul>
+					
+					</div>
+				
+			</div>
 
 
          <div id="item1">
