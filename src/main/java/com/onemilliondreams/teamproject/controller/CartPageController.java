@@ -25,14 +25,25 @@ public class CartPageController {
 		
 //		session.invalidate(); 
 		Integer size = (Integer) session.getAttribute("afterSize");
+		
+		if (session.getAttribute("sessionCartList") == null) {
+			session.setAttribute("afterSize", 0);
+			size = 0;
+		}
+		
 		if (size == null) {
 			session.setAttribute("afterSize", 0);
-		} else {
+		} else if (size > 0) {
+//			logger.info(size.toString());
+//			System.out.println(session.getAttribute("sessionCartList"));
 			int sumPrice = 0;
 			for (CartCreateRequestDto requestDto : (List<CartCreateRequestDto>) session.getAttribute("sessionCartList")) {
 				sumPrice += requestDto.getPrice();
 			}
 			session.setAttribute("sumPrice", sumPrice);
+			session.setAttribute("afterSize", size);
+		} else {
+			session.setAttribute("afterSize", 0);
 		}
 		
 		return "cart/Cart";
@@ -40,6 +51,8 @@ public class CartPageController {
 	
 	@PostMapping("/session-register")
 	public String sessionRegister(CartCreateRequestDto requestDto, HttpSession session) {
+		
+		System.out.println(session.getAttribute("sessionCartList"));
 		
 		List<CartCreateRequestDto> list = new ArrayList<>();
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
@@ -68,7 +81,9 @@ public class CartPageController {
 			requestDtoInList.setCount(requestDto.getCount());
 			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
-			session.setAttribute("sessionCartList", list.add(requestDtoInList));
+			list.add(requestDtoInList);
+			
+			session.setAttribute("sessionCartList", list);
 			session.setAttribute("afterSize", list.size());
 		}
 		
@@ -109,6 +124,13 @@ public class CartPageController {
 //	}
 //	
 	
+	@GetMapping("/destroy")
+	public String destroy(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 }
 
 
