@@ -150,7 +150,7 @@
 		                        	</c:forEach>
 	                            </c:if>
 	                            
-	                            <c:if test="${size <= 0}">
+	                            <c:if test="${afterSize <= 0}">
 	                            	<tr>
 	                            		<td colspan="7">
 	                            			현재 장바구니에 저장된 품목이 없습니다

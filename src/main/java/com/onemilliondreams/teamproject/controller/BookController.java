@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onemilliondreams.teamproject.dto.BookCreateRequestDto;
+import com.onemilliondreams.teamproject.dto.BookUpdateRequestDto;
 
 @Controller
 public class BookController {
@@ -60,7 +61,7 @@ public class BookController {
 	}
 	
 	@PostMapping("/books-update")
-	public String update(BookCreateRequestDto requestDto) {
+	public String update(BookUpdateRequestDto requestDto) {
 		
 		logger.info("ISBN: " + requestDto.getIsbn());
 		logger.info("제목: " + requestDto.getTitle());

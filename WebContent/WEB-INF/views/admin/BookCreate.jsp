@@ -18,34 +18,37 @@
 			<div class="content">
 				<!-- 기본 필드 입력 -->
 		        <div class="content">
-		        	<form method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-create">
+		        	<form id="createForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-create">
 			        	<div id="basic_field_layout">
 			                <h2><b>기본 필드 입력</b></h2>
 			                <div id="basic_first">
 			                    <div id="basic_first_left">
-			                        <div class="form-group">
+			                    	<div class="form-group">
 			                            <label for="isbn">ISBN:</label>
-			                            <input type="text" class="form-control" id="isbn" name="isbn">
+			                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn">
 			                        </div>
+			                        <span id="warning1"></span>
 			                        <div class="form-group">
 			                            <label for="title">제목:</label>
-			                            <input type="text" class="form-control" id="title" name="title">
+			                            <input type="text" class="form-control col-sm-8" id="title" name="title">
 			                        </div>
+			                        <span id="warning2"></span>
 			                        <div class="form-group">
 			                            <label for="writer">작가:</label>
-			                            <input type="text" class="form-control" id="writer" name="writer">
+			                            <input type="text" class="form-control col-sm-8" id="writer" name="writer">
 			                        </div>
+			                        <span id="warning3"></span>
 			                        <div class="form-group">
 			                            <label for="translator">옮긴이:</label>
-			                            <input type="text" class="form-control" id="translator" name="translator">
+			                            <input type="text" class="form-control col-sm-8" id="translator" name="translator">
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="price">정가:</label>
-			                            <input type="text" class="form-control" id="price" name="price">
+			                            <input type="text" class="form-control col-sm-8" id="price" name="price">
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="publisher">출판사:</label>
-			                            <input type="text" class="form-control" id="publisher" name="publisher">
+			                            <input type="text" class="form-control col-sm-8" id="publisher" name="publisher">
 			                        </div>
 			                    </div>
 			                    <div id="basic_first_right">
@@ -161,9 +164,43 @@
 			            </div>
 
 			            <div id="finish_line">
-			                <button type="submit" id="btn-submit" class="btn btn-outline-secondary btn-lg">등록</button>
+			                <button id="btn-submit" class="btn btn-outline-secondary btn-lg" onclick="createSubmit()">등록</button>
 			            </div>
 		        	</form>
+		        	<script>
+		        		const createSubmit = () => {
+		        			event.preventDefault();
+		        			const createForm = document.querySelector("#createForm");
+		        			if ($("#isbn").val() == null || $("#isbn").val() == "" ) {
+			       				$("#warning1").html("* ISBN은 반드시 입력해야 합니다.");
+			       				$("#warning1").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			} else {
+			       				$("#warning1").html("");
+			       			}
+			       			if ($("#title").val() == null || $("#title").val() == "") {
+			       				$("#warning2").html("* 제목은 반드시 입력해야 합니다.");
+			       				$("#warning2").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			} else {
+			       				$("#warning2").html("");
+			       			}
+			       			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			} else {
+			       				$("#warning3").html("");
+			       			}
+		        			createForm.submit();
+		        		}
+		        	</script>
 		        </div>
 			</div>
 			
