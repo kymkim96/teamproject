@@ -163,11 +163,11 @@
 	                                    <div>
 	                                        <div class="item_count_result">수량: 1종(1개)</div>
 	                                        <div class="item_price_result">
-	                                            <span>총 상품 금액: 12,150원</span>
+	                                            <span>총 상품 금액: ${sumPrice}원</span>
 	                                            <img src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
 	                                            <span>배송비: 0원</span>
 	                                            <img src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
-	                                            <span style="color: tomato">주문금액 합계: 12,150원</span>
+	                                            <span style="color: tomato">주문금액 합계: ${sumPrice}원</span>
 	                                        </div>
 	                                    </div>
 	                                </td>

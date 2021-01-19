@@ -3,14 +3,11 @@ package com.onemilliondreams.teamproject.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +27,12 @@ public class CartPageController {
 		Integer size = (Integer) session.getAttribute("afterSize");
 		if (size == null) {
 			session.setAttribute("afterSize", 0);
+		} else {
+			int sumPrice = 0;
+			for (CartCreateRequestDto requestDto : (List<CartCreateRequestDto>) session.getAttribute("sessionCartList")) {
+				sumPrice += requestDto.getPrice();
+			}
+			session.setAttribute("sumPrice", sumPrice);
 		}
 		
 		return "cart/Cart";
@@ -38,8 +41,6 @@ public class CartPageController {
 	@PostMapping("/session-register")
 	public String sessionRegister(CartCreateRequestDto requestDto, HttpSession session) {
 		
-		logger.info(requestDto.getTitle());
-
 		List<CartCreateRequestDto> list = new ArrayList<>();
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
 
@@ -95,6 +96,18 @@ public class CartPageController {
 		
 		return "redirect:/cart/index";
 	}
+	
+//	@PostMapping("/cart-price")
+//	public String cartPrice(int count, HttpSession session) {
+//		
+//		List<CartCreateRequestDto> list = new ArrayList<>();
+//		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
+//		
+//		for (CartCreateRequestDto requestDto : list) {
+//			
+//		}
+//	}
+//	
 	
 }
 
