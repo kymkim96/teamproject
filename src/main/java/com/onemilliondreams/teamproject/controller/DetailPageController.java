@@ -17,5 +17,10 @@ public class DetailPageController {
 		return "detail/1";
 	}
 	
+	@RequestMapping("/7")
+	public String detail7() {
+		logger.info("책7 상세페이지");
+		return "detail/7";
+	}
 
 }
