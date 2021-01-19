@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/list")
 public class ListController {
 	
-	private static final Logger logger = LoggerFactory.getLogger("listController.class");
+	private static final Logger logger = LoggerFactory.getLogger("ListController.class");
 	
 	@RequestMapping("/book_list1")
 	public String book_list1() {
