@@ -75,6 +75,7 @@
 					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button> --%>
 					<button id="goCart" type="button" class="btn btn-lg" 
 					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
+					<div id="goCartResult"></div>
 					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
 					<script>
 					$("#goCart").click(function() {
@@ -92,7 +93,13 @@
 								method: "post",
 								data: object,
 								success: (data) => {
-									window.location.href = "<%=application.getContextPath()%>/cart/index";
+									if (data) {
+										if (data.indexOf("alert.jsp") != -1) {
+											$("#goCartResult").html(data);
+										} else {
+											window.location.href = "<%=application.getContextPath()%>/cart/index";
+										}
+									}
 								},
 							});
 					});
