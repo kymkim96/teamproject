@@ -28,17 +28,17 @@ public class BookAdminPageController {
 		return "admin/BookUpdate";
 	}
 	
-	// 관련 동영상 링크 첨부 폼 요청
-	@GetMapping("/video-form")
-	public String videoForm(int videoIndex, Model model) {
-		
-		/**
-		 * 관련 동영상 링크 첨부
-		 * 동적으로 링크를 추가로 첨부하기 위해 사용하는 변수
-		 * 각 URL 입력 input 태그의 id
-		 */
-		model.addAttribute("videoIndex", videoIndex);
-		
-		return "admin/form/VideoUrlForm";
-	}
+//	// 관련 동영상 링크 첨부 폼 요청
+//	@GetMapping("/video-form")
+//	public String videoForm(int videoIndex, Model model) {
+//		
+//		/**
+//		 * 관련 동영상 링크 첨부
+//		 * 동적으로 링크를 추가로 첨부하기 위해 사용하는 변수
+//		 * 각 URL 입력 input 태그의 id
+//		 */
+//		model.addAttribute("videoIndex", videoIndex);
+//		
+//		return "admin/form/VideoUrlForm";
+//	}
 }
