@@ -29,8 +29,9 @@
 					</c:if>
 					<br/>
 					<c:if test="${loginStatus != null }">
-			
+					
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/common/index1">로그아웃</a></button>
+					<p id="짹짹">${loginStatus}님 환영합니다.</p>
 					</c:if>
 					<br/>
 				</div>

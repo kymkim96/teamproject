@@ -35,20 +35,38 @@ public class AuthController {
 	
 	
 	@PostMapping("/login2")
-	public String login2(String uid, String upassword, HttpSession session) {
-		AuthDto authdto = new AuthDto();
-		authdto.setUid(uid);
-		authdto.setUpassword(upassword);
+	public String login2(AuthDto authdto, HttpSession session) {
 		
-		
+		String uid= authdto.getUid();
+		String upassword = authdto.getUpassword();
+		if(uid != null) {
 		session.setAttribute("loginStatus", uid);
-			logger.info("로그인성공");
+			logger.info("로그인성공");} else {
+				return "auth/auth";
+				
+			}
 			return "redirect:/";
 		
 		
 		
 	}
+	
+	@PostMapping("/join5")
+	public String join5(AuthDto authdto, HttpSession session) {
 		
+		String uaid= authdto.getUaid();
+		String uapassword = authdto.getUapassword();
+		if(uaid != null) {
+		session.setAttribute("loginStatus", uaid);
+			logger.info("로그인성공");} else {
+				return "auth/auth";
+				
+			}
+			return "redirect:/";
+		
+		
+		
+	}
 	
 	
 }

@@ -39,23 +39,20 @@
 			</div>	
 			
 			<div id="form2" style="display:none;">
-			<form>	
-				<div id="input1">
-					<input  type="text" placeholder="이름" id="uaname" name="uaname"/><br/>
-					<input  type="text" placeholder="아이디" id="uaid" name="uaid"/><br/>
-					<input  type="password" placeholder="패스워드" id="uapassword" name="uapassword"/>
-				</div>	
-				
-			</form>
+				<form method="post" action="join5">	
+					<div id="input1">
+						<input  type="text" placeholder="이름" id="uaname" name="uaname"/><br/>
+						<input  type="text" placeholder="아이디" id="uaid" name="uaid"/><br/>
+						<input  type="password" placeholder="패스워드" id="uapassword" name="uapassword"/>
+					</div>	
+						<div class="loginForm1" >
+							<button ><p>회원가입</p></button>
+						</div>
+						
+					
+				</form>
 			
-			<div>
-					
-					<form id="loginForm1">	
-					
-						<div id="join1" ><p>회원가입</p></div>
-				
-					</form>
-				</div>	
+		
 			</div>
 			
 			
