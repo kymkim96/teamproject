@@ -26,29 +26,41 @@
 			font-weight: normal;
 			font-style: normal;
 		}
-		
+<!-------------------------------------------------------------------------------------------------------------------------------------->	
+<!-------------------------------------------------------------------------------------------------------------------------------------->	
+<!-------------------------------------------------------------------------------------------------------------------------------------->	
+<!-------------------------------------------------------------------------------------------------------------------------------------->	
+	 
+		#layout {
+		     margin: 0 auto; 
+		     overflow-x: scroll;  
+		    width: 1500px;  
+		    font-family: NanumSquareRound; 
+		}
 		section {
-			margin : 50px;
-			 width : 1400px; 
-			display: flex;
+			 /*  margin : 50px;   */ 
+			/*     width : 1500px;  */ 
+			   display: flex;  
+			 
+			
 		}
 		
 		article {
-			/* margin-right: 30px;
-			margin-left: 30px;  */
+			/*  margin-right: 30px; */
+		/* 	margin-left: 30px;  */ 
 			height: 0px auto;
 		}
 		
 		#munu {
-			width : 1400px;
-			display: flex;
-			border-bottom: 2px solid #998064;
+			/* width : 1400px; */
+			display: flex; 
+			 border-botto:m: 2px solid #998064; 
 			margin-top: 50px;
 		}
 		
 		#munu>a {
 			color: black;
-			padding-left: 30px;
+			/* padding-left: 30px; */
 		}
 		
 		#munu:hover {
@@ -65,18 +77,19 @@
 		}
 		
 		#item {
-			width:1300px; 
+			 width:1300px;  
 			margin: 10px auto;
-			display: flex;
+			 display: flex; 
 			padding: 10px; 
 			/* margin-left: 30px; */
 			/* position: relative; */
+			
 			border-bottom: 2px solid #998064;
 		}
 		
 		li {
 			list-style: none;
-			flex: 1;
+			flex: 1; 
 			margin-top: 20px;
 		}
 		
@@ -96,14 +109,14 @@
 			box-sizing: border-box;
 		}
 		#book_data {
-			flex:4;
-			width : 850px;
+			 flex:4; 
+			/* width : 850px; */
 			box-sizing: border-box;
 		}
 		
 		#shopping {
 			
-			flex:1;
+			flex:1; 
 			box-sizing: border-box;
 		   /*  position: absolute;  */ 
 		    float : right;
@@ -111,4 +124,4 @@
 			right: 10em;
 		}
 		
-		.checked{color: red;}
+		

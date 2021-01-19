@@ -17,23 +17,16 @@
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/header.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+	
+	
 	</head>
 	
 	
 	<body>
+	<div id="layout">
 	
 	<%@include file="/WEB-INF/views/common/Header.jsp" %>
 	
-		
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->		
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-
-		
 		<section>
 
 			<article>
@@ -48,29 +41,34 @@
 			</div>
 			
 			
+		
+			
 			
 			
 			<div id="add">	
 				<strong>현대소설</strong>에 <strong>총 11,881권</strong>의 상품이 등록되어 있습니다.
 				<div id = "choose">
-					<label><input type="checkbox" id="allcheckbox" value="all">전체</label>
-						<button class="chk">쇼핑카트담기</button>
-						<button class="chk">위시리스트</button> 
+					<label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>			
+						
+					<button class="chk">쇼핑카트담기</button>
+					<button class="chk">위시리스트</button> 
 				</div>
 			</div>
 				
-
+				
+				
+			
 
 
 			<div id="item">
 			
-				<a id="book_img" href="../../view/detail/7.html">
-					<img src="<%=application.getContextPath()%>/resources/img/develop1.jpg"></a>
+				<a id="book_img" href="<%=application.getContextPath()%>/detail/1">
+					<img src="http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg" width="200px"></a>
 						
 
 				<div id ="book_data" >
 					<ul id="data">
-						<li><h4><strong ><a href="../../view/detail/7.html">은교</a></strong></h4></li>
+						<li><h4><strong ><a href="<%=application.getContextPath()%>/detail/1">은교</a></strong></h4></li>
 						<li>박신범 | 문학동네 | 2010.04.06</li>
 						<li><h3><span class="price1">12,000원→ </span>
 						<span class="price2">10,800원 (10%↓+5%P)</span></h3></li>
@@ -91,9 +89,11 @@
 					<div id ="shopping" >
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" ></label>
+							<label><input type="checkbox" id="ch1" name="chBox" value="1"></label>
+							
+							
 							<label for = "quantity">
-							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
+							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1">
 							</label>
 							</li>	
 							<li><button class="btn btn-primary" onclick="document.location='../../view/detail/7.html'">바로구매</button></li>
@@ -140,7 +140,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch2" name="chBox" value="2"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -187,7 +187,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch3"  name="chBox" value="3"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -233,7 +233,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+						<label><input type="checkbox" id="ch4" name="chBox" value="4"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -278,7 +278,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch5" name="chBox" value="5"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -324,7 +324,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch6" name="chBox" value="6"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -371,7 +371,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch7" name="chBox" value="7"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -416,7 +416,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+						<label><input type="checkbox" id="ch8" name="chBox" value="8"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -462,7 +462,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch9" name="chBox" value="9"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -507,7 +507,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch10" name="chBox" value="10"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -522,6 +522,6 @@
 	</section>
 		
 	<%@include file="/WEB-INF/views/common/Footer.jsp" %>
-		
+			</div>
 	</body>
-</html>img/modern1.jpg"></a>
+</html>
