@@ -27,8 +27,9 @@ public class CartPageController {
 		 * session attribute
 		 * 1. afterSize
 		 * sessionCartList의 현재 사이즈
+		 * sessionCartList의 존재 여부로 조건부 렌더링을 하기 위해서 sessionCartList의 사이즈를 이용해서 분기한다.
 		 * 2. sessionCartList
-		 * 세션에 저장되 장바구니 목록
+		 * 세션에 저장되는 장바구니 목록
 		 */
 		
 		Integer size = (Integer) session.getAttribute("afterSize");
@@ -56,8 +57,10 @@ public class CartPageController {
 		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
 
 		if (list == null) {
+			// sessionCartList가 없는 경우 새롭게 생성하고 requestDto 리스트에 삽입
 			List<CartCreateRequestDto> newList = new ArrayList<>();
 			
+			// 직렬화 방지
 			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
 			requestDtoInList.setTitle(requestDto.getTitle());
 			requestDtoInList.setWriter(requestDto.getWriter());
@@ -71,6 +74,7 @@ public class CartPageController {
 			session.setAttribute("sessionCartList", newList);
 			session.setAttribute("afterSize", newList.size());
 		} else {
+			// 직렬화 방지
 			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
 			requestDtoInList.setTitle(requestDto.getTitle());
 			requestDtoInList.setWriter(requestDto.getWriter());
