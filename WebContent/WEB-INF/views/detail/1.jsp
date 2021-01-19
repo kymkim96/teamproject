@@ -80,19 +80,21 @@
 					$("#goCart").click(function() {
 						const object = {
 								id: 1,
-							    title: "제목",
-							    writer: "작가",
+							    title: "미스터 마켓2021",
+							    writer: "이한영 외",
 							    publisher: "출판사",
-							    price: 5000,
+							    price: 15300,
 							    count: 1,
-							    imgLink: "http",
+							    imgLink: "http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg",
 							}
 							$.ajax({
 								url: "<%=application.getContextPath()%>/cart/session-register",
 								method: "post",
 								data: object,
+								success: (data) => {
+									window.location.href = "<%=application.getContextPath()%>/cart/index";
+								},
 							});
-							window.location.href = "<%=application.getContextPath()%>/cart/index";
 					});
 					</script>
 				</div>

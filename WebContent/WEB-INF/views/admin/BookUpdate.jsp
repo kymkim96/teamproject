@@ -17,34 +17,37 @@
 			
 		<!-- 기본 필드 입력 -->
         <div class="content">
-        	<form method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
+        	<form id="updateForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
 	        	<div id="basic_field_layout">
 	                <h2><b>기본 필드 입력</b></h2>
 	                <div id="basic_first">
 	                    <div id="basic_first_left">
 	                        <div class="form-group">
-	                            <label for="title">제목:</label>
-	                            <input type="text" class="form-control" id="title" value="은교">
+	                            <label for="isbn">ISBN:</label>
+	                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn" value="9788954610681">
 	                        </div>
+	                        <span id="warning1"></span>
+	                        <div class="form-group">
+	                            <label for="title">제목:</label>
+	                            <input type="text" class="form-control col-sm-8" id="title" name="title" value="은교">
+	                        </div>
+	                        <span id="warning2"></span>
 	                        <div class="form-group">
 	                            <label for="writer">작가:</label>
-	                            <input type="text" class="form-control" id="writer" value="박범신">
+	                            <input type="text" class="form-control col-sm-8" id="writer" name="writer" value="박범신">
 	                        </div>
+	                        <span id="warning3"></span>
 	                        <div class="form-group">
 	                            <label for="translator">옮긴이:</label>
-	                            <input type="text" class="form-control" id="translator" value="">
+	                            <input type="text" class="form-control col-sm-8" id="translator" name="translator" value="">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="price">정가:</label>
-	                            <input type="text" class="form-control" id="price" value="13,500원">
+	                            <input type="text" class="form-control col-sm-8" id="price" name="price" value="13,500원">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="publisher">출판사:</label>
-	                            <input type="text" class="form-control" id="publisher" value="문학동네">
-	                        </div>
-	                        <div class="form-group">
-	                            <label for="isbn">ISBN:</label>
-	                            <input type="text" class="form-control" id="isbn" value="9788954610681">
+	                            <input type="text" class="form-control col-sm-8" id="publisher" name="publisher" value="문학동네">
 	                        </div>
 	                    </div>
 	                    <div id="basic_first_right">
@@ -70,20 +73,20 @@
 	                    <div class="content">
 	                        <div class="form-group">
 	                            <label for="page">쪽수:</label>
-	                            <input type="text" class="form-control" id="page" value="406쪽">
+	                            <input type="text" class="form-control" id="page" name="page" value="406쪽">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="weight">무게:</label>
-	                            <input type="text" class="form-control" id="weight" value="0.5kg">
+	                            <input type="text" class="form-control" id="weight" name="weight" value="0.5kg">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="size">크기:</label>
-	                            <input type="text" class="form-control" id="size" value="128 X 188">
+	                            <input type="text" class="form-control" id="size" name="size" value="128 X 188">
 	                        </div>
 	                    </div>
 	                    <div class="book_information">
 	                        <label for="information">책 소개:</label>
-	                        <textarea class="form-control" rows="5" cols="70" id="information"></textarea>
+	                        <textarea class="form-control" rows="5" cols="70" id="information" name="information"></textarea>
 	                    </div>
 	                </div>
 	            </div>
@@ -140,7 +143,7 @@
 		                        <li>
 		                            <div class="form-group">
 		                                <label for="selectedDate">선택한 출간일:</label>
-		                                <input readonly class="form-control" id="selectedDate">
+		                                <input readonly class="form-control" id="selectedDate" name="selectedDate">
 		                            </div>
 		                        </li>
 		                        <li>
@@ -160,10 +163,51 @@
 	            </div>
 	
 	            <div id="finish_line">
-	                <button type="submit" id="btn-update" class="btn btn-outline-secondary btn-lg" style="margin-right: 10px;">수정</button>
-	                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg">임시저장</button>
+	                <button 
+		                type="submit" 
+		                id="btn-update" 
+		                class="btn btn-outline-secondary btn-lg" 
+		                style="margin-right: 10px;" 
+		                onclick="updateSubmit()">
+	                	수정
+	                </button>
+	                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg" onclick="updateSubmit()">임시저장</button>
 	            </div>
         	</form>
+        	<script>
+	       		const updateSubmit = () => {
+	       			event.preventDefault();
+	       			const updateForm = document.querySelector("#updateForm");
+	       			if ($("#isbn").val() == null || $("#isbn").val() == "" ) {
+	       				$("#warning1").html("* ISBN은 반드시 입력해야 합니다.");
+	       				$("#warning1").css({
+	       					"color": "red",
+	       				});
+	       				return;
+	       			} else {
+	       				$("#warning1").html("");
+	       			}
+	       			if ($("#title").val() == null || $("#title").val() == "") {
+	       				$("#warning2").html("* 제목은 반드시 입력해야 합니다.");
+	       				$("#warning2").css({
+	       					"color": "red",
+	       				});
+	       				return;
+	       			} else {
+	       				$("#warning2").html("");
+	       			}
+	       			if ($("#writer").val() == null || $("#writer").val() == "") {
+	       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+	       				$("#warning3").css({
+	       					"color": "red",
+	       				});
+	       				return;
+	       			} else {
+	       				$("#warning3").html("");
+	       			}
+	       			updateForm.submit();
+	       		}
+	       	</script>
         </div>
 			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>

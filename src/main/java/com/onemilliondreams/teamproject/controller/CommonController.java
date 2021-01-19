@@ -25,10 +25,18 @@ public class CommonController {
 		//개별적으로 데이터를 삭제
 		//session.removeAttribute("loginStatus");
 		//세션의 모든 데이터를 삭제
+		
 		session.invalidate();
 		logger.info("로그아웃");
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/mr")
+	public String mr() {
+		
+		return "detail/1";
+	}
+	
 	
 }

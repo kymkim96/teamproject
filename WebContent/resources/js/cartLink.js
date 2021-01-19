@@ -15,7 +15,7 @@ $(() => {
     });
 
     $(".detail_1_link").click(() => {
-        window.location.href = "../../view/detail/7.html";
+        window.location.href = "<%=application.getContextPath()%>/detail/1";
     });
     $(".detail_1_link").hover(() => {
         $(".detail_1_link").css({
@@ -30,6 +30,6 @@ $(() => {
     });
 
     $("#list_home_link").click(() => {
-        window.location.href = "../../view/list/book_list1.html";
+        window.location.href = "<%=application.getContextPath()%>/list/book_list1";
     });
 });
