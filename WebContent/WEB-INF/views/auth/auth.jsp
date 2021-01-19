@@ -1,75 +1,41 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8"%>
 
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		
-		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		
-		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
-		<!-- Popper JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		
-		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/auth.css">
-		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/js/auth.js">
-		
-		
-		
-		<script>
-		
-
-			
-			
-			
-			
-				/* 하나의 함수에 여러가지 이벤트를 한꺼번에 정리할 수 있다. */
-				/* Loging과 Cancle을 Button으로 한 번에 */
-				
-			
-			
-			/* const handleCancle=()=>{
-				console.log("handleCancle");
-				console.log(event);
-				console.log(event.target);
-				console.log(event.target.innerHTML);
-				
-				
-			}
-			 */
-			
-		</script>
-		
-		
+		<script src="<%=application.getContextPath()%>/resources/js/auth.js"></script>
 	</head>
+	
 	<body>
 		<div id="wrapper">
-			<a href="../../index.html"><img id="omd" src="<%=application.getContextPath()%>/resources/img/omd.png"/></a>
+			<a href="index"><img id="omd" src="<%=application.getContextPath()%>/resources/img/omd.png"/></a>
 			
-			<form id="form1">
+			<form id="form1"method="post" action="login2">
 				<div id="input1">
 					<input  type="text" placeholder="아이디" id="uid" name="uid"/><br/>
 					<input  type="password" placeholder="패스워드" id="upassword" name="upassword"/>
 				</div>
+				<div class="loginForm" >	
+					<button id="login" ><p>로그인</p></button>
+					
 				
+				</div>
 			</form>
-		<!-- 	<div id = "loginForm">
-					<input id="login" placeholder="로그인" ></button>
-					<input id="join"  placeholder="회원가입"></button>
-			</div> -->
+			<div class="loginForm" >	
+					
+					<button id="join" ><p>회원가입</p></button>
+				
+				</div>
 			
 			<div>	
-				<form id="loginForm">	
-					<div type="submit" id="login" ><p>로그인</p></div>
-					<div id="join" ><p>회원가입</p></div>
 				
-				</form>
 			</div>	
 			
 			<div id="form2" style="display:none;">
@@ -103,9 +69,9 @@
 			<div id="qr2" style="display:none">
 				<div id="qr3">
 					<h4>QR로그인</h4>
-					<img src="../../resources/img/qr.PNG">
+					<img src="<%=application.getContextPath()%>/resources/img/qr.PNG">
 				</div>
-				<div id="qr4"><a href="auth.html"><p>취소</p></a></div>
+				<div id="qr4"><a href="login1"><p>취소</p></a></div>
 			
 			</div>
 			
@@ -114,4 +80,5 @@
 		</div>
 		
 	</body>
+	
 </html>

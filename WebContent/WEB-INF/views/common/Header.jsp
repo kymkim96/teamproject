@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,15 +23,21 @@
 					<button class="btn btn-Light"><a href=" <%=application.getContextPath()%>/book-admin/create">등록</a></button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/cart/index">나의쇼핑</a></button>
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/cart/index">쇼핑카트</a></button>
-					<button class="btn btn-Light"><a href=" <%=application.getContextPath()%>/auth/auth">회원가입</a></button>
-					<button class="btn btn-Light"><a href=" <%=application.getContextPath()%>/auth/auth">로그인</a></button>
-				
+					<c:if test="${loginStatus == null }">
+					<button class="btn btn-Light"><a href=" <%=application.getContextPath()%>/auth/login1">회원가입</a></button>
+					<button class="btn btn-Light"><a href="<%=application.getContextPath()%>/auth/login1">로그인</a></button>
+					</c:if>
+					<br/>
+					<c:if test="${loginStatus != null }">
+			
+					<button class="btn btn-Light"><a href="<%=application.getContextPath()%>/common/index1">로그아웃</a></button>
+					</c:if>
 					<br/>
 				</div>
 				
 	
 				<div id="divheader">
-					<h1><a href="../../index.html"><img src="<%=application.getContextPath()%>/resources/img/omd.png" width="350px" height="100px"></a></h1>
+					<h1><a href="<%=application.getContextPath()%>/common/index"><img src="<%=application.getContextPath()%>/resources/img/omd.png" width="350px" height="100px"></a></h1>
 	
 	
 					<div id="divheader2">

@@ -71,10 +71,31 @@
 						<hr/>
 					</div>	
 					
-					<button  type="button" onclick="location.href='<%=application.getContextPath() %>/cart/index' " class="btn btn-lg" 
+					<%-- <button  type="button" onclick="location.href='<%=application.getContextPath() %>/cart/index' " class="btn btn-lg" 
+					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button> --%>
+					<button id="goCart" type="button" class="btn btn-lg" 
 					style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
 					<!-- <button  type="button" class="btn btn-lg" style="background-color:#B8A791; color:white ; "> 즉시 구매하기 </button>  -->
-				</div>				
+					<script>
+					$("#goCart").click(function() {
+						const object = {
+								id: 1,
+							    title: "제목",
+							    writer: "작가",
+							    publisher: "출판사",
+							    price: 5000,
+							    count: 1,
+							    imgLink: "http",
+							}
+							$.ajax({
+								url: "<%=application.getContextPath()%>/cart/session-register",
+								method: "post",
+								data: object,
+							});
+							window.location.href = "<%=application.getContextPath()%>/cart/index";
+					});
+					</script>
+				</div>
 			</div>
 			
 			<!-- --------------------------------------------------------------------------------------------------------------- -->
