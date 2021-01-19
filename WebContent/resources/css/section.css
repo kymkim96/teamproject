@@ -1,0 +1,93 @@
+section {
+	
+	
+	padding-left: 150px;
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+article {
+	
+	
+	
+	padding-top: 20px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+}
+
+#a{
+	padding-left:110px;
+}
+
+#b{
+	padding-left:50px;
+	padding-top : 30px;
+}
+
+.didi {
+	display: flex;
+	flex-direction: column;
+	padding-left:20px;
+	padding-top:20px;
+	height: 400px;
+	width:600px;
+	border: 1px solid lightgrey; 
+	
+}
+
+.diva1 {
+	display: flex;
+	
+}
+
+
+.diva {
+	font-size: 30px;
+	background-color: white;
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	margin:20px;
+}
+
+.book1{
+	display:flex;
+	padding-left:20px;
+}
+
+
+.book1 a{
+	
+}
+
+.book1 ul{
+	
+}
+
+.book2{
+  display:flex;
+  padding-left:20px;
+}
+
+.book2 a{
+	padding-left : 80px;
+}
+.book2 ol{
+	padding : 20px;
+	
+}
+
+
+
+.num{
+
+	border: 1px solid #998064;
+	background-color: #998064;
+	width: 20px;
+	color : white;
+	display : inline-block;
+	padding-left:4px;
+	margin : 5px;
+	
+}

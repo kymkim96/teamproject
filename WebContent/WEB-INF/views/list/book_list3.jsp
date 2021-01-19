@@ -9,7 +9,7 @@
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 				
-				<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/book_list.css">
+				<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_soyoung.css">
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/header.css">
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/footer.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,12 +18,7 @@
 	
 <body>
 		
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->		
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------------------------------------------------------------------------------------------------------------------------------------------- -->
+	<%@include file="/WEB-INF/views/common/Header.jsp" %>
 
 
 		
@@ -501,7 +496,8 @@
 		</article>
 	
 	</section>	
-		
+	
+		<%@include file="/WEB-INF/views/common/Footer.jsp" %>
 		
 		
 	</body>
