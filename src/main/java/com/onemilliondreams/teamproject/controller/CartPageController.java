@@ -58,27 +58,29 @@ public class CartPageController {
 		if (list == null) {
 			List<CartCreateRequestDto> newList = new ArrayList<>();
 			
-//			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
-//			requestDtoInList.setTitle(requestDto.getTitle());
-//			requestDtoInList.setWriter(requestDto.getWriter());
-//			requestDtoInList.setPublisher(requestDto.getPublisher());
-//			requestDtoInList.setId(requestDto.getId());
-//			requestDtoInList.setCount(requestDto.getCount());
-//			requestDtoInList.setImgLink(requestDto.getImgLink());
+			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
+			requestDtoInList.setTitle(requestDto.getTitle());
+			requestDtoInList.setWriter(requestDto.getWriter());
+			requestDtoInList.setPublisher(requestDto.getPublisher());
+			requestDtoInList.setId(requestDto.getId());
+			requestDtoInList.setPrice(requestDto.getPrice());
+			requestDtoInList.setCount(requestDto.getCount());
+			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
-			newList.add(requestDto);
+			newList.add(requestDtoInList);
 			session.setAttribute("sessionCartList", newList);
 			session.setAttribute("afterSize", newList.size());
 		} else {
-//			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
-//			requestDtoInList.setTitle(requestDto.getTitle());
-//			requestDtoInList.setWriter(requestDto.getWriter());
-//			requestDtoInList.setPublisher(requestDto.getPublisher());
-//			requestDtoInList.setId(requestDto.getId());
-//			requestDtoInList.setCount(requestDto.getCount());
-//			requestDtoInList.setImgLink(requestDto.getImgLink());
+			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
+			requestDtoInList.setTitle(requestDto.getTitle());
+			requestDtoInList.setWriter(requestDto.getWriter());
+			requestDtoInList.setPublisher(requestDto.getPublisher());
+			requestDtoInList.setId(requestDto.getId());
+			requestDtoInList.setPrice(requestDto.getPrice());
+			requestDtoInList.setCount(requestDto.getCount());
+			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
-			list.add(requestDto);
+			list.add(requestDtoInList);
 			
 			session.setAttribute("sessionCartList", list);
 			session.setAttribute("afterSize", list.size());
@@ -108,18 +110,6 @@ public class CartPageController {
 		
 		return "redirect:/cart/index";
 	}
-	
-//	@PostMapping("/cart-price")
-//	public String cartPrice(int count, HttpSession session) {
-//		
-//		List<CartCreateRequestDto> list = new ArrayList<>();
-//		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
-//		
-//		for (CartCreateRequestDto requestDto : list) {
-//			
-//		}
-//	}
-//	
 	
 	@GetMapping("/destroy")
 	public String destroy(HttpSession session) {

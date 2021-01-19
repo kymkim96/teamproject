@@ -73,7 +73,7 @@
 										</td>
 										<td class="align-middle">
 											<%
-												Calendar calendar = Calendar.getInstance();
+											Calendar calendar = Calendar.getInstance();
 											calendar.setTime(new Date());
 											calendar.add(Calendar.DATE, 2);
 											%> <fmt:formatDate
@@ -125,14 +125,14 @@
 			                                </script>
 										</td>
 										<td class="align-middle"><input type="checkbox"
-											id="cart_item_checkbox" name="cart_item_checkbox" />
+											class="cart_item_checkbox" name="cart_item_checkbox" />
 										</td>
 										<script>
 											$("#header_item_checkbox").click(() => {
 												if (event.target.checked) {
-													$("#cart_item_checkbox").prop("checked", true);
+													$(".cart_item_checkbox").prop("checked", true);
 												} else {
-													$("#cart_item_checkbox").prop("checked", false);
+													$(".cart_item_checkbox").prop("checked", false);
 												}
 											})
 										</script>
