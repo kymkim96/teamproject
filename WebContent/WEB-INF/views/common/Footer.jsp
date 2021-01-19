@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/footer.css">
 	</head>
 	<body>	
-		<div id="layout"></div>
+		<div id="layout">
 			<footer>
 	
 				<ul class="headerul2">
@@ -52,6 +52,6 @@
 				</div>
 																	
 			</footer>
-		
+		</div>
 	</body>
 </html>

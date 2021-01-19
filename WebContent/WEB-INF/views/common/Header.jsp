@@ -13,7 +13,7 @@
 		
 	</head>
 	<body>
-		<div id="layout">
+		
 			<header>
 				<div id="headerul1">
 					
@@ -51,6 +51,6 @@
 				</ul>
 	
 			</header>
-		</div>	
+		
 	</body>
 </html>
