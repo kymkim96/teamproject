@@ -40,8 +40,8 @@
 					<div id = "choose">
 						<label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>			
 							
-						<button class="chk">쇼핑카트담기</button>
-						<button class="chk">위시리스트</button> 
+						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
+						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button> 
 					</div>
 				</div>
 				
@@ -85,8 +85,8 @@
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1">
 							</label>
 							</li>	
-							<li><button class="btn btn-primary" onclick="document.location='../../view/detail/7.html'">바로구매</button></li>
-							<li><button class="btn btn-primary" onclick="document.location='../../view/cart/Cart.html'">쇼핑카트담기</button></li>
+							<li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>
+							<li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li>
 						</ul>
 					
 					</div>
