@@ -1,127 +1,124 @@
-		@charset "UTF-8";
-		
-		@font-face {
-			font-family: 'HangeulNuri-Bold';
-			src:
-				url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff')
-				format('woff');
-			font-weight: normal;
-			font-style: normal;
-		}
-		
-		@font-face {
-			font-family: 'NanumSquareRound';
-			src:
-				url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-				format('woff');
-			font-weight: normal;
-			font-style: normal;
-		}
-		
-		@font-face {
-			font-family: 'NEXON Lv1 Gothic OTF Bold';
-			src:
-				url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff')
-				format('woff');
-			font-weight: normal;
-			font-style: normal;
-		}
-<!-------------------------------------------------------------------------------------------------------------------------------------->	
-<!-------------------------------------------------------------------------------------------------------------------------------------->	
-<!-------------------------------------------------------------------------------------------------------------------------------------->	
-<!-------------------------------------------------------------------------------------------------------------------------------------->	
+
+
+@font-face {
+	font-family: 'HangeulNuri-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+#layout {
+     margin: 0 auto; 
+     overflow-x: scroll;  
+    width: 1500px;  
+    font-family: NanumSquareRound; 
+}
+section {
+	 /*  margin : 50px;   */ 
+	/*     width : 1500px;  */ 
+	   display: flex;  
 	 
-		#layout {
-		     margin: 0 auto; 
-		     overflow-x: scroll;  
-		    width: 1500px;  
-		    font-family: NanumSquareRound; 
-		}
-		section {
-			 /*  margin : 50px;   */ 
-			/*     width : 1500px;  */ 
-			   display: flex;  
-			 
-			
-		}
-		
-		article {
-			/*  margin-right: 30px; */
-		/* 	margin-left: 30px;  */ 
-			height: 0px auto;
-		}
-		
-		#munu {
-			/* width : 1400px; */
-			display: flex; 
-			 border-botto:m: 2px solid #998064; 
-			margin-top: 50px;
-		}
-		
-		#munu>a {
-			color: black;
-			/* padding-left: 30px; */
-		}
-		
-		#munu:hover {
-			color: #B8A791;
-		}
-		
-		#add {
-			margin-top: 10px;
-		}
-		
-		#choose {
-			float: right;
-			margin-right: 20px;
-		}
-		
-		#item {
-			 width:1300px;  
-			margin: 10px auto;
-			 display: flex; 
-			padding: 10px; 
-			/* margin-left: 30px; */
-			/* position: relative; */
-			
-			border-bottom: 2px solid #998064;
-		}
-		
-		li {
-			list-style: none;
-			flex: 1; 
-			margin-top: 20px;
-		}
-		
-		#data>a {
-			color: black;
-		}
-		
-		.price2 {
-			color: red;
-		}
-		
-		#bb {
-			
-			list-style: none;
-		}
-		#book_img{
-			box-sizing: border-box;
-		}
-		#book_data {
-			 flex:4; 
-			/* width : 850px; */
-			box-sizing: border-box;
-		}
-		
-		#shopping {
-			
-			flex:1; 
-			box-sizing: border-box;
-		   /*  position: absolute;  */ 
-		    float : right;
-		    margin-right:none;
-			right: 10em;
-		}
-		
+	
+}
+
+article {
+	/*  margin-right: 30px; */
+/* 	margin-left: 30px;  */ 
+	height: 0px auto;
+}
+
+#munu {
+	/* width : 1400px; */
+	display: flex; 
+	border-bottom: 2px solid #998064; 
+	margin: 10px 30px 30px 0px;
+}
+
+#munu>a {
+	color: black;
+	/* padding-left: 30px; */
+}
+
+#munu:hover {
+	color: #B8A791;
+}
+
+#add {
+	margin-top: 10px;
+}
+
+#choose {
+	float: right;
+	margin-right: 20px;
+}
+
+#item1 {
+	 width:1300px;  
+	margin: 10px auto;
+	 display: flex; 
+	padding: 10px; 
+	/* margin-left: 30px; */
+	/* position: relative; */
+	
+	border-bottom: 2px solid #998064;
+}
+
+li {
+	list-style: none;
+	flex: 1; 
+	margin-top: 20px;
+}
+
+#data>a {
+	color: black;
+}
+
+.price2 {
+	color: red;
+}
+
+#bb {
+	
+	list-style: none;
+}
+#book_img{
+	box-sizing: border-box;
+}
+#book_data {
+	 flex:4; 
+	/* width : 850px; */
+	box-sizing: border-box;
+}
+
+#shopping {
+	
+	flex:1; 
+	box-sizing: border-box;
+   /*  position: absolute;  */ 
+    float : right;
+    margin-right:none;
+	right: 10em;
+}
+
 		

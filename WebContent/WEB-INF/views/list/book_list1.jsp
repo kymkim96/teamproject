@@ -1,66 +1,55 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page  contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.*,java.text.*" %>
 <!DOCTYPE html>
 <html>
 	<head>
  		<meta charset="UTF-8">
 			<title>Insert title here</title>
- 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-			
-		
-
-				
-		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_soyoung.css">
-		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/footer.css">
-		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/header.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	
+ 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_soyoung.css">
+			<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	
 	</head>
 	
 	
 	<body>
-	<div id="layout">
+		<div id="layout">
 	
-	<%@include file="/WEB-INF/views/common/Header.jsp" %>
-	
-		<section>
+			<%@include file="/WEB-INF/views/common/Header.jsp" %>
 
 			<article>
-			
-			<h3>현대소설</h3>
-			
-			<div id="munu">
-				<a href="#"><h5>현대소설</h5></a> 
-				<a href="#"><h5>베스트셀러</h5></a>
-				<a href="#"><h5>새로나온 책</h5></a> 
-				<a href="#"><h5>반디추천</h5></a>
-			</div>
+				
+				
+				<h3>현대소설</h3>
+				
+				
+				<div id="munu">
+					<a href="#"><h5>현대소설</h5></a> 
+					<a href="#"><h5>베스트셀러</h5></a>
+					<a href="#"><h5>새로나온 책</h5></a> 
+					<a href="#"><h5>반디추천</h5></a>
+				</div>
 			
 			
 		
-			
-			
-			
-			<div id="add">	
-				<strong>현대소설</strong>에 <strong>총 11,881권</strong>의 상품이 등록되어 있습니다.
-				<div id = "choose">
-					<label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>			
-						
-					<button class="chk">쇼핑카트담기</button>
-					<button class="chk">위시리스트</button> 
+				<div id="add">	
+					<strong>현대소설</strong>에 <strong>총 11,881권</strong>의 상품이 등록되어 있습니다.
+					<div id = "choose">
+						<label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>			
+							
+						<button class="chk">쇼핑카트담기</button>
+						<button class="chk">위시리스트</button> 
+					</div>
 				</div>
+				
+			<div>
+			<br/>
 			</div>
-				
-				
-				
-			
 
-
-			<div id="item">
+			<div id="item1">
 			
 				<a id="book_img" href="<%=application.getContextPath()%>/detail/1">
 					<img src="http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg" width="200px"></a>
@@ -105,14 +94,7 @@
 			</div>
 
 
-
-
-
-
-
-
-
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="../../view/detail/8.html">
 				<img src="<%=application.getContextPath()%>/resources/img/modern2.jpg"></a>
@@ -151,14 +133,9 @@
 					</div>
 				
 			</div>
+			
 
-
-
-
-
-
-
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="../../view/detail/9.html">
 				 <img src="<%=application.getContextPath()%>/resources/img/modern3.jpg"></a>
@@ -205,7 +182,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern4.jpg"></a>
 
@@ -250,7 +227,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern5.jpg"></a>
 
@@ -297,7 +274,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern6.jpg"></a>
 
@@ -343,7 +320,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern7.jpg"></a>
@@ -388,7 +365,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern8.jpg"></a>
@@ -434,7 +411,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern9.jpg"></a>
@@ -479,7 +456,7 @@
 
 
 
-			<div id="item">
+			<div id="item1">
 				<a id="book_img" href="">
 				<img src="<%=application.getContextPath()%>/resources/img/modern10.jpg"></a>
 
@@ -519,9 +496,9 @@
 			</div>
 		</article>
 	
-	</section>
+
 		
-	<%@include file="/WEB-INF/views/common/Footer.jsp" %>
-			</div>
+		<%@include file="/WEB-INF/views/common/Footer.jsp" %>
+		</div>
 	</body>
 </html>
