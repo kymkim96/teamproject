@@ -35,13 +35,16 @@
 			<div id="add">	
 				<strong>외국소설</strong>에 <strong>총 6,136권</strong>의 상품이 등록되어 있습니다.
 				<div id = "choose">
-					<label><input type="checkbox" class="chk" value="all">전체</label>
+					<label><input type="checkbox" id="allcheckbox" name="chBox"  value="all">전체</label>			
+							
 						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
 						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button> 
-				</div>
+					</div>
 			</div>
 
-
+`			<div>
+			<br/>
+			</div>
 
 
 			<div id="item1">
@@ -72,7 +75,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch1" name="chBox" value="1"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
