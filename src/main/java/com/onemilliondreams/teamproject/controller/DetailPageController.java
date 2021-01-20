@@ -6,21 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/detail")
 public class DetailPageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DetailPageController.class);
 	
-	@RequestMapping("/1")
-	public String detail1() {
-		logger.info("책1 상세페이지");
-		return "detail/1";
+	@RequestMapping("/detail")
+	public String detail1(String param1) {
+		logger.info("책"+ param1 +" 상세페이지");
+		return "/detail/"+param1;
 	}
-	
-	@RequestMapping("/7")
-	public String detail7() {
-		logger.info("책7 상세페이지");
-		return "detail/7";
-	}
-
 }
