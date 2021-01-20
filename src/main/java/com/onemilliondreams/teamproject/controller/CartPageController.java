@@ -84,6 +84,7 @@ public class CartPageController {
 			requestDtoInList.setCount(requestDto.getCount());
 			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
+			// 상품의 id가 같으면 장바구니 
 			for (CartCreateRequestDto item : list) {
 				if (item.getId() == requestDto.getId()) {
 					return "cart/alert";
