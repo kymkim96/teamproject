@@ -17,7 +17,7 @@ public class BookAdminPageController {
 		 * 동적으로 링크를 추가로 첨부하기 위해 사용하는 변수
 		 * 각 URL 입력 input 태그의 id
 		 */
-		model.addAttribute("videoIndex", 1);
+		// model.addAttribute("videoIndex", 1);
 		
 		return "admin/BookCreate";
 	}
