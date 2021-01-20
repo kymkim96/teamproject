@@ -31,6 +31,8 @@
 							<a href="<%=application.getContextPath()%>/common/mr"><img height="250px" width="160px"
 							src="resources/img/오늘의 책.jpg"></a>
 							
+							
+							
 							<ul>
 								<h2>미스터 마켓</h2>
 								<h5>이한영,김효진,이다솔 외</h5>
