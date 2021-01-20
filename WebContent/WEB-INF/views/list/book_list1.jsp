@@ -51,7 +51,7 @@
 
          <div id="item1">
          
-            <a id="book_img" href="<%=application.getContextPath()%>/detail/1">
+            <a id="book_img" href="<%=application.getContextPath()%>/detail?param1=1">
                <img src="http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg" width="200px"></a>
                   
             <div id ="book_data" >
@@ -97,13 +97,13 @@
 		
 		<div id="item1">
 			
-				<a id="book_img" href="<%=application.getContextPath()%>/detail/7">
+				<a id="book_img" href="<%=application.getContextPath()%>/detail?param1=7">
 					<img src="<%=application.getContextPath()%>/resources/img/modern1.jpg"></a>
 						
 
 				<div id ="book_data" >
 					<ul id="data">
-						<li><h4><strong ><a href="<%=application.getContextPath()%>/detail/7">은교</a></strong></h4></li>
+						<li><h4><strong ><a href="<%=application.getContextPath()%>/detail?param1=7">은교</a></strong></h4></li>
 						<li>박신범 | 문학동네 | 2010.04.06</li>
 						<li><h3><span class="price1">12,000원→ </span>
 						<span class="price2">10,800원 (10%↓+5%P)</span></h3></li>
