@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BookAdminPageController {
 
 	@GetMapping("/create")
-	public String create(Model model) {
+	public String create() {
 		
 		/**
 		 * 관련 동영상 링크 첨부
