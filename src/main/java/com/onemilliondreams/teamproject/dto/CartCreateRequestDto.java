@@ -1,9 +1,15 @@
 package com.onemilliondreams.teamproject.dto;
 
-public class CartCreateRequestDto {
+import java.io.Serializable;
 
+public class CartCreateRequestDto implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
-	private String title;
+	private String title;	
 	private String writer;
 	private String publisher;
 	private int price;

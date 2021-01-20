@@ -60,29 +60,11 @@ public class CartPageController {
 			// sessionCartList가 없는 경우 새롭게 생성하고 requestDto 리스트에 삽입
 			List<CartCreateRequestDto> newList = new ArrayList<>();
 			
-			// 직렬화 방지
-			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
-			requestDtoInList.setTitle(requestDto.getTitle());
-			requestDtoInList.setWriter(requestDto.getWriter());
-			requestDtoInList.setPublisher(requestDto.getPublisher());
-			requestDtoInList.setId(requestDto.getId());
-			requestDtoInList.setPrice(requestDto.getPrice());
-			requestDtoInList.setCount(requestDto.getCount());
-			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
-			newList.add(requestDtoInList);
+			newList.add(requestDto);
 			session.setAttribute("sessionCartList", newList);
 			session.setAttribute("afterSize", newList.size());
 		} else {
-			// 직렬화 방지
-			CartCreateRequestDto requestDtoInList = new CartCreateRequestDto();
-			requestDtoInList.setTitle(requestDto.getTitle());
-			requestDtoInList.setWriter(requestDto.getWriter());
-			requestDtoInList.setPublisher(requestDto.getPublisher());
-			requestDtoInList.setId(requestDto.getId());
-			requestDtoInList.setPrice(requestDto.getPrice());
-			requestDtoInList.setCount(requestDto.getCount());
-			requestDtoInList.setImgLink(requestDto.getImgLink());
 			
 			// 상품의 id가 같으면 장바구니 
 			for (CartCreateRequestDto item : list) {
@@ -91,7 +73,7 @@ public class CartPageController {
 				}
 			}
 			
-			list.add(requestDtoInList);
+			list.add(requestDto);
 			
 			session.setAttribute("sessionCartList", list);
 			session.setAttribute("afterSize", list.size());
