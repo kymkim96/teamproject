@@ -51,7 +51,7 @@
 	
 				<ul id="headerul2">
 					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list1">현대소설</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list2">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list2?category_name=자기계발서">자기개발서</a></button>
 					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list3">해외소설</a></button>
 					
 	
