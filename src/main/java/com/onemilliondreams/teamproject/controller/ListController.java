@@ -23,6 +23,7 @@ public class ListController {
 		logger.info("실행");
 		return "list/book_list2";
 	}
+	
 
 	
 	@RequestMapping("/book_list3")
@@ -32,6 +33,7 @@ public class ListController {
 	}
 	
 	
+	}
 	
 
-}
+
