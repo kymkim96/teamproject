@@ -3,7 +3,7 @@
 <mapper namespace="reviews">
 	<insert id="insert" parameterType="review">
 		insert into reviews
-		(rid,rstars,rdate,rcontent,USERS_UID,BOOKS_ISBN)
+		(rid,rstar,rdate,rcontent,USERS_UID,BOOKS_ISBN)
 		values 
 		(reviews_rid_seq.nextval, #{rstars},sysdate,#{rcontent},#{usersId},#{booksIsbn})
 	</insert>
