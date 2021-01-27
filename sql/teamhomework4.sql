@@ -1,7 +1,7 @@
--- ª˝º∫¿⁄ Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   ¿ßƒ°:        2021-01-25 18:58:01 KST
---   ªÁ¿Ã∆Æ:      Oracle Database 11g
---   ¿Ø«¸:      Oracle Database 11g
+-- ÏÉùÏÑ±Ïûê Oracle SQL Developer Data Modeler 20.2.0.167.1538
+--   ÏúÑÏπò:        2021-01-27 11:21:14 KST
+--   ÏÇ¨Ïù¥Ìä∏:      Oracle Database 11g
+--   Ïú†Ìòï:      Oracle Database 11g
 
 
 
@@ -22,7 +22,7 @@ CREATE TABLE books (
     bdelivery_fee             NUMBER(5),
     bcontent                  CLOB NOT NULL,
     bindex                    CLOB NOT NULL,
-    "bimg-link"               VARCHAR2(1000),
+    bimg_link                 VARCHAR2(1000),
     bimg_filename             VARCHAR2(100) DEFAULT 'default_image.jpg' NOT NULL,
     bcontent_type             VARCHAR2(100),
     bstate                    VARCHAR2(30),
@@ -208,7 +208,7 @@ END;
 
 
 
--- Oracle SQL Developer Data Modeler ø‰æ‡ ∫∏∞Ìº≠: 
+-- Oracle SQL Developer Data Modeler ÏöîÏïΩ Î≥¥Í≥†ÏÑú: 
 -- 
 -- CREATE TABLE                             9
 -- CREATE INDEX                             0
