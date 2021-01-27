@@ -24,24 +24,30 @@ public class BookController {
 	@PostMapping("/books-create")
 	public String create(BookCreateRequestDto requestDto) {
 		
-		
 		MultipartFile image = requestDto.getBimg();
-		String originalFilename = image.getOriginalFilename();
-		logger.info("파일명: " + image.getOriginalFilename());
 		
-		String saveDir = saveDirPath;
-		
-		File dir = new File(saveDir);
-		if (!dir.exists()) dir.mkdirs();
-		
-		String fileName = new Date().getTime() + originalFilename;
-		String filePath = saveDir + fileName;
-		
-		try {
-			image.transferTo(new File(filePath));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		if (!image.isEmpty()) {
+			String originalFilename = image.getOriginalFilename();
+			logger.info("파일명: " + image.getOriginalFilename());
+			
+			String saveDir = saveDirPath;
+			
+			File dir = new File(saveDir);
+			if (!dir.exists()) dir.mkdirs();
+			
+			String fileName = new Date().getTime() + originalFilename;
+			requestDto.setBimgFilename(fileName);
+			String contentType = image.getContentType();
+			requestDto.setBcontentType(contentType);
+			
+			String filePath = saveDir + fileName;
+			
+			try {
+				image.transferTo(new File(filePath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		
 		return "redirect:/";
 	}
