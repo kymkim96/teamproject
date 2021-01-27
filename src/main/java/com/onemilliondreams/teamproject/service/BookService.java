@@ -20,9 +20,24 @@ public class BookService {
 		int Bftemp = book.getBfprice();
 		int bdistemp = 1- (int) (book.getBdiscount()*(0.01));
 		book.setBfprice(Bftemp*bdistemp);
+		
+		String result = book.getBcontent();
+		book.setBcontent(result.replace("\n", "<br/>"));
+		
 		return book;
 	}
 	
 
 	
+
+	public String saveBook(BookDto requestDto) {
+		
+		BookDto book = bookDao.getBook(requestDto.getIsbn());
+		if (book != null) {
+			return "ISBN이 중복되었습니다.";
+		}
+		
+		bookDao.insert(requestDto);
+		return "성공";
+	}
 }

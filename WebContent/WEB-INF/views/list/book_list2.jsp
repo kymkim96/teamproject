@@ -31,12 +31,22 @@
 				<a href="#"><h5>반디추천</h5></a>
 			</div>
 			
-			
+			 <script>
+			$('#allcheck').on('click',function(){
+				//전체선택
+				if($("ch1").prop("checked")){
+					$("input[type=checkbox]").prop("checked",true);
+				}else{
+					$("input[type=checkbox]").prop("checked",false);
+				}
+			});
+			</script>
 			
 			<div id="add">	
 				<strong>외국소설</strong>에 <strong>총 6,136권</strong>의 상품이 등록되어 있습니다.
 				<div id = "choose">
-					<label><input type="checkbox" class="chk" value="all">전체</label>
+					<label><input type="checkbox" id="allcheck" class="chk" value="all">전체</label>
+					
 						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
 						<button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button> 
 				</div>
@@ -122,7 +132,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch2" name="chBox" value="2"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -169,7 +179,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch3" name="chBox" value="3"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -213,7 +223,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch4" name="chBox" value="4"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -257,7 +267,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch5" name="chBox" value="5"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -302,7 +312,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch6" name="chBox" value="6"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -348,7 +358,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch8" name="chBox" value="8"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -393,7 +403,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch9" name="chBox" value="9"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>
@@ -440,7 +450,7 @@
 					<div id ="shopping">
 						<ul id="bb">
 							<li>
-							<label><input type="checkbox" class="cj"></label>
+							<label><input type="checkbox" id="ch10" name="chBox" value="10"></label>
 							<label for = "quantity">
 							<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
 							</label>

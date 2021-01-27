@@ -27,12 +27,12 @@
 			                            <label for="isbn">ISBN:</label>
 			                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn">
 			                        </div>
-			                        <span id="warning1"></span>
+			                        <span id="warningIsbn">${result}</span>
 			                        <div class="form-group">
 			                            <label for="btitle">제목:</label>
 			                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle">
 			                        </div>
-			                        <span id="warning2"></span>
+			                        <span id="warningTitle"></span>
 			                        <div class="form-group">
 			                            <label for="bwriter">작가:</label>
 			                            <div>
@@ -44,19 +44,21 @@
 			                            	$("#bwriterSearch").click(function() {});
 			                            </script>
 			                        </div>
-			                        <span id="warning3"></span>
+			                        <span id="warningWriter"></span>
 			                        <div class="form-group">
 			                            <label for="btranslator">옮긴이:</label>
 			                            <input type="text" class="form-control col-sm-8" id="btranslator" name="btranslator">
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="bprice">정가:</label>
-			                            <input type="text" class="form-control col-sm-8" id="bprice" name="bprice">
+			                            <input type="number" class="form-control col-sm-8" id="bprice" name="bprice">
 			                        </div>
+			                        <span id="warningPrice"></span>
 			                        <div class="form-group">
 			                            <label for="bpublisher">출판사:</label>
 			                            <input type="text" class="form-control col-sm-8" id="bpublisher" name="bpublisher">
 			                        </div>
+			                        <span id="warningPublisher"></span>
 			                    </div>
 			                    <div id="basic_first_right">
 			                        <div class="input_item">
@@ -84,11 +86,12 @@
 										</div>
 			                        </div>
 			                        <div class="input_item">
-				                        <div>
-					                        <label for="bcontent">책 소개:</label>
+			                        	<div>
+				                        	<label for="bcontent">책 소개:</label>
 					                        <textarea class="form-control" rows="10" cols="70" id="bcontent" name="bcontent"></textarea>
-					                    </div>
+			                        	</div>
 			                        </div>
+			                        <span id="warningContent"></span>
 			                    </div>
 			                </div>
 			                <div id="basic_second">
@@ -102,16 +105,17 @@
 			                		<div class="content">
 				                        <div class="form-group">
 				                            <label for="bdiscount">할인율:</label>
-				                            <input type="text" class="form-control" id="bdiscount" name="bdiscount">
+				                            <input type="number" class="form-control" id="bdiscount" name="bdiscount">
 				                        </div>
 				                        <div class="form-group">
 				                            <label for="bdeliveryFee">배송비:</label>
-				                            <input type="text" class="form-control" id="bdeliveryFee" name="bdeliveryFee">
+				                            <input type="number" class="form-control" id="bdeliveryFee" name="bdeliveryFee">
 				                        </div>
 				                    </div>
 				                    <div class="ml-3">
 				                        <label for="bindex">목차:</label>
 				                        <textarea class="form-control" rows="5" cols="70" id="bindex" name="bindex"></textarea>
+				                        <span id="warningIndex"></span>
 				                    </div>
 			                	</div>
 			                </div>
@@ -164,7 +168,10 @@
 			                    </div>
 			                    
 			                    <div id="date_first">
-	                                <input type="date" id="bpublishDate" name="bpublishDate"/>
+			                    	<div>
+			                    		<input type="date" id="bpublishDate" name="bpublishDate"/> </br>
+	                                	<span id="warningPublishDate"></span>
+			                    	</div>
 	                                <ul id="date_first_right">
 				                        <li>
 				                            <div class="form-group">
@@ -192,37 +199,7 @@
 			                <button id="btn-submit" class="btn btn-outline-secondary btn-lg" onclick="createSubmit()">등록</button>
 			            </div>
 		        	</form>
-		        	<script>
-		        		const createSubmit = () => {
-		        			event.preventDefault();
-		        			$("#warning1").html("");
-		        			$("#warning2").html("");
-		        			$("#warning3").html("");
-		        			const createForm = document.querySelector("#createForm");
-		        			if ($("#isbn").val() == null || $("#isbn").val() == "" ) {
-			       				$("#warning1").html("* ISBN은 반드시 입력해야 합니다.");
-			       				$("#warning1").css({
-			       					"color": "red",
-			       				});
-			       				return;
-			       			}
-			       			if ($("#title").val() == null || $("#title").val() == "") {
-			       				$("#warning2").html("* 제목은 반드시 입력해야 합니다.");
-			       				$("#warning2").css({
-			       					"color": "red",
-			       				});
-			       				return;
-			       			}
-			       			if ($("#writer").val() == null || $("#writer").val() == "") {
-			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
-			       				$("#warning3").css({
-			       					"color": "red",
-			       				});
-			       				return;
-			       			}
-		        			createForm.submit();
-		        		}
-		        	</script>
+		        	<script src="<%=application.getContextPath()%>/resources/js/createSubmit.js"></script>
 		        </div>
 			</div>
 			
