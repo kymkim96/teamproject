@@ -17,7 +17,7 @@ public class BookService {
 		BookDto book = bookDao.getBook(bookIsbn);
 		
 		String result = book.getBcontent();
-		result.replace("\n", "<br/>");
+		book.setBcontent(result.replace("\n", "<br/>"));
 		
 		return book;
 	}
