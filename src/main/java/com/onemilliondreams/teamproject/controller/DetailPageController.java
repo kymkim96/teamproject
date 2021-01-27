@@ -13,6 +13,6 @@ public class DetailPageController {
 	@RequestMapping("/detail")
 	public String detail1(String param1) {
 		logger.info("책"+ param1 +" 상세페이지");
-		return "detail/"+param1;
+		return "detail/test";
 	}
 }

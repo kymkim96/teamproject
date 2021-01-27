@@ -134,8 +134,8 @@
 					<form enctype="multipart/form-data" name="reviewform" 
 							action="<%=application.getContextPath()%>/review/reviewwrite" method="post">
 		                  	
-		                  	<input id="usersId" name="usersId"   type="hidden" value="seoyeon"/>
-		                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="test"/>
+		                  	<input id="usersId" name="usersId"   type="hidden" value="syeon"/>
+		                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="ISBN1"/>
 		                  	
 		                  	<!-- 각 버튼을 누르면 숫자를 리턴할수 잇게 해야하는,,? 자바스크립트로 구현? -->
 		                    <div class="form-group">

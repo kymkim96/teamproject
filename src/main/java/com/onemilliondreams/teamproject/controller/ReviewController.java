@@ -25,7 +25,7 @@ public class ReviewController {
 	@PostMapping("/reviewwrite")
 	public String reviewwrite(ReviewDto review, HttpSession session) { //세션에서 bookIsbn과 userId를 가져와야함
 		reviewService.saveReview(review);
-		return "redirect:/detail?param="+review.getBooksIsbn();
+		return "redirect:/detail?param1=ISBN1";
 	}
 	
 	
