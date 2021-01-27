@@ -195,6 +195,9 @@
 		        	<script>
 		        		const createSubmit = () => {
 		        			event.preventDefault();
+		        			$("#warning1").html("");
+		        			$("#warning2").html("");
+		        			$("#warning3").html("");
 		        			const createForm = document.querySelector("#createForm");
 		        			if ($("#isbn").val() == null || $("#isbn").val() == "" ) {
 			       				$("#warning1").html("* ISBN은 반드시 입력해야 합니다.");
@@ -202,8 +205,6 @@
 			       					"color": "red",
 			       				});
 			       				return;
-			       			} else {
-			       				$("#warning1").html("");
 			       			}
 			       			if ($("#title").val() == null || $("#title").val() == "") {
 			       				$("#warning2").html("* 제목은 반드시 입력해야 합니다.");
@@ -211,8 +212,6 @@
 			       					"color": "red",
 			       				});
 			       				return;
-			       			} else {
-			       				$("#warning2").html("");
 			       			}
 			       			if ($("#writer").val() == null || $("#writer").val() == "") {
 			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
@@ -220,10 +219,7 @@
 			       					"color": "red",
 			       				});
 			       				return;
-			       			} else {
-			       				$("#warning3").html("");
 			       			}
-			       			$("#bprice, #bdiscount, #bdeliveryFee")
 		        			createForm.submit();
 		        		}
 		        	</script>

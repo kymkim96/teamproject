@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
-public class BookCreateRequestDto {
+public class BookDto {
 
 	private String isbn;
 	private String btitle;
