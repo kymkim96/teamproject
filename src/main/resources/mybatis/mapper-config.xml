@@ -8,5 +8,6 @@
 		<typeAlias alias="category" type="com.onemilliondreams.teamproject.dto.CategoryDto"/>
 		<typeAlias alias="review" 	type="com.onemilliondreams.teamproject.dto.ReviewDto"/>
 		<typeAlias alias="book" 	type="com.onemilliondreams.teamproject.dto.BookDto"/>
+		<typeAlias alias="auth" 	type="com.onemilliondreams.teamproject.dto.AuthDto"/>
 	</typeAliases>
 </configuration>

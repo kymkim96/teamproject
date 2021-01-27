@@ -1,5 +1,5 @@
 -- 생성자 Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   위치:        2021-01-27 11:21:14 KST
+--   위치:        2021-01-27 16:50:06 KST
 --   사이트:      Oracle Database 11g
 --   유형:      Oracle Database 11g
 
@@ -12,7 +12,7 @@
 CREATE TABLE books (
     isbn                      VARCHAR2(50) NOT NULL,
     btitle                    VARCHAR2(100) NOT NULL,
-    bsub_title                CLOB NOT NULL,
+    bsub_title                CLOB,
     bpublisher                VARCHAR2(100) NOT NULL,
     btranslator               VARCHAR2(100),
     bpublish_date             DATE NOT NULL,
