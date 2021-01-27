@@ -8,111 +8,137 @@ import org.springframework.web.multipart.MultipartFile;
 public class BookCreateRequestDto {
 
 	private String isbn;
-	private String title;
-	private String writer;
-	private String translator;
-	private String price;
-	private String publisher;
-	private MultipartFile imgUrl;
-	private boolean bestSeller;
-	private String video1;
-	private String page;
-	private String weight;
-	private String size;
-	private String information;
-	private String category;
-	@DateTimeFormat(pattern="yyyy-MM-dd") private Date publicationDate;
-	
+	private String btitle;
+	private String bsubTitle;
+	private String bpublisher;
+	private String btranslator;
+	@DateTimeFormat(pattern="yyyy-MM-dd") private Date bpublishDate;
+	private boolean bbestSeller;
+	private int bprice;
+	private int bdiscount;
+	private int bdeliveryFee;
+	private String bcontent;
+	private String bindex;
+	private String bimgLink;
+	private MultipartFile bimg;
+	private String bimgFilename;
+	private String bcontentType;
+	private String bstate;
+	private String bvideoLink;
+	private String categoriesCategoryName;
 	
 	public String getIsbn() {
 		return isbn;
 	}
-	public String getTitle() {
-		return title;
+	public String getBtitle() {
+		return btitle;
 	}
-	public String getWriter() {
-		return writer;
+	public String getBsubTitle() {
+		return bsubTitle;
 	}
-	public String getTranslator() {
-		return translator;
+	public String getBpublisher() {
+		return bpublisher;
 	}
-	public String getPrice() {
-		return price;
+	public String getBtranslator() {
+		return btranslator;
 	}
-	public String getPublisher() {
-		return publisher;
+	public Date getBpublishDate() {
+		return bpublishDate;
 	}
-	public MultipartFile getImgUrl() {
-		return imgUrl;
+	public boolean isBbestSeller() {
+		return bbestSeller;
 	}
-	public boolean isBestSeller() {
-		return bestSeller;
+	public int getBprice() {
+		return bprice;
 	}
-	public String getVideo1() {
-		return video1;
+	public int getBdiscount() {
+		return bdiscount;
 	}
-	public String getPage() {
-		return page;
+	public int getBdeliveryFee() {
+		return bdeliveryFee;
 	}
-	public String getWeight() {
-		return weight;
+	public String getBcontent() {
+		return bcontent;
 	}
-	public String getSize() {
-		return size;
+	public String getBindex() {
+		return bindex;
 	}
-	public String getInformation() {
-		return information;
+	public String getBimgLink() {
+		return bimgLink;
 	}
-	public String getCategory() {
-		return category;
+	public MultipartFile getBimg() {
+		return bimg;
 	}
-	public Date getPublicationDate() {
-		return publicationDate;
+	public String getBimgFilename() {
+		return bimgFilename;
+	}
+	public String getBcontentType() {
+		return bcontentType;
+	}
+	public String getBstate() {
+		return bstate;
+	}
+	public String getBvideoLink() {
+		return bvideoLink;
+	}
+	public String getCategoriesCategoryName() {
+		return categoriesCategoryName;
 	}
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setBsubTitle(String bsubTitle) {
+		this.bsubTitle = bsubTitle;
 	}
-	public void setTranslator(String translator) {
-		this.translator = translator;
+	public void setBpublisher(String bpublisher) {
+		this.bpublisher = bpublisher;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setBtranslator(String btranslator) {
+		this.btranslator = btranslator;
 	}
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
+	public void setBpublishDate(Date bpublishDate) {
+		this.bpublishDate = bpublishDate;
 	}
-	public void setImgUrl(MultipartFile imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setBbestSeller(boolean bbestSeller) {
+		this.bbestSeller = bbestSeller;
 	}
-	public void setBestSeller(boolean bestSeller) {
-		this.bestSeller = bestSeller;
+	public void setBprice(int bprice) {
+		this.bprice = bprice;
 	}
-	public void setVideo1(String video1) {
-		this.video1 = video1;
+	public void setBdiscount(int bdiscount) {
+		this.bdiscount = bdiscount;
 	}
-	public void setPage(String page) {
-		this.page = page;
+	public void setBdeliveryFee(int bdeliveryFee) {
+		this.bdeliveryFee = bdeliveryFee;
 	}
-	public void setWeight(String weight) {
-		this.weight = weight;
+	public void setBcontent(String bcontent) {
+		this.bcontent = bcontent;
 	}
-	public void setSize(String size) {
-		this.size = size;
+	public void setBindex(String bindex) {
+		this.bindex = bindex;
 	}
-	public void setInformation(String information) {
-		this.information = information;
+	public void setBimgLink(String bimgLink) {
+		this.bimgLink = bimgLink;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setBimg(MultipartFile bimg) {
+		this.bimg = bimg;
 	}
-	public void setPublicationDate(Date publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setBimgFilename(String bimgFilename) {
+		this.bimgFilename = bimgFilename;
 	}
-	
+	public void setBcontentType(String bcontentType) {
+		this.bcontentType = bcontentType;
+	}
+	public void setBstate(String bstate) {
+		this.bstate = bstate;
+	}
+	public void setBvideoLink(String bvideoLink) {
+		this.bvideoLink = bvideoLink;
+	}
+	public void setCategoriesCategoryName(String categoriesCategoryName) {
+		this.categoriesCategoryName = categoriesCategoryName;
+	}
 }

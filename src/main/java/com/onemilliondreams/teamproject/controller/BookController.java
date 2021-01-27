@@ -24,22 +24,8 @@ public class BookController {
 	@PostMapping("/books-create")
 	public String create(BookCreateRequestDto requestDto) {
 		
-		logger.info("ISBN: " + requestDto.getIsbn());
-		logger.info("제목: " + requestDto.getTitle());
-		logger.info("작가: " + requestDto.getWriter());
-		logger.info("옮긴이: " + requestDto.getTranslator());
-		logger.info("정가: " + requestDto.getPrice());
-		logger.info("출판사: " + requestDto.getPublisher());
-		logger.info("베스트셀러 여부: " + requestDto.isBestSeller());
-		logger.info("관련 비디오 링크: " + requestDto.getVideo1());
-		logger.info("쪽수: " + requestDto.getPage());
-		logger.info("무게: " + requestDto.getWeight());
-		logger.info("크기: " + requestDto.getSize());
-		logger.info("책 내용: " + requestDto.getInformation());
-		logger.info("카테고리: " + requestDto.getCategory());
-		logger.info("출간일: " + requestDto.getPublicationDate());
 		
-		MultipartFile image = requestDto.getImgUrl();
+		MultipartFile image = requestDto.getBimg();
 		String originalFilename = image.getOriginalFilename();
 		logger.info("파일명: " + image.getOriginalFilename());
 		
@@ -63,22 +49,7 @@ public class BookController {
 	@PostMapping("/books-update")
 	public String update(BookUpdateRequestDto requestDto) {
 		
-		logger.info("ISBN: " + requestDto.getIsbn());
-		logger.info("제목: " + requestDto.getTitle());
-		logger.info("작가: " + requestDto.getWriter());
-		logger.info("옮긴이: " + requestDto.getTranslator());
-		logger.info("정가: " + requestDto.getPrice());
-		logger.info("출판사: " + requestDto.getPublisher());
-		logger.info("베스트셀러 여부: " + requestDto.isBestSeller());
-		logger.info("관련 비디오 링크: " + requestDto.getVideo1());
-		logger.info("쪽수: " + requestDto.getPage());
-		logger.info("무게: " + requestDto.getWeight());
-		logger.info("크기: " + requestDto.getSize());
-		logger.info("책 내용: " + requestDto.getInformation());
-		logger.info("카테고리: " + requestDto.getCategory());
-		logger.info("출간일: " + requestDto.getPublicationDate());
-		
-		MultipartFile image = requestDto.getImgUrl();
+		MultipartFile image = requestDto.getBimg();
 		String originalFilename = image.getOriginalFilename();
 		logger.info("파일명: " + image.getOriginalFilename());
 		

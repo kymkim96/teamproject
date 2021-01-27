@@ -33,8 +33,15 @@
 	                        </div>
 	                        <span id="warning2"></span>
 	                        <div class="form-group">
-	                            <label for="writer">작가:</label>
-	                            <input type="text" class="form-control col-sm-8" id="writer" name="writer" value="박범신">
+	                            <label for="bwriter">작가:</label>
+	                            <div>
+	                            	<input type="text" class="form-control col-sm-8" id="bwriter" name="bwriter" style="display: inline-block">
+	                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">검색</button>
+	                            </div>
+	                            <small id="bwriterResult" class="form-text text-danger"></small>
+	                            <script>
+	                            	$("#bwriterSearch").click(function() {});
+	                            </script>
 	                        </div>
 	                        <span id="warning3"></span>
 	                        <div class="form-group">
@@ -72,8 +79,8 @@
 	                <div id="basic_second">
 	                    <div class="content">
 	                        <div class="form-group">
-	                            <label for="page">쪽수:</label>
-	                            <input type="text" class="form-control" id="page" name="page" value="406쪽">
+	                            <label for="bsubTitle">부제목:</label>
+	                            <input type="text" class="form-control" id="bsubTitle" name="bsubTitle">
 	                        </div>
 	                        <div class="form-group">
 	                            <label for="weight">무게:</label>
