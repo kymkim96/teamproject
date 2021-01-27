@@ -3,5 +3,6 @@
 <configuration >
 	<typeAliases>
 		<typeAlias alias="category" type="com.onemilliondreams.teamproject.dto.CategoryDto"/>
+		<typeAlias alias="review" type="com.onemilliondreams.teamproject.dto.ReviewDto"/>
 	</typeAliases>
 </configuration>
