@@ -29,33 +29,46 @@
 			                        </div>
 			                        <span id="warning1"></span>
 			                        <div class="form-group">
-			                            <label for="title">제목:</label>
-			                            <input type="text" class="form-control col-sm-8" id="title" name="title">
+			                            <label for="btitle">제목:</label>
+			                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle">
 			                        </div>
 			                        <span id="warning2"></span>
 			                        <div class="form-group">
-			                            <label for="writer">작가:</label>
-			                            <input type="text" class="form-control col-sm-8" id="writer" name="writer">
+			                            <label for="bwriter">작가:</label>
+			                            <div>
+			                            	<input type="text" class="form-control col-sm-8" id="bwriter" name="bwriter" style="display: inline-block">
+			                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">검색</button>
+			                            </div>
+			                            <small id="bwriterResult" class="form-text text-danger"></small>
+			                            <script>
+			                            	$("#bwriterSearch").click(function() {});
+			                            </script>
 			                        </div>
 			                        <span id="warning3"></span>
 			                        <div class="form-group">
-			                            <label for="translator">옮긴이:</label>
-			                            <input type="text" class="form-control col-sm-8" id="translator" name="translator">
+			                            <label for="btranslator">옮긴이:</label>
+			                            <input type="text" class="form-control col-sm-8" id="btranslator" name="btranslator">
 			                        </div>
 			                        <div class="form-group">
-			                            <label for="price">정가:</label>
-			                            <input type="text" class="form-control col-sm-8" id="price" name="price">
+			                            <label for="bprice">정가:</label>
+			                            <input type="text" class="form-control col-sm-8" id="bprice" name="bprice">
 			                        </div>
 			                        <div class="form-group">
-			                            <label for="publisher">출판사:</label>
-			                            <input type="text" class="form-control col-sm-8" id="publisher" name="publisher">
+			                            <label for="bpublisher">출판사:</label>
+			                            <input type="text" class="form-control col-sm-8" id="bpublisher" name="bpublisher">
 			                        </div>
 			                    </div>
 			                    <div id="basic_first_right">
 			                        <div class="input_item">
 			                            <div class="form-group">
-			                                <label for="imgUrl">이미지 URL 업로드:</label>
-			                                <input type="file" id="imgUrl" name="imgUrl"/>
+			                                <label for="bimg">이미지 파일 업로드:</label>
+			                                <input type="file" id="bimg" name="bimg"/>
+			                            </div>
+			                        </div>
+			                        <div class="input_item">
+			                            <div class="form-group">
+			                                <label for="bimgLink">이미지 URL 업로드:</label>
+			                                <input type="text" class="form-control" id="bimgLink" name="bimgLink" style="display: inline-block; width: 300px;"/>
 			                            </div>
 			                        </div>
 			                        <div class="input_item">
@@ -64,31 +77,43 @@
 			                                <input type="checkbox" id="bestSeller" name="bestSeller"/>
 			                            </div>
 			                        </div>
-			                        <div class="input_item_inner_list">
-			                            <%@ include file="/WEB-INF/views/admin/form/VideoUrlForm.jsp" %>
-			                            <%-- <script src="<%=application.getContextPath()%>/resources/js/modifyVideoUrl.js"></script> --%>
+			                        <div class="input_item">
+			                        	<div class="form-group">
+										    <label for="bvideoLink">관련 동영상 링크:</label>
+										    <input type="text" class="form-control" id="bvideoLink" name="bvideoLink" style="display: inline-block; width: 300px;"/>
+										</div>
+			                        </div>
+			                        <div class="input_item">
+				                        <div>
+					                        <label for="bcontent">책 소개:</label>
+					                        <textarea class="form-control" rows="10" cols="70" id="bcontent" name="bcontent"></textarea>
+					                    </div>
 			                        </div>
 			                    </div>
 			                </div>
 			                <div id="basic_second">
-			                    <div class="content">
-			                        <div class="form-group">
-			                            <label for="page">쪽수:</label>
-			                            <input type="text" class="form-control" id="page" name="page">
+			                	<div>
+			                		<div class="form-group" style="width: 500px;">
+			                            <label for="bsubTitle">부제목:</label>
+			                            <input type="text" class="form-control" id="bsubTitle" name="bsubTitle">
 			                        </div>
-			                        <div class="form-group">
-			                            <label for="weight">무게:</label>
-			                            <input type="text" class="form-control" id="weight" name="weight">
-			                        </div>
-			                        <div class="form-group">
-			                            <label for="size">크기:</label>
-			                            <input type="text" class="form-control" id="size" name="size">
-			                        </div>
-			                    </div>
-			                    <div class="book_information">
-			                        <label for="information">책 소개:</label>
-			                        <textarea class="form-control" rows="5" cols="70" id="information" name="information"></textarea>
-			                    </div>
+			                	</div>
+			                	<div class="d-flex">
+			                		<div class="content">
+				                        <div class="form-group">
+				                            <label for="bdiscount">할인율:</label>
+				                            <input type="text" class="form-control" id="bdiscount" name="bdiscount">
+				                        </div>
+				                        <div class="form-group">
+				                            <label for="bdeliveryFee">배송비:</label>
+				                            <input type="text" class="form-control" id="bdeliveryFee" name="bdeliveryFee">
+				                        </div>
+				                    </div>
+				                    <div class="ml-3">
+				                        <label for="bindex">목차:</label>
+				                        <textarea class="form-control" rows="5" cols="70" id="bindex" name="bindex"></textarea>
+				                    </div>
+			                	</div>
 			                </div>
 			            </div>
 			
@@ -118,7 +143,7 @@
 				                    <ul id="category_first_right">
 				                        <li>
 				                            <div class="form-group">
-				                                <input readonly class="form-control" id="categorySelect" name="categorySelect">
+				                                <input readonly class="form-control" id="categoriesCategoryName" name="categoriesCategoryName">
 				                            </div>
 				                        </li>
 				                        <li>
@@ -139,7 +164,7 @@
 			                    </div>
 			                    
 			                    <div id="date_first">
-	                                <input type="date" id="publicationDate" name="publicationDate"/>
+	                                <input type="date" id="bpublishDate" name="bpublishDate"/>
 	                                <ul id="date_first_right">
 				                        <li>
 				                            <div class="form-group">
@@ -198,6 +223,7 @@
 			       			} else {
 			       				$("#warning3").html("");
 			       			}
+			       			$("#bprice, #bdiscount, #bdeliveryFee")
 		        			createForm.submit();
 		        		}
 		        	</script>
