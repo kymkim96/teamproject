@@ -44,6 +44,7 @@
 			                            	$("#bwriterSearch").click(function() {});
 			                            </script>
 			                        </div>
+			                        <span id="warning2"></span>
 			                        <span id="warning3"></span>
 			                        <div class="form-group">
 			                            <label for="btranslator">옮긴이:</label>
@@ -213,7 +214,49 @@
 			       				});
 			       				return;
 			       			}
+		        			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			}
 			       			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			}
+		        			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			}
+		        			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			}
+		        			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			}
+		        			if ($("#writer").val() == null || $("#writer").val() == "") {
+			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
+			       				$("#warning3").css({
+			       					"color": "red",
+			       				});
+			       				return;
+			       			}
+		        			if ($("#writer").val() == null || $("#writer").val() == "") {
 			       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
 			       				$("#warning3").css({
 			       					"color": "red",
