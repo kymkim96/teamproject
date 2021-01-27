@@ -24,7 +24,7 @@
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/cart/index">나의쇼핑</a></button>
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/cart/index">쇼핑카트</a></button>
 					<c:if test="${loginStatus == null }">
-					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/auth/login1">회원가입</a></button>
+					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/auth/join1">회원가입</a></button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/auth/login1">로그인</a></button>
 					</c:if>
 					<br/>

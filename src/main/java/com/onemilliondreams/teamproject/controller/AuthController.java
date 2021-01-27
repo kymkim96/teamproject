@@ -1,7 +1,6 @@
 package com.onemilliondreams.teamproject.controller;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.onemilliondreams.teamproject.dto.AuthDto;
+import com.onemilliondreams.teamproject.service.AuthService;
 
 @Controller
 @RequestMapping("/auth")
@@ -34,34 +34,24 @@ public class AuthController {
 	}
 	
 	
-	@PostMapping("/login2")
-	public String login2(AuthDto authdto, HttpSession session) {
+	
+	
+	
+	@Resource
+	private AuthService authService;
+	
+	@GetMapping("join1")
+	public String join1() {
 		
-		String uid= authdto.getUid();
-		String upassword = authdto.getUpassword();
-		if(uid != "") {
-		session.setAttribute("loginStatus", uid);
-			logger.info("로그인성공");} 
-			
-			return "redirect:/";
-		
-		
-		
+		return "auth/join";
+	}
+	@PostMapping("join")
+	public String join(AuthDto dto)throws Exception {
+		authService.join(dto);
+		return "redirect:/";
 	}
 	
-	@PostMapping("/join5")
-	public String join5(AuthDto authdto, HttpSession session) {
-		
-		String uaid= authdto.getUaid();
-		String uapassword = authdto.getUapassword();
-		if(uaid != "") {
-		session.setAttribute("loginStatus", uaid);
-			logger.info("로그인성공");} 
-			return "redirect:/";
-		
-		
-		
-	}
+	
 	
 	
 }

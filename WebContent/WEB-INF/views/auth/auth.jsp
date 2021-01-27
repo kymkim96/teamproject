@@ -19,12 +19,12 @@
 			
 			<form id="form1"method="post" action="login2">
 				<div id="input1">
-					<input  type="text" placeholder="아이디" id="uid" name="uid"/><br/>
-					<input  type="password" placeholder="패스워드" id="upassword" name="upassword"/><br>
+					<input  type="text" placeholder="아이디" id="uaid" name="uaid"/><br/>
+					<input  type="password" placeholder="패스워드" id="uapassword" name="uapassword"/><br>
 					<span  id="error"></span>
 				</div>
 				<div class="loginForm" >	
-					<button onclick="f1()" id="login" ><p>로그인</p></button>
+					<button onclick="f1()" id="join" ><p>로그인</p></button>
 					
 				
 				</div>
@@ -35,33 +35,13 @@
 			
 			<div class="loginForm" >	
 					
-					<button id="join" ><p>회원가입</p></button>
+					<a class="btn" id="join" href="join1" ><p>회원가입</p></a>
 				
-				</div>
-			
-			<div>	
-				
-			</div>	
-			
-			<div id="form2" style="display:none;">
-				<form id="formf" method="post" action="join5">	
-					<div id="input1">
-						<input  type="text" placeholder="이름" id="uaname" name="uaname"/><br/>
-						<input  type="text" placeholder="아이디" id="uaid" name="uaid"/><br/>
-						<input  type="password" placeholder="패스워드" id="uapassword" name="uapassword"/>
-						<span  id="error1"></span>
-					</div>	
-						<div class="loginForm1" >
-							<button onclick="ff()"><p>회원가입</p></button>
-						</div>
-						
-					
-				</form>
-			
-				
-		
-		
 			</div>
+			
+			
+			
+			
 			
 			
 			<div>	

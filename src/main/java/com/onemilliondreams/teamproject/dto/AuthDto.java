@@ -1,10 +1,9 @@
 package com.onemilliondreams.teamproject.dto;
 
 public class AuthDto {
-	String uid;
-	String upassword;
 	String uaid;
 	String uapassword;
+	String uaname;
 	public String getUaid() {
 		return uaid;
 	}
@@ -17,17 +16,13 @@ public class AuthDto {
 	public void setUapassword(String uapassword) {
 		this.uapassword = uapassword;
 	}
-	public String getUid() {
-		return uid;
+	public String getUaname() {
+		return uaname;
 	}
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setUaname(String uaname) {
+		this.uaname = uaname;
 	}
-	public String getUpassword() {
-		return upassword;
-	}
-	public void setUpassword(String upassword) {
-		this.upassword = upassword;
-	}
+
+
 	
 }
