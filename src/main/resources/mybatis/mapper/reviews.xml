@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviews">
+	<select id="selectAll" resultType="review">
+		Select rstar,rdate,rcontent,USERS_UID
+		From reviews
+		order by rdate desc
+	</select>
+
+
 	<insert id="insert" parameterType="review">
 		insert into reviews
 		(rid,rstar,rdate,rcontent,USERS_UID,BOOKS_ISBN)

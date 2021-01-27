@@ -24,6 +24,8 @@ public class ReviewDto {
 	private String usersId;
 	private String booksIsbn;
 	
+	private String starChar;//★이 들어갈 자리
+	
 	
 	//getter, setter
 	public int getRid() {
@@ -62,6 +64,11 @@ public class ReviewDto {
 	public void setBooksIsbn(String booksIsbn) {
 		this.booksIsbn = booksIsbn;
 	}
-	
+	public String getStarChar() {
+		return starChar;
+	}
+	public void setStarChar(String starChar) {
+		this.starChar = starChar;
+	}
 		
 }

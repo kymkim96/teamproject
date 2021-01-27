@@ -15,9 +15,14 @@ public class BookService {
 
 	public BookDto getBook(String bookIsbn) {
 		BookDto book = bookDao.getBook(bookIsbn);
+		
+		//정수로 최종가격 변경
+		int Bftemp = book.getBfprice();
+		int bdistemp = 1- (int) (book.getBdiscount()*(0.01));
+		book.setBfprice(Bftemp*bdistemp);
 		return book;
 	}
 	
-	
+
 	
 }
