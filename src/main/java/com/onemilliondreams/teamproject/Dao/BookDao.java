@@ -20,4 +20,10 @@ public class BookDao {
 		return book;
 	}
 
+	public int insert(BookDto requestDto) {
+		
+		int rows = sst.insert("books.insert", requestDto);
+		return rows;
+	}
+
 }

@@ -27,7 +27,7 @@
 			                            <label for="isbn">ISBN:</label>
 			                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn">
 			                        </div>
-			                        <span id="warningIsbn"></span>
+			                        <span id="warningIsbn">${result}</span>
 			                        <div class="form-group">
 			                            <label for="btitle">제목:</label>
 			                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle">
@@ -51,7 +51,7 @@
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="bprice">정가:</label>
-			                            <input type="text" class="form-control col-sm-8" id="bprice" name="bprice">
+			                            <input type="number" class="form-control col-sm-8" id="bprice" name="bprice">
 			                        </div>
 			                        <span id="warningPrice"></span>
 			                        <div class="form-group">
@@ -105,11 +105,11 @@
 			                		<div class="content">
 				                        <div class="form-group">
 				                            <label for="bdiscount">할인율:</label>
-				                            <input type="text" class="form-control" id="bdiscount" name="bdiscount">
+				                            <input type="number" class="form-control" id="bdiscount" name="bdiscount">
 				                        </div>
 				                        <div class="form-group">
 				                            <label for="bdeliveryFee">배송비:</label>
-				                            <input type="text" class="form-control" id="bdeliveryFee" name="bdeliveryFee">
+				                            <input type="number" class="form-control" id="bdeliveryFee" name="bdeliveryFee">
 				                        </div>
 				                    </div>
 				                    <div class="ml-3">
