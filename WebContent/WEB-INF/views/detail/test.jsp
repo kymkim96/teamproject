@@ -36,7 +36,7 @@
 				<div class="detail" id="info">
 					<div id="detail_info">
 						<ul>
-							<h2>미스터 마켓2021</h2>
+							<h2>${book.btitle}</h2>
 							<h4>삼프로TV와 함께하는 2021년 주식시장 전망과 투자전략
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;
