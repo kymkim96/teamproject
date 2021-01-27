@@ -70,7 +70,6 @@
 }
 
 #basic_second {
-    display: flex;
     /*flex: 1;*/
     width: 940px;
     padding: 20px;
@@ -100,12 +99,6 @@
 
 .input_item {
     display: flex;
-    margin-bottom: 10px;
-}
-
-.input_item_inner_list {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 10px;
 }
 
@@ -182,9 +175,6 @@
     justify-content: center;
 }
 
-.book_information {
-    margin-left: 30px;
-}
 /*---------------------------------------------*/
 /*
     쇼핑카트 스타일시트
