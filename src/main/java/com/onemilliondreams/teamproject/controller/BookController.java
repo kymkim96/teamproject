@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.onemilliondreams.teamproject.dto.BookCreateRequestDto;
+import com.onemilliondreams.teamproject.dto.BookDto;
 import com.onemilliondreams.teamproject.dto.BookUpdateRequestDto;
 
 @Controller
@@ -22,26 +22,32 @@ public class BookController {
 	private String saveDirPath;
 	
 	@PostMapping("/books-create")
-	public String create(BookCreateRequestDto requestDto) {
-		
+	public String create(BookDto requestDto) {
 		
 		MultipartFile image = requestDto.getBimg();
-		String originalFilename = image.getOriginalFilename();
-		logger.info("파일명: " + image.getOriginalFilename());
 		
-		String saveDir = saveDirPath;
-		
-		File dir = new File(saveDir);
-		if (!dir.exists()) dir.mkdirs();
-		
-		String fileName = new Date().getTime() + originalFilename;
-		String filePath = saveDir + fileName;
-		
-		try {
-			image.transferTo(new File(filePath));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		if (!image.isEmpty()) {
+			String originalFilename = image.getOriginalFilename();
+			logger.info("파일명: " + image.getOriginalFilename());
+			
+			String saveDir = saveDirPath;
+			
+			File dir = new File(saveDir);
+			if (!dir.exists()) dir.mkdirs();
+			
+			String fileName = new Date().getTime() + originalFilename;
+			requestDto.setBimgFilename(fileName);
+			String contentType = image.getContentType();
+			requestDto.setBcontentType(contentType);
+			
+			String filePath = saveDir + fileName;
+			
+			try {
+				image.transferTo(new File(filePath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		
 		return "redirect:/";
 	}
