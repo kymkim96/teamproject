@@ -3,6 +3,8 @@ package com.onemilliondreams.teamproject.controller;
 import java.io.File;
 import java.util.Date;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,12 +20,17 @@ public class BookController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
+	// 서비스 주입
+	@Resource
+	// private BookService bookService; 
+	
 	@Value("${fileupload.filepath}")
 	private String saveDirPath;
 	
 	@PostMapping("/books-create")
 	public String create(BookDto requestDto) {
 		
+		// 이미지 업로드 처리
 		MultipartFile image = requestDto.getBimg();
 		
 		if (!image.isEmpty()) {
@@ -48,6 +55,8 @@ public class BookController {
 				e.printStackTrace();
 			}
 		} 
+		
+		// bookService.saveBook(requestDto);
 		
 		return "redirect:/";
 	}
