@@ -32,7 +32,10 @@
                <a href="#"><h5>새로나온 책</h5></a> 
                <a href="#"><h5>반디추천</h5></a>
             </div>
-         
+            
+         	<script>
+         		
+         	</script>
          
       
             <div id="add">   
@@ -91,7 +94,6 @@
                </div>
             
          </div>
-
 		
 		
 		

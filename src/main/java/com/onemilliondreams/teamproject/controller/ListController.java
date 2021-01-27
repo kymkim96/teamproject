@@ -33,6 +33,7 @@ public class ListController {
 		
 		return "list/book_list2";
 	}
+	
 
 	
 	@RequestMapping("/book_list3")
@@ -42,6 +43,7 @@ public class ListController {
 	}
 	
 	
+	}
 	
 
-}
+
