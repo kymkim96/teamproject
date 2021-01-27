@@ -112,10 +112,14 @@
 													class="btn btn-outline-secondary btn-sm">위시리스트</button>
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm"
-													id="sessionDeregister">삭제</button>
+													id="sessionDeregister${requestDto.id}">삭제</button>
 											</div>
 											<%-- <script>
-		                                    	$("#sessionDeregister").click(function() {
+												id = "<c:out value='${requestDto.id}'/>";
+												console.log(id);
+												console.log(`${id}`);
+												
+		                                    	$(`#sessionDeregister${id}`).click(function() {
 		                                    		$.ajax({
 		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
 		                                    			method: "post",
