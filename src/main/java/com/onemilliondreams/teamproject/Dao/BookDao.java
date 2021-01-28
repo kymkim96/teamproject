@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.onemilliondreams.teamproject.dto.BookDto;
+import com.onemilliondreams.teamproject.dto.Pager;
 
 
 @Repository
@@ -29,12 +30,23 @@ public class BookDao {
 	}
 	
 
-	
-	public List<BookDto> getbooklist(String category_name) {
-		List<BookDto> list = sst.selectList("books.selectByCn", category_name);
+	//카테고리네임
+	public List<BookDto> getbooklist(String categoryName) {
+		List<BookDto> list = sst.selectList("books.selectByCn", categoryName);
 		return list;
-		
 	}
+	
+	public int countAll() {
+		int count = sst.selectOne( "books.countAll");
+		return count;
+	}
+	
+	public List<BookDto> selectByPage(Pager pager){
+		List<BookDto> list = sst.selectList("books.selectByPager", pager);
+		return list;
+	}
+	
+	
 	public int update(BookDto requestDto) {
 		
 		int rows = sst.update("books.update", requestDto);

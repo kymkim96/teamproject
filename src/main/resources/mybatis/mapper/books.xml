@@ -10,7 +10,12 @@
 	</select>
 	
 	<select id="selectByCn" parameterType="string" resultType="book">
-		
+		select 
+			 isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
+			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex,
+			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
+		from books
+		where categories_category_name=#{category_name}
 	</select>
 	
 	<insert id="insert" parameterType="book">

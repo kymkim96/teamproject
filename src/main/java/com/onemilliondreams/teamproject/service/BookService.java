@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.BookDao;
-import com.onemilliondreams.teamproject.controller.BookAdminPageController;
 import com.onemilliondreams.teamproject.dto.BookDto;
+import com.onemilliondreams.teamproject.dto.Pager;
 
 @Service
 public class BookService {
@@ -40,9 +40,6 @@ public class BookService {
 		return book;
 	}
 	
-
-	
-
 	public String saveBook(BookDto requestDto) {
 		
 		BookDto book = bookDao.getBook(requestDto.getIsbn());
@@ -55,14 +52,20 @@ public class BookService {
 	}
 
 
-
-	public List<BookDto> getBooklist(String category_name) {
-		List<BookDto> list = bookDao.getbooklist(category_name);
+	//booklist
+	public List<BookDto> getBooklist(String categoryName) {
+		List<BookDto> list = bookDao.getbooklist(categoryName);
 		return list;
 	}
+	public int getTotalRows() {
+		int totalRows = bookDao.countAll();
+		return totalRows;
+	}
 	
-
-
+	public List<BookDto> getBookList(Pager pager){
+		List<BookDto>list = bookDao.selectByPage(pager);
+		return list;
+	}
 	
 	public void updateBook(BookDto requestDto) {
 		

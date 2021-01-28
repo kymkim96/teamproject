@@ -24,12 +24,7 @@
 			
 			<h3>자기계발서</h3>
 			
-			<div id="munu">
-				<a href="#"><h5>외국소설</h5></a> 
-				<a href="#"><h5>베스트셀러</h5></a>
-				<a href="#"><h5>새로나온 책</h5></a> 
-				<a href="#"><h5>반디추천</h5></a>
-			</div>
+		
 			
 			 <script>
 			$('#allcheck').on('click',function(){

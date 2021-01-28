@@ -13,7 +13,7 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
          <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_soyoung.css">
-         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    
    </head>
    
@@ -27,18 +27,7 @@
             
             
             <h3>현대소설</h3>
-            
-            
-            <div id="munu">
-               <a href="#"><h5>현대소설</h5></a> 
-               <a href="#"><h5>베스트셀러</h5></a>
-               <a href="#"><h5>새로나온 책</h5></a> 
-               <a href="#"><h5>반디추천</h5></a>
-            </div>
-            
-         
-         
-      
+
             <div id="add">   
                <strong>현대소설</strong>에 <strong>총 11,881권</strong>의 상품이 등록되어 있습니다.
                <div id = "choose">
@@ -48,12 +37,13 @@
                   <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button> 
                </div>
             </div>
-            
-           
-    <c:forEach var="book" items="${list}">        
-        
+    
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->  
+  
+    	<c:forEach var="book" items="${list}">
+    			
          <div>
-         <br/>
+       	  <br/>
          </div>
          
          <div id="item1">
@@ -99,7 +89,7 @@
             
          </div>
 		
-		
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->		
 		
 		<div id="item1">
 			
@@ -144,10 +134,7 @@
 			</div>
 		
 		
-		
-		
-		
-		
+
 		
          <div id="item1">
 
@@ -549,40 +536,32 @@
                   </ul>
                </div>
          </div>
-      </c:forEach>   
-         
-         <!-- 페이징  -->
-         <div>
-         <c:if test = "${pager.groupNo > 1}">
-	        <!-- 맨처음 -->
-         	<a class="btn btn-outline-warning btn-sm" href="book_list?pangeNo=1"> << </a> 
-         </c:if>	
     
-         	<!-- 이전 -->
-         		<a class="btn btn-outline-warning btn-sm mr-1" href="boardlist2?pageNo=${pager.startPageNo-1}"> < </a>
-           
-           
-           
-           <!--1~10 ???0만 뜨네??-->
-           <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">	
-           	<c:if test="${i == pager.pageNo}">
-         		<a class="btn btn-outline-warning btn-sm " href="book_list?pageNo=${i}">${i}</a>
-         	</c:if>
-         	<c:if test="${i != pager.pageNo}">
-         	<a class="btn btn-outline-warning btn-sm " href="book_list?pageNo=${i}">${i}</a>
-         	</c:if>
-         </c:forEach>
-         	
-         	
-         	
-         	<!-- 다음 -->
-         	<a class="btn btn-outline-warning btn-sm" href="book_list?pangeNo=${pager.endPageNo+1}"> >> </a>
-         	
-            <!-- 맨끝 -->
-         	<c:if test="${pager.groupNo < pager.totalGroupNo}">
-         		<a class="btn btn-outline-warning btn-sm" href="book_list?pangeNo=${pager.totalPageNo}"> > </a>
-         	</c:if>
-         </div>
+         
+    			  <div>
+               		 <a class="btn btn-outline-warning btn-sm mr-1" href="boardlist2?pageNo=1">처음</a>
+                				 
+               			 <!-- 시작 페이지일 떄는 이전이 안 보여야함. -->
+                	 <c:if test="${pager.groupNo >1}">
+               		 	<a class="btn btn-outline-warning btn-sm mr-1" href="boardlist2?pageNo=${pager.startPageNo-1} ">이전</a>
+                	 </c:if>	
+                				 	
+              		 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+               			<c:if test="${i == pager.pageNo}">
+             				<a class="btn btn-danger btn-sm mr-1" href="boardlist2?pageNo=${i}">${i}</a>
+               			</c:if>
+               			<c:if test="${i != pager.pageNo}">
+               				<a class="btn btn-outline-success btn-sm mr-1" href="boardlist2?pageNo=${i}">${i}</a>
+               			</c:if>
+               		 </c:forEach>
+                				 	 
+                		 <c:if test="${pager.groupNo < pager.totalGroupNo}">	 
+                			 <a class="btn btn-outline-warning btn-sm mr-1" href="boardlist2?pageNo=${pager.endPageNo+1}">다음</a>
+      					 </c:if>
+      							 
+                			<a class="btn btn-outline-warning btn-sm mr-1" href="boardlist2?pageNo=${pager.totalPageNo}">맨끝</a>
+         			</div>
+      </c:forEach>	
       </article>
    
 
