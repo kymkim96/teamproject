@@ -1,5 +1,5 @@
 -- 생성자 Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   위치:        2021-01-27 16:50:06 KST
+--   위치:        2021-01-28 11:54:44 KST
 --   사이트:      Oracle Database 11g
 --   유형:      Oracle Database 11g
 
@@ -41,19 +41,28 @@ ALTER TABLE books_writers ADD CONSTRAINT books_writers_pk PRIMARY KEY ( books_is
                                                                         writers_wid );
 
 CREATE TABLE cart_items (
-    cid               NUMBER(3) NOT NULL,
-    cprice            NUMBER(7) NOT NULL,
-    ccount            NUMBER(3) NOT NULL,
-    cdiscount         NUMBER(3) DEFAULT 0,
-    users_uaid        VARCHAR2(100),
+    ctid              NUMBER(3) NOT NULL,
+    ctprice           NUMBER(7) NOT NULL,
+    ctcount           NUMBER(3) NOT NULL,
+    ctdiscount        NUMBER(3) DEFAULT 0,
     books_isbn        VARCHAR2(50),
-    order_items_otid  VARCHAR2(10) NOT NULL
+    order_items_otid  VARCHAR2(10) NOT NULL,
+    carts_cid         NUMBER(3) NOT NULL
 );
 
 ALTER TABLE cart_items
-    ADD CONSTRAINT ck_cdiscount CHECK ( cdiscount BETWEEN 0 AND 100 );
+    ADD CONSTRAINT ck_cdiscount CHECK ( ctdiscount BETWEEN 0 AND 100 );
 
-ALTER TABLE cart_items ADD CONSTRAINT carts_pk PRIMARY KEY ( cid );
+ALTER TABLE cart_items ADD CONSTRAINT carts_pk PRIMARY KEY ( ctid );
+
+CREATE TABLE carts (
+    cid         NUMBER(3) NOT NULL,
+    camount     NUMBER(8) NOT NULL,
+    ctotal      NUMBER(3) NOT NULL,
+    users_uaid  VARCHAR2(100)
+);
+
+ALTER TABLE carts ADD CONSTRAINT carts_pk PRIMARY KEY ( cid );
 
 CREATE TABLE categories (
     category_name VARCHAR2(100) NOT NULL
@@ -65,17 +74,19 @@ CREATE TABLE order_items (
     otid        VARCHAR2(10) NOT NULL,
     otprice     NUMBER(7) NOT NULL,
     otcount     NUMBER(3) NOT NULL,
-    orders_oid  NUMBER(10) NOT NULL
+    orders_oid  NUMBER(10) NOT NULL,
+    otdiscount  NUMBER(3)
 );
 
 ALTER TABLE order_items ADD CONSTRAINT order_items_pk PRIMARY KEY ( otid );
 
 CREATE TABLE orders (
     oid         NUMBER(10) NOT NULL,
-    oprice      NUMBER(10) NOT NULL,
+    oamount     NUMBER(8) NOT NULL,
     oaddress    VARCHAR2(100) NOT NULL,
     users_uaid  VARCHAR2(100),
-    odate       DATE NOT NULL
+    odate       DATE NOT NULL,
+    ototal      NUMBER(3) NOT NULL
 );
 
 ALTER TABLE orders ADD CONSTRAINT orders_pk PRIMARY KEY ( oid );
@@ -125,11 +136,15 @@ ALTER TABLE cart_items
         REFERENCES books ( isbn );
 
 ALTER TABLE cart_items
+    ADD CONSTRAINT cart_items_carts_fk FOREIGN KEY ( carts_cid )
+        REFERENCES carts ( cid );
+
+ALTER TABLE cart_items
     ADD CONSTRAINT cart_items_order_items_fk FOREIGN KEY ( order_items_otid )
         REFERENCES order_items ( otid );
 
-ALTER TABLE cart_items
-    ADD CONSTRAINT cart_items_users_fk FOREIGN KEY ( users_uaid )
+ALTER TABLE carts
+    ADD CONSTRAINT carts_users_fk FOREIGN KEY ( users_uaid )
         REFERENCES users ( uaid )
             ON DELETE SET NULL;
 
@@ -151,14 +166,25 @@ ALTER TABLE reviews
         REFERENCES users ( uaid )
             ON DELETE CASCADE;
 
-CREATE SEQUENCE cart_items_cid_seq START WITH 1 NOCACHE ORDER;
+CREATE SEQUENCE cart_items_ctid_seq START WITH 1 NOCACHE ORDER;
 
-CREATE OR REPLACE TRIGGER cart_items_cid_trg BEFORE
+CREATE OR REPLACE TRIGGER cart_items_ctid_trg BEFORE
     INSERT ON cart_items
+    FOR EACH ROW
+    WHEN ( new.ctid IS NULL )
+BEGIN
+    :new.ctid := cart_items_ctid_seq.nextval;
+END;
+/
+
+CREATE SEQUENCE carts_cid_seq START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER carts_cid_trg BEFORE
+    INSERT ON carts
     FOR EACH ROW
     WHEN ( new.cid IS NULL )
 BEGIN
-    :new.cid := cart_items_cid_seq.nextval;
+    :new.cid := carts_cid_seq.nextval;
 END;
 /
 
@@ -210,16 +236,16 @@ END;
 
 -- Oracle SQL Developer Data Modeler 요약 보고서: 
 -- 
--- CREATE TABLE                             9
+-- CREATE TABLE                            10
 -- CREATE INDEX                             0
--- ALTER TABLE                             20
+-- ALTER TABLE                             22
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
 -- CREATE PACKAGE BODY                      0
 -- CREATE PROCEDURE                         0
 -- CREATE FUNCTION                          0
--- CREATE TRIGGER                           5
+-- CREATE TRIGGER                           6
 -- ALTER TRIGGER                            0
 -- CREATE COLLECTION TYPE                   0
 -- CREATE STRUCTURED TYPE                   0
@@ -232,7 +258,7 @@ END;
 -- CREATE DISK GROUP                        0
 -- CREATE ROLE                              0
 -- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          5
+-- CREATE SEQUENCE                          6
 -- CREATE MATERIALIZED VIEW                 0
 -- CREATE MATERIALIZED VIEW LOG             0
 -- CREATE SYNONYM                           0
