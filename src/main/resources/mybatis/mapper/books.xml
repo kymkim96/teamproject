@@ -9,6 +9,10 @@
 	
 	</select>
 	
+	<select id="selectByCn" parameterType="string" resultType="book">
+		
+	</select>
+	
 	<insert id="insert" parameterType="book">
 		<if test="bimgFilename == null">
 			insert into books
