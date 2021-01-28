@@ -1,5 +1,5 @@
 -- 생성자 Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   위치:        2021-01-28 11:54:44 KST
+--   위치:        2021-01-28 12:35:09 KST
 --   사이트:      Oracle Database 11g
 --   유형:      Oracle Database 11g
 
@@ -58,7 +58,7 @@ ALTER TABLE cart_items ADD CONSTRAINT carts_pk PRIMARY KEY ( ctid );
 CREATE TABLE carts (
     cid         NUMBER(3) NOT NULL,
     camount     NUMBER(8) NOT NULL,
-    ctotal      NUMBER(3) NOT NULL,
+    ctotal      NUMBER(4) NOT NULL,
     users_uaid  VARCHAR2(100)
 );
 
@@ -86,7 +86,7 @@ CREATE TABLE orders (
     oaddress    VARCHAR2(100) NOT NULL,
     users_uaid  VARCHAR2(100),
     odate       DATE NOT NULL,
-    ototal      NUMBER(3) NOT NULL
+    ototal      NUMBER(4) NOT NULL
 );
 
 ALTER TABLE orders ADD CONSTRAINT orders_pk PRIMARY KEY ( oid );

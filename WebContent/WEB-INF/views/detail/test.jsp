@@ -93,7 +93,7 @@
 					</div>
 					
 					<script>
-					$("#goCart").click(function() {
+					<%-- $("#goCart").click(function() {
 						const object = {
 								id: 1,
 							    title: "미스터 마켓2021",
@@ -118,7 +118,7 @@
 									}
 								},
 							});
-					});
+					}); --%>
 					</script>
 				</div>
 			</div>
