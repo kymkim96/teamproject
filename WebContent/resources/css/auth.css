@@ -23,7 +23,7 @@ body {
 			
 			
 			
-			.loginForm {
+			.loginForm10{
 				
 				margin-bottom: 10px;
 			
@@ -63,7 +63,21 @@ body {
 				padding-bottom: 5px;
 			
 			}
+			.loginForm1 a{
+				text-align: center;
+				font-size:large;
+				color:white;
+				height:50px;
+				background-color: #917354;
+				margin:5px;
+				padding: 15px;
+				display : inline-block;
+				border: 1px solid white;
+				width: 540px;
+				margin-left: 10px;
+				padding-bottom: 5px;
 			
+			}
 			
 			
 			#input1{

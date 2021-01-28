@@ -1,7 +1,12 @@
 package com.onemilliondreams.teamproject.controller;
 
-import javax.annotation.Resource;
+import java.io.PrintWriter;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,37 +23,71 @@ public class AuthController {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(AuthController.class);
 
+	@Resource
+	private AuthService authService;
 	
 	
-	
-	
-	@GetMapping("/login1")
-	public String login1() {
-		
-		return "auth/auth";
-	}
 	@GetMapping("/index")
 	public String index() {
 		
 		return "redirect:/";
 	}
 	
+	@GetMapping("/login1")
+	public String login1() {
+		
+		return "auth/auth";
+	}
+	
+	@PostMapping("/login")
+	public void login(AuthDto dto,HttpServletResponse response, HttpSession session)throws Exception {
+		String result = authService.login(dto);
+		if(result.equals("success")) {
+			session.setAttribute("sessionUaid", dto.getUaid());
+		}
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		JSONObject root = new JSONObject();
+		root.put("result", result);
+		pw.println(root.toString());
+		pw.flush();
+		pw.close();
+		
+		
+		
+	}
 	
 	
 	
 	
-	@Resource
-	private AuthService authService;
 	
-	@GetMapping("join1")
+	@GetMapping("/join1")
 	public String join1() {
 		
 		return "auth/join";
 	}
-	@PostMapping("join")
-	public String join(AuthDto dto)throws Exception {
-		authService.join(dto);
-		return "redirect:/";
+	@PostMapping("/join")
+	public void join(AuthDto dto, HttpServletResponse response)throws Exception {
+		
+		String result = authService.checkUaid(dto);
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		if(result.equals("중복")) {
+			JSONObject root= new JSONObject();
+			root.put("result",result);
+			pw.println(root.toString());
+			
+			
+		}else {
+			authService.join(dto);
+			JSONObject root= new JSONObject();
+			root.put("result",result);
+			pw.println(root.toString());
+		}
+		
+		pw.flush();
+		pw.close();
+		
 	}
 	
 	
