@@ -1,5 +1,8 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.*,java.text.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -33,9 +36,7 @@
                <a href="#"><h5>반디추천</h5></a>
             </div>
             
-         	<script>
-         		
-         	</script>
+         
          
       
             <div id="add">   
@@ -48,10 +49,13 @@
                </div>
             </div>
             
+           
+    <c:forEach var="book" items="${list}">        
+        
          <div>
          <br/>
          </div>
-
+         
          <div id="item1">
          
             <a id="book_img" href="<%=application.getContextPath()%>/detail?param1=1">
@@ -544,6 +548,40 @@
                      <li><button class="btn btn-primary" onclick="document.location='../../view/cart/Cart.html'">쇼핑카트담기</button></li>
                   </ul>
                </div>
+         </div>
+      </c:forEach>   
+         
+         <!-- 페이징  -->
+         <div>
+         <c:if test = "${pager.groupNo > 1}">
+	        <!-- 맨처음 -->
+         	<a class="btn btn-outline-warning btn-sm" href="book_list?pangeNo=1"> << </a> 
+         </c:if>	
+    
+         	<!-- 이전 -->
+         		<a class="btn btn-outline-warning btn-sm mr-1" href="boardlist2?pageNo=${pager.startPageNo-1}"> < </a>
+           
+           
+           
+           <!--1~10 ???0만 뜨네??-->
+           <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">	
+           	<c:if test="${i == pager.pageNo}">
+         		<a class="btn btn-outline-warning btn-sm " href="book_list?pageNo=${i}">${i}</a>
+         	</c:if>
+         	<c:if test="${i != pager.pageNo}">
+         	<a class="btn btn-outline-warning btn-sm " href="book_list?pageNo=${i}">${i}</a>
+         	</c:if>
+         </c:forEach>
+         	
+         	
+         	
+         	<!-- 다음 -->
+         	<a class="btn btn-outline-warning btn-sm" href="book_list?pangeNo=${pager.endPageNo+1}"> >> </a>
+         	
+            <!-- 맨끝 -->
+         	<c:if test="${pager.groupNo < pager.totalGroupNo}">
+         		<a class="btn btn-outline-warning btn-sm" href="book_list?pangeNo=${pager.totalPageNo}"> > </a>
+         	</c:if>
          </div>
       </article>
    

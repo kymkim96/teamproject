@@ -1,5 +1,7 @@
 package com.onemilliondreams.teamproject.Dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -26,10 +28,18 @@ public class BookDao {
 		return rows;
 	}
 	
+
+	
+	public List<BookDto> getbooklist(String category_name) {
+		List<BookDto> list = sst.selectList("books.selectByCn", category_name);
+		return list;
+		
+	}
 	public int update(BookDto requestDto) {
 		
 		int rows = sst.update("books.update", requestDto);
 		return rows;
+
 	}
 
 }

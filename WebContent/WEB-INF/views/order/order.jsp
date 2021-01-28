@@ -56,28 +56,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test="${size > 0}">
-								<c:forEach var="cartItem" items="${cartItems}">
+
+
+							<c:if test="${afterSize > 0}">
+								<script>
+									let id;
+								</script>
+								<c:forEach var="requestDto" items="${sessionCartList}">
 									<tr>
 										<td>
 											<div class="cart_product_name">
-												<c:if test="${cartItem.bimgLink == null}">
-													<img class="detail_1_link" 
-														 src="<%=application.getContextPath() %>/books-image"
-														width="50px" alt="default image">
-												</c:if>
-												
-												<c:if test="${cartItem.bimgLink != null}">
-													<img class="detail_1_link" src="${cartItem.bimgLink}"
-														width="50px" alt="default image">
-												</c:if>
+												<img class="detail_1_link" src="${requestDto.imgLink}"
+													width="50px" alt="default image">
 												<div style="margin-left: 5px">
-													<div class="detail_1_link">${cartItem.btitle}</div>
-													<div class="d-flex">
-														<span class="mr-2">작가</span>
-														<span class="mr-2">|</span>
-														<span>${cartItem.bpublisher}</span>
-													</div>
+													<div class="detail_1_link">${requestDto.title}</div>
+													<div>${requestDto.writer}| ${requestDto.publisher}</div>
 												</div>
 											</div>
 										</td>
@@ -89,11 +82,11 @@
 											%> <fmt:formatDate
 												value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
 										</td>
-										<td class="align-middle">${cartItem.ctprice}</td>
+										<td class="align-middle">${requestDto.price}</td>
 										<td>
 											<div>
 												<input type="number" id="item_count" name="item_count"
-													value="${cartItem.ctcount}" />
+													value="${requestDto.count}" />
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
 											</div> 
@@ -112,14 +105,14 @@
 		                                    	}); */
 			                                </script>
 										</td>
-										<td class="align-middle" id="resultPrice">${cartItem.ctprice * cartItem.ctcount}</td>
+										<td class="align-middle" id="resultPrice">${requestDto.price * requestDto.count}</td>
 										<td>
 											<div>
 												<button id="button_wishlist"
 													class="btn btn-outline-secondary btn-sm">위시리스트</button>
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm"
-													id="sessionDeregister${cartItem.ctid}">삭제</button>
+													id="sessionDeregister${requestDto.id}">삭제</button>
 											</div>
 											<%-- <script>
 												id = "<c:out value='${requestDto.id}'/>";
@@ -154,7 +147,7 @@
 								</c:forEach>
 							</c:if>
 
-							<c:if test="${size <= 0}">
+							<c:if test="${afterSize <= 0}">
 								<tr>
 									<td colspan="7">현재 장바구니에 저장된 품목이 없습니다</td>
 								</tr>
@@ -169,7 +162,7 @@
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
 											<span>배송비: 0원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
-											<span style="color: tomato">주문금액 합계: 원</span>
+											<span style="color: tomato">주문금액 합계: ${sumPrice}원</span>
 										</div>
 									</div>
 								</td>

@@ -4,11 +4,24 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	<typeAliases>
+	<typeAliases> 
+
+	
 		<typeAlias alias="category" type="com.onemilliondreams.teamproject.dto.CategoryDto"/>
 		<typeAlias alias="review" 	type="com.onemilliondreams.teamproject.dto.ReviewDto"/>
 		<typeAlias alias="book" 	type="com.onemilliondreams.teamproject.dto.BookDto"/>
 		<typeAlias alias="auth" 	type="com.onemilliondreams.teamproject.dto.AuthDto"/>
 		<typeAlias alias="order" 	type="com.onemilliondreams.teamproject.dto.OrderDto"/>
+
+			
+		<typeAlias alias="cart_item" type="com.onemilliondreams.teamproject.dto.CartItemDto"/> 			
+			
+		<typeAlias alias="cart" type="com.onemilliondreams.teamproject.dto.CartDto"/>				
+			
+		<typeAlias alias="writer" type="com.onemilliondreams.teamproject.dto.WriterDto"/> 				
+			
+		<typeAlias alias="cart_item_read" type="com.onemilliondreams.teamproject.dto.CartItemReadResponseDto"/> 		
+			
+
 	</typeAliases>
 </configuration>
