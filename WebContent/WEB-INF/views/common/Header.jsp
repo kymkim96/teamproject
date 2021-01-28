@@ -23,15 +23,15 @@
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/book-admin/create">등록</a></button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/cart/index">나의쇼핑</a></button>
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/cart/index">쇼핑카트</a></button>
-					<c:if test="${loginStatus == null }">
+					<c:if test="${sessionUaid == null }">
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/auth/join1">회원가입</a></button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/auth/login1">로그인</a></button>
 					</c:if>
 					<br/>
-					<c:if test="${loginStatus != null }">
+					<c:if test="${sessionUaid != null }">
 					
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/common/index1">로그아웃</a></button>
-					<p id="짹짹">${loginStatus}님 환영합니다.</p>
+					<p id="짹짹">${sessionUaid}님 환영합니다.</p>
 					</c:if>
 					<br/>
 				</div>

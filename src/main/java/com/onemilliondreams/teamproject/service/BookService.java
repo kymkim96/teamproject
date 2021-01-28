@@ -56,13 +56,17 @@ public class BookService {
 
 
 
-
 	public List<BookDto> getBooklist(String category_name) {
 		List<BookDto> list = bookDao.getbooklist(category_name);
 		return list;
 	}
 	
+
+
 	
-	
-	
+	public void updateBook(BookDto requestDto) {
+		
+		bookDao.update(requestDto);
+	}
+
 }

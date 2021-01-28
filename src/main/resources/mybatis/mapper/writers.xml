@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writers">
+	<select id=""></select>
+	
+	<insert id="insert" parameterType="writer">
+		insert into writers
+		(WID,WNAME,WCONTENT)
+		values
+		(WRITERS_WID_SEQ.nextval,#{wname},#{wcontent})
+	</insert>
+	
+	<select id="getwriterlist" parameterType="string" resultType="writer">
+		SELECT	b.isbn, w.wid, w.wname , w.wcontent
+		FROM 	books  b, books_writers  bw, writers  w
+		Where   b.isbn= bw.books_isbn
+       			and bw.writers_wid = w.wid
+        		and b.isbn=#{BookIsbn}
+	</select>
+
+</mapper>

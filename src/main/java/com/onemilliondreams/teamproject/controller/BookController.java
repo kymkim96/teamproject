@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onemilliondreams.teamproject.dto.BookDto;
-import com.onemilliondreams.teamproject.dto.BookUpdateRequestDto;
 import com.onemilliondreams.teamproject.service.BookService;
 
 @Controller
@@ -78,7 +77,7 @@ public class BookController {
 	}
 	
 	@PostMapping("/books-update")
-	public String update(BookUpdateRequestDto requestDto) {
+	public String update(BookDto requestDto) {
 		
 		// 이미지 업로드 처리
 		MultipartFile image = requestDto.getBimg();
@@ -113,6 +112,8 @@ public class BookController {
 		
 		// TODO: 카테고리 테이블 연결
 		requestDto.setCategoriesCategoryName("");
+		
+		bookService.updateBook(requestDto);
 		
 		return "redirect:/";
 	}

@@ -1,6 +1,5 @@
 package com.onemilliondreams.teamproject.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.onemilliondreams.teamproject.dto.BookDto;
 import com.onemilliondreams.teamproject.dto.ReviewDto;
+import com.onemilliondreams.teamproject.dto.WriterDto;
 import com.onemilliondreams.teamproject.service.BookService;
 import com.onemilliondreams.teamproject.service.ReviewService;
+import com.onemilliondreams.teamproject.service.WriterService;
 
 @Controller
 public class DetailPageController {
@@ -33,6 +34,8 @@ public class DetailPageController {
 	private BookService bookService;
 	@Resource
 	private ReviewService reviewService;
+	@Resource
+	private WriterService writerService;
 	
 	@RequestMapping("/detail")
 	public String detail1(@RequestParam("param1") String BookIsbn , Model model) {
@@ -43,6 +46,8 @@ public class DetailPageController {
 		model.addAttribute("book", book);
 		
 		//writer도 리스트로 받아야 함
+		List<WriterDto> writerlist = writerService.getWriterList(BookIsbn);
+		model.addAttribute("writerlist", writerlist);
 		
 		//review정보		
 		List<ReviewDto> list = reviewService.getReviewList(BookIsbn);

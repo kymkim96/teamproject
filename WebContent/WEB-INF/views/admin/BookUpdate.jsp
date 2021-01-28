@@ -71,13 +71,10 @@
 	                                <label for="bimg">이미지 파일 업로드:</label>
 	                                <input type="file" id="bimg" name="bimg"/>
 	                            </div>
+	                            <c:if test="${book.bcontentType != null}">
+	                        		<span id="warningContent" style="color: gray;">이미지 파일이 업로드되어 있습니다</span>	                        
+	                        	</c:if>
 	                        </div>
-	                        <script>
-	                        	if (${book.bcontentType}) {
-	                        		$("#bimg").attr("disabled", true);
-	                        		
-	                        	}
-	                        </script>
 	                        <div class="input_item">
 	                            <div class="form-group">
 	                                <label for="bimgLink">이미지 URL 업로드:</label>
