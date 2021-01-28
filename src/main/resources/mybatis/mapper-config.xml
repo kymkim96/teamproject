@@ -4,6 +4,7 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
+
 	<typeAliases> 
 
 	
@@ -23,5 +24,6 @@
 		<typeAlias alias="cart_item_read" type="com.onemilliondreams.teamproject.dto.CartItemReadResponseDto"/> 		
 			
 
+	
 	</typeAliases>
 </configuration>
