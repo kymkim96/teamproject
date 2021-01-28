@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,25 +19,28 @@
 			
 		<!-- 기본 필드 입력 -->
         <div class="content">
+        	<h1 class="mt-3 mb-5"><b>수정 페이지</b></h1>
+        	
         	<form id="updateForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
 	        	<div id="basic_field_layout">
 	                <h2><b>기본 필드 입력</b></h2>
 	                <div id="basic_first">
 	                    <div id="basic_first_left">
-	                        <div class="form-group">
+	                    	<div class="form-group">
 	                            <label for="isbn">ISBN:</label>
-	                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn" value="9788954610681">
+	                            <input readonly type="text" class="form-control col-sm-8" id="isbn" name="isbn" value="${book.isbn}">
 	                        </div>
-	                        <span id="warning1"></span>
+	                        <span id="warningIsbn">${result}</span>
 	                        <div class="form-group">
-	                            <label for="title">제목:</label>
-	                            <input type="text" class="form-control col-sm-8" id="title" name="title" value="은교">
+	                            <label for="btitle">제목:</label>
+	                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle" value="${book.btitle}">
 	                        </div>
-	                        <span id="warning2"></span>
+	                        <span id="warningTitle"></span>
 	                        <div class="form-group">
 	                            <label for="bwriter">작가:</label>
 	                            <div>
-	                            	<input type="text" class="form-control col-sm-8" id="bwriter" name="bwriter" style="display: inline-block">
+	                            	<input type="text" class="form-control col-sm-8" 
+	                            	id="bwriter" name="bwriter" style="display: inline-block" value="">
 	                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">검색</button>
 	                            </div>
 	                            <small id="bwriterResult" class="form-text text-danger"></small>
@@ -43,62 +48,94 @@
 	                            	$("#bwriterSearch").click(function() {});
 	                            </script>
 	                        </div>
-	                        <span id="warning3"></span>
+	                        <span id="warningWriter"></span>
 	                        <div class="form-group">
-	                            <label for="translator">옮긴이:</label>
-	                            <input type="text" class="form-control col-sm-8" id="translator" name="translator" value="">
+	                            <label for="btranslator">옮긴이:</label>
+	                            <input type="text" class="form-control col-sm-8" 
+	                            id="btranslator" name="btranslator" value="${book.btranslator}">
 	                        </div>
 	                        <div class="form-group">
-	                            <label for="price">정가:</label>
-	                            <input type="text" class="form-control col-sm-8" id="price" name="price" value="13,500원">
+	                            <label for="bprice">정가:</label>
+	                            <input type="number" class="form-control col-sm-8" id="bprice" name="bprice" value="${book.bprice}">
 	                        </div>
+	                        <span id="warningPrice"></span>
 	                        <div class="form-group">
-	                            <label for="publisher">출판사:</label>
-	                            <input type="text" class="form-control col-sm-8" id="publisher" name="publisher" value="문학동네">
+	                            <label for="bpublisher">출판사:</label>
+	                            <input type="text" class="form-control col-sm-8" id="bpublisher" name="bpublisher" value="${book.bpublisher}">
 	                        </div>
+	                        <span id="warningPublisher"></span>
 	                    </div>
 	                    <div id="basic_first_right">
 	                        <div class="input_item">
 	                            <div class="form-group">
-	                                <label for="imgUrl">이미지 URL 업로드:</label>
-	                                <input type="file" id="imgUrl" name="imgUrl"/>
+	                                <label for="bimg">이미지 파일 업로드:</label>
+	                                <input type="file" id="bimg" name="bimg"/>
+	                            </div>
+	                        </div>
+	                        <script>
+	                        	if (${book.bcontentType}) {
+	                        		$("#bimg").attr("disabled", true);
+	                        		
+	                        	}
+	                        </script>
+	                        <div class="input_item">
+	                            <div class="form-group">
+	                                <label for="bimgLink">이미지 URL 업로드:</label>
+	                                <input type="text" class="form-control" id="bimgLink" 
+	                                name="bimgLink" style="display: inline-block; width: 300px;" value="${book.bimgLink}"/>
 	                            </div>
 	                        </div>
 	                        <div class="input_item">
 	                            <div class="form-group">
 	                                <label for="bestSeller">베스트셀러 여부:</label>
-	                                <input type="checkbox" id="bestSeller" name="bestSeller" checked/>
+	                                <input type="checkbox" id="bestSeller" name="bestSeller" value="${book.bbestSeller}"/>
 	                            </div>
 	                        </div>
-	                        <div class="input_item_inner_list">
-	                            <%@ include file="/WEB-INF/views/admin/form/VideoUrlForm.jsp" %>
-	                            <%-- <script src="<%=application.getContextPath()%>/resources/js/modifyVideoUrl.js"></script> --%>
+	                        <div class="input_item">
+	                        	<div class="form-group">
+								    <label for="bvideoLink">관련 동영상 링크:</label>
+								    <input type="text" class="form-control" id="bvideoLink" 
+								    name="bvideoLink" style="display: inline-block; width: 300px;" value="${book.bvideoLink}"/>
+								</div>
 	                        </div>
+	                        <div class="input_item">
+	                        	<div>
+		                        	<label for="bcontent">책 소개:</label>
+			                        <textarea class="form-control" rows="10" cols="70" 
+			                        id="bcontent" name="bcontent">${book.bcontent}</textarea>
+	                        	</div>
+	                        </div>
+	                        <span id="warningContent"></span>
 	                    </div>
 	                </div>
 	                <div id="basic_second">
-	                    <div class="content">
-	                        <div class="form-group">
+	                	<div>
+	                		<div class="form-group" style="width: 500px;">
 	                            <label for="bsubTitle">부제목:</label>
-	                            <input type="text" class="form-control" id="bsubTitle" name="bsubTitle">
+	                            <input type="text" class="form-control" id="bsubTitle" name="bsubTitle" value="${book.bsubTitle}">
 	                        </div>
-	                        <div class="form-group">
-	                            <label for="weight">무게:</label>
-	                            <input type="text" class="form-control" id="weight" name="weight" value="0.5kg">
-	                        </div>
-	                        <div class="form-group">
-	                            <label for="size">크기:</label>
-	                            <input type="text" class="form-control" id="size" name="size" value="128 X 188">
-	                        </div>
-	                    </div>
-	                    <div class="book_information">
-	                        <label for="information">책 소개:</label>
-	                        <textarea class="form-control" rows="5" cols="70" id="information" name="information"></textarea>
-	                    </div>
+	                	</div>
+	                	<div class="d-flex">
+	                		<div class="content">
+		                        <div class="form-group">
+		                            <label for="bdiscount">할인율:</label>
+		                            <input type="number" class="form-control" id="bdiscount" name="bdiscount" value="${book.bdiscount}">
+		                        </div>
+		                        <div class="form-group">
+		                            <label for="bdeliveryFee">배송비:</label>
+		                            <input type="number" class="form-control" id="bdeliveryFee" name="bdeliveryFee" value="${book.bdeliveryFee}">
+		                        </div>
+		                    </div>
+		                    <div class="ml-3">
+		                        <label for="bindex">목차:</label>
+		                        <textarea class="form-control" rows="5" cols="70" id="bindex" name="bindex">${book.bindex}</textarea>
+		                        <span id="warningIndex"></span>
+		                    </div>
+	                	</div>
 	                </div>
 	            </div>
 	
-	          	<!-- 카테고리  및 출간일 선택 -->
+	            <!-- 카테고리  및 출간일 선택 -->
 	            <div id="category_calander_layout">
 	                <h2>카테고리 및 출간일 선택</h2>
 	                <div id="category_calander_content">
@@ -124,13 +161,14 @@
 		                    <ul id="category_first_right">
 		                        <li>
 		                            <div class="form-group">
-		                                <input readonly class="form-control" id="categorySelect" name="categorySelect">
+		                                <input readonly class="form-control" id="categoriesCategoryName"
+		                                 name="categoriesCategoryName" value="${book.categoriesCategoryName}">
 		                            </div>
 		                        </li>
 		                        <li>
 		                            <div class="form-group">
-		                                <label for="new_category">새로운 카테고리 입력:</label>
-		                                <input type="text" class="form-control" id="new_category" name="new_category">
+		                                <label for="newCategory">새로운 카테고리 입력:</label>
+		                                <input type="text" class="form-control" id="newCategory" name="newCategory">
 		                            </div>
 		                        </li>
 		                        <li>
@@ -139,18 +177,23 @@
 		                    </ul>
 		                    <script>
 		                    	$(".category_items").click(() => {
-		                    		$("#categorySelect").attr("value", event.target.innerText);
+		                    		$("#categoriesCategoryName").attr("value", event.target.innerText);
 		                    	});
 		                    </script>
 	                    </div>
 	                    
 	                    <div id="date_first">
-                            <input type="date" id="publicationDate" name="publicationDate"/>
-                            <ul id="date_first_right">
+	                    	<div>
+	                    		<input type="date" id="bpublishDate" name="bpublishDate" 
+	                    		value='<fmt:formatDate value="${book.bpublishDate}" pattern="yyyy-MM-dd"/>'/> </br>
+	                            <span id="warningPublishDate"></span>
+	                    	</div>
+	                              <ul id="date_first_right">
 		                        <li>
 		                            <div class="form-group">
 		                                <label for="selectedDate">선택한 출간일:</label>
-		                                <input readonly class="form-control" id="selectedDate" name="selectedDate">
+		                                <input readonly class="form-control" id="selectedDate" 
+		                                value='<fmt:formatDate value="${book.bpublishDate}" pattern="yyyy-MM-dd"/>'>
 		                            </div>
 		                        </li>
 		                        <li>
@@ -158,7 +201,7 @@
 		                        </li>
 		                    </ul>
 		                    <script>
-		                    	$("#publicationDate").change(() => {
+		                    	$("#bpublishDate").change(() => {
 		                    		$("#selectedDate").attr("value", event.target.value);
 		                    	});
 		                    	$("#btn-ini").click(() => {
@@ -175,46 +218,12 @@
 		                id="btn-update" 
 		                class="btn btn-outline-secondary btn-lg" 
 		                style="margin-right: 10px;" 
-		                onclick="updateSubmit()">
+		                onclick="submit()">
 	                	수정
 	                </button>
-	                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg" onclick="updateSubmit()">임시저장</button>
 	            </div>
         	</form>
-        	<script>
-	       		const updateSubmit = () => {
-	       			event.preventDefault();
-	       			const updateForm = document.querySelector("#updateForm");
-	       			if ($("#isbn").val() == null || $("#isbn").val() == "" ) {
-	       				$("#warning1").html("* ISBN은 반드시 입력해야 합니다.");
-	       				$("#warning1").css({
-	       					"color": "red",
-	       				});
-	       				return;
-	       			} else {
-	       				$("#warning1").html("");
-	       			}
-	       			if ($("#title").val() == null || $("#title").val() == "") {
-	       				$("#warning2").html("* 제목은 반드시 입력해야 합니다.");
-	       				$("#warning2").css({
-	       					"color": "red",
-	       				});
-	       				return;
-	       			} else {
-	       				$("#warning2").html("");
-	       			}
-	       			if ($("#writer").val() == null || $("#writer").val() == "") {
-	       				$("#warning3").html("* 작가는 반드시 입력해야 합니다.");
-	       				$("#warning3").css({
-	       					"color": "red",
-	       				});
-	       				return;
-	       			} else {
-	       				$("#warning3").html("");
-	       			}
-	       			updateForm.submit();
-	       		}
-	       	</script>
+        	<script src="<%=application.getContextPath()%>/resources/js/submit.js"></script>
         </div>
 			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>

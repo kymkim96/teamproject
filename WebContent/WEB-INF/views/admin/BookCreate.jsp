@@ -14,11 +14,11 @@
 	<body>	
 		<div id="layout">
 			<%@ include file="/WEB-INF/views/common/Header.jsp" %>
-			
-			<div class="content">
-				<!-- 기본 필드 입력 -->
 		        <div class="content">
+			        <h1 class="mt-3 mb-5"><b>등록 페이지</b></h1>
+		        
 		        	<form id="createForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-create">
+		        		<!-- 기본 필드 입력 -->
 			        	<div id="basic_field_layout">
 			                <h2><b>기본 필드 입력</b></h2>
 			                <div id="basic_first">
@@ -105,11 +105,11 @@
 			                		<div class="content">
 				                        <div class="form-group">
 				                            <label for="bdiscount">할인율:</label>
-				                            <input type="number" class="form-control" id="bdiscount" name="bdiscount">
+				                            <input type="number" class="form-control" id="bdiscount" name="bdiscount" value="0">
 				                        </div>
 				                        <div class="form-group">
 				                            <label for="bdeliveryFee">배송비:</label>
-				                            <input type="number" class="form-control" id="bdeliveryFee" name="bdeliveryFee">
+				                            <input type="number" class="form-control" id="bdeliveryFee" name="bdeliveryFee" value="0">
 				                        </div>
 				                    </div>
 				                    <div class="ml-3">
@@ -162,7 +162,7 @@
 				                    </ul>
 				                    <script>
 				                    	$(".category_items").click(() => {
-				                    		$("#categorySelect").attr("value", event.target.innerText);
+				                    		$("#categoriesCategoryName").attr("value", event.target.innerText);
 				                    	});
 				                    </script>
 			                    </div>
@@ -184,7 +184,7 @@
 				                        </li>
 				                    </ul>
 				                    <script>
-				                    	$("#publicationDate").change(() => {
+				                    	$("#bpublishDate").change(() => {
 				                    		$("#selectedDate").attr("value", event.target.value);
 				                    	});
 				                    	$("#btn-ini").click(() => {
@@ -194,14 +194,14 @@
 	                            </div>
 			                </div>
 			            </div>
-
+	
 			            <div id="finish_line">
-			                <button id="btn-submit" class="btn btn-outline-secondary btn-lg" onclick="createSubmit()">등록</button>
+			                <button id="btn-submit" class="btn btn-outline-secondary btn-lg" onclick="submit()">등록</button>
+			                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg" onclick="submit()">임시저장</button>
 			            </div>
 		        	</form>
-		        	<script src="<%=application.getContextPath()%>/resources/js/createSubmit.js"></script>
+		        	<script src="<%=application.getContextPath()%>/resources/js/submit.js"></script>
 		        </div>
-			</div>
 			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>
 		</div>

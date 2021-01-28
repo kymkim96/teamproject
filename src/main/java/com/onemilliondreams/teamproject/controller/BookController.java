@@ -1,14 +1,11 @@
 package com.onemilliondreams.teamproject.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -62,14 +59,18 @@ public class BookController {
 			}
 		} 
 		
+		// 폼 태그에 없어서 따로 null 처리
 		if (requestDto.getBstate() == null) {
 			requestDto.setBstate("");
 		}
 		
+		// TODO: 카테고리 테이블 연결
+		requestDto.setCategoriesCategoryName("");
+		
 		// ISBN 중복 검사
 		String result = bookService.saveBook(requestDto);
 		
-		if (result.equals("ISBN이 중복되었습니다.")) {
+		if (result.equals("ISBN is already used")) {
 			return "redirect:/book-admin/create?result=" + result;
 		}
 		
@@ -79,23 +80,39 @@ public class BookController {
 	@PostMapping("/books-update")
 	public String update(BookUpdateRequestDto requestDto) {
 		
+		// 이미지 업로드 처리
 		MultipartFile image = requestDto.getBimg();
-		String originalFilename = image.getOriginalFilename();
-		logger.info("파일명: " + image.getOriginalFilename());
 		
-		String saveDir = saveDirPath;
-		
-		File dir = new File(saveDir);
-		if (!dir.exists()) dir.mkdirs();
-		
-		String fileName = new Date().getTime() + originalFilename;
-		String filePath = saveDir + fileName;
-		
-		try {
-			image.transferTo(new File(filePath));
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (!image.isEmpty()) {
+			String originalFilename = image.getOriginalFilename();
+			logger.info("파일명: " + image.getOriginalFilename());
+			
+			String saveDir = saveDirPath;
+			
+			File dir = new File(saveDir);
+			if (!dir.exists()) dir.mkdirs();
+			
+			String fileName = new Date().getTime() + "-" + originalFilename;
+			requestDto.setBimgFilename(fileName);
+			String contentType = image.getContentType();
+			requestDto.setBcontentType(contentType);
+			
+			String filePath = saveDir + fileName;
+			
+			try {
+				image.transferTo(new File(filePath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+		// 폼 태그에 없어서 따로 null 처리
+		if (requestDto.getBstate() == null) {
+			requestDto.setBstate("");
+		}
+		
+		// TODO: 카테고리 테이블 연결
+		requestDto.setCategoriesCategoryName("");
 		
 		return "redirect:/";
 	}
