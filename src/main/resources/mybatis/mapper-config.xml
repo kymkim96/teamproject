@@ -10,5 +10,6 @@
 		<typeAlias alias="book" 	type="com.onemilliondreams.teamproject.dto.BookDto"/>
 		<typeAlias alias="auth" 	type="com.onemilliondreams.teamproject.dto.AuthDto"/>
 		<typeAlias alias="writer" 	type="com.onemilliondreams.teamproject.dto.WriterDto"/>
+		<typeAlias alias="pager" 	type="com.onemilliondreams.teamproject.dto.PagerDto"/>
 	</typeAliases>
 </configuration>

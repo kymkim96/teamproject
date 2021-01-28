@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.onemilliondreams.teamproject.dto.BookDto;
+import com.onemilliondreams.teamproject.dto.PagerDto;
 import com.onemilliondreams.teamproject.dto.ReviewDto;
 import com.onemilliondreams.teamproject.dto.WriterDto;
 import com.onemilliondreams.teamproject.service.BookService;
@@ -38,7 +39,10 @@ public class DetailPageController {
 	private WriterService writerService;
 	
 	@RequestMapping("/detail")
-	public String detail1(@RequestParam("param1") String BookIsbn , Model model) {
+	public String detail1(
+			@RequestParam("param1") String BookIsbn ,
+			@RequestParam(defaultValue="1") int pageNo,
+			Model model) {
 		
 		//book정보
 		BookDto book = new BookDto();
@@ -50,8 +54,19 @@ public class DetailPageController {
 		model.addAttribute("writerlist", writerlist);
 		
 		//review정보		
-		List<ReviewDto> list = reviewService.getReviewList(BookIsbn);
-		model.addAttribute("list", list);
+		List<ReviewDto> list1 = reviewService.getReviewList(BookIsbn);
+		model.addAttribute("list1", list1);
+		
+		//review-pager
+		int totalRows = reviewService.getTotalRows(BookIsbn);//ISBN에 해당하는 총 리뷰 개수
+		PagerDto pager = new PagerDto(3, 5, totalRows, pageNo);
+		pager.setBooksIsbn(BookIsbn);//해당 카테고리를 추가해준다!
+		List<ReviewDto> reviewlist = reviewService.getReviewList(pager);
+		
+		
+		model.addAttribute("BookIsbn", BookIsbn);
+		model.addAttribute("reviewlist", reviewlist);
+		model.addAttribute("pager", pager);
 		
 		logger.info("BookIsbn : "+ BookIsbn);
 		return "detail/test";
