@@ -14,6 +14,7 @@ public class AuthDao {
 	
 	public AuthDto selectAuth(String uaid) {
 		AuthDto auth=sst.selectOne("auths.selectAuth", uaid);
+		//내가 입력한 uaid에 대한 db데이터를 가져온다.
 		return auth;
 	}
 	
