@@ -1,5 +1,7 @@
 package com.onemilliondreams.teamproject.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -51,9 +53,20 @@ public class BookService {
 		bookDao.insert(requestDto);
 		return "성공";
 	}
+
+
+
+	public List<BookDto> getBooklist(String category_name) {
+		List<BookDto> list = bookDao.getbooklist(category_name);
+		return list;
+	}
+	
+
+
 	
 	public void updateBook(BookDto requestDto) {
 		
 		bookDao.update(requestDto);
 	}
+
 }
