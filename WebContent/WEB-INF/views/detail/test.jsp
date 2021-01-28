@@ -136,7 +136,11 @@
 				</div>
 				
 				<div class ="subInfo" id="writer" style="margin-botton: 20px;"><h4> 저자 </h4>	<hr/>
-					작가테이블에서 불러오기 아직 안했음
+					<c:forEach var="writer" items ="${writerlist}">
+					  	<h5>저자명 :  ${writer.wname}</h5><br/>
+						${writer.wcontent}
+						<br/><br/><br/>	
+				  	</c:forEach>
 				</div>
 				
 				<div class ="subInfo" id="index" style="margin-bottom: 10px;"><h4> 목차 </h4>

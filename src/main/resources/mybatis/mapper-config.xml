@@ -10,6 +10,7 @@
 		<typeAlias alias="book" 		type="com.onemilliondreams.teamproject.dto.BookDto"/>
 		<typeAlias alias="auth" 		type="com.onemilliondreams.teamproject.dto.AuthDto"/>
 		<typeAlias alias="cart_item" 	type="com.onemilliondreams.teamproject.dto.CartItemDto"/>
-		<typeAlias alias="cart" 	type="com.onemilliondreams.teamproject.dto.CartDto"/>
+		<typeAlias alias="cart" 		type="com.onemilliondreams.teamproject.dto.CartDto"/>
+		<typeAlias alias="writer" 		type="com.onemilliondreams.teamproject.dto.WriterDto"/>
 	</typeAliases>
 </configuration>
