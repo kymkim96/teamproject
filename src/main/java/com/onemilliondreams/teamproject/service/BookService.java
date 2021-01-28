@@ -27,8 +27,19 @@ public class BookService {
 			book.setBcontent(result.replace("\n", "<br/>"));
 		}
 		
+		//정수로 최종가격 변경
+		int Bftemp = book.getBfprice();
+		int bdistemp = 1- (int) (book.getBdiscount()*(0.01));
+		book.setBfprice(Bftemp*bdistemp);
+		
+		String result = book.getBcontent();
+		book.setBcontent(result.replace("\n", "<br/>"));
+		
 		return book;
 	}
+	
+
+	
 
 	public String saveBook(BookDto requestDto) {
 		

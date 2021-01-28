@@ -1,5 +1,8 @@
 package com.onemilliondreams.teamproject.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -10,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.onemilliondreams.teamproject.dto.BookDto;
+import com.onemilliondreams.teamproject.dto.ReviewDto;
 import com.onemilliondreams.teamproject.service.BookService;
+import com.onemilliondreams.teamproject.service.ReviewService;
 
 @Controller
 public class DetailPageController {
@@ -26,12 +31,22 @@ public class DetailPageController {
 	
 	@Resource
 	private BookService bookService;
+	@Resource
+	private ReviewService reviewService;
 	
 	@RequestMapping("/detail")
 	public String detail1(@RequestParam("param1") String BookIsbn , Model model) {
+		
+		//book정보
 		BookDto book = new BookDto();
 		book = bookService.getBook(BookIsbn);
 		model.addAttribute("book", book);
+		
+		//writer도 리스트로 받아야 함
+		
+		//review정보		
+		List<ReviewDto> list = reviewService.getReviewList(BookIsbn);
+		model.addAttribute("list", list);
 		
 		logger.info("BookIsbn : "+ BookIsbn);
 		return "detail/test";

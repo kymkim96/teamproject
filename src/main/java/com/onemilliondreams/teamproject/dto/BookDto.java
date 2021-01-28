@@ -27,6 +27,9 @@ public class BookDto {
 	private String bvideoLink;
 	private String categoriesCategoryName;
 	
+	private int bfprice;//book final price;
+	
+	
 	public String getIsbn() {
 		return isbn;
 	}
@@ -140,5 +143,11 @@ public class BookDto {
 	}
 	public void setCategoriesCategoryName(String categoriesCategoryName) {
 		this.categoriesCategoryName = categoriesCategoryName;
+	}
+	public int getBfprice() {
+		return bfprice;
+	}
+	public void setBfprice(int bfprice) {
+		this.bfprice = bfprice;
 	}
 }
