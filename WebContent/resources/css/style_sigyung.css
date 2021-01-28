@@ -223,7 +223,6 @@
 
 .cart_product_name {
     display: flex;
-    width: 200px;
 }
 
 .cart_product_name > div {

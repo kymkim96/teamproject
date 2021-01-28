@@ -2,5 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cart_items">
-	
+	<select id="selectItemList" resultType="cart_item_read" parameterType="int">
+		select 
+		    ctid, ctprice, ctcount, ctdiscount,
+		    bimg_filename, bcontent_type, bimg_link,
+		    btitle, bpublisher, isbn
+		from cart_items ct, books b
+		where 
+		    ct.books_isbn = b.isbn
+		    and carts_cid=#{cid}
+	</select>
 </mapper>

@@ -2,50 +2,43 @@ package com.onemilliondreams.teamproject.dto;
 
 public class CartItemDto {
 
-	private int cid;
-	private int cprice;
-	private int ccount;
-	private int cdiscount;
-	private String usersUaid;
+	private int ctid;
+	private int ctprice;
+	private int ctcount;
+	private int ctdiscount;
 	private String booksIsbn;
 	private String orderItemsOtid;
 	
 	
-	public int getCid() {
-		return cid;
+	public int getCtid() {
+		return ctid;
 	}
-	public int getCprice() {
-		return cprice;
+	public int getCtprice() {
+		return ctprice;
 	}
-	public int getCcount() {
-		return ccount;
+	public int getCtcount() {
+		return ctcount;
 	}
-	public int getCdiscount() {
-		return cdiscount;
+	public int getCtdiscount() {
+		return ctdiscount;
 	}
-	public String getUsersUaid() {
-		return usersUaid;
+	public void setCtid(int ctid) {
+		this.ctid = ctid;
+	}
+	public void setCtprice(int ctprice) {
+		this.ctprice = ctprice;
+	}
+	public void setCtcount(int ctcount) {
+		this.ctcount = ctcount;
+	}
+	public void setCtdiscount(int ctdiscount) {
+		this.ctdiscount = ctdiscount;
 	}
 	public String getBooksIsbn() {
 		return booksIsbn;
 	}
 	public String getOrderItemsOtid() {
 		return orderItemsOtid;
-	}
-	public void setCid(int cid) {
-		this.cid = cid;
-	}
-	public void setCprice(int cprice) {
-		this.cprice = cprice;
-	}
-	public void setCcount(int ccount) {
-		this.ccount = ccount;
-	}
-	public void setCdiscount(int cdiscount) {
-		this.cdiscount = cdiscount;
-	}
-	public void setUsersUaid(String usersUaid) {
-		this.usersUaid = usersUaid;
 	}
 	public void setBooksIsbn(String booksIsbn) {
 		this.booksIsbn = booksIsbn;

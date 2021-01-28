@@ -1,6 +1,10 @@
 package com.onemilliondreams.teamproject.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -11,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -74,6 +80,34 @@ public class BookController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	// 책 이미지 표시
+	@GetMapping("/books-image")
+	public void imageDownload(String isbn, HttpServletResponse response) throws Exception {
+		
+		BookDto book = bookService.getBook(isbn);
+		
+		String filePath = null;
+		String defaultImage = "default_image.jpg";
+		if (!book.getBimgFilename().equals(defaultImage)) {
+			String filename = book.getBimgFilename();
+			filePath = saveDirPath + filename;
+			
+			response.setContentType(book.getBimgFilename());
+			
+		} else if (book.getBimgFilename().equals(defaultImage)){
+			filePath = saveDirPath + defaultImage;
+			response.setContentType("image/jpg");
+		}
+		
+		OutputStream os = response.getOutputStream();
+		InputStream is = new FileInputStream(filePath);
+		FileCopyUtils.copy(is, os);
+		
+		os.flush();
+		os.close();
+		is.close();
 	}
 	
 	@PostMapping("/books-update")

@@ -15,7 +15,14 @@ public class CartDao {
 	
 	public CartDto selectByPk(int cid) {
 		
-		CartDto cart = sst.selectOne("cart.selectByPk", cid);
+		CartDto cart = sst.selectOne("carts.selectByPk", cid);
+		
+		return cart;
+	}
+
+	public CartDto selectByUaid(String uaid) {
+		
+		CartDto cart = sst.selectOne("carts.selectByUaid", uaid);
 		
 		return cart;
 	}

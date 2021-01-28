@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cart">
-	<select id="selectByPk">
+<mapper namespace="carts">
+	<select id="selectByPk" resultType="cart">
 		select * from carts where cid=#{cid}
+	</select>
+	
+	<select id="selectByUaid" resultType="cart">
+		select *
+		from carts
+		where users_uaid=#{uaid}
 	</select>
 </mapper>

@@ -20,4 +20,10 @@ public class CartService {
 		return cart;
 	}
 
+	public CartDto getCart(String uaid) {
+
+		CartDto cart = cartDao.selectByUaid(uaid);
+		return cart;
+	}
+
 }
