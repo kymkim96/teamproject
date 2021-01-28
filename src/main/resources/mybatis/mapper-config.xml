@@ -21,5 +21,6 @@
 			type="com.onemilliondreams.teamproject.dto.WriterDto"/>
 		<typeAlias alias="cart_item_read" 		
 			type="com.onemilliondreams.teamproject.dto.CartItemReadResponseDto"/>
+		<typeAlias alias="pager" 	type="com.onemilliondreams.teamproject.dto.PagerDto"/>
 	</typeAliases>
 </configuration>
