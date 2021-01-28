@@ -2,6 +2,8 @@ package com.onemilliondreams.teamproject.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ReviewDto {
 
 	//oracle
@@ -18,27 +20,27 @@ public class ReviewDto {
 	
 	//field
 	private int rid;
-	private int rstars;
+	private int rstar;
 	private Date rdate;
 	private String rcontent;
-	private String usersId;
+	private String usersUid;
 	private String booksIsbn;
 	
-	private String starChar;//★이 들어갈 자리
 	
 	
 	//getter, setter
+
 	public int getRid() {
 		return rid;
 	}
 	public void setRid(int rid) {
 		this.rid = rid;
 	}
-	public int getRstars() {
-		return rstars;
+	public int getRstar() {
+		return rstar;
 	}
-	public void setRstars(int rstars) {
-		this.rstars = rstars;
+	public void setRstar(int rstar) {
+		this.rstar = rstar;
 	}
 	public Date getRdate() {
 		return rdate;
@@ -52,23 +54,17 @@ public class ReviewDto {
 	public void setRcontent(String rcontent) {
 		this.rcontent = rcontent;
 	}
-	public String getUsersId() {
-		return usersId;
+	public String getUsersUid() {
+		return usersUid;
 	}
-	public void setUsersId(String usersId) {
-		this.usersId = usersId;
+	public void setUsersUid(String usersUid) {
+		this.usersUid = usersUid;
 	}
 	public String getBooksIsbn() {
 		return booksIsbn;
 	}
 	public void setBooksIsbn(String booksIsbn) {
 		this.booksIsbn = booksIsbn;
-	}
-	public String getStarChar() {
-		return starChar;
-	}
-	public void setStarChar(String starChar) {
-		this.starChar = starChar;
 	}
 		
 }

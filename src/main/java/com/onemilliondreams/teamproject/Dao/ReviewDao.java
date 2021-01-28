@@ -19,8 +19,8 @@ public class ReviewDao {
 		return rows;
 	}
 
-	public List<ReviewDto> selectAll() {
-		List<ReviewDto> list = sst.selectList("reviews.selectAll");
+	public List<ReviewDto> selectByFk(String BookIsbn) {
+		List<ReviewDto> list = sst.selectList("reviews.selectByFk",BookIsbn);
 		return list;
 	}
 	

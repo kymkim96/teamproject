@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviews">
-	<select id="selectAll" resultType="review">
-		Select rstar,rdate,rcontent,USERS_UID
+	<select id="selectByFk" parameterType="string" resultType="review">
+		Select rid,rstar,rdate,rcontent,USERS_UID,BOOkS_ISBN
 		From reviews
-		order by rdate desc
+		Where BOOKS_ISBN=#{BookIsbn}
+		order by rdate desc 
 	</select>
 
 
 	<insert id="insert" parameterType="review">
 		insert into reviews
-		(rid,rstar,rdate,rcontent,USERS_UID,BOOKS_ISBN)
+		(rid,rstar,rdate,rcontent,USERS_UID,BOOkS_ISBN)
 		values 
-		(reviews_rid_seq.nextval, #{rstars},sysdate,#{rcontent},#{usersId},#{booksIsbn})
+		(reviews_rid_seq.nextval, #{rstar},sysdate,#{rcontent},#{usersUid},#{booksIsbn})
 	</insert>
 
 </mapper>

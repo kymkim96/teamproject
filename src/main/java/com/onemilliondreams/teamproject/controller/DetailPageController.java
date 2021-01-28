@@ -44,12 +44,9 @@ public class DetailPageController {
 		
 		//writer도 리스트로 받아야 함
 		
-		//review정보
-		ReviewDto review = new ReviewDto();
-		
-		
-		List<ReviewDto> reviewList = reviewService.getReviewList();
-		model.addAttribute("reviewList", reviewList);
+		//review정보		
+		List<ReviewDto> list = reviewService.getReviewList(BookIsbn);
+		model.addAttribute("list", list);
 		
 		logger.info("BookIsbn : "+ BookIsbn);
 		return "detail/test";

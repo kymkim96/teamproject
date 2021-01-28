@@ -1,5 +1,7 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.*,java.text.*" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -44,6 +46,13 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								&nbsp;&nbsp;&nbsp;
 								</h4>
+							
+							<c:if test="${book.bpublisher!=null}">
+								<li><div id="infoL">출판사 :  </div> <div id="infoR">${book.bpublisher}</div></li>
+							</c:if>
+							<c:if test="${book.btranslator!=null}">
+								<li><div id="infoL">역식자 :  </div> <div id="infoR">${book.btranslator}</div></li>
+							</c:if>
 							
 							<li><div id="infoL">지은이 :  </div> <div id="infoR">이한영, 김효진 , 이다솔 외</div></li>
 											
@@ -150,13 +159,13 @@
 					<form enctype="multipart/form-data" name="reviewform" 
 							action="<%=application.getContextPath()%>/review/reviewwrite" method="post">
 		                  	
-		                  	<input id="usersId" name="usersId"   type="hidden" value="syeon"/>
-		                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="ISBN1"/>
+		                  	<input id="usersUid" name="usersUid"   type="hidden" value="syeon"/>
+		                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="${book.isbn}"/>
 		                  	
 		                  	<!-- 각 버튼을 누르면 숫자를 리턴할수 잇게 해야하는,,? 자바스크립트로 구현? -->
 		                    <div class="form-group">
-		                      <label for="rstars">별점</label>
-		                      <input type="number" class="form-control" id="rstars" name="rstars"/>
+		                      <label for="rstar">별점</label>
+		                      <input type="number" class="form-control" id="rstar" name="rstar"/>
 		                      <small class="form-text text-muted">필수 입력 사항입니다.</small>
 		                    </div>
 		                    
@@ -180,15 +189,24 @@
 				
 				
 				
-				<c:forEach var="review" items ="${reviewList}">
+				<c:forEach var="review" items ="${list}">
 				  	<div class="set">
 						<div id="pic2"><!-- <img alt="person.png" 
 						src="https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png"> -->
 						<ul  style="list-style: none; ">
-								<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;"> ${review.usersId}</div></li>
-								<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;"> ★★★★★ </div></li>
-								<li><div style="display:inline-block; width: 40px;">날짜 : </div> <div style="display:inline;"> ${review.rdate} </div></li>
-								
+								<li><div style="display:inline-block; width: 40px;" >ID : </div> <div style="display:inline;">${review.usersUid}</div></li>
+								<li><div style="display:inline-block; width: 40px;">별점 : </div> <div style="display:inline;">
+									<c:if test="${review.rstar==0}"> ☆☆☆☆☆</c:if> 
+									<c:if test="${review.rstar==1}"> ★☆☆☆☆</c:if> 
+									<c:if test="${review.rstar==2}"> ★★☆☆☆</c:if> 
+									<c:if test="${review.rstar==3}"> ★★★☆☆</c:if> 
+									<c:if test="${review.rstar==4}"> ★★★★☆</c:if> 
+									<c:if test="${review.rstar==5}"> ★★★★★</c:if>  
+								</div></li>
+								<li><div style="display:inline-block; width: 40px;">날짜 : </div>
+									<div style="display:inline;"><fmt:formatDate value="${review.rdate}" pattern="yyyy.MM.dd"/></div>
+								</li>
+																
 						</ul>
 						</div>
 						<div id="review"><p>

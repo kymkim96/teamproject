@@ -19,8 +19,8 @@ public class ReviewService {
 		reviewDao.insert(review);		
 	}
 
-	public List<ReviewDto> getReviewList() {
-		List<ReviewDto> list = reviewDao.selectAll();
+	public List<ReviewDto> getReviewList(String BookIsbn) {
+		List<ReviewDto> list = reviewDao.selectByFk(BookIsbn);
 		return list;
 	}
 	
