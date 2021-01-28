@@ -9,5 +9,6 @@
 		<typeAlias alias="review" 	type="com.onemilliondreams.teamproject.dto.ReviewDto"/>
 		<typeAlias alias="book" 	type="com.onemilliondreams.teamproject.dto.BookDto"/>
 		<typeAlias alias="auth" 	type="com.onemilliondreams.teamproject.dto.AuthDto"/>
+		<typeAlias alias="order" 	type="com.onemilliondreams.teamproject.dto.OrderDto"/>
 	</typeAliases>
 </configuration>

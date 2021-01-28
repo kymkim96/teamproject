@@ -228,8 +228,8 @@
 			</div>
 
 			<div class="button_line">
-				<button type="button" id="order_confirm"
-					class="btn btn-outline-secondary btn-lg">주문하기</button>
+				<a href="<%=application.getContextPath()%>/order/content"><button type="button" id="order_confirm"
+					class="btn btn-outline-secondary btn-lg">주문하기</button></a>
 				<button type="button" id="list_home_link"
 					class="btn btn-outline-secondary btn-lg">쇼핑 계속하기</button>
 			</div>
