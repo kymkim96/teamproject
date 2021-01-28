@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.onemilliondreams.teamproject.controller.CartPageController;
+import com.onemilliondreams.teamproject.dto.CartItemDto;
 import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
 
 @Repository
@@ -31,5 +32,11 @@ public class CartItemDao {
 //		}
 		
 		return cartItems;
+	}
+
+	public int update(CartItemDto cartItem) {
+		
+		int rows = sst.update("cart_items.update", cartItem);
+		return rows;
 	}
 }

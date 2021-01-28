@@ -12,4 +12,10 @@
 		    ct.books_isbn = b.isbn
 		    and carts_cid=#{cid}
 	</select>
+	
+	<update id="update" parameterType="cart_item">
+		update cart_items
+		set ctcount=#{ctcount}
+		where ctid=#{ctid}
+	</update>
 </mapper>

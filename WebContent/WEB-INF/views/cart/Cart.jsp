@@ -89,30 +89,47 @@
 											%> <fmt:formatDate
 												value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
 										</td>
-										<td class="align-middle">${cartItem.ctprice}</td>
+										<td class="align-middle">
+											<fmt:formatNumber 
+												value="${cartItem.ctprice}"
+												type="currency"
+												currencySymbol="\\"
+												/>
+										</td>
 										<td>
 											<div>
 												<input type="number" id="item_count" name="item_count"
 													value="${cartItem.ctcount}" />
 												<button type="button"
-													class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
-											</div> 
+													class="btn btn-outline-secondary btn-sm" 
+													id="countRefresh" 
+													onclick="onUpdate(${cartItem.ctid})">수정</button>
+											</div>
 											<script>
-												<%--
-												수량 비 합계 계산
-												c:out 태그는 EL을 자바스크립트 변수에 대입할 수 있게 해줌
-												--%>
-		                                    	/* $(() => {
-			                                    	$("#countRefresh").click(() => {
-			                                    		const price = "<c:out value='${requestDto.price}'/>";
-			                                    		const count = $("#item_count").val();
-			                                    		const result = price * count;
-			                                    		$("#resultPrice").text(result.toString());
-			                                    	});
-		                                    	}); */
+												function onUpdate (ctid) {
+													const ctcount = $("#item_count").val();
+													$.ajax({
+														url: "<%=application.getContextPath()%>/cartitem-update",
+														method: 'post',
+														data: {
+															ctid,
+															ctcount,
+														},
+														success: (data) => {
+															$("#resultPrice > formatNumber")
+																.attr(value, ${cartItem.ctprice}*ctcount);
+														},
+													});
+												}
 			                                </script>
 										</td>
-										<td class="align-middle" id="resultPrice">${cartItem.ctprice * cartItem.ctcount}</td>
+										<td class="align-middle" id="resultPrice">
+											<fmt:formatNumber 
+												value="${cartItem.ctprice * cartItem.ctcount}"
+												type="currency"
+												currencySymbol="\\"
+												/>
+										</td>
 										<td>
 											<div>
 												<button id="button_wishlist"

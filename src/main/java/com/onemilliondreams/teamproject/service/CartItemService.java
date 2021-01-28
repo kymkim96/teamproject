@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.CartItemDao;
+import com.onemilliondreams.teamproject.dto.CartItemDto;
 import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
 
 @Service
@@ -19,6 +20,11 @@ public class CartItemService {
 		
 		List<CartItemReadResponseDto> cartItems = cartItemDao.selectItemList(cid);
 		return cartItems;
+	}
+
+	public void updateCartItem(CartItemDto cartItem) {
+		
+		cartItemDao.update(cartItem);
 	}
 
 	
