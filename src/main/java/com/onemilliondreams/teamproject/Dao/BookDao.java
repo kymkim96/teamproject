@@ -25,5 +25,11 @@ public class BookDao {
 		int rows = sst.insert("books.insert", requestDto);
 		return rows;
 	}
+	
+	public int update(BookDto requestDto) {
+		
+		int rows = sst.update("books.update", requestDto);
+		return rows;
+	}
 
 }

@@ -33,4 +33,29 @@
 			#{bvideoLink}, #{categoriesCategoryName})
 		</if>
 	</insert>
+	
+	<update id="update" parameterType="book">
+		<if test="bimgFilename == null">
+			update books
+			set 
+			btitle=#{btitle}, bsub_title=#{bsubTitle}, bpublisher=#{bpublisher}, 
+			btranslator=#{btranslator}, bpublish_date=#{bpublishDate}, bbestseller=#{bbestSeller}, 
+			bprice=#{bprice}, bdiscount=#{bdiscount}, bdelivery_fee=#{bdeliveryFee}, bcontent=#{bcontent}, 
+			bindex=#{bindex}, bimg_link=#{bimgLink}, bstate=#{bstate}, bvideo_link=#{bvideoLink}, 
+			categories_category_name=#{categoriesCategoryName}
+			where isbn=#{isbn}
+		</if>
+		
+		<if test="bimgFilename != null">
+			update books
+			set
+			btitle=#{btitle}, bsub_title=#{bsubTitle}, bpublisher=#{bpublisher}, 
+			btranslator=#{btranslator}, bpublish_date=#{bpublishDate}, bbestseller=#{bbestSeller}, 
+			bprice=#{bprice}, bdiscount=#{bdiscount}, bdelivery_fee=#{bdeliveryFee}, bcontent=#{bcontent}, 
+			bindex=#{bindex}, bimg_filename=#{bimgFilename}, bcontent_type=#{bcontentType}, bstate=#{bstate}, 
+			bvideo_link=#{bvideoLink}, 
+			categories_category_name=#{categoriesCategoryName}
+			where isbn=#{isbn}
+		</if>
+	</update>
 </mapper>

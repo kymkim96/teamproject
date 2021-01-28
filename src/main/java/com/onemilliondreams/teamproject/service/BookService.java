@@ -51,4 +51,9 @@ public class BookService {
 		bookDao.insert(requestDto);
 		return "성공";
 	}
+	
+	public void updateBook(BookDto requestDto) {
+		
+		bookDao.update(requestDto);
+	}
 }
