@@ -32,4 +32,9 @@ public class CartItemDao {
 		
 		return cartItems;
 	}
+
+	public CartItemReadResponseDto selectCartItem(int ctid) {
+		CartItemReadResponseDto cartItem =sst.selectOne("cart_items.selectCartItem", ctid);
+		return cartItem;
+	}
 }

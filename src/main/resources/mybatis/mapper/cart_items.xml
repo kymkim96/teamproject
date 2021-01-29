@@ -12,4 +12,16 @@
 		    ct.books_isbn = b.isbn
 		    and carts_cid=#{cid}
 	</select>
+	
+	<select id="selectCartItem" resultType="cart_item_read" parameterType="int">
+		select 
+		    ctid, ctprice, ctcount, ctdiscount,
+		    bimg_filename, bcontent_type, bimg_link,
+		    btitle, bpublisher, isbn
+		from cart_items ct, books b
+		where 
+			ct.BOOKS_ISBN =b.isbn
+		    and ct.ctid = #{ctid}
+	</select>
+	
 </mapper>

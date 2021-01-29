@@ -11,7 +11,20 @@
 	</insert>
 	
 
-
+	<select id="countOrder" parameterType="review_count" resultType="int">
+		select count(*)
+		from 
+		    users u,
+		    orders o,
+		    order_items ot,
+		    cart_items ct
+		where
+		    o.users_uaid = u.uaid
+		    and ot.orders_oid = o.oid
+		    and ct.order_items_otid = ot.otid
+		    and ct.books_isbn = #{bookIsbn}
+		    and u.uaid = #{sessionUaid}
+	</select>
 
 
 

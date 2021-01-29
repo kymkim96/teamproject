@@ -156,8 +156,8 @@
 			<div class="memberReview">
 				
 				
-				
-				<c:if test="${sessionUaid!=null}">
+				<!-- 여러번 작성하게 하는걸 방지 하려면 어떻게 해야하는거지? -->
+				<c:if test="${ordered!=0}">
 					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
 					color: #917354;">
 						<h4> 회원리뷰 작성하기 </h4><hr/>
@@ -187,6 +187,7 @@
 					</div>
 				
 				</c:if>
+				
 				
 				
 				

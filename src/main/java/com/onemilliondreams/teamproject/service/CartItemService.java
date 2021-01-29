@@ -21,6 +21,11 @@ public class CartItemService {
 		return cartItems;
 	}
 
+	public CartItemReadResponseDto getCartItem(int ctid) {
+		CartItemReadResponseDto cartItem = cartItemDao.selectCartItem(ctid);
+		return cartItem;
+	}
+
 	
 }
 

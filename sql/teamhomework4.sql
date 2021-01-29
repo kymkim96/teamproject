@@ -1,7 +1,7 @@
--- ÏÉùÏÑ±Ïûê Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   ÏúÑÏπò:        2021-01-28 15:07:38 KST
---   ÏÇ¨Ïù¥Ìä∏:      Oracle Database 11g
---   Ïú†Ìòï:      Oracle Database 11g
+-- ª˝º∫¿⁄ Oracle SQL Developer Data Modeler 20.2.0.167.1538
+--   ¿ßƒ°:        2021-01-28 19:44:57 KST
+--   ªÁ¿Ã∆Æ:      Oracle Database 11g
+--   ¿Ø«¸:      Oracle Database 11g
 
 
 
@@ -74,7 +74,7 @@ CREATE TABLE order_items (
     otid        VARCHAR2(10) NOT NULL,
     otprice     NUMBER(7) NOT NULL,
     otcount     NUMBER(3) NOT NULL,
-    orders_oid  NUMBER(10) NOT NULL,
+    orders_oid  NUMBER(10),
     otdiscount  NUMBER(3)
 );
 
@@ -151,7 +151,8 @@ ALTER TABLE carts
 
 ALTER TABLE order_items
     ADD CONSTRAINT order_items_orders_fk FOREIGN KEY ( orders_oid )
-        REFERENCES orders ( oid );
+        REFERENCES orders ( oid )
+            ON DELETE SET NULL;
 
 ALTER TABLE orders
     ADD CONSTRAINT orders_users_fk FOREIGN KEY ( users_uaid )
@@ -235,7 +236,7 @@ END;
 
 
 
--- Oracle SQL Developer Data Modeler ÏöîÏïΩ Î≥¥Í≥†ÏÑú: 
+-- Oracle SQL Developer Data Modeler ø‰æ‡ ∫∏∞Ìº≠: 
 -- 
 -- CREATE TABLE                            10
 -- CREATE INDEX                             0
