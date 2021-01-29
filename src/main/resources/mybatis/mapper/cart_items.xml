@@ -14,6 +14,20 @@
 		order by ctid
 	</select>
 	
+	<select id="selectCount" resultType="int" parameterType="cart_item">
+		select count(*)
+		from cart_items
+		where carts_cid=#{cartsCid} and books_isbn=#{booksIsbn}
+	</select>
+	
+	<insert id="insert" parameterType="cart_item">
+		insert into cart_items 
+		(ctid, ctprice, ctcount, ctdiscount, books_isbn, carts_cid)
+		values 
+		(cart_items_ctid_seq.nextval, #{ctprice}, #{ctcount},
+		 #{ctdiscount}, #{booksIsbn}, #{cartsCid})
+	</insert>
+	
 	<update id="update" parameterType="cart_item">
 		update cart_items
 		set ctcount=#{ctcount}

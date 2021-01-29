@@ -45,4 +45,16 @@ public class CartItemDao {
 		int rows = sst.delete("cart_items.delete", ctid);
 		return rows;
 	}
+
+	public int insert(CartItemDto cartItem) {
+		
+		int rows = sst.insert("cart_items.insert", cartItem);
+		return rows;
+	}
+
+	public int selectCount(CartItemDto cartItem) {
+		
+		int rows = sst.selectOne("cart_items.selectCount", cartItem);
+		return rows;
+	}
 }

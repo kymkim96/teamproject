@@ -21,6 +21,12 @@ public class CartItemService {
 		List<CartItemReadResponseDto> cartItems = cartItemDao.selectItemList(cid);
 		return cartItems;
 	}
+	
+	public int getCartItems(CartItemDto cartItem) {
+		
+		int rows = cartItemDao.selectCount(cartItem);
+		return rows;
+	}
 
 	public void updateCartItem(CartItemDto cartItem) {
 		
@@ -32,6 +38,16 @@ public class CartItemService {
 		cartItemDao.delete(ctid);
 		return "success";
 	}
+
+	public String saveCartItem(CartItemDto cartItem) {
+		
+		int rows = cartItemDao.insert(cartItem);
+		if (rows > 0) {
+			return "success";
+		}
+		return "fail";
+	}
+
 }
 
 

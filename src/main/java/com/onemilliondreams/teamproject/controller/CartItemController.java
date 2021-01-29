@@ -1,12 +1,13 @@
 package com.onemilliondreams.teamproject.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.util.Locale;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.onemilliondreams.teamproject.dto.CartDto;
 import com.onemilliondreams.teamproject.dto.CartItemDto;
 import com.onemilliondreams.teamproject.service.CartItemService;
 
@@ -24,11 +26,6 @@ public class CartItemController {
 	
 	@Resource
 	private CartItemService cartItemService;
-	
-	@PostMapping("/cartitem-create")
-	public void create(HttpServletResponse response) {
-		
-	}
 	
 	@PostMapping("/cartitem-update")
 	public void update(CartItemDto cartItem, HttpServletResponse response) throws Exception {
