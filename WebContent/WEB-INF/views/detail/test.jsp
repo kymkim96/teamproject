@@ -34,7 +34,7 @@
 					<img alt="book.jpg" 
 					src='
 						<c:if test="${book.bimgLink!=null}">${book.bimgLink}</c:if>
-						<c:if test="${book.bimgLink==null}">${book.bimgFilename}</c:if>' 
+						<c:if test="${book.bimgLink==null}"><%=application.getContextPath() %>/books-image?isbn=${book.isbn}</c:if>' 
 					height="500px">
 				</div>
 				
@@ -116,8 +116,7 @@
 										$("#goCartResult").html(data.result);
 										$("#goCartResult").css({"color": "red"});
 									} else {
-										console.log(data.result);
-										<%-- window.location.href = "<%=application.getContextPath()%>/cart/index"; --%>
+										window.location.href = "<%=application.getContextPath()%>/cart/index";
 									}
 								}
 							},
