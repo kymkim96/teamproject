@@ -69,7 +69,7 @@
 												<div class="cart_product_name">
 													<c:if test="${cartItem.bimgLink == null}">
 														<img class="detail_1_link" 
-															 src="<%=application.getContextPath() %>/books-image"
+															 src="<%=application.getContextPath() %>/books-image?isbn=${cartItem.isbn}"
 															width="50px" alt="default image">
 													</c:if>
 													
