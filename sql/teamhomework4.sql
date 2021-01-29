@@ -1,7 +1,7 @@
--- »ı¼ºÀÚ Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   À§Ä¡:        2021-01-28 19:44:57 KST
---   »çÀÌÆ®:      Oracle Database 11g
---   À¯Çü:      Oracle Database 11g
+-- ìƒì„±ì Oracle SQL Developer Data Modeler 20.2.0.167.1538
+--   ìœ„ì¹˜:        2021-01-28 19:44:57 KST
+--   ì‚¬ì´íŠ¸:      Oracle Database 11g
+--   ìœ í˜•:      Oracle Database 11g
 
 
 
@@ -236,7 +236,7 @@ END;
 
 
 
--- Oracle SQL Developer Data Modeler ¿ä¾à º¸°í¼­: 
+-- Oracle SQL Developer Data Modeler ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: 
 -- 
 -- CREATE TABLE                            10
 -- CREATE INDEX                             0

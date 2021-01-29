@@ -72,8 +72,6 @@ public class CartPageController {
 		if (cart == null) {
 			size = 0;
 		} else {
-			Integer cid = cart.getCid();
-			logger.info(cid.toString());
 			List<CartItemReadResponseDto> cartItems = cartItemService.getCartItems(cart.getCid());
 			size = cartItems.size();
 			model.addAttribute("cartItems", cartItems);
@@ -82,63 +80,6 @@ public class CartPageController {
 		model.addAttribute("size", size);
 		
 		return "cart/Cart";
-	}
-	
-	@PostMapping("/session-register")
-	public String sessionRegister(CartCreateRequestDto requestDto, HttpSession session) {
-		
-		List<CartCreateRequestDto> list = new ArrayList<>();
-		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
-
-		if (list == null) {
-			// sessionCartList가 없는 경우 새롭게 생성하고 requestDto 리스트에 삽입
-			List<CartCreateRequestDto> newList = new ArrayList<>();
-			
-			
-			newList.add(requestDto);
-			session.setAttribute("sessionCartList", newList);
-			session.setAttribute("afterSize", newList.size());
-		} else {
-			
-			// 상품의 id가 같으면 장바구니 
-			for (CartCreateRequestDto item : list) {
-				if (item.getId() == requestDto.getId()) {
-					return "cart/alert";
-				}
-			}
-			
-			list.add(requestDto);
-			
-			session.setAttribute("sessionCartList", list);
-			session.setAttribute("afterSize", list.size());
-		}
-		
-		return "redirect:/cart/index";
-	}
-	
-	@PostMapping("/session-deregister")
-	public String sessionDeregister(int id, HttpSession session) {
-		
-		List<CartCreateRequestDto> list = new ArrayList<>();
-		list = (List<CartCreateRequestDto>) session.getAttribute("sessionCartList");
-		
-		Integer size = list.size();
-		logger.info(size.toString());
-		
-		for (int i=0; i<size; i++) {
-			Integer temp = list.get(i).getId();
-			logger.info(temp.toString());
-			if (list.get(i).getId() == id) {
-				list.remove(i);
-			}
-		}
-		
-		int afterSize = list.size();
-		session.setAttribute("afterSize", afterSize);
-		
-		session.setAttribute("sessionCartList", list);
-		
-		return "redirect:/cart/index";
 	}
 	
 	@GetMapping("/destroy")

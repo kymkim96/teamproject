@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.onemilliondreams.teamproject.controller.CartPageController;
+import com.onemilliondreams.teamproject.dto.CartItemDto;
 import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
 
 @Repository
@@ -37,4 +38,29 @@ public class CartItemDao {
 		CartItemReadResponseDto cartItem =sst.selectOne("cart_items.selectCartItem", ctid);
 		return cartItem;
 	}
+	
+	public int update(CartItemDto cartItem) {
+		
+		int rows = sst.update("cart_items.update", cartItem);
+		return rows;
+	}
+
+	public int delete(int ctid) {
+		
+		int rows = sst.delete("cart_items.delete", ctid);
+		return rows;
+	}
+
+	public int insert(CartItemDto cartItem) {
+		
+		int rows = sst.insert("cart_items.insert", cartItem);
+		return rows;
+	}
+
+	public int selectCount(CartItemDto cartItem) {
+		
+		int rows = sst.selectOne("cart_items.selectCount", cartItem);
+		return rows;
+	}
+	
 }
