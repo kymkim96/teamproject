@@ -107,14 +107,14 @@
 							method: "post",
 							data: dto,
 							success: (data) => {
-								<%-- if (data) {
-									if (data.indexOf("alert.jsp") != -1) {
-										$("#goCartResult").html(data);
+								if (data) {
+									if (data.result === "이미 장바구니에 존재합니다.") {
+										$("#goCartResult").html(data.result);
 										$("#goCartResult").css({"color": "red"});
 									} else {
 										window.location.href = "<%=application.getContextPath()%>/cart/index";
 									}
-								} --%>
+								}
 							},
 						});
 					});
