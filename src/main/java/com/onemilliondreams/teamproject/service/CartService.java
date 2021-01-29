@@ -2,16 +2,21 @@ package com.onemilliondreams.teamproject.service;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.onemilliondreams.teamproject.Dao.CartDao;
+import com.onemilliondreams.teamproject.Dao.CartItemDao;
 import com.onemilliondreams.teamproject.dto.CartDto;
 import com.onemilliondreams.teamproject.dto.CartItemDto;
 
 @Service
 public class CartService {
 
+	private static final Logger logger = LoggerFactory.getLogger(CartService.class);
+	
 	@Resource
 	private CartDao cartDao;
 	@Resource
