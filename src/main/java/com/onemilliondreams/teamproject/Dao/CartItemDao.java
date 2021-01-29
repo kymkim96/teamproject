@@ -39,4 +39,10 @@ public class CartItemDao {
 		int rows = sst.update("cart_items.update", cartItem);
 		return rows;
 	}
+
+	public int delete(int ctid) {
+		
+		int rows = sst.delete("cart_items.delete", ctid);
+		return rows;
+	}
 }

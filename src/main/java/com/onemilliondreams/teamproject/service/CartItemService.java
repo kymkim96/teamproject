@@ -27,7 +27,11 @@ public class CartItemService {
 		cartItemDao.update(cartItem);
 	}
 
-	
+	public String deleteCartItem(int ctid) {
+		
+		cartItemDao.delete(ctid);
+		return "success";
+	}
 }
 
 

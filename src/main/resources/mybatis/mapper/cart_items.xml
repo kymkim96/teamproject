@@ -11,6 +11,7 @@
 		where 
 		    ct.books_isbn = b.isbn
 		    and carts_cid=#{cid}
+		order by ctid
 	</select>
 	
 	<update id="update" parameterType="cart_item">
@@ -18,4 +19,9 @@
 		set ctcount=#{ctcount}
 		where ctid=#{ctid}
 	</update>
+	
+	<delete id="delete">
+		delete from cart_items
+		where ctid=#{ctid}
+	</delete>
 </mapper>

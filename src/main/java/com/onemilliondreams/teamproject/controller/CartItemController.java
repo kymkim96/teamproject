@@ -2,6 +2,8 @@ package com.onemilliondreams.teamproject.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -40,8 +42,28 @@ public class CartItemController {
 		 * 자바스크립트로 jstl을 동적 처리할 수 없음
 		 * amount 계산해서 원 단위, 가운데 콤마찍는걸로 서버에서 포매팅하기
 		 */
+		response.setContentType("application/json;charset=UTF-8");
+		JSONObject root = new JSONObject();
+		Integer amount = cartItem.getCtcount()*cartItem.getCtprice();
+		String formattedAmount = NumberFormat.getInstance(Locale.KOREA).format(amount);
+		root.put("amount", "\\" + formattedAmount);
 		
-		pw.println("success");
+		pw.println(root.toString());
+		pw.flush();
+		pw.close();
+	}
+	
+	@PostMapping("/cartitem-delete")
+	public void delete(int ctid, HttpServletResponse response) throws Exception {
+		
+		String result = cartItemService.deleteCartItem(ctid);
+		
+		PrintWriter pw = response.getWriter();
+		response.setContentType("application/json;charset=UTF-8");
+		JSONObject root = new JSONObject();
+		root.put("result", result);
+		
+		pw.println(root.toString());
 		pw.flush();
 		pw.close();
 	}
