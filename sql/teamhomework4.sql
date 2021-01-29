@@ -236,7 +236,7 @@ END;
 
 
 
--- Oracle SQL Developer Data Modeler 요약 보고서: 
+-- Oracle SQL Developer Data Modeler ��� ����: 
 -- 
 -- CREATE TABLE                            10
 -- CREATE INDEX                             0

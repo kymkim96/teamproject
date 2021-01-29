@@ -48,6 +48,11 @@ public class CartItemService {
 		return "fail";
 	}
 
+	public CartItemReadResponseDto getCartItem(int ctid) {
+		CartItemReadResponseDto cartItem = cartItemDao.selectCartItem(ctid);
+		return cartItem;
+	}
+
 }
 
 
