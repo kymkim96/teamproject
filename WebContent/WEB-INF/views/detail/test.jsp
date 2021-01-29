@@ -54,7 +54,9 @@
 								<li><div id="infoL">역식자 :  </div> <div id="infoR">${book.btranslator}</div></li>
 							</c:if>
 							
-							<li><div id="infoL">지은이 :  </div> <div id="infoR">이한영, 김효진 , 이다솔 외</div></li>
+							<li><div id="infoL">지은이 :  </div> <div id="infoR">
+								<c:forEach var="writer" items ="${writerlist}">${writer.wname}	&nbsp;</c:forEach>
+							</div></li>
 											
 
 						</ul>
@@ -71,7 +73,7 @@
 								</li>
 							<li><div id="infoL">배송비 : </div> <div id="infoR">
 								<c:if test="${(book.bdeliveryFee == null)||(book.bdeliveryFee == 0)}">무료</c:if>
-								<c:if test="${(book.bdeliveryFee != null)||(book.bdeliveryFee != 0)}">${book.bdeliveryFee}원</c:if>
+								<c:if test="${(book.bdeliveryFee != null)&&(book.bdeliveryFee != 0)}">${book.bdeliveryFee}원</c:if>
 							</div></li>
 							
 						</ul><hr/>
@@ -149,48 +151,49 @@
 			<!-- --------------------------------------------------------------------------------------------------------------- -->
 			
 			<div class="memberReview">
-				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
-				color: #917354;">
-					<h4> 회원리뷰 작성하기 </h4><hr/>
-				</div>
 				
 				
 				
-				<div class="reviewform">
-					<form enctype="multipart/form-data" name="reviewform" 
-							action="<%=application.getContextPath()%>/review/reviewwrite" method="post">
-		                  	
-		                  	<input id="usersUid" name="usersUid"   type="hidden" value="syeon"/>
-		                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="${book.isbn}"/>
-		                  	
-		                  	<!-- 각 버튼을 누르면 숫자를 리턴할수 잇게 해야하는,,? 자바스크립트로 구현? -->
-		                    <div class="form-group">
-		                      <label for="rstar">별점</label>
-		                      <input type="number" class="form-control" id="rstar" name="rstar"/>
-		                      <small class="form-text text-muted">필수 입력 사항입니다.</small>
-		                    </div>
-		                    
-		                    <div class="form-group">
-		                      <label for="rcontent"> 내용 </label>
-		                      <textarea id="rcontent" name="rcontent" class="form-control" rows="5" cols="50"></textarea>
-		                    </div>
-		                  
-		                	<button class="btn btn-primary"> 저장</button>
-		                	<!-- <a  class="btn btn-primary" href="boardlist2"> 취소</a> -->
-		            </form>
-				</div>
+				<c:if test="${sessionUaid!=null}">
+					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+					color: #917354;">
+						<h4> 회원리뷰 작성하기 </h4><hr/>
+					</div>
+					
+					<div class="reviewform">
+						<form enctype="multipart/form-data" name="reviewform" 
+								action="<%=application.getContextPath()%>/review/reviewwrite" method="post">
+			                  	
+			                  	<input id="usersUid" name="usersUid"   type="hidden" value="${sessionUaid}"/>
+			                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="${book.isbn}"/>
+			                  	
+			                  	<!-- 각 버튼을 누르면 숫자를 리턴할수 잇게 해야하는,,? 자바스크립트로 구현? -->
+			                    <div class="form-group">
+			                      <label for="rstar">별점</label>
+			                      <input type="number" class="form-control" id="rstar" name="rstar"/>
+			                      <small class="form-text text-muted">필수 입력 사항입니다.</small>
+			                    </div>
+			                    
+			                    <div class="form-group">
+			                      <label for="rcontent"> 내용 </label>
+			                      <textarea id="rcontent" name="rcontent" class="form-control" rows="5" cols="50"></textarea>
+			                    </div>
+			                  
+			                	<button class="btn btn-primary"> 저장</button>
+			            </form>
+					</div>
+				
+				</c:if>
 				
 				
+				
+		<!-- --------------------------------------------------------------------------------------------------------------- -->	
 				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
 				color: #917354;">
 					<h4> 회원리뷰 </h4><hr/>
 				</div>
-				
-				
-				
-				
-				
-				<c:forEach var="review" items ="${list}">
+								
+				<c:forEach var="review" items ="${reviewlist}">
 				  	<div class="set">
 						<div id="pic2"><!-- <img alt="person.png" 
 						src="https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png"> -->
@@ -216,8 +219,36 @@
 						<hr/>
 					</div>	    
 			  	</c:forEach>
-				
-
+			  	<!-- --------------------------------------------------------------------------------------------------------------- -->	
+			  	<div id="special" class="d-flex justify-content-between align-items-center" >
+								
+								
+					<div>
+						<a class="btn btn-outline-warning btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=1#special">처음</a>
+						
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-outline-warning btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=${pager.startPageNo-1}#special">이전</a>
+						</c:if>	
+						
+						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+							<c:if test="${i == pager.pageNo}">
+								<a class="btn btn-danger btn-sm ml-1" href="detail?param1=${BookIsbn}&pageNo=${i}#special">${i}</a>
+							</c:if>
+							<c:if test="${i != pager.pageNo}">
+								<a class="btn btn-outline-success btn-sm ml-1" href="detail?param1=${BookIsbn}&pageNo=${i}#special">${i}</a>
+							</c:if>
+						</c:forEach>
+						
+						<c:if test="${pager.groupNo < pager.totalGroupNo}">
+                        			<a class="btn btn-outline-warning btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=${pager.endPageNo+1}#special">  다음    </a>
+                      		</c:if>
+                      
+                      		<a class="btn btn-outline-warning btn-sm mr-1"  href="detail?param1=${BookIsbn}&pageNo=${pager.totalPageNo}#special">  맨끝 </a>
+					</div>	
+					
+				</div>
+			  	
+			  	
 			
 			</div>
 			

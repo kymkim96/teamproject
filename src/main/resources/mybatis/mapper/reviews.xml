@@ -7,6 +7,32 @@
 		Where BOOKS_ISBN=#{BookIsbn}
 		order by rdate desc 
 	</select>
+	
+	
+	<select id="countPart" parameterType="string" resultType="int">
+		select count(*) from reviews
+		Where BOOKS_ISBN=#{BookIsbn}
+	</select>
+
+	<select id="selectByPage" parameterType="pager" resultType="review">
+		select 
+			rno, 
+    		rid,rstar,rdate,rcontent,USERS_UID,BOOkS_ISBN	
+		From(
+		    select rownum as rno, 
+	    		rid,rstar,rdate,rcontent,USERS_UID,BOOkS_ISBN
+		    From (
+		        Select 
+					rid,rstar,rdate,rcontent,USERS_UID,BOOkS_ISBN
+				From reviews
+				Where BOOKS_ISBN=#{booksIsbn}
+				order by rdate desc
+				)
+		    where  rownum &lt;= #{endRowNo} 
+		    )
+		where rno &gt;= #{startRowNo} 
+	</select>
+
 
 
 	<insert id="insert" parameterType="review">

@@ -56,28 +56,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test="${size > 0}">
-								<c:forEach var="cartItem" items="${cartItems}">
+
+
+							<c:if test="${afterSize > 0}">
+								<script>
+									let id;
+								</script>
+								<c:forEach var="requestDto" items="${sessionCartList}">
 									<tr>
 										<td>
 											<div class="cart_product_name">
-												<c:if test="${cartItem.bimgLink == null}">
-													<img class="detail_1_link" 
-														 src="<%=application.getContextPath() %>/books-image"
-														width="50px" alt="default image">
-												</c:if>
-												
-												<c:if test="${cartItem.bimgLink != null}">
-													<img class="detail_1_link" src="${cartItem.bimgLink}"
-														width="50px" alt="default image">
-												</c:if>
+												<img class="detail_1_link" src="${requestDto.imgLink}"
+													width="50px" alt="default image">
 												<div style="margin-left: 5px">
-													<div class="detail_1_link">${cartItem.btitle}</div>
-													<div class="d-flex">
-														<span class="mr-2">작가</span>
-														<span class="mr-2">|</span>
-														<span>${cartItem.bpublisher}</span>
-													</div>
+													<div class="detail_1_link">${requestDto.title}</div>
+													<div>${requestDto.writer}| ${requestDto.publisher}</div>
 												</div>
 											</div>
 										</td>
@@ -89,96 +82,72 @@
 											%> <fmt:formatDate
 												value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
 										</td>
-										<td class="align-middle">
-											<fmt:formatNumber 
-												value="${cartItem.ctprice}"
-												type="currency"
-												currencySymbol="\\"
-												/>
-										</td>
+										<td class="align-middle">${requestDto.price}</td>
 										<td>
 											<div>
 												<input type="number" id="item_count" name="item_count"
-													value="${cartItem.ctcount}" onchange="getCount(${cartItem.ctid})" />
+													value="${requestDto.count}" />
 												<button type="button"
-													class="btn btn-outline-secondary btn-sm" 
-													id="countRefresh" 
-													onclick="onUpdate(${cartItem.ctid}, ${cartItem.ctprice})">수정</button>
-											</div>
+													class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
+											</div> 
+											<script>
+												<%--
+												수량 비 합계 계산
+												c:out 태그는 EL을 자바스크립트 변수에 대입할 수 있게 해줌
+												--%>
+		                                    	/* $(() => {
+			                                    	$("#countRefresh").click(() => {
+			                                    		const price = "<c:out value='${requestDto.price}'/>";
+			                                    		const count = $("#item_count").val();
+			                                    		const result = price * count;
+			                                    		$("#resultPrice").text(result.toString());
+			                                    	});
+		                                    	}); */
+			                                </script>
 										</td>
-										<td class="align-middle" id="resultPrice${cartItem.ctid}">
-											<fmt:formatNumber 
-												value="${cartItem.ctprice * cartItem.ctcount}"
-												type="currency"
-												currencySymbol="\\"
-												/>
-										</td>
+										<td class="align-middle" id="resultPrice">${requestDto.price * requestDto.count}</td>
 										<td>
 											<div>
 												<button id="button_wishlist"
 													class="btn btn-outline-secondary btn-sm">위시리스트</button>
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm"
-													id="btn-delete"
-													onclick="onDelete(${cartItem.ctid})">삭제</button>
+													id="sessionDeregister${requestDto.id}">삭제</button>
 											</div>
+											<%-- <script>
+												id = "<c:out value='${requestDto.id}'/>";
+												console.log(id);
+												console.log(`${id}`);
+												
+		                                    	$(`#sessionDeregister${id}`).click(function() {
+		                                    		$.ajax({
+		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
+		                                    			method: "post",
+		                                    			data: {
+		                                    				id: "<c:out value='${requestDto.id}'/>"
+		                                    			},
+		                                    		});
+		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
+		                                    	});
+			                                </script> --%>
 										</td>
 										<td class="align-middle"><input type="checkbox"
 											class="cart_item_checkbox" name="cart_item_checkbox" />
 										</td>
+										<script>
+											$("#header_item_checkbox").click(() => {
+												if (event.target.checked) {
+													$(".cart_item_checkbox").prop("checked", true);
+												} else {
+													$(".cart_item_checkbox").prop("checked", false);
+												}
+											})
+										</script>
 									</tr>
 								</c:forEach>
-								<script>
-									// df
-									let ctcount;
-									const getCount = function(ctid) {
-										ctcount = event.target.value;
-									};
-								
-									function onUpdate (ctid, ctprice) {
-										$.ajax({
-											url: "<%=application.getContextPath()%>/cartitem-update",
-											method: 'post',
-											data: {
-												ctid,
-												ctcount,
-												ctprice,
-											},
-											success: (data) => {
-												$("#resultPrice" + ctid)
-													.html(data.amount);
-											},
-										});
-									}	
-								
-									const onDelete = function(ctid) {
-										$.ajax({
-											url: "<%=application.getContextPath()%>/cartitem-delete",
-											method: 'post',
-											data: {
-												ctid,
-											},
-											success: function(data) {
-												if (data.result === 'success') {
-													window.location.href = "<%=application.getContextPath()%>/cart/index";
-												} else {
-													alert("삭제가 실패했습니다.");
-												}
-											}
-										});
-									};
-								
-									$("#header_item_checkbox").click(() => {
-										if (event.target.checked) {
-											$(".cart_item_checkbox").prop("checked", true);
-										} else {
-											$(".cart_item_checkbox").prop("checked", false);
-										}
-									})
-								</script>
 							</c:if>
 
-							<c:if test="${size <= 0}">
+							<c:if test="${afterSize <= 0}">
 								<tr>
 									<td colspan="7">현재 장바구니에 저장된 품목이 없습니다</td>
 								</tr>
@@ -187,13 +156,13 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_count_result">수량: ${size}종(1개)</div>
+										<div class="item_count_result">수량: 1종(1개)</div>
 										<div class="item_price_result">
 											<span>총 상품 금액: ${sumPrice}원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
 											<span>배송비: 0원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
-											<span style="color: tomato">주문금액 합계: 원</span>
+											<span style="color: tomato">주문금액 합계: ${sumPrice}원</span>
 										</div>
 									</div>
 								</td>
