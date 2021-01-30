@@ -26,6 +26,7 @@ public class BookDto {
 	private String bstate;
 	private String bvideoLink;
 	private String categoriesCategoryName;
+	private String[] bwriters;
 	
 	private int bfprice;//book final price;
 	
@@ -149,5 +150,11 @@ public class BookDto {
 	}
 	public void setBfprice(int bfprice) {
 		this.bfprice = bfprice;
+	}
+	public String[] getBwriters() {
+		return bwriters;
+	}
+	public void setBwriters(String[] bwriters) {
+		this.bwriters = bwriters;
 	}
 }

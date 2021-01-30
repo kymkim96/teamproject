@@ -1,5 +1,6 @@
 package com.onemilliondreams.teamproject.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.CartItemDao;
+import com.onemilliondreams.teamproject.dto.BookWriterReadResponseDto;
 import com.onemilliondreams.teamproject.dto.CartItemDto;
 import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
 
@@ -15,11 +17,21 @@ public class CartItemService {
 
 	@Resource
 	private CartItemDao cartItemDao;
+	@Resource
+	private BookWriterService bookWriterService;
 	
 	public List<CartItemReadResponseDto> getCartItems(int cid) {
 		
 		List<CartItemReadResponseDto> cartItems = cartItemDao.selectItemList(cid);
-		return cartItems;
+		List<CartItemReadResponseDto> newList = new ArrayList<>();
+		
+		for (CartItemReadResponseDto cartItem : cartItems) {
+			List<BookWriterReadResponseDto> bookWriterlist = bookWriterService.getBookWriterWname(cartItem.getIsbn());
+			cartItem.setBookWriterlist(bookWriterlist);
+			newList.add(cartItem);
+		}
+		
+		return newList;
 	}
 	
 	public int getCartItems(CartItemDto cartItem) {

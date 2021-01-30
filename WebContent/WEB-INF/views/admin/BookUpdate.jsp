@@ -215,12 +215,12 @@
 		                id="btn-update" 
 		                class="btn btn-outline-secondary btn-lg" 
 		                style="margin-right: 10px;" 
-		                onclick="submit()">
+		                onclick="submitForm()">
 	                	수정
 	                </button>
 	            </div>
         	</form>
-        	<script src="<%=application.getContextPath()%>/resources/js/submit.js"></script>
+        	<script src="<%=application.getContextPath()%>/resources/js/submitForm.js"></script>
         </div>
 			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>

@@ -74,7 +74,9 @@
 												<div style="margin-left: 5px">
 													<div class="detail_1_link">${cartItem.btitle}</div>
 													<div class="d-flex">
-														<span class="mr-2">작가</span>
+														<c:forEach var="bwriter" items="${cartItem.bookWriterlist}">
+															<span class="mr-2">${bwriter.wname}</span>
+														</c:forEach>
 														<span class="mr-2">|</span>
 														<span>${cartItem.bpublisher}</span>
 													</div>

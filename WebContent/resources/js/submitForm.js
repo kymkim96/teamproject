@@ -1,4 +1,4 @@
-const submit = () => {
+const submitForm = () => {
 	event.preventDefault();
 	$("#warningIsbn").html("");
 	$("#warningTitle").html("");
