@@ -21,7 +21,7 @@
         <div class="content">
         	<h1 class="mt-3 mb-5"><b>수정 페이지</b></h1>
         	
-        	<form id="updateForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
+        	<form id="bookForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
 	        	<div id="basic_field_layout">
 	                <h2><b>기본 필드 입력</b></h2>
 	                <div id="basic_first">
@@ -184,9 +184,9 @@
 	                    <div id="category_calander_first">
 	                    	<table class="category_table">
 		                        <tr>
-		                            <td class="category_items">카테고리1</td>
-		                            <td class="category_items">카테고리2</td>
-		                            <td class="category_items">카테고리3</td>
+		                           <td class="category_items">현대소설</td>
+		                           <td class="category_items">자기계발서</td>
+		                           <td class="category_items">해외소설</td>
 		                        </tr>
 		                        <tr>
 		                            <td class="category_items">카테고리4</td>

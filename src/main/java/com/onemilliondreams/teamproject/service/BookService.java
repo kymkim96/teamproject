@@ -62,7 +62,6 @@ public class BookService {
 			for (String writer : requestDto.getBwriters()) {
 				Integer wid = writerService.getWriterByWname(writer);
 				if (wid != null) {
-					logger.info(wid.toString());
 					BookWriterDto bookWriter = new BookWriterDto();
 					bookWriter.setBooksIsbn(requestDto.getIsbn());
 					bookWriter.setWritersWid(wid);
