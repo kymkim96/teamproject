@@ -27,6 +27,11 @@ public class WriterService {
 		List<WriterDto> list = writerDao.getWriterList(BookIsbn);
 		return list;
 	}
+	
+	public int getWriterByWname(String wname) {
 		
+		Integer wid = writerDao.selectByName(wname);
+		return wid;
+	}
 	
 }

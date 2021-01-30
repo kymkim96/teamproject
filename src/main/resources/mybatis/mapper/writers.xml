@@ -17,5 +17,10 @@
        			and bw.writers_wid = w.wid
         		and b.isbn=#{BookIsbn}
 	</select>
+	
+	<select id="selectByName" resultType="int">
+		select wid from writers
+		where wname=#{wname}
+	</select>
 
 </mapper>

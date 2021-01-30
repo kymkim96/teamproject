@@ -9,14 +9,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.BookDao;
-import com.onemilliondreams.teamproject.controller.BookAdminPageController;
 import com.onemilliondreams.teamproject.dto.BookDto;
+import com.onemilliondreams.teamproject.dto.BookWriterDto;
 
 @Service
 public class BookService {
 	
 	@Resource
-	public BookDao bookDao;
+	private BookDao bookDao;
+	@Resource
+	private BookWriterService bookWriterService;
+	@Resource
+	private WriterService writerService;
 
 	private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 	
@@ -52,7 +56,21 @@ public class BookService {
 			return "ISBN is already used";
 		}
 		
-		bookDao.insert(requestDto);
+		int rows = bookDao.insert(requestDto);
+		// 책과 착가 매핑하기
+		if (rows > 0) {
+			for (String writer : requestDto.getBwriters()) {
+				Integer wid = writerService.getWriterByWname(writer);
+				if (wid != null) {
+					BookWriterDto bookWriter = new BookWriterDto();
+					bookWriter.setBooksIsbn(requestDto.getIsbn());
+					bookWriter.setWritersWid(wid);
+					bookWriterService.saveBookWriter(bookWriter);
+				}
+			}
+		}
+		
+		
 		return "성공";
 	}
 

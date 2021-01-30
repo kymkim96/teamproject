@@ -63,7 +63,7 @@
 											<div class="cart_product_name">
 												<c:if test="${cartItem.bimgLink == null}">
 													<img class="detail_1_link" 
-														 src="<%=application.getContextPath() %>/books-image"
+														 src="<%=application.getContextPath() %>/books-image?isbn=${cartItem.isbn}"
 														width="50px" alt="default image">
 												</c:if>
 												
@@ -74,7 +74,9 @@
 												<div style="margin-left: 5px">
 													<div class="detail_1_link">${cartItem.btitle}</div>
 													<div class="d-flex">
-														<span class="mr-2">작가</span>
+														<c:forEach var="bwriter" items="${cartItem.bookWriterlist}">
+															<span class="mr-2">${bwriter.wname}</span>
+														</c:forEach>
 														<span class="mr-2">|</span>
 														<span>${cartItem.bpublisher}</span>
 													</div>
@@ -123,13 +125,16 @@
 													onclick="onDelete(${cartItem.ctid})">삭제</button>
 											</div>
 										</td>
-										<td class="align-middle"><input type="checkbox"
-											class="cart_item_checkbox" name="cart_item_checkbox" />
+										<td class="align-middle">
+											<input type="checkbox"
+												   class="cart_item_checkbox" 
+												   name="cart_item_checkbox"
+												   onchange="isChecked(${cartItem.ctid})"
+											/>
 										</td>
 									</tr>
 								</c:forEach>
 								<script>
-									// df
 									let ctcount;
 									const getCount = function(ctid) {
 										ctcount = event.target.value;
@@ -168,13 +173,38 @@
 										});
 									};
 								
+									let ctids = [];
+									let qs = "";
+									let oneTime = true;
+									
 									$("#header_item_checkbox").click(() => {
 										if (event.target.checked) {
 											$(".cart_item_checkbox").prop("checked", true);
+											
 										} else {
 											$(".cart_item_checkbox").prop("checked", false);
 										}
 									})
+									
+									const isChecked = function(ctid) {
+										const check_state = event.target.checked;
+										if (check_state) {
+											ctids.push(ctid);
+											qs += "&ctid=" + ctid;
+										} else {
+											qs = "";
+											ctids = ctids.filter(item => item != ctid);
+											for (let i=0; i<ctids.length; i++) {
+												qs += "&ctid=" + ctids[i];
+											}
+										}
+										if (oneTime) {
+											qs = qs.slice(1, qs.length);
+											oneTime = false;
+										}
+										console.log(qs);
+									};
+									
 								</script>
 							</c:if>
 
@@ -259,13 +289,17 @@
 			</div>
 
 			<div class="button_line">
-				<a href="<%=application.getContextPath()%>/order/content"><button type="button" id="order_confirm"
-					class="btn btn-outline-secondary btn-lg">주문하기</button></a>
+				<button type="button" id="order_confirm"
+					class="btn btn-outline-secondary btn-lg">주문하기</button>
 				<button type="button" id="list_home_link"
 					class="btn btn-outline-secondary btn-lg">쇼핑 계속하기</button>
 			</div>
 		</div>
-
+		<script>
+			$("#order_confirm").click(() => {
+				location.href = "<%=application.getContextPath()%>/order/content?" + qs;
+			});
+		</script>
 		<%@ include file="/WEB-INF/views/common/Footer.jsp"%>
 	</div>
 </body>

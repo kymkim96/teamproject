@@ -1,4 +1,4 @@
-const submit = () => {
+const submitForm = () => {
 	event.preventDefault();
 	$("#warningIsbn").html("");
 	$("#warningTitle").html("");
@@ -8,7 +8,7 @@ const submit = () => {
 	$("#warningPrice").html("");
 	$("#warningContent").html("");
 	$("#warningIndex").html("");
-	const createForm = document.querySelector("#createForm");
+	const bookForm = document.querySelector("#bookForm");
 	if ($("#isbn").val() == null || $("#isbn").val() == "" ) {
 		$("#warningIsbn").html("* ISBN은 반드시 입력해야 합니다.");
 		$("#warningIsbn").css({
@@ -65,5 +65,5 @@ const submit = () => {
 		});
 		return;
 	}
-	createForm.submit();
+	bookForm.submit();
 }

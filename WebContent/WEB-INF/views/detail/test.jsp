@@ -34,7 +34,7 @@
 					<img alt="book.jpg" 
 					src='
 						<c:if test="${book.bimgLink!=null}">${book.bimgLink}</c:if>
-						<c:if test="${book.bimgLink==null}">${book.bimgFilename}</c:if>' 
+						<c:if test="${book.bimgLink==null}"><%=application.getContextPath() %>/books-image?isbn=${book.isbn}</c:if>' 
 					height="500px">
 				</div>
 				
@@ -67,7 +67,7 @@
 						<ul>
 							<li><div id="infoL">정가 : </div> <div id="infoR">${book.bprice}원</div></li>
 							<li><div id="infoL">판매가격 : </div><div id="infoR">
-								<div style="display: inline; font-size: 25px; color: red;">${book.bfprice}원</div>
+								<div style="display: inline; font-size: 25px; color: red;">${book.bprice}원</div>
 								<div style="display: inline;">[${book.bdiscount}% 할인]</div></div>
 								
 								</li>
@@ -96,25 +96,29 @@
 					
 					<script>
 					$("#goCart").click(function() {
+						const amount = $("#amount").text();
 						const dto = {
-								booksIsbn: 1,
-							    ctdiscount: 2,
-							    ctprice: 15300,
-							    ctcount: 1,
+								booksIsbn: "${book.isbn}",
+							    ctdiscount: ${book.bdiscount},
+							    ctprice: ${book.bprice},
+							    ctcount: amount,
 							};
 						$.ajax({
 							url: "<%=application.getContextPath()%>/cart-create",
 							method: "post",
 							data: dto,
 							success: (data) => {
-								<%-- if (data) {
-									if (data.indexOf("alert.jsp") != -1) {
-										$("#goCartResult").html(data);
+								if (data) {
+									if (data.result === "이미 장바구니에 존재합니다.") {
+										$("#goCartResult").html(data.result);
+										$("#goCartResult").css({"color": "#998064"});
+									} else if (data.result === "fail") {
+										$("#goCartResult").html(data.result);
 										$("#goCartResult").css({"color": "red"});
 									} else {
 										window.location.href = "<%=application.getContextPath()%>/cart/index";
 									}
-								} --%>
+								}
 							},
 						});
 					});

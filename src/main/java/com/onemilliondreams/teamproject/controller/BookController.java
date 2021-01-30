@@ -69,9 +69,6 @@ public class BookController {
 			requestDto.setBstate("");
 		}
 		
-		// TODO: 카테고리 테이블 연결
-		requestDto.setCategoriesCategoryName("");
-		
 		// ISBN 중복 검사
 		String result = bookService.saveBook(requestDto);
 		
@@ -143,9 +140,6 @@ public class BookController {
 		if (requestDto.getBstate() == null) {
 			requestDto.setBstate("");
 		}
-		
-		// TODO: 카테고리 테이블 연결
-		requestDto.setCategoriesCategoryName("");
 		
 		bookService.updateBook(requestDto);
 		

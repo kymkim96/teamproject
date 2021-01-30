@@ -26,7 +26,7 @@
 	</select>
 	
 	
-		<select id="selectCount" resultType="int" parameterType="cart_item">
+	<select id="selectCount" resultType="int" parameterType="cart_item">
 		select count(*)
 		from cart_items
 		where carts_cid=#{cartsCid} and books_isbn=#{booksIsbn}
