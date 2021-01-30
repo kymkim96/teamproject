@@ -54,6 +54,7 @@
 						<thead>
 							<tr>
 								<th scope="col">주문상품</th>
+								<th scope="col">주문날짜</th>
 								<th scope="col">주문금액</th>
 								<th scope="col">수량</th>
 								<th scope="col">배송비</th>
@@ -87,6 +88,7 @@
 													</div>
 												</div>
 											</td>
+											
 											<td class="align-middle">
 												<%
 												Calendar calendar = Calendar.getInstance();
@@ -95,7 +97,8 @@
 												%> <fmt:formatDate
 													value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
 											</td>
-											<td class="align-middle">${cartItem.ctprice}</td>
+											
+											<td class="align-middle">${cartItem.ctprice}${cartItem.ctcount}</td>
 											<td>
 												<div>
 													<input type="number" id="item_count" name="item_count"
@@ -197,30 +200,39 @@
 					<table class="table table-striped" style="width: 960px">
 					</table>
 					
-					<form enctype="multipart/form-data" name="reviewform" 
-							action="<%=application.getContextPath()%>/review/reviewwrite" method="post">
+					
+					
+					<form enctype="multipart/form-data" name="orderform" 
+							action="<%=application.getContextPath()%>/order/content" method="post">
+		                  	<!-- action="<%=application.getContextPath()%>/order/content?orderStatus=1" method="post"> -->
+		                  	<input id="usersUaid" name="usersUaid"   type="hidden" value="${sessionUaid}"/>
+		                  	<input id="ototal" name="ototal" type="hidden" value="${5000}"/><!-- 하드코딩 -->
+		                  	<input id="oamount" name="oamount" type="hidden" value="${5}"/><!-- 하드코딩 -->
 		                  	
-		                  	<input id="usersUid" name="usersUid"   type="hidden" value="${sessionUaid}"/>
-		                  	<input id="booksIsbn" name="booksIsbn" type="hidden" value="${book.isbn}"/>
-		                  	
-		                  	<!-- 각 버튼을 누르면 숫자를 리턴할수 잇게 해야하는,,? 자바스크립트로 구현? -->
-		                    <div class="form-group">
-		                      <label for="rstar">별점</label>
-		                      <input type="number" class="form-control" id="rstar" name="rstar"/>
-		                      <small class="form-text text-muted">필수 입력 사항입니다.</small>
-		                    </div>
 		                    
 		                    <div class="form-group">
 		                      <label for="oaddress"> 배송지 정보 </label>
 		                      <textarea id="oaddress" name="oaddress" class="form-control" rows="5" cols="50"></textarea>
 		                    </div>
 		                  
+		                  
 		                	<div class="button_line">
-								<a href="<%=application.getContextPath()%>/order/content"><button type="button" id="order_confirm"
+								<a href="<%=application.getContextPath()%>/order/content1"><button type="button" id="pay_confirm"
 									class="btn btn-outline-secondary btn-lg">결제하기</button></a>
-								<button type="button" id="list_home_link"
-									class="btn btn-outline-secondary btn-lg">장바구니로 돌아가기</button>
-							</div>	                	
+								<a href="<%=application.getContextPath()%>/cart/cart"><button type="button" id="back_cart"
+									class="btn btn-outline-secondary btn-lg"> 장바구니로 돌아가기</button></a>
+							</div>
+							<!-- 
+							<script type="text/javascript">
+								$(()=>{
+									$("#back_cart").click(()=>{
+										${orderStatus=0};
+									});
+									$("#pay_confirm").click(()=>{
+										${orderStatus=0};
+									});
+								});
+							</script>	  -->               	
 		            </form>
 			        
 				</div>
