@@ -8,9 +8,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.CartItemDao;
-import com.onemilliondreams.teamproject.dto.BookWriterReadResponseDto;
 import com.onemilliondreams.teamproject.dto.CartItemDto;
 import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
+import com.onemilliondreams.teamproject.dto.WriterDto;
 
 @Service
 public class CartItemService {
@@ -18,7 +18,7 @@ public class CartItemService {
 	@Resource
 	private CartItemDao cartItemDao;
 	@Resource
-	private BookWriterService bookWriterService;
+	private WriterService writerService;
 	
 	public List<CartItemReadResponseDto> getCartItems(int cid) {
 		
@@ -26,7 +26,7 @@ public class CartItemService {
 		List<CartItemReadResponseDto> newList = new ArrayList<>();
 		
 		for (CartItemReadResponseDto cartItem : cartItems) {
-			List<BookWriterReadResponseDto> bookWriterlist = bookWriterService.getBookWriterWname(cartItem.getIsbn());
+			List<WriterDto> bookWriterlist = writerService.getWriterList(cartItem.getIsbn());
 			cartItem.setBookWriterlist(bookWriterlist);
 			newList.add(cartItem);
 		}

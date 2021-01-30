@@ -30,7 +30,7 @@ public class WriterService {
 	
 	public int getWriterByWname(String wname) {
 		
-		int wid = writerDao.selectByName(wname);
+		Integer wid = writerDao.selectByName(wname);
 		return wid;
 	}
 	

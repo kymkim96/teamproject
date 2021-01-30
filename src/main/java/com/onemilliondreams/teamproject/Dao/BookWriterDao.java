@@ -28,5 +28,11 @@ public class BookWriterDao {
 		return list;
 	}
 
+	public int delete(BookWriterDto bookWriter) {
+		
+		int rows = sst.delete("bookswriters.delete", bookWriter);
+		return rows;
+	}
+
 	
 }

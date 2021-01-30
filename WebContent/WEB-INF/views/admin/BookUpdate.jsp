@@ -38,14 +38,58 @@
 	                        <span id="warningTitle"></span>
 	                        <div class="form-group">
 	                            <label for="bwriter">작가:</label>
-	                            <div>
+	                            <div class="mb-3">
 	                            	<input type="text" class="form-control col-sm-8" 
-	                            	id="bwriter" name="bwriter" style="display: inline-block" value="">
-	                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">검색</button>
+	                            	id="bwriter" name="bwriter" style="display: inline-block">
+	                            	<button type="button" id="bwriterAdd" class="btn btn-secondary ml-2">추가</button>
+	                            </div>
+	                            <span><b>삭제할 작가명 체크</b></span>
+	                            <div class="border mt-3 p-2" id="bwriterBox">
+	                            	<c:forEach var="writer" items="${writers}">
+		                            	<div class="d-flex align-items-center mb-2" id="bwriterContent${writer.wid}">
+		                            		${writer.wname}
+		                            		<button type="button" onclick="onDelete(${writer.wid})" class="btn btn-secondary btn-sm ml-3">삭제</button>	                            	
+		                            	</div>
+	                            	</c:forEach>
 	                            </div>
 	                            <small id="bwriterResult" class="form-text text-danger"></small>
 	                            <script>
-	                            	$("#bwriterSearch").click(function() {});
+	                            	$("#bwriterAdd").click(function() {
+	                            		const wname = $("#bwriter").val();
+	                            		$.ajax({
+	                            			url: '<%=application.getContextPath()%>/bookwriter-update',
+	                            			method: 'post',
+	                            			data: {
+	                            				isbn: "${book.isbn}",
+	                            				wname,
+	                            			},
+	                            			success: (data) => {
+	                            				if (data.result === '해당 작가가 존재하지 않습니다.') {
+	                            					$("#bwriterResult").html(data.result);
+	                            					$("#bwriterResult").css({ "color": "red" });
+	                            					return;
+	                            				}
+	                            				
+	                            				$("#bwriterBox").append('<div class="d-flex align-items-center mb-2">');
+	                            				$("#bwriterBox").append(wname);
+	                            				$("#bwriterBox").append('<button type="button" onclick="onDelete(' + data.wid + ')" class="btn btn-secondary btn-sm ml-3">삭제</button>');
+	                            				$("#bwriterBox").append('</div>');
+	                            			}
+	                            		});
+	                            	});
+	                            	const onDelete = (wid) => {
+	                            		$.ajax({
+	                            			url: '<%=application.getContextPath()%>/bookwriter-delete',
+	                            			method: 'post',
+	                            			data: {
+	                            				booksIsbn: "${book.isbn}",
+	                            				writersWid: wid,
+	                            			},
+	                            			success: (data) => {
+	                            				$("#bwriterContent" + wid).detach();
+	                            			}
+	                            		})
+	                            	}
 	                            </script>
 	                        </div>
 	                        <span id="warningWriter"></span>

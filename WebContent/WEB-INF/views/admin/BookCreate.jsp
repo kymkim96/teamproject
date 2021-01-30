@@ -37,14 +37,14 @@
 			                            <label for="bwriter">작가:</label>
 			                            <div>
 			                            	<input type="text" class="form-control col-sm-8" id="bwriter" name="bwriter" style="display: inline-block">
-			                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">추가</button>
+			                            	<button type="button" id="bwriterAdd" class="btn btn-secondary ml-2">추가</button>
 			                            </div>
 			                            <div style="overflow-y: scroll; height: 3rem;">
 			                            	<small id="bwriterList"></small>			                            
 			                            </div>
 			                            <small id="bwriterResult" class="form-text text-danger"></small>
 			                            <script>
-			                            	$("#bwriterSearch").click(function() {
+			                            	$("#bwriterAdd").click(function() {
 			                            		writer = $("#bwriter").val();
 			                            		$("#bwriterList").append(writer + " ");
 			                            		$("#bwriter").after('<input type="hidden" name="bwriters" value="' + writer + '">');

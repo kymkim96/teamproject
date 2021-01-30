@@ -16,15 +16,21 @@ public class BookWriterService {
 	@Resource
 	private BookWriterDao bookWriterDao;
 	
-	public void saveBookWriter(BookWriterDto bookWriter) {
+	public int saveBookWriter(BookWriterDto bookWriter) {
 		
-		bookWriterDao.insert(bookWriter);
+		int rows = bookWriterDao.insert(bookWriter);
+		return rows;
 	}
 
 	public List<BookWriterReadResponseDto> getBookWriterWname(String isbn) {
 		
 		List<BookWriterReadResponseDto> list = bookWriterDao.selectWnameByIsbn(isbn);
 		return list;
+	}
+
+	public void deleteBookWriter(BookWriterDto bookWriter) {
+		
+		bookWriterDao.delete(bookWriter);
 	}
 
 	
