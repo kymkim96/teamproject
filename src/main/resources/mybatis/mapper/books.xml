@@ -9,14 +9,60 @@
 	
 	</select>
 	
+	
+	
+	
 	<select id="selectByCn" parameterType="string" resultType="book">
 		select 
 			 isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
-			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex,
+			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
 			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
 		from books
-		where categories_category_name=#{category_name}
+		where categories_category_name=#{categoryName}
 	</select>
+	
+	
+	
+	
+	<select id = "countAll"  resultType="int">
+		select count(*)
+		from books
+		where categories_category_name=#{categoryName}
+	</select>
+<!-- 	
+	<select id = "selectByPage" parameterType="pager" resultType="book">pager를 쓸 때 alias를 추가해줌.
+		
+	    select 
+	    			rno, 
+	    	 bno
+	         isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
+			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
+			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
+	    from (
+	            select 
+	           			 	rownum as rno, 
+	           			bno
+	         			isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
+						bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
+						bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
+		        from( 
+		          	 select 
+		          	 	  bno
+						  isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
+						  bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
+						  bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
+					 from boards
+					 order by bno desc 
+		            )
+		   		 where rownum &lt;= #{endRowNo} 
+		 )
+		 where rno &gt;= #{startRowNo}
+
+		
+	</select>
+	 -->
+	
+	
 	
 	<insert id="insert" parameterType="book">
 		<if test="bimgFilename == null">

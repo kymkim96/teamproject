@@ -15,7 +15,7 @@ public class PagerDto {
 	
 	private String booksIsbn; //selectbypager에서 where에 사용할값
 	private String categoryNames;
-
+	
 	public PagerDto(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
 		this.rowsPerPage = rowsPerPage;
 		this.pagesPerGroup = pagesPerGroup; //한번에 밑에 번호[이전] 1 2 3 4 5 [다음] 사이에 몇개의 숫자를 나타낼건지
@@ -40,6 +40,8 @@ public class PagerDto {
 		startRowNo = (pageNo - 1) * rowsPerPage + 1;
 		endRowNo = pageNo * rowsPerPage;
 	}
+	
+
 
 	public int getTotalRows() {
 		return totalRows;

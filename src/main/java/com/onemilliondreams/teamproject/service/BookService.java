@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.BookDao;
 import com.onemilliondreams.teamproject.dto.BookDto;
-import com.onemilliondreams.teamproject.dto.Pager;
+import com.onemilliondreams.teamproject.dto.PagerDto;
+
+
 
 @Service
 public class BookService {
@@ -55,23 +57,27 @@ public class BookService {
 
 
 	//booklist
-	public List<BookDto> getBooklist(String categoryName) {
-		List<BookDto> list = bookDao.getbooklist(categoryName);
+	public List<BookDto> getBooklist(String category_name) {
+		List<BookDto> list = bookDao.getbooklist(category_name);
 		return list;
-	}
-	public int getTotalRows() {
-		int totalRows = bookDao.countAll();
-		return totalRows;
 	}
 	
-	public List<BookDto> getBookList(Pager pager){
-		List<BookDto>list = bookDao.selectByPage(pager);
-		return list;
+	//pager
+	public int getTotalRows(String category_name) {
+		int totalRows = bookDao.countAll(category_name);
+		return totalRows;
 	}
+
+	/*public List<BookDto> getBookList(PagerDto pager) {
+		List<BookDto> list = bookDao.selectByPage(pager);
+		return list;
+
+	}*/
 	
 	public void updateBook(BookDto requestDto) {
 		
 		bookDao.update(requestDto);
 	}
+
 
 }
