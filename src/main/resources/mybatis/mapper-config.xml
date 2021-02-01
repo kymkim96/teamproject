@@ -14,7 +14,7 @@
 		<typeAlias alias="book" 	type="com.onemilliondreams.teamproject.dto.BookDto"/>
 		<typeAlias alias="auth" 	type="com.onemilliondreams.teamproject.dto.AuthDto"/>
 		<typeAlias alias="order" 	type="com.onemilliondreams.teamproject.dto.OrderDto"/>
-
+		
 		<typeAlias alias="cart_item_read" type="com.onemilliondreams.teamproject.dto.CartItemReadResponseDto"/> 
 		<typeAlias alias="cart_item" type="com.onemilliondreams.teamproject.dto.CartItemDto"/> 
 		<typeAlias alias="cart" type="com.onemilliondreams.teamproject.dto.CartDto"/>	
