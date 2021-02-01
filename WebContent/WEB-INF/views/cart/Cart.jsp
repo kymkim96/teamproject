@@ -302,18 +302,30 @@
 						<div class="col price_content">
 							<b>
 								<fmt:formatNumber 
-								value="${sumPrice}"
+								value="${sumAmount}"
 								/>원
 							</b>
 						</div>
 						<div class="col price_content">
-							<b>1,350원</b>
+							<b>
+								<fmt:formatNumber 
+								value="${discountPrice}"
+								/>원
+							</b>
 						</div>
 						<div class="col price_content">
-							<b>0원</b>
+							<b>
+								<fmt:formatNumber 
+								value="${deliveryFee}"
+								/>원
+							</b>
 						</div>
 						<div class="col price_content" style="border-right: none">
-							<b style="color: tomato">12,150원</b>
+							<b style="color: tomato">
+								<fmt:formatNumber 
+									value="${sumAmount - discountPrice + deliveryFee}"
+									/>원
+							</b>
 						</div>
 					</div>
 					<div class="row">
