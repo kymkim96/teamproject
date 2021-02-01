@@ -1,5 +1,6 @@
 package com.onemilliondreams.teamproject.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -39,11 +40,20 @@ public class SearchController {
 		
 		
 		int totalRows = searchService.getTotalRows(btitle); //조건에 맞는 행수
-		PagerDto pager = new PagerDto(5, 5, totalRows, pageNo);// 6개 5단 
+		PagerDto pager = new PagerDto(1, 5, totalRows, pageNo);// 6개 5단 
 		
 		pager.setBtitle(btitle);
 		List<BookDto> list = searchService.getBookList(pager); //
-		model.addAttribute("list",list);
+		List<BookDto> list2 = new ArrayList<>();	
+		for(BookDto dto : list) {
+			List<WriterDto> writerList = new ArrayList<WriterDto>();
+			writerList = writerService.getWriterList(dto.getIsbn());
+			if (writerList != null) {
+				dto.setBookWriterlist(writerService.getWriterList(dto.getIsbn()));
+			}
+			list2.add(dto);
+		}
+		model.addAttribute("list",list2);
 		model.addAttribute("pager",pager);
 		model.addAttribute("btitle",btitle);
 		return "search/searchresult";
@@ -54,14 +64,26 @@ public class SearchController {
 		
 		
 		int totalRows = searchService.getTotalRows(btitle); //조건에 맞는 행수
-		PagerDto pager = new PagerDto(5, 5, totalRows, pageNo);// 6개 5단 
+		PagerDto pager = new PagerDto(1, 5, totalRows, pageNo);// 6개 5단 
 		
 		pager.setBtitle(btitle);
 		List<BookDto> list = searchService.getBookList(pager); //
-		model.addAttribute("list",list);
+		List<BookDto> list2 = new ArrayList<>();	
+		
+		for(BookDto dto : list) {
+			List<WriterDto> writerList = new ArrayList<WriterDto>();
+			writerList = writerService.getWriterList(dto.getIsbn());
+			if (writerList != null) {
+				dto.setBookWriterlist(writerService.getWriterList(dto.getIsbn()));
+			}
+			list2.add(dto);
+		}
+		
+		model.addAttribute("list",list2);
 		model.addAttribute("pager",pager);
 		model.addAttribute("btitle",btitle);
 		//writer도 리스트로 받아야 함
+		
 	
 		return "search/searchresult";
 	}

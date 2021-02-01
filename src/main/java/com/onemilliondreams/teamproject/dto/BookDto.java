@@ -1,6 +1,7 @@
 package com.onemilliondreams.teamproject.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,11 +27,24 @@ public class BookDto {
 	private String bstate;
 	private String bvideoLink;
 	private String categoriesCategoryName;
-	
+	private List<WriterDto> bookWriterlist;
 	private String[] bwriters;
-	
 	private double bfinalPrice;
 	private int bfprice;
+	
+	public List<WriterDto> getBookWriterlist() {
+		return bookWriterlist;
+	}
+	public void setBookWriterlist(List<WriterDto> bookWriterlist) {
+		this.bookWriterlist = bookWriterlist;
+	}
+	public double getBfinalPrice() {
+		return bfinalPrice;
+	}
+	public void setBfinalPrice(double bfinalPrice) {
+		this.bfinalPrice = bfinalPrice;
+	}
+
 	
 	
 	public String getIsbn() {
@@ -159,10 +173,6 @@ public class BookDto {
 	public void setBwriters(String[] bwriters) {
 		this.bwriters = bwriters;
 	}
-	public double getBfinalPrice() {
-		return bfinalPrice;
-	}
-	public void setBfinalPrice(double bfinalPrice) {
-		this.bfinalPrice = bfinalPrice;
-	}
+
+	
 }

@@ -35,12 +35,12 @@
                            		
 		                            <div id="item1">
 		                             
-		                               	<div><a href="<%=application.getContextPath()%>/detail?param1= ${book.isbn}"><img src="${book.bimgLink}" style="height:330px"/></a></div>
+		                               	<div><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}"><img src="${book.bimgLink}" style="height:330px"/></a></div>
 		                               	<div style="display:inline-block; width:850px">
 			                                <ul>
-		                                		<li> <h4 style="color:#B8A791;"><strong>${book.btitle}</strong></h4> </li>
-			                                 	<li> <c:forEach var="writer" items="${writerlist}"> ${writer.wname} 	</c:forEach>| ${book.bpublisher} | <fmt:formatDate value="${book.bpublishDate}" pattern="yyyy.MM.dd"/></li>                                	
-			                                 	<li> <h3><span class="price1">${book.bprice} → </span><span class="price2">${book.bdiscount}</span></h3></li>
+		                                		<li style="margin:10px;"> <h4 style="color:#B8A791;"><strong>${book.btitle}</strong></h4> </li>
+			                                 	<li> <c:forEach var="writer" items ="${book.bookWriterlist}">${writer.wname} </c:forEach>  | ${book.bpublisher } | <fmt:formatDate value="${book.bpublishDate}" pattern="yyyy.MM.dd"/></li>                                	
+			                                 	<li> <h3><span class="price1">${book.bprice} → </span><span class="price2">${book.bfinalPrice}(↓${ book.bdiscount}%)</span></h3></li>
 			                                 	<li> ${book.bcontent}</li>
 			                          		</ul>
 		                              	</div>
@@ -66,9 +66,9 @@
                        
                      <div id="pager">
                      
-	                     	<a style="border: 1px solid #B8A791;" class="btn  btn-sm mr-1" href="searchresult?pageNo=1&btitle=${btitle}">처음</a>
+	                     	<a style="border: 2px solid #998064;" class="btn  btn-sm mr-1" href="searchresult?pageNo=1&btitle=${btitle}">처음</a>
 	                     	<c:if test="${pager.groupNo>1}">
-	                     		<a style="border: 1px solid #B8A791;" class="btn  btn-sm mr-1" href="searchresult?pageNo=${pager.startPageNo-1}&btitle=${btitle}">이전</a>
+	                     		<a style="border: 2px solid #998064;" class="btn  btn-sm mr-1" href="searchresult?pageNo=${pager.startPageNo-1}&btitle=${btitle}">이전</a>
 	                     	</c:if>
 	                     	<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 			                   <c:if test="${i == pager.pageNo }">
@@ -79,9 +79,9 @@
 			                   </c:if>	 
 	                     	</c:forEach>
 	                     	<c:if test="${pager.groupNo<pager.totalGroupNo}">
-	                     		<a style="border: 1px solid #B8A791;" class="btn btn-sm mr-1 ml-1" href="searchresult?pageNo=${pager.endPageNo+1}&btitle=${btitle}">다음</a>
+	                     		<a style="border: 2px solid #998064;" class="btn btn-sm mr-1 ml-1" href="searchresult?pageNo=${pager.endPageNo+1}&btitle=${btitle}">다음</a>
 	                     	</c:if>
-	                     	<a style="border: 1px solid #B8A791;" class="btn  btn-sm " href="searchresult?pageNo=${pager.totalPageNo}&btitle=${btitle}">맨끝</a>
+	                     	<a style="border: 2px solid #998064;" class="btn  btn-sm " href="searchresult?pageNo=${pager.totalPageNo}&btitle=${btitle}">맨끝</a>
                      	
                      </div>
                   </div>

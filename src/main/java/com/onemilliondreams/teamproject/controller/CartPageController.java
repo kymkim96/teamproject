@@ -78,7 +78,7 @@ public class CartPageController {
 			
 			int sumAmount = 0;
 			Integer deliveryFee = 0;
-			int sumPrice = 0;
+			double sumFinalPrice = 0;
 			for (CartItemReadResponseDto cartItem : cartItems) {
 				// 수량비 합계 초기화
 				sumAmount += cartItem.getCtcount() * cartItem.getCtprice();
@@ -88,8 +88,8 @@ public class CartPageController {
 					deliveryFee = cartItem.getBdeliveryFee();
 				}
 				
-				// 정가 합 초기화
-				sumPrice += cartItem.getCtprice();
+				// 할인가격
+				sumFinalPrice += cartItem.getBfinalPrice() * cartItem.getCtcount();
 			}
 			String formattedAmount = NumberFormat.getInstance(Locale.KOREA).format(sumAmount);
 			size = cartItems.size();
@@ -97,7 +97,7 @@ public class CartPageController {
 			model.addAttribute("formattedAmount", formattedAmount);
 			model.addAttribute("sumAmount", sumAmount);
 			model.addAttribute("deliveryFee", deliveryFee);
-			model.addAttribute("sumPrice", sumPrice);
+			model.addAttribute("discountPrice", sumAmount-sumFinalPrice);
 		}
 	
 		model.addAttribute("size", size);
