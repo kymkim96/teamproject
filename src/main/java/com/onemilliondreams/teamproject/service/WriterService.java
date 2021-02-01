@@ -25,6 +25,12 @@ public class WriterService {
 
 	public List<WriterDto> getWriterList(String BookIsbn) {
 		List<WriterDto> list = writerDao.getWriterList(BookIsbn);
+		
+		for(WriterDto writer: list) {
+			String result = writer.getWcontent();
+			writer.setWcontent(result.replace("\n", "<br/>"));
+		}
+		
 		return list;
 	}
 	

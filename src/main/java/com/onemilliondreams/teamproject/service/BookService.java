@@ -32,10 +32,8 @@ public class BookService {
 			String result = book.getBcontent();
 			book.setBcontent(result.replace("\n", "<br/>"));
 			
-			//정수로 최종가격 변경
-			double bdistemp =1- (book.getBdiscount()/100);
-			int temp = (int) (book.getBprice()*bdistemp);
-			book.setBfprice(temp);
+			result = book.getBindex();
+			book.setBindex(result.replace("\n", "<br/>"));
 			
 			return book;
 				
