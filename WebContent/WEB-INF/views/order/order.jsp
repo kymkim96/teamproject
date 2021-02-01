@@ -149,6 +149,76 @@
 					</div>
 				</div>
 				
+				<div class="price_table" style="margin: 0px;">
+					<div>
+						<b>쇼핑카트 총 주문 금액</b>
+					</div>
+					<div class=".container-fluid">
+						<div class="row">
+							<div class="col-2 price_header">수량</div>
+							<div class="col price_header">상품정가</div>
+							<div class="col price_header">상품할인</div>
+							<div class="col price_header">배송비</div>
+							<div class="col price_header" style="border-right: none">
+								주문금액 합계</div>
+						</div>
+						<div class="row">
+							<div class="col-2 price_content">${size}종(<span class="countAll">0</span>개)</div>
+							<div class="col price_content">
+								<b>
+									<fmt:formatNumber 
+									value="${sumAmount}"
+									/>원
+								</b>
+							</div>
+							<div class="col price_content">
+								<b>
+									<fmt:formatNumber 
+									value="${discountPrice}"
+									/>원
+								</b>
+							</div>
+							<div class="col price_content">
+								<b>
+									<fmt:formatNumber 
+									value="${deliveryFee}"
+									/>원
+								</b>
+							</div>
+							<div class="col price_content" style="border-right: none">
+								<b style="color: tomato">
+									<fmt:formatNumber 
+										value="${sumAmount - discountPrice + deliveryFee}"
+										/>원
+								</b>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col price_accumulate">
+								<div></div>
+								<div></div>
+								<p>적립 가능액 : 상품적립금 0원</p>
+								<ul>
+									<li>5만원 이상 추가적립/멤버십/바로온2% 적립금은 비도서, 뷰티 구매 시 적용됩니다. (도서 제외)</li>
+									<li>적립가능액은 쿠폰, 적립금등 보조결제 수단 따라 약간의 금액 차이가 있을 수가 있습니다.</li>
+									<li>적립금 지급시기는 구매완료 시점에 자동 지급 됩니다.</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col expected_date_info">
+								<p>수령 예상일 :</p>
+								<ul>
+									<li>출고일이 다른 상품을 함께 주문하시면, 출고일이 가장 늦은 상품을 기준으로 일괄 배송합니다.</li>
+									<li>같은 상품을 여러 개 주문하실 경우 추가 재고 확보에 시간이 더 걸릴 수 있으므로 예상 수령일보다
+										배송일이 2-3일 더 지연되기도 합니다.</li>
+									<li>국내 수령지 기준이며, 해외배송은 배송방법에 따라 수령일이 최대 14일까지 늘어날 수 있습니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
 						color: #917354;">
 							

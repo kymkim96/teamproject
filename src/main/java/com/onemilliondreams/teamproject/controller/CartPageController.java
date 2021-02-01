@@ -80,6 +80,7 @@ public class CartPageController {
 			Integer deliveryFee = 0;
 			double sumFinalPrice = 0;
 			for (CartItemReadResponseDto cartItem : cartItems) {
+				
 				// 수량비 합계 초기화
 				sumAmount += cartItem.getCtcount() * cartItem.getCtprice();
 				
