@@ -39,222 +39,223 @@
 			</div>
 
 			<!-- 쇼핑카트 선택 상품 목록 -->
-			<div class="cart_view">
-				
-				<div class="cart_view_title">
-					<span><b>주문상품 </b></span>
-				</div>
-				
-				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
-					color: #917354;">
-						<h4> 1. 주문 상품 확인  </h4>
-				</div>
-				
-				<div class="table_container">
-					<table class="table table-striped" style="width: 960px">
-						<thead>
-							<tr>
-								<th scope="col">주문상품</th>
-								<th scope="col">주문날짜</th>
-								<th scope="col">주문금액</th>
-								<th scope="col">수량</th>
-								<th scope="col">배송비</th>
-								<th scope="col">주문금액합계</th>
-								
-								
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="cartItem" items="${cartItemlist}">
-														
+			<form enctype="multipart/form-data" name="addorder" 
+								action="<%=application.getContextPath()%>/order/addorder" method="post">
+				<div class="cart_view">
+					
+					<div class="cart_view_title">
+						<span><b>주문상품 </b></span>
+					</div>
+					
+					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+						color: #917354;">
+							<h4> 1. 주문 상품 확인  </h4>
+					</div>
+					
+					<div class="table_container">
+						<table class="table table-striped" style="width: 960px">
+							<thead>
 								<tr>
-									<!-- ------------------------------------------------------------------- -->
-									<td>
-										<div class="cart_product_name">
-											<c:if test="${cartItem.bimgLink == null}">
-												<img class="detail_1_link" 
-													 src="<%=application.getContextPath() %>/books-image?isbn=${cartItem.isbn}"
-													width="50px" alt="default image">
-											</c:if>
-											
-											<c:if test="${cartItem.bimgLink != null}">
-												<img class="detail_1_link" src="${cartItem.bimgLink}"
-													width="50px" alt="default image">
-											</c:if>
-											<div style="margin-left: 5px">
-												<div class="detail_1_link">${cartItem.btitle}</div>
-												<div class="d-flex">
-													<span class="mr-2">작가</span>
-													<span class="mr-2">|</span>
-													<span>${cartItem.bpublisher}</span>
+									<th scope="col">주문상품</th>
+									<th scope="col">주문날짜</th>
+									<th scope="col">주문금액</th>
+									<th scope="col">수량</th>
+									<th scope="col">배송비</th>
+									<th scope="col">주문금액합계</th>
+									
+									
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="cartItem" items="${cartItemlist}">
+									<input type="hidden" name="ctid" value="${cartItem.ctid}">
+															
+									<tr>
+										<!-- ------------------------------------------------------------------- -->
+										<td>
+											<div class="cart_product_name">
+												<c:if test="${cartItem.bimgLink == null}">
+													<img class="detail_1_link" 
+														 src="<%=application.getContextPath() %>/books-image?isbn=${cartItem.isbn}"
+														width="50px" alt="default image">
+												</c:if>
+												
+												<c:if test="${cartItem.bimgLink != null}">
+													<img class="detail_1_link" src="${cartItem.bimgLink}"
+														width="50px" alt="default image">
+												</c:if>
+												<div style="margin-left: 5px">
+													<div class="detail_1_link">${cartItem.btitle}</div>
+													<div class="d-flex">
+														<span class="mr-2">작가</span>
+														<span class="mr-2">|</span>
+														<span>${cartItem.bpublisher}</span>
+													</div>
 												</div>
 											</div>
-										</div>
-									</td>									
-									<!-- ------------------------------------------------------------------- -->
-									
-									
-									<td class="align-middle">
-										<%
-										Calendar calendar = Calendar.getInstance();
-										calendar.setTime(new Date());
-										calendar.add(Calendar.DATE, 2);
-										%> <fmt:formatDate
-											value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
-									</td>
-									
-									<!-- ------------------------------------------------------------------- -->
-									
-									<td class="align-middle">${cartItem.ctprice}${cartItem.ctcount}</td>
-									
-									<!-- ------------------------------------------------------------------- -->
-									<td>
-										<div>
-											<input type="number" id="item_count" name="item_count"
-												value="${cartItem.ctcount}" />
-											<button type="button"
-												class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
-										</div> 
-										<script>
-											<%--
-											수량 비 합계 계산
-											c:out 태그는 EL을 자바스크립트 변수에 대입할 수 있게 해줌
-											--%>
-	                                    	/* $(() => {
-		                                    	$("#countRefresh").click(() => {
-		                                    		const price = "<c:out value='${requestDto.price}'/>";
-		                                    		const count = $("#item_count").val();
-		                                    		const result = price * count;
-		                                    		$("#resultPrice").text(result.toString());
-		                                    	});
-	                                    	}); */
-		                                </script>
-									</td>
-									<!-- ------------------------------------------------------------------- -->
-									
-									<td class="align-middle" id="resultPrice">만원이상 배달료 무료</td>
-									<td class="align-middle" id="resultPrice">${cartItem.ctprice * cartItem.ctcount}</td>
-									
-									<!-- ------------------------------------------------------------------- -->
-									
-									<td>
-									
-										<%-- <div>
-											<button id="button_wishlist"
-												class="btn btn-outline-secondary btn-sm">위시리스트</button>
-											<button type="button"
-												class="btn btn-outline-secondary btn-sm"
-												id="sessionDeregister${cartItem.ctid}">삭제</button>
-										</div> --%>
+										</td>									
+										<!-- ------------------------------------------------------------------- -->
 										
 										
-										<%-- <script>
-											id = "<c:out value='${requestDto.id}'/>";
-											console.log(id);
-											console.log(`${id}`);
+										<td class="align-middle">
+											<%
+											Calendar calendar = Calendar.getInstance();
+											calendar.setTime(new Date());
+											calendar.add(Calendar.DATE, 2);
+											%> <fmt:formatDate
+												value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
+										</td>
+										
+										<!-- ------------------------------------------------------------------- -->
+										
+										<td class="align-middle">${cartItem.ctprice}${cartItem.ctcount}</td>
+										
+										<!-- ------------------------------------------------------------------- -->
+										<td>
+											<div>
+												<input type="number" id="item_count" name="item_count"
+													value="${cartItem.ctcount}" />
+												<button type="button"
+													class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
+											</div> 
+											<script>
+												<%--
+												수량 비 합계 계산
+												c:out 태그는 EL을 자바스크립트 변수에 대입할 수 있게 해줌
+												--%>
+		                                    	/* $(() => {
+			                                    	$("#countRefresh").click(() => {
+			                                    		const price = "<c:out value='${requestDto.price}'/>";
+			                                    		const count = $("#item_count").val();
+			                                    		const result = price * count;
+			                                    		$("#resultPrice").text(result.toString());
+			                                    	});
+		                                    	}); */
+			                                </script>
+										</td>
+										<!-- ------------------------------------------------------------------- -->
+										
+										<td class="align-middle" id="resultPrice">만원이상 배달료 무료</td>
+										<td class="align-middle" id="resultPrice">${cartItem.ctprice * cartItem.ctcount}</td>
+										
+										<!-- ------------------------------------------------------------------- -->
+										
+										<td>
+										
+											<%-- <div>
+												<button id="button_wishlist"
+													class="btn btn-outline-secondary btn-sm">위시리스트</button>
+												<button type="button"
+													class="btn btn-outline-secondary btn-sm"
+													id="sessionDeregister${cartItem.ctid}">삭제</button>
+											</div> --%>
 											
-	                                    	$(`#sessionDeregister${id}`).click(function() {
-	                                    		$.ajax({
-	                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
-	                                    			method: "post",
-	                                    			data: {
-	                                    				id: "<c:out value='${requestDto.id}'/>"
-	                                    			},
-	                                    		});
-	                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
-	                                    	});
-		                                </script> --%>
-									</td>
-									
-									<!-- ------------------------------------------------------------------- -->
-									
-									<!-- <td class="align-middle"><input type="checkbox"
-										class="cart_item_checkbox" name="cart_item_checkbox" />
-									</td>
-									
-									<script>
-										$("#header_item_checkbox").click(() => {
-											if (event.target.checked) {
-												$(".cart_item_checkbox").prop("checked", true);
-											} else {
-												$(".cart_item_checkbox").prop("checked", false);
-											}
-										})
-									</script> -->
-								</tr>
-							</c:forEach>
-
-							
-
-							<tr>
-								<td colspan="7">
-									<div>
-										<div class="item_count_result">수량: 1종(1개)</div>
-										<div class="item_price_result">
-											<span>총 상품 금액: ${sumPrice}원</span> <img
-												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
-											<span>배송비: 0원</span> <img
-												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
-											<span style="color: tomato">주문금액 합계: 원</span>
+											
+											<%-- <script>
+												id = "<c:out value='${requestDto.id}'/>";
+												console.log(id);
+												console.log(`${id}`);
+												
+		                                    	$(`#sessionDeregister${id}`).click(function() {
+		                                    		$.ajax({
+		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
+		                                    			method: "post",
+		                                    			data: {
+		                                    				id: "<c:out value='${requestDto.id}'/>"
+		                                    			},
+		                                    		});
+		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
+		                                    	});
+			                                </script> --%>
+										</td>
+										
+										<!-- ------------------------------------------------------------------- -->
+										
+										<!-- <td class="align-middle"><input type="checkbox"
+											class="cart_item_checkbox" name="cart_item_checkbox" />
+										</td>
+										
+										<script>
+											$("#header_item_checkbox").click(() => {
+												if (event.target.checked) {
+													$(".cart_item_checkbox").prop("checked", true);
+												} else {
+													$(".cart_item_checkbox").prop("checked", false);
+												}
+											})
+										</script> -->
+									</tr>
+								</c:forEach>
+	
+								
+	
+								<tr>
+									<td colspan="7">
+										<div>
+											<div class="item_count_result">수량: 1종(1개)</div>
+											<div class="item_price_result">
+												<span>총 상품 금액: ${sumPrice}원</span> <img
+													src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
+												<span>배송비: 0원</span> <img
+													src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
+												<span style="color: tomato">주문금액 합계: 원</span>
+											</div>
 										</div>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
-			
-			<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
-					color: #917354;">
-						
-			</div>
-			<div class="cart_view">
-				
 				
 				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
-					color: #917354;">
-						<h4> 2. 주문자 정보 및 배송지 정보  </h4>
+						color: #917354;">
+							
 				</div>
-				
-				<div class="table_container">
-					<table class="table table-striped" style="width: 960px">
-					</table>
+				<div class="cart_view">
 					
 					
-					
-					<form enctype="multipart/form-data" name="addorder" 
-								action="<%=application.getContextPath()%>/order/addorder" method="post">
-							
-							
-		                  	<input id="usersUaid" name="usersUaid"   type="hidden" value="${sessionUaid}"/>
-		                  	<input id="ototal" name="ototal" type="hidden" value="50000"/><!-- 하드코딩 -->
-		                  	<input id="oamount" name="oamount" type="hidden" value="5"/><!-- 하드코딩 -->
-		                  	
-		                    
-		                    <div class="form-group">
-		                      <label for="oaddress"> 배송지 정보 </label>
-		                      <textarea id="oaddress" name="oaddress" class="form-control" rows="5" cols="50"></textarea>
-		                    </div>
-		                  
-		                  	<div class="button_line">
-		                		<button class="btn btn-outline-secondary btn-lg">결제하기</button>
-		                		<a href="<%=application.getContextPath()%>/cart/cart"><button type="button" id="back_cart"
-									class="btn btn-outline-secondary btn-lg"> 장바구니로 돌아가기</button></a> 
-		                	</div>
-							              	
-		            </form>
-		            
-		            <div class="button_line">
-						<a href="<%=application.getContextPath()%>/cart/index"><button type="button" id="back_cart"
-									class="btn btn-outline-secondary btn-lg"> 장바구니로 돌아가기</button></a> 
+					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
+						color: #917354;">
+							<h4> 2. 주문자 정보 및 배송지 정보  </h4>
 					</div>
-		            
-			        
+					
+					<div class="table_container">
+						<table class="table table-striped" style="width: 960px">
+						</table>
+						
+						
+						
+						
+								
+								
+			                  	<input id="usersUaid" name="usersUaid"   type="hidden" value="${sessionUaid}"/>
+			                  	<input id="ototal" name="ototal" type="hidden" value="50000"/><!-- 하드코딩 -->
+			                  	<input id="oamount" name="oamount" type="hidden" value="5"/><!-- 하드코딩 -->
+			                  	
+			                    
+			                    <div class="form-group">
+			                      <label for="oaddress"> 배송지 정보 </label>
+			                      <textarea id="oaddress" name="oaddress" class="form-control" rows="5" cols="50"></textarea>
+			                    </div>
+			                  
+			                  	<div class="button_line">
+			                		<button class="btn btn-outline-secondary btn-lg">결제하기</button>
+			                		<a href="<%=application.getContextPath()%>/cart/cart"><button type="button" id="back_cart"
+										class="btn btn-outline-secondary btn-lg"> 장바구니로 돌아가기</button></a> 
+			                	</div>
+								              	
+			            
+			            <div class="button_line">
+							<a href="<%=application.getContextPath()%>/cart/index"><button type="button" id="back_cart"
+										class="btn btn-outline-secondary btn-lg"> 장바구니로 돌아가기</button></a> 
+						</div>
+			            
+				        
+					</div>
 				</div>
-			</div>
-
-			
+	
+			</form>	
 		</div>
 
 		<%@ include file="/WEB-INF/views/common/Footer.jsp"%>

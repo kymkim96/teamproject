@@ -77,7 +77,7 @@ public class OrderController {
 	
 	@PostMapping("/addorder")
 	public String addorder(
-			//@RequestParam(value="ctid", required=false)int[] ctid, 
+			@RequestParam(value="ctid", required=false)int[] ctid, 
 			Model model,
 			//String orderStatus ,
 			OrderDto orderdata,
@@ -91,8 +91,8 @@ public class OrderController {
 			logger.info("주소가 안받아진거임");
 		}else if(orderdata.getUsersUaid()==null) {
 			logger.info("아이디가안들어왔음");
-		//}else if(ctid ==null) {
-		//	logger.info("ctid가 없음");
+		}else if(ctid != null) {
+			logger.info("ctid가 있음");
 		}else {
 			logger.info(orderdata.getOaddress());
 			logger.info(orderdata.getUsersUaid());
