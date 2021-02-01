@@ -33,5 +33,6 @@ public class WriterService {
 		Integer wid = writerDao.selectByName(wname);
 		return wid;
 	}
+		
 	
 }

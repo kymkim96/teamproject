@@ -26,6 +26,7 @@ public class BookDto {
 	private String bstate;
 	private String bvideoLink;
 	private String categoriesCategoryName;
+	
 	private String[] bwriters;
 	
 	private double bfinalPrice;

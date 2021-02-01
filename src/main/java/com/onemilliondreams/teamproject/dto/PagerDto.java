@@ -13,8 +13,17 @@ public class PagerDto {
 	private int startRowNo;		//페이지의 시작 행 번호
 	private int endRowNo;		//페이지의 마지막 행 번호
 	
-	private String booksIsbn; //selectbypager에서 where에 사용할값
+	private String booksIsbn; //review selectbypager에서 where에 사용할값
 	private String categoryNames;
+	private String btitle;  //search slectbypager에서 사용
+
+	public String getBtitle() {
+		return btitle;
+	}
+
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
+	}
 
 	public PagerDto(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
 		this.rowsPerPage = rowsPerPage;
