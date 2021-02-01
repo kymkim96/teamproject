@@ -79,14 +79,14 @@ public class OrderController {
 	public String addorder(
 			@RequestParam(value="ctid", required=false)int[] ctid, 
 			Model model,
-			//String orderStatus ,
-			OrderDto orderdata,
-			HttpSession session) {
+			OrderDto orderdata) {
 				
 		//Ct아이디 불러올거임
 		CartItemReadResponseDto cartItem = new CartItemReadResponseDto();
 		
 		
+		
+		//데이터가 넘어왔나 안넘어왔나
 		if(orderdata.getOaddress()==null) {
 			logger.info("주소가 안받아진거임");
 		}else if(orderdata.getUsersUaid()==null) {
@@ -111,26 +111,28 @@ public class OrderController {
 		//주문정보가져오기
 		OrderDto order = new OrderDto();
 		
-		order.setUsersUaid("admin");
+		order.setUsersUaid(orderdata.getUsersUaid());
 		order.setOaddress(orderdata.getOaddress());
+		
+		
 		//order ototal - jsp에서 처리할지 여기서 처리할지 정하기!
 		//order oamount - jsp에서 처리할지 여기서 처리할지 정하기!
 		
-		int[] ctid_try = {29};
 		
-		for(int ctid_temp : ctid_try ) {//현재 하드코딩된상태
+		for(int ctid_temp : ctid) {
 			//Cart item을 한개만 가져오면 됨!
 			cartItem = cartItemService.getCartItem(ctid_temp);
-			//otid는 seq
+			
 			orderItem.setOtcount(cartItem.getCtcount());
 			orderItem.setOtdiscount(cartItem.getCtdiscount());
 			orderItem.setOtprice(cartItem.getCtprice());
+			orderItem.setBooksIsbn(cartItem.getIsbn());
 			orderItemlist.add(orderItem);
 		}
 		
 		//ctid 업데이틀 해줘야 함
-		orderService.order(order, orderItemlist);
-		//orderService.order(order, orderItemlist,ctid_try);
+		//orderService.order(order, orderItemlist);
+		orderService.order(order, orderItemlist,ctid);
 		
 		//*/
 		

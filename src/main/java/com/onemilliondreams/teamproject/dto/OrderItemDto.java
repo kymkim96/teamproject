@@ -7,6 +7,7 @@ public class OrderItemDto {
 	OTCOUNT	NUMBER(3,0)	No
 	ORDERS_OID	NUMBER(10,0)	Yes
 	OTDISCOUNT	NUMBER(3,0)	Yes
+	BOOKS_ISBN	VARCHAR2(50 BYTE)	Yes
 	 */
 	
 	
@@ -15,6 +16,8 @@ public class OrderItemDto {
 	private int otcount;
 	private int ordersOid;
 	private int otdiscount;
+	private String booksIsbn;
+	
 	
 	public String getOtid() {
 		return otid;
@@ -46,7 +49,12 @@ public class OrderItemDto {
 	public void setOtdiscount(int otdiscount) {
 		this.otdiscount = otdiscount;
 	}
-	
+	public String getBooksIsbn() {
+		return booksIsbn;
+	}
+	public void setBooksIsbn(String booksIsbn) {
+		this.booksIsbn = booksIsbn;
+	}
 	
 	
 }

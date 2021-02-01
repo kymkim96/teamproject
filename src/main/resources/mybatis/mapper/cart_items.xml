@@ -45,6 +45,7 @@
 		set ctcount=#{ctcount}
 		where ctid=#{ctid}
 	</update>
+		
 	
 	<delete id="delete">
 		delete from cart_items

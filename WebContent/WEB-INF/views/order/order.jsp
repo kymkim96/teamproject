@@ -108,82 +108,23 @@
 										
 										<!-- ------------------------------------------------------------------- -->
 										
-										<td class="align-middle">${cartItem.ctprice}${cartItem.ctcount}</td>
+										<td class="align-middle">${cartItem.ctprice}</td>
 										
 										<!-- ------------------------------------------------------------------- -->
-										<td>
-											<div>
-												<input type="number" id="item_count" name="item_count"
-													value="${cartItem.ctcount}" />
-												<button type="button"
-													class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
-											</div> 
-											<script>
-												<%--
-												수량 비 합계 계산
-												c:out 태그는 EL을 자바스크립트 변수에 대입할 수 있게 해줌
-												--%>
-		                                    	/* $(() => {
-			                                    	$("#countRefresh").click(() => {
-			                                    		const price = "<c:out value='${requestDto.price}'/>";
-			                                    		const count = $("#item_count").val();
-			                                    		const result = price * count;
-			                                    		$("#resultPrice").text(result.toString());
-			                                    	});
-		                                    	}); */
-			                                </script>
-										</td>
+										<td class="align-middle">${cartItem.ctcount}</td>
+										
+										<!-- ------------------------------------------------------------------- -->
+										
 										<!-- ------------------------------------------------------------------- -->
 										
 										<td class="align-middle" id="resultPrice">만원이상 배달료 무료</td>
+										<!-- ------------------------------------------------------------------- -->
+										
 										<td class="align-middle" id="resultPrice">${cartItem.ctprice * cartItem.ctcount}</td>
 										
 										<!-- ------------------------------------------------------------------- -->
 										
-										<td>
 										
-											<%-- <div>
-												<button id="button_wishlist"
-													class="btn btn-outline-secondary btn-sm">위시리스트</button>
-												<button type="button"
-													class="btn btn-outline-secondary btn-sm"
-													id="sessionDeregister${cartItem.ctid}">삭제</button>
-											</div> --%>
-											
-											
-											<%-- <script>
-												id = "<c:out value='${requestDto.id}'/>";
-												console.log(id);
-												console.log(`${id}`);
-												
-		                                    	$(`#sessionDeregister${id}`).click(function() {
-		                                    		$.ajax({
-		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
-		                                    			method: "post",
-		                                    			data: {
-		                                    				id: "<c:out value='${requestDto.id}'/>"
-		                                    			},
-		                                    		});
-		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
-		                                    	});
-			                                </script> --%>
-										</td>
-										
-										<!-- ------------------------------------------------------------------- -->
-										
-										<!-- <td class="align-middle"><input type="checkbox"
-											class="cart_item_checkbox" name="cart_item_checkbox" />
-										</td>
-										
-										<script>
-											$("#header_item_checkbox").click(() => {
-												if (event.target.checked) {
-													$(".cart_item_checkbox").prop("checked", true);
-												} else {
-													$(".cart_item_checkbox").prop("checked", false);
-												}
-											})
-										</script> -->
 									</tr>
 								</c:forEach>
 	
