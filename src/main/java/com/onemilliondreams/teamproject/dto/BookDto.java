@@ -152,4 +152,11 @@ public class BookDto {
 	public void setBfprice(int bfprice) {
 		this.bfprice = bfprice;
 	}
+	public String[] getBwriters() {
+		return bwriters;
+	}
+	public void setBwriters(String[] bwriters) {
+		this.bwriters = bwriters;
+	}
+	
 }
