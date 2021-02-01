@@ -34,7 +34,7 @@
 					<img alt="book.jpg" 
 					src='
 						<c:if test="${book.bimgLink!=null}">${book.bimgLink}</c:if>
-						<c:if test="${book.bimgLink==null}">${book.bimgFilename}</c:if>' 
+						<c:if test="${book.bimgLink==null}"><%=application.getContextPath() %>/books-image?isbn=${book.isbn}</c:if>' 
 					height="500px">
 				</div>
 				
@@ -67,7 +67,7 @@
 						<ul>
 							<li><div id="infoL">정가 : </div> <div id="infoR">${book.bprice}원</div></li>
 							<li><div id="infoL">판매가격 : </div><div id="infoR">
-								<div style="display: inline; font-size: 25px; color: red;">${book.bfprice}원</div>
+								<div style="display: inline; font-size: 25px; color: red;">${book.bprice}원</div>
 								<div style="display: inline;">[${book.bdiscount}% 할인]</div></div>
 								
 								</li>
@@ -95,32 +95,33 @@
 					</div>
 					
 					<script>
-					<%-- $("#goCart").click(function() {
-						const object = {
-								id: 1,
-							    title: "미스터 마켓2021",
-							    writer: "이한영 외",
-							    publisher: "출판사",
-							    price: 15300,
-							    count: 1,
-							    imgLink: "http://image.kyobobook.co.kr/images/book/xlarge/036/x9791190977036.jpg",
-							}
-							$.ajax({
-								url: "<%=application.getContextPath()%>/cart/session-register",
-								method: "post",
-								data: object,
-								success: (data) => {
-									if (data) {
-										if (data.indexOf("alert.jsp") != -1) {
-											$("#goCartResult").html(data);
-											$("#goCartResult").css({"color": "red"});
-										} else {
-											window.location.href = "<%=application.getContextPath()%>/cart/index";
-										}
+					$("#goCart").click(function() {
+						const amount = $("#amount").text();
+						const dto = {
+								booksIsbn: "${book.isbn}",
+							    ctdiscount: ${book.bdiscount},
+							    ctprice: ${book.bprice},
+							    ctcount: amount,
+							};
+						$.ajax({
+							url: "<%=application.getContextPath()%>/cart-create",
+							method: "post",
+							data: dto,
+							success: (data) => {
+								if (data) {
+									if (data.result === "이미 장바구니에 존재합니다.") {
+										$("#goCartResult").html(data.result);
+										$("#goCartResult").css({"color": "#998064"});
+									} else if (data.result === "fail") {
+										$("#goCartResult").html(data.result);
+										$("#goCartResult").css({"color": "red"});
+									} else {
+										window.location.href = "<%=application.getContextPath()%>/cart/index";
 									}
-								},
-							});
-					}); --%>
+								}
+							},
+						});
+					});
 					</script>
 				</div>
 			</div>
@@ -156,8 +157,8 @@
 			<div class="memberReview">
 				
 				
-				
-				<c:if test="${sessionUaid!=null}">
+				<!-- 여러번 작성하게 하는걸 방지 하려면 어떻게 해야하는거지? -->
+				<c:if test="${ordered!=0}">
 					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
 					color: #917354;">
 						<h4> 회원리뷰 작성하기 </h4><hr/>
@@ -187,6 +188,7 @@
 					</div>
 				
 				</c:if>
+				
 				
 				
 				

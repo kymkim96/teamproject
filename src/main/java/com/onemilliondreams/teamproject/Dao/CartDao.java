@@ -27,4 +27,9 @@ public class CartDao {
 		return cart;
 	}
 
+	public int insert(CartDto newCart) {
+		
+		int rows = sst.insert("carts.insert", newCart);
+		return rows;
+	}
 }

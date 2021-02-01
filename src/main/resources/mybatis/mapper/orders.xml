@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="orders">
-	<insert id="insertOrder" parameterType="order">
-		<selectKey keyProperty="oid" resultType="int" order="BEFORE">
-			select oid_seq.nextval from dual
-		</selectKey>
-			insert into orders (oid, oamount, oaddress, odate, ototal, users_uaid)
-			values (#{oid},#{oamount},#{oaddress},#{odate},#{ototal},#{users_uaid})
 		
+	<insert id="insertorder" parameterType="order" >
+		<selectKey keyProperty="oid" resultType="int" order="BEFORE">
+			select ORDERS_OID_SEQ.nextval from dual
+		</selectKey>
+			insert into orders (oid, oamount, OADDRESS, odate, ototal, users_uaid)
+			values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal},#{usersUaid})
+	</insert>
+	
+	<insert id="insertorderitem"  parameterType="order">
+		insert into ORDER_ITEMS (OTID, OTPRICE, OTCOUNT,ORDERS_OID,OTDISCOUNT)
+		values (ORDER_ITEMS_OTID_SEQ.nextval,#{otprice},#{otcount},#{ordersOid},#{otdiscount})
 	</insert>
 	
 
-
-
+	<select id="countOrder" parameterType="review_count" resultType="int">
+		select count(*)
+		from 
+		    users u,
+		    orders o,
+		    order_items ot,
+		    cart_items ct
+		where
+		    o.users_uaid = u.uaid
+		    and ot.orders_oid = o.oid
+		    and ct.order_items_otid = ot.otid
+		    and ct.books_isbn = #{bookIsbn}
+		    and u.uaid = #{sessionUaid}
+	</select>
+	
+	
 
 
 

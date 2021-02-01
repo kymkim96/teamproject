@@ -56,9 +56,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							<%
-							int countAll = 0;
-							%>
 							<c:if test="${size > 0}">
 								<c:forEach var="cartItem" items="${cartItems}">
 									<tr>
@@ -66,7 +63,7 @@
 											<div class="cart_product_name">
 												<c:if test="${cartItem.bimgLink == null}">
 													<img class="detail_1_link" 
-														 src="<%=application.getContextPath() %>/books-image?isbn=${cartItem.isbn}"
+														 src="<%=application.getContextPath() %>/books-image"
 														width="50px" alt="default image">
 												</c:if>
 												
@@ -77,9 +74,7 @@
 												<div style="margin-left: 5px">
 													<div class="detail_1_link">${cartItem.btitle}</div>
 													<div class="d-flex">
-														<c:forEach var="bwriter" items="${cartItem.bookWriterlist}">
-															<span class="mr-2">${bwriter.wname}</span>
-														</c:forEach>
+														<span class="mr-2">작가</span>
 														<span class="mr-2">|</span>
 														<span>${cartItem.bpublisher}</span>
 													</div>
@@ -94,125 +89,69 @@
 											%> <fmt:formatDate
 												value="<%=calendar.getTime()%>" pattern="YYYY-MM-dd" />
 										</td>
-										<td class="align-middle">
-											<fmt:formatNumber 
-												value="${cartItem.ctprice}"
-												type="currency"
-												currencySymbol="\\"
-												/>
-										</td>
+										<td class="align-middle">${cartItem.ctprice}</td>
 										<td>
 											<div>
-												<input type="number" id="item_count${cartItem.ctid}" class="item_count"
-												    name="item_count" value="${cartItem.ctcount}" onchange="getCount(${cartItem.ctid})"
-													min="0" />
+												<input type="number" id="item_count" name="item_count"
+													value="${cartItem.ctcount}" />
 												<button type="button"
-													class="btn btn-outline-secondary btn-sm" 
-													id="countRefresh" 
-													onclick="onUpdate(${cartItem.ctid}, ${cartItem.ctprice})">수정</button>
-											</div>
+													class="btn btn-outline-secondary btn-sm" id="countRefresh">수정</button>
+											</div> 
 											<script>
-												<%=countAll%> += $("#item_count" + ${cartItem.ctid}).val();
-											</script>
+												<%--
+												수량 비 합계 계산
+												c:out 태그는 EL을 자바스크립트 변수에 대입할 수 있게 해줌
+												--%>
+		                                    	/* $(() => {
+			                                    	$("#countRefresh").click(() => {
+			                                    		const price = "<c:out value='${requestDto.price}'/>";
+			                                    		const count = $("#item_count").val();
+			                                    		const result = price * count;
+			                                    		$("#resultPrice").text(result.toString());
+			                                    	});
+		                                    	}); */
+			                                </script>
 										</td>
-										<td class="align-middle" id="resultPrice${cartItem.ctid}">
-											<fmt:formatNumber 
-												value="${cartItem.ctprice * cartItem.ctcount}"
-												type="currency"
-												currencySymbol="\\"
-												/>
-										</td>
+										<td class="align-middle" id="resultPrice">${cartItem.ctprice * cartItem.ctcount}</td>
 										<td>
 											<div>
 												<button id="button_wishlist"
 													class="btn btn-outline-secondary btn-sm">위시리스트</button>
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm"
-													id="btn-delete"
-													onclick="onDelete(${cartItem.ctid})">삭제</button>
+													id="sessionDeregister${cartItem.ctid}">삭제</button>
 											</div>
+											<%-- <script>
+												id = "<c:out value='${requestDto.id}'/>";
+												console.log(id);
+												console.log(`${id}`);
+												
+		                                    	$(`#sessionDeregister${id}`).click(function() {
+		                                    		$.ajax({
+		                                    			url: "<%=application.getContextPath()%>/cart/session-deregister",
+		                                    			method: "post",
+		                                    			data: {
+		                                    				id: "<c:out value='${requestDto.id}'/>"
+		                                    			},
+		                                    		});
+		                                    		window.location.href = "<%=application.getContextPath()%>/cart/index";
+		                                    	});
+			                                </script> --%>
 										</td>
-										<td class="align-middle">
-											<input type="checkbox"
-												   class="cart_item_checkbox" 
-												   name="cart_item_checkbox"
-												   onchange="isChecked(${cartItem.ctid})"
-											/>
+										<td class="align-middle"><input type="checkbox"
+											class="cart_item_checkbox" name="cart_item_checkbox" />
 										</td>
+										<script>
+											$("#header_item_checkbox").click(() => {
+												if (event.target.checked) {
+													$(".cart_item_checkbox").prop("checked", true);
+												} else {
+													$(".cart_item_checkbox").prop("checked", false);
+												}
+											})
+										</script>
 									</tr>
 								</c:forEach>
-								<script>
-									let ctcount;
-									const getCount = function(ctid) {
-										ctcount = event.target.value;
-									};
-								
-									function onUpdate (ctid, ctprice) {
-										$.ajax({
-											url: "<%=application.getContextPath()%>/cartitem-update",
-											method: 'post',
-											data: {
-												ctid,
-												ctcount,
-												ctprice,
-											},
-											success: (data) => {
-												$("#resultPrice" + ctid)
-													.html(data.amount);
-											},
-										});
-									}	
-								
-									const onDelete = function(ctid) {
-										$.ajax({
-											url: "<%=application.getContextPath()%>/cartitem-delete",
-											method: 'post',
-											data: {
-												ctid,
-											},
-											success: function(data) {
-												if (data.result === 'success') {
-													window.location.href = "<%=application.getContextPath()%>/cart/index";
-												} else {
-													alert("삭제가 실패했습니다.");
-												}
-											}
-										});
-									};
-								
-									let ctids = [];
-									let qs = "";
-									let oneTime = true;
-									
-									$("#header_item_checkbox").click(() => {
-										if (event.target.checked) {
-											$(".cart_item_checkbox").prop("checked", true);
-											
-										} else {
-											$(".cart_item_checkbox").prop("checked", false);
-										}
-									})
-									
-									const isChecked = function(ctid) {
-										const check_state = event.target.checked;
-										if (check_state) {
-											ctids.push(ctid);
-											qs += "&ctid=" + ctid;
-										} else {
-											qs = "";
-											ctids = ctids.filter(item => item != ctid);
-											for (let i=0; i<ctids.length; i++) {
-												qs += "&ctid=" + ctids[i];
-											}
-										}
-										if (oneTime) {
-											qs = qs.slice(1, qs.length);
-											oneTime = false;
-										}
-										console.log(qs);
-									};
-									
-								</script>
 							</c:if>
 
 							<c:if test="${size <= 0}">
@@ -224,7 +163,7 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_count_result">수량: ${size}종(<%=countAll%>개)</div>
+										<div class="item_count_result">수량: 1종(1개)</div>
 										<div class="item_price_result">
 											<span>총 상품 금액: ${sumPrice}원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
@@ -232,7 +171,7 @@
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
 											<span style="color: tomato">주문금액 합계: 원</span>
 										</div>
-									</div>	
+									</div>
 								</td>
 							</tr>
 						</tbody>
@@ -296,19 +235,13 @@
 			</div>
 
 			<div class="button_line">
-				<button type="button" id="order_confirm"
-					class="btn btn-outline-secondary btn-lg">주문하기</button>
+				<a href="<%=application.getContextPath()%>/order/content"><button type="button" id="order_confirm"
+					class="btn btn-outline-secondary btn-lg">주문하기</button></a>
 				<button type="button" id="list_home_link"
 					class="btn btn-outline-secondary btn-lg">쇼핑 계속하기</button>
 			</div>
 		</div>
-		<script>
-			$("#order_confirm").click(() => {
-				if (qs != "") {
-					location.href = "<%=application.getContextPath()%>/order/content?" + qs;
-				}
-			});
-		</script>
+
 		<%@ include file="/WEB-INF/views/common/Footer.jsp"%>
 	</div>
 </body>

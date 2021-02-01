@@ -4,14 +4,19 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.ReviewDao;
+import com.onemilliondreams.teamproject.controller.ReviewController;
 import com.onemilliondreams.teamproject.dto.PagerDto;
+import com.onemilliondreams.teamproject.dto.ReviewCountDto;
 import com.onemilliondreams.teamproject.dto.ReviewDto;
 
 @Service
 public class ReviewService {
+	private static Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@Resource
 	public ReviewDao reviewDao;
@@ -36,6 +41,13 @@ public class ReviewService {
 	public List<ReviewDto> getReviewList(PagerDto pager) {
 		List<ReviewDto> list = reviewDao.selectByPage(pager);
 		return list;
+	}
+
+	public int getOrderRow(ReviewCountDto rcd) {
+		int count = reviewDao.getOrderRow(rcd);
+		
+		
+		return count;
 	}
 	
 }

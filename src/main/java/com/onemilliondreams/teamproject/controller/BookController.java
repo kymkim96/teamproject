@@ -69,14 +69,14 @@ public class BookController {
 			requestDto.setBstate("");
 		}
 		
-		// TODO: 카테고리 테이블 연결
-		requestDto.setCategoriesCategoryName("");
-		
 		// ISBN 중복 검사
 		String result = bookService.saveBook(requestDto);
 		
 		if (result.equals("ISBN is already used")) {
-			return "redirect:/book-admin/create?result=" + result;
+			return "redirect:/book-admin/create?warningIsbn=" + result;
+		}
+		if (result.equals("writer is not correct")) {
+			return "redirect:/book-admin/create?warningWriter=" + result;
 		}
 		
 		return "redirect:/";
@@ -143,9 +143,6 @@ public class BookController {
 		if (requestDto.getBstate() == null) {
 			requestDto.setBstate("");
 		}
-		
-		// TODO: 카테고리 테이블 연결
-		requestDto.setCategoriesCategoryName("");
 		
 		bookService.updateBook(requestDto);
 		

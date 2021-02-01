@@ -62,8 +62,7 @@ public class SearchController {
 		model.addAttribute("pager",pager);
 		model.addAttribute("btitle",btitle);
 		//writer도 리스트로 받아야 함
-	      List<WriterDto> writerlist = writerService.getWriterList(pager);
-	      model.addAttribute("writerlist", writerlist);
+	
 		return "search/searchresult";
 	}
 	

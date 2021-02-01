@@ -11,5 +11,44 @@
 		where 
 		    ct.books_isbn = b.isbn
 		    and carts_cid=#{cid}
+		    order by ctid
 	</select>
+	
+	<select id="selectCartItem" resultType="cart_item_read" parameterType="int">
+		select 
+		    ctid, ctprice, ctcount, ctdiscount,
+		    bimg_filename, bcontent_type, bimg_link,
+		    btitle, bpublisher, isbn
+		from cart_items ct, books b
+		where 
+			ct.BOOKS_ISBN =b.isbn
+		    and ct.ctid = #{ctid}
+	</select>
+	
+	
+	<select id="selectCount" resultType="int" parameterType="cart_item">
+		select count(*)
+		from cart_items
+		where carts_cid=#{cartsCid} and books_isbn=#{booksIsbn}
+	</select>
+	
+	<insert id="insert" parameterType="cart_item">
+		insert into cart_items 
+		(ctid, ctprice, ctcount, ctdiscount, books_isbn, carts_cid)
+		values 
+		(cart_items_ctid_seq.nextval, #{ctprice}, #{ctcount},
+		 #{ctdiscount}, #{booksIsbn}, #{cartsCid})
+	</insert>
+	
+	<update id="update" parameterType="cart_item">
+		update cart_items
+		set ctcount=#{ctcount}
+		where ctid=#{ctid}
+	</update>
+	
+	<delete id="delete">
+		delete from cart_items
+		where ctid=#{ctid}
+	</delete>
+	
 </mapper>

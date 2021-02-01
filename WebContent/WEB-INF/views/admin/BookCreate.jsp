@@ -17,7 +17,7 @@
 		        <div class="content">
 			        <h1 class="mt-3 mb-5"><b>등록 페이지</b></h1>
 		        
-		        	<form id="createForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-create">
+		        	<form id="bookForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-create">
 		        		<!-- 기본 필드 입력 -->
 			        	<div id="basic_field_layout">
 			                <h2><b>기본 필드 입력</b></h2>
@@ -27,7 +27,7 @@
 			                            <label for="isbn">ISBN:</label>
 			                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn">
 			                        </div>
-			                        <span id="warningIsbn">${result}</span>
+			                        <span id="warningIsbn">${warningIsbn}</span>
 			                        <div class="form-group">
 			                            <label for="btitle">제목:</label>
 			                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle">
@@ -37,11 +37,18 @@
 			                            <label for="bwriter">작가:</label>
 			                            <div>
 			                            	<input type="text" class="form-control col-sm-8" id="bwriter" name="bwriter" style="display: inline-block">
-			                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">검색</button>
+			                            	<button type="button" id="bwriterAdd" class="btn btn-secondary ml-2">추가</button>
 			                            </div>
-			                            <small id="bwriterResult" class="form-text text-danger"></small>
+			                            <div style="overflow-y: scroll; height: 3rem;">
+			                            	<small id="bwriterList"></small>			                            
+			                            </div>
+			                            <small id="bwriterResult" class="form-text text-danger">${warningWriter}</small>
 			                            <script>
-			                            	$("#bwriterSearch").click(function() {});
+			                            	$("#bwriterAdd").click(function() {
+			                            		writer = $("#bwriter").val();
+			                            		$("#bwriterList").append(writer + " ");
+			                            		$("#bwriter").after('<input type="hidden" name="bwriters" value="' + writer + '">');
+			                            	});
 			                            </script>
 			                        </div>
 			                        <span id="warningWriter"></span>
@@ -51,7 +58,7 @@
 			                        </div>
 			                        <div class="form-group">
 			                            <label for="bprice">정가:</label>
-			                            <input type="number" class="form-control col-sm-8" id="bprice" name="bprice">
+			                            <input type="number" class="form-control col-sm-8" id="bprice" name="bprice" value="0">
 			                        </div>
 			                        <span id="warningPrice"></span>
 			                        <div class="form-group">
@@ -129,9 +136,9 @@
 			                    <div id="category_calander_first">
 			                    	<table class="category_table">
 				                        <tr>
-				                            <td class="category_items">카테고리1</td>
-				                            <td class="category_items">카테고리2</td>
-				                            <td class="category_items">카테고리3</td>
+				                            <td class="category_items">현대소설</td>
+				                            <td class="category_items">자기계발서</td>
+				                            <td class="category_items">해외소설</td>
 				                        </tr>
 				                        <tr>
 				                            <td class="category_items">카테고리4</td>
@@ -196,11 +203,11 @@
 			            </div>
 	
 			            <div id="finish_line">
-			                <button id="btn-submit" class="btn btn-outline-secondary btn-lg" onclick="submit()">등록</button>
-			                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg" onclick="submit()">임시저장</button>
+			                <button id="btn-submit" class="btn btn-outline-secondary btn-lg" onclick="submitForm()">등록</button>
+			                <button type="button" id="btn-temporary" class="btn btn-outline-secondary btn-lg" onclick="">임시저장</button>
 			            </div>
 		        	</form>
-		        	<script src="<%=application.getContextPath()%>/resources/js/submit.js"></script>
+		        	<script src="<%=application.getContextPath()%>/resources/js/submitForm.js"></script>
 		        </div>
 			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>

@@ -28,7 +28,7 @@
 							<div class="diva">오늘의 책</div>
 							
 						<div class="book1">
-							<a href="<%=application.getContextPath()%>/detail?param1=1"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1= 9791190977036"><img height="250px" width="160px"
 							src="resources/img/오늘의 책.jpg"></a>
 							
 							
@@ -153,6 +153,45 @@
 					</div>
 
 				</div>
+				
+				
+				
+				<div class="diva1">
+					<div class="didi">
+						<div class="diva">서연 테스트용 책</div>
+						<div class="book1">
+							<a href="<%=application.getContextPath()%>/detail?param1=9788976827340"><img height="250px" width="160px"
+							src="http://image.kyobobook.co.kr/images/book/xlarge/340/x9788976827340.jpg"></a>
+							
+							<ul>
+								<h2>미국 대도시의 삶과 죽음</h2>
+								<h5>제인제이콥스</h5>
+								<p>와 바꿀거 개많네<br>
+								
+							</ul>	
+							
+						</div>
+					</div>
+					<div class="didi">
+						<div class="diva">기대신간</div>
+						<div class="book1">
+							<a href="view/detail/6.html"><img height="250px" width="160px"
+							src="resources/img/기대신간.jpg"></a>
+							
+							<ul>
+								<h2>진짜 미국식 주식투자</h2>
+								<h5>뉴욕주민</h5>
+								<p>이 책에서 저자는 쉽게 접하기 힘든<br>
+								미국 주식 시장의 변동성 속에서 투자 경험을<br>
+								쌓고 더 높은 수익을 얻는 데 꼭 필요한 정보만을<br>
+								담았다. 답답했던 한국 투자자의 속을 뻥 뚫어줄<br>
+								미국 주식 분석법!</p>
+							</ul>	
+							
+						</div>
+					</div>
+
+				</div>
 
 				<div><img id="b" height: 1000px; src="resources/img/하단.PNG"></div>
 
@@ -161,7 +200,8 @@
 
 			</article>
 
-
+				
+				
 
 
 		</section>

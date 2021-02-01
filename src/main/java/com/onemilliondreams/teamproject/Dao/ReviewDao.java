@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.onemilliondreams.teamproject.dto.PagerDto;
+import com.onemilliondreams.teamproject.dto.ReviewCountDto;
 import com.onemilliondreams.teamproject.dto.ReviewDto;
 
 @Repository
@@ -28,6 +29,13 @@ public class ReviewDao {
 		return count;
 	}
 	
+	//User가 
+		public int getOrderRow(ReviewCountDto rcd) {
+		int count  = sst.selectOne("orders.countOrder", rcd);
+		return count;
+	}
+
+	
 	//ISBN별 리뷰 전체
 	public List<ReviewDto> selectByFk(String BookIsbn) {
 		List<ReviewDto> list = sst.selectList("reviews.selectByFk",BookIsbn);
@@ -39,7 +47,6 @@ public class ReviewDao {
 		return list;
 	}
 
-	
 
-	
+		
 }
