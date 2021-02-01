@@ -6,12 +6,12 @@
 		select 
 		    ctid, ctprice, ctcount, ctdiscount,
 		    bimg_filename, bcontent_type, bimg_link,
-		    btitle, bpublisher, isbn
+		    btitle, bpublisher, isbn, bdelivery_fee
 		from cart_items ct, books b
 		where 
 		    ct.books_isbn = b.isbn
 		    and carts_cid=#{cid}
-		    order by ctid
+	    order by ctid
 	</select>
 	
 	<select id="selectCartItem" resultType="cart_item_read" parameterType="int">
@@ -45,6 +45,7 @@
 		set ctcount=#{ctcount}
 		where ctid=#{ctid}
 	</update>
+		
 	
 	<delete id="delete">
 		delete from cart_items

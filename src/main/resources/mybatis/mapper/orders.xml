@@ -11,8 +11,8 @@
 	</insert>
 	
 	<insert id="insertorderitem"  parameterType="order">
-		insert into ORDER_ITEMS (OTID, OTPRICE, OTCOUNT,ORDERS_OID,OTDISCOUNT)
-		values (ORDER_ITEMS_OTID_SEQ.nextval,#{otprice},#{otcount},#{ordersOid},#{otdiscount})
+		insert into ORDER_ITEMS (OTID, OTPRICE, OTCOUNT,ORDERS_OID,OTDISCOUNT,BOOKS_ISBN)
+		values (ORDER_ITEMS_OTID_SEQ.nextval,#{otprice},#{otcount},#{ordersOid},#{otdiscount},#{booksIsbn})
 	</insert>
 	
 
@@ -21,13 +21,12 @@
 		from 
 		    users u,
 		    orders o,
-		    order_items ot,
-		    cart_items ct
+		    order_items ot
+		    
 		where
 		    o.users_uaid = u.uaid
 		    and ot.orders_oid = o.oid
-		    and ct.order_items_otid = ot.otid
-		    and ct.books_isbn = #{bookIsbn}
+		    and ot.books_isbn = #{bookIsbn}
 		    and u.uaid = #{sessionUaid}
 	</select>
 	

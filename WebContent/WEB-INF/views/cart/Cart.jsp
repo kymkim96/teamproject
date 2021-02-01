@@ -38,12 +38,15 @@
 			</div>
 
 			<!-- 쇼핑카트 선택 상품 목록 -->
+			<script>
+				let countAll = 0;
+			</script>
 			<div class="cart_view">
 				<div class="cart_view_title">
 					<span><b>일반 상품</b></span>
 				</div>
 				<div class="table_container">
-					<table class="table table-striped" style="width: 960px">
+					<table id="cart_table" class="table table-striped" style="width: 960px">
 						<thead>
 							<tr>
 								<th scope="col">상품명</th>
@@ -56,9 +59,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<%
-							int countAll = 0;
-							%>
+							
 							<c:if test="${size > 0}">
 								<c:forEach var="cartItem" items="${cartItems}">
 									<tr>
@@ -104,23 +105,27 @@
 										<td>
 											<div>
 												<input type="number" id="item_count${cartItem.ctid}" class="item_count"
-												    name="item_count" value="${cartItem.ctcount}" onchange="getCount(${cartItem.ctid})"
-													min="0" />
+												    name="item_count" value="${cartItem.ctcount}" 
+												    onchange="getCount(${cartItem.ctid}, ${cartItem.ctprice})"
+													min="0" step="1"/>
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm" 
 													id="countRefresh" 
 													onclick="onUpdate(${cartItem.ctid}, ${cartItem.ctprice})">수정</button>
 											</div>
 											<script>
-												<%=countAll%> += $("#item_count" + ${cartItem.ctid}).val();
+												countAll += ($("#item_count" + ${cartItem.ctid}).val() * 1);
 											</script>
 										</td>
 										<td class="align-middle" id="resultPrice${cartItem.ctid}">
-											<fmt:formatNumber 
-												value="${cartItem.ctprice * cartItem.ctcount}"
-												type="currency"
-												currencySymbol="\\"
-												/>
+											<input type="hidden" class="resultPrice" value="${cartItem.ctprice * cartItem.ctcount}">
+											<div>
+												<fmt:formatNumber 
+													value="${cartItem.ctprice * cartItem.ctcount}"
+													type="currency"
+													currencySymbol="\\"
+													/>
+											</div>
 										</td>
 										<td>
 											<div>
@@ -143,10 +148,36 @@
 								</c:forEach>
 								<script>
 									let ctcount;
-									const getCount = function(ctid) {
+									const getCount = function(ctid, ctprice) {
 										ctcount = event.target.value;
-									};
-								
+										
+										// 총 개수 갱신
+										var numbers = $("#cart_table").find("input[type=number]");
+										var totalNum = 0;
+										for(var i=0; i<numbers.length; i++) {
+											totalNum += parseInt(numbers.get(i).value);
+										}
+										$(".countAll").html(totalNum);
+										
+										// 합계 계산
+										const temp = ctprice * ctcount;
+										const tempAmount = temp.toLocaleString("ko-KR", { style: "currency", currency: "KRW"});
+										$("#resultPrice" + ctid + " div").html(tempAmount);
+										
+										const resultPrice = $("#resultPrice" + ctid).find("input[type=hidden]");
+										resultPrice.val(temp);
+										
+										let amounts = $(".resultPrice");
+										let totalAmount = 0;
+										for (let i=0; i<amounts.length; i++) {
+											totalAmount += parseInt(amounts.get(i).value); 
+										}
+										
+										$("#resultAmount").html(totalAmount.toLocaleString());
+										const finalPrice = totalAmount + ${deliveryFee};
+										$("#finalPrice").html(finalPrice.toLocaleString());	
+									}
+									
 									function onUpdate (ctid, ctprice) {
 										$.ajax({
 											url: "<%=application.getContextPath()%>/cartitem-update",
@@ -187,6 +218,7 @@
 									$("#header_item_checkbox").click(() => {
 										if (event.target.checked) {
 											$(".cart_item_checkbox").prop("checked", true);
+											ctids = [];
 											
 										} else {
 											$(".cart_item_checkbox").prop("checked", false);
@@ -224,15 +256,26 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_count_result">수량: ${size}종(<%=countAll%>개)</div>
+										<div class="item_count_result">수량: ${size}종(<span class="countAll">0</span>개)</div>
 										<div class="item_price_result">
-											<span>총 상품 금액: ${sumPrice}원</span> <img
+											<span>총 상품 금액: <span id="resultAmount">${formattedAmount}</span>원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
-											<span>배송비: 0원</span> <img
+											<span>배송비: ${deliveryFee}원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
-											<span style="color: tomato">주문금액 합계: 원</span>
+											<span style="color: tomato">주문금액 합계: 
+												<span id="finalPrice">
+													<fmt:formatNumber 
+													value="${sumAmount + deliveryFee}"
+													/>
+												</span>원
+											</span>
 										</div>
-									</div>	
+									</div>
+									<script>
+										$(() => {
+											$(".countAll").html(countAll);
+										});
+									</script>
 								</td>
 							</tr>
 						</tbody>
@@ -255,9 +298,13 @@
 							주문금액 합계</div>
 					</div>
 					<div class="row">
-						<div class="col-2 price_content">1종(1개)</div>
+						<div class="col-2 price_content">${size}종(<span class="countAll">0</span>개)</div>
 						<div class="col price_content">
-							<b>13,500원</b>
+							<b>
+								<fmt:formatNumber 
+								value="${sumPrice}"
+								/>원
+							</b>
 						</div>
 						<div class="col price_content">
 							<b>1,350원</b>

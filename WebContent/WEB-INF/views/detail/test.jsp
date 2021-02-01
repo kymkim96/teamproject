@@ -178,12 +178,13 @@
 			                      <small class="form-text text-muted">필수 입력 사항입니다.</small>
 			                    </div>
 			                    
-			                    <div class="form-group">
+			                    <div class="d-inline form-group">
 			                      <label for="rcontent"> 내용 </label>
 			                      <textarea id="rcontent" name="rcontent" class="form-control" rows="5" cols="50"></textarea>
+			                      
 			                    </div>
 			                  
-			                	<button class="btn btn-primary"> 저장</button>
+			                	<button class="d-inline btn btn-primary"> 저장</button>
 			            </form>
 					</div>
 				
