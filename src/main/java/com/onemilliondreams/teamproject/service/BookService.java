@@ -56,22 +56,34 @@ public class BookService {
 			return "ISBN is already used";
 		}
 		
+		// 할인율 적용하기
+		int price = requestDto.getBprice();
+		Integer discount = requestDto.getBdiscount();
+		if (discount != null) {
+			double finalPrice = price - (price * ((double)discount/100));
+			requestDto.setBfinalPrice(finalPrice);
+		} else {
+			requestDto.setBfinalPrice(price);
+		}
+		
+		
 		int rows = bookDao.insert(requestDto);
 		// 책과 착가 매핑하기
 		if (rows > 0) {
-			for (String writer : requestDto.getBwriters()) {
-				Integer wid = writerService.getWriterByWname(writer);
-				if (wid != null && wid != -1) {
-					BookWriterDto bookWriter = new BookWriterDto();
-					bookWriter.setBooksIsbn(requestDto.getIsbn());
-					bookWriter.setWritersWid(wid);
-					bookWriterService.saveBookWriter(bookWriter);
-				} else {
-					return "writer is not correct";
+			if (requestDto.getBwriters() != null) {
+				for (String writer : requestDto.getBwriters()) {
+					Integer wid = writerService.getWriterByWname(writer);
+					if (wid != null && wid != -1) {
+						BookWriterDto bookWriter = new BookWriterDto();
+						bookWriter.setBooksIsbn(requestDto.getIsbn());
+						bookWriter.setWritersWid(wid);
+						bookWriterService.saveBookWriter(bookWriter);
+					} else {
+						return "writer is not correct";
+					}
 				}
 			}
 		}
-		
 		
 		return "성공";
 	}

@@ -28,7 +28,8 @@ public class BookDto {
 	private String categoriesCategoryName;
 	private String[] bwriters;
 	
-	private int bfprice;//book final price;
+	private double bfinalPrice;
+	private int bfprice;
 	
 	
 	public String getIsbn() {
@@ -156,5 +157,11 @@ public class BookDto {
 	}
 	public void setBwriters(String[] bwriters) {
 		this.bwriters = bwriters;
+	}
+	public double getBfinalPrice() {
+		return bfinalPrice;
+	}
+	public void setBfinalPrice(double bfinalPrice) {
+		this.bfinalPrice = bfinalPrice;
 	}
 }
