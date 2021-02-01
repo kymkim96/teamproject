@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.WriterDao;
 import com.onemilliondreams.teamproject.controller.WriterController;
+import com.onemilliondreams.teamproject.dto.PagerDto;
 import com.onemilliondreams.teamproject.dto.WriterDto;
 
 @Service
@@ -27,6 +28,9 @@ public class WriterService {
 		List<WriterDto> list = writerDao.getWriterList(BookIsbn);
 		return list;
 	}
-		
+	public List<WriterDto> getWriterList(PagerDto pager) {
+		List<WriterDto> list = writerDao.getWriterList(pager);
+		return list;
+	}	
 	
 }

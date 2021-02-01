@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.onemilliondreams.teamproject.dto.PagerDto;
 import com.onemilliondreams.teamproject.dto.WriterDto;
 
 @Repository
@@ -22,6 +23,10 @@ public class WriterDao {
 
 	public List<WriterDto> getWriterList(String BookIsbn) {
 		List<WriterDto> list = sst.selectList("writers.getwriterlist", BookIsbn);
+		return list;
+	}
+	public List<WriterDto> getWriterList(PagerDto pager) {
+		List<WriterDto> list = sst.selectList("writers.getwriterlist", pager);
 		return list;
 	}
 

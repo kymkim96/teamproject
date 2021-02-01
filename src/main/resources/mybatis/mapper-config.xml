@@ -13,7 +13,7 @@
 		<typeAlias alias="book" 	type="com.onemilliondreams.teamproject.dto.BookDto"/>
 		<typeAlias alias="auth" 	type="com.onemilliondreams.teamproject.dto.AuthDto"/>
 		<typeAlias alias="order" 	type="com.onemilliondreams.teamproject.dto.OrderDto"/>
-
+<!-- 		<typeAlias alias="search" 	type="com.onemilliondreams.teamproject.dto.BookDto"/> -->
 			
 		<typeAlias alias="cart_item" type="com.onemilliondreams.teamproject.dto.CartItemDto"/> 			
 			
