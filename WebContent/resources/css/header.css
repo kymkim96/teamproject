@@ -103,12 +103,15 @@ header {
 }
 
 
+#searchForm button{
+	
+	text-decoration: none;
+}
 
 
-
-#석봉갓{
+#searchForm searchb{
 	display:inline-block;
-	width:400px;
+	width:700px;
 	margin : 20px;
 	margin-left: 50px;
 }

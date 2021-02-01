@@ -18,23 +18,24 @@
 			insert into books
 			(isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
 			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex,
-			 bimg_link, bstate, bvideo_link, categories_category_name)
+			 bimg_link, bstate, bvideo_link, categories_category_name, bfinal_price)
 			values
 			(#{isbn}, #{btitle}, #{bsubTitle}, #{bpublisher}, #{btranslator}, 
 			#{bpublishDate}, #{bbestSeller}, #{bprice}, #{bdiscount}, #{bdeliveryFee}, 
-			#{bcontent}, #{bindex}, #{bimgLink}, #{bstate}, #{bvideoLink}, #{categoriesCategoryName})
+			#{bcontent}, #{bindex}, #{bimgLink}, #{bstate}, #{bvideoLink}, #{categoriesCategoryName}, 
+			#{bfinalPrice})
 		</if>
 		
 		<if test="bimgFilename != null">
 			insert into books
 			(isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
 			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex,
-			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name)
+			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name, bfinal_price)
 			values
 			(#{isbn}, #{btitle}, #{bsubTitle}, #{bpublisher}, #{btranslator}, 
 			#{bpublishDate}, #{bbestSeller}, #{bprice}, #{bdiscount}, #{bdeliveryFee}, 
 			#{bcontent}, #{bindex}, #{bimgFilename}, #{bcontentType}, #{bstate}, 
-			#{bvideoLink}, #{categoriesCategoryName})
+			#{bvideoLink}, #{categoriesCategoryName}, #{bfinalPrice})
 		</if>
 	</insert>
 	

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="searchs">
+	<select id="selectAll" resultType="book">
+		select isbn, btitle, bsubTitle, bimgLink, bimgFilename, bpublisher, btranslator, bprice,bfprice, bdiscount, bdeliveryFee,bpublish_date, bcontent, wname
+		from books
+		order by isbn desc
+	</select>
+	
+	<select id="countAll" parameterType="string" resultType="int"> 
+		select count(*) from books where btitle like '%'||#{btitle}||'%'
+	
+	</select>
+	
+	<select id="selectByPk" parameterType="string" resultType="book">
+		select isbn, btitle, bsubTitle, bimgLink, bimgFilename, bpublisher, btranslator, bprice, bdiscount, bfprice,  bdeliveryFee,bpublish_date, bcontent, wname
+		from books
+		where btitle=#{btitle}
+	
+	</select>
+	
+
+	
+	
+	<select id="selectByPage" parameterType="pager" resultType="book">
+	select rno, isbn, btitle, bimg_Link,  bpublisher,bpublish_date, bprice, bdiscount, bcontent
+	
+	From(
+	    select rownum as rno, isbn, btitle, bimg_Link, bpublisher, bpublish_date, bprice, bdiscount, bcontent
+	    
+	    From(
+	        select 	           
+	            	isbn, btitle, bimg_Link,  bpublisher,bpublish_date, bprice, bdiscount, bcontent
+	            	
+	        from	
+	        		
+	        		books
+	        
+	        where 	
+	        		
+			         btitle like '%'||#{btitle}||'%'
+	        
+	        order by isbn desc
+	        )
+	    where  rownum &lt;= #{endRowNo} <!-- <= &lt; ,   >= &gt; -->
+	    )
+	where rno &gt;= #{startRowNo}
+		
+		
+		
+	</select>
+	
+
+</mapper>
