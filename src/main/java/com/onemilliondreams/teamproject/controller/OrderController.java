@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,29 +36,30 @@ public class OrderController {
 	
 	@GetMapping("/content")
 	public String content(
-			@RequestParam(value="ctid", required=false)int[] ctid, Model model,	OrderDto orderdata) {
-		
-		//삽입확인용
-		int orderStatus =1;
+			@RequestParam(value="ctid", required=false) int[] ctid,
+			Model model,OrderDto orderdata) {
+
 		
 		//Ct아이디 가져와서 저장할거임
 		List<CartItemReadResponseDto> cartItemlist = new ArrayList<>();
 		//Ct아이디 불러올거임
 		CartItemReadResponseDto cartItem = new CartItemReadResponseDto();
-		
+		if(orderdata.getOaddress() == null) {
+			orderdata.setOaddress("주소없음");
+		}
 		
 		
 		if(ctid ==null) {
 		//데이터가 없는동안 시험삼아 해보기
-			int[] ctid_try = {4,5};
+			int[] ctid_try = {29};
 			for(int ctid_temp : ctid_try ) {
 				//Cart item을 한개만 가져오면 됨!
 				cartItem = cartItemService.getCartItem(ctid_temp);
 				cartItemlist.add(cartItem);
+				logger.info("장바구니에서 안넘어옴");
 			}
 			model.addAttribute("cartItemlist", cartItemlist);
 		}else {
-			
 			//----------------------------------------------------------------------
 			//실제로 구현 할때 써야하는 부분임
 			for(int ctid_temp : ctid ) {
@@ -68,7 +71,38 @@ public class OrderController {
 			//----------------------------------------------------------------------
 		}
 		
-		/*
+		
+		return "order/order";
+	}
+	
+	@PostMapping("/addorder")
+	public String addorder(
+			//@RequestParam(value="ctid", required=false)int[] ctid, 
+			Model model,
+			//String orderStatus ,
+			OrderDto orderdata,
+			HttpSession session) {
+				
+		//Ct아이디 불러올거임
+		CartItemReadResponseDto cartItem = new CartItemReadResponseDto();
+		
+		
+		if(orderdata.getOaddress()==null) {
+			logger.info("주소가 안받아진거임");
+		}else if(orderdata.getUsersUaid()==null) {
+			logger.info("아이디가안들어왔음");
+		//}else if(ctid ==null) {
+		//	logger.info("ctid가 없음");
+		}else {
+			logger.info(orderdata.getOaddress());
+			logger.info(orderdata.getUsersUaid());
+			logger.info("얼추 다 들어온듯");
+		}
+		
+		
+		
+		
+		//*
 		//Ct아이디 가져와서 저장할거임
 		List<OrderItemDto> orderItemlist = new ArrayList<>();
 		//order 아이템을 저장할거임
@@ -77,34 +111,33 @@ public class OrderController {
 		//주문정보가져오기
 		OrderDto order = new OrderDto();
 		
-		if(orderStatus==1) {
-			//셋 oid를 앞에서 햇으닌까 가져와야함!
-			
-			order.setUsersUaid(orderdata.getUsersUaid());
-			order.setOaddress(orderdata.getOaddress());
-			//order ototal - jsp에서 처리할지 여기서 처리할지 정하기!
-			//order oamount - jsp에서 처리할지 여기서 처리할지 정하기!
-			int[] ctid_try = {4,5};
-			
-			for(int ctid_temp : ctid_try ) {//현재 하드코딩된상태
-				//Cart item을 한개만 가져오면 됨!
-				cartItem = cartItemService.getCartItem(ctid_temp);
-				//otid는 seq
-				orderItem.setOtcount(cartItem.getCtcount());
-				orderItem.setOtdiscount(cartItem.getCtdiscount());
-				orderItem.setOtprice(cartItem.getCtprice());
-				orderItemlist.add(orderItem);
-			}
-			
-			orderService.order(order, orderItemlist);
+		order.setUsersUaid("admin");
+		order.setOaddress(orderdata.getOaddress());
+		//order ototal - jsp에서 처리할지 여기서 처리할지 정하기!
+		//order oamount - jsp에서 처리할지 여기서 처리할지 정하기!
+		
+		int[] ctid_try = {29};
+		
+		for(int ctid_temp : ctid_try ) {//현재 하드코딩된상태
+			//Cart item을 한개만 가져오면 됨!
+			cartItem = cartItemService.getCartItem(ctid_temp);
+			//otid는 seq
+			orderItem.setOtcount(cartItem.getCtcount());
+			orderItem.setOtdiscount(cartItem.getCtdiscount());
+			orderItem.setOtprice(cartItem.getCtprice());
+			orderItemlist.add(orderItem);
 		}
+		
+		//ctid 업데이틀 해줘야 함
+		orderService.order(order, orderItemlist);
+		//orderService.order(order, orderItemlist,ctid_try);
+		
 		//*/
 		
-		return "order/order";
-	}
-	
-	@GetMapping("/content1")
-	public String content1() {
+		
+		
+		
+		
 		return "order/ordered";
 	}
 	

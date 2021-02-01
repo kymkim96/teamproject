@@ -4,10 +4,10 @@
 		
 	<insert id="insertorder" parameterType="order" >
 		<selectKey keyProperty="oid" resultType="int" order="BEFORE">
-			select oid_seq.nextval from dual
+			select ORDERS_OID_SEQ.nextval from dual
 		</selectKey>
-			insert into orders (oid, oamount, oaddress, odate, ototal, users_uaid)
-			values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal},#{users_uaid})
+			insert into orders (oid, oamount, OADDRESS, odate, ototal, users_uaid)
+			values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal},#{usersUaid})
 	</insert>
 	
 	<insert id="insertorderitem"  parameterType="order">
