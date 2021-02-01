@@ -61,11 +61,13 @@ public class BookService {
 		if (rows > 0) {
 			for (String writer : requestDto.getBwriters()) {
 				Integer wid = writerService.getWriterByWname(writer);
-				if (wid != null) {
+				if (wid != null && wid != -1) {
 					BookWriterDto bookWriter = new BookWriterDto();
 					bookWriter.setBooksIsbn(requestDto.getIsbn());
 					bookWriter.setWritersWid(wid);
 					bookWriterService.saveBookWriter(bookWriter);
+				} else {
+					return "writer is not correct";
 				}
 			}
 		}

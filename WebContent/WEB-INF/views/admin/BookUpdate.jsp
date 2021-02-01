@@ -57,7 +57,7 @@
 	                            	$("#bwriterAdd").click(function() {
 	                            		const wname = $("#bwriter").val();
 	                            		$.ajax({
-	                            			url: '<%=application.getContextPath()%>/bookwriter-update',
+	                            			url: '<%=application.getContextPath()%>/bookwriter-create',
 	                            			method: 'post',
 	                            			data: {
 	                            				isbn: "${book.isbn}",

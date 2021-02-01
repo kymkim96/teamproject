@@ -21,8 +21,8 @@ public class BookWriterController {
 	@Resource
 	private WriterService writerService;
 	
-	@PostMapping("/bookwriter-update")
-	public void update(String isbn, String wname, HttpServletResponse response) throws Exception {
+	@PostMapping("/bookwriter-create")
+	public void create(String isbn, String wname, HttpServletResponse response) throws Exception {
 		
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter pw = response.getWriter();
@@ -41,8 +41,6 @@ public class BookWriterController {
 		bookWriter.setBooksIsbn(isbn);
 		bookWriter.setWritersWid(wid);
 		Integer rows = bookWriterService.saveBookWriter(bookWriter);
-		
-		
 		
 		if (rows != null) {
 			root.put("result", "매핑 성공");

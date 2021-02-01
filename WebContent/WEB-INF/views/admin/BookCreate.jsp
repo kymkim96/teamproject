@@ -27,7 +27,7 @@
 			                            <label for="isbn">ISBN:</label>
 			                            <input type="text" class="form-control col-sm-8" id="isbn" name="isbn">
 			                        </div>
-			                        <span id="warningIsbn">${result}</span>
+			                        <span id="warningIsbn">${warningIsbn}</span>
 			                        <div class="form-group">
 			                            <label for="btitle">제목:</label>
 			                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle">
@@ -42,7 +42,7 @@
 			                            <div style="overflow-y: scroll; height: 3rem;">
 			                            	<small id="bwriterList"></small>			                            
 			                            </div>
-			                            <small id="bwriterResult" class="form-text text-danger"></small>
+			                            <small id="bwriterResult" class="form-text text-danger">${warningWriter}</small>
 			                            <script>
 			                            	$("#bwriterAdd").click(function() {
 			                            		writer = $("#bwriter").val();

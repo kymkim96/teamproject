@@ -73,7 +73,10 @@ public class BookController {
 		String result = bookService.saveBook(requestDto);
 		
 		if (result.equals("ISBN is already used")) {
-			return "redirect:/book-admin/create?result=" + result;
+			return "redirect:/book-admin/create?warningIsbn=" + result;
+		}
+		if (result.equals("writer is not correct")) {
+			return "redirect:/book-admin/create?warningWriter=" + result;
 		}
 		
 		return "redirect:/";

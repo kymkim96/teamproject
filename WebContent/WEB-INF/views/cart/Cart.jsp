@@ -56,6 +56,9 @@
 							</tr>
 						</thead>
 						<tbody>
+							<%
+							int countAll = 0;
+							%>
 							<c:if test="${size > 0}">
 								<c:forEach var="cartItem" items="${cartItems}">
 									<tr>
@@ -100,13 +103,17 @@
 										</td>
 										<td>
 											<div>
-												<input type="number" id="item_count" name="item_count"
-													value="${cartItem.ctcount}" onchange="getCount(${cartItem.ctid})" />
+												<input type="number" id="item_count${cartItem.ctid}" class="item_count"
+												    name="item_count" value="${cartItem.ctcount}" onchange="getCount(${cartItem.ctid})"
+													min="0" />
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm" 
 													id="countRefresh" 
 													onclick="onUpdate(${cartItem.ctid}, ${cartItem.ctprice})">수정</button>
 											</div>
+											<script>
+												<%=countAll%> += $("#item_count" + ${cartItem.ctid}).val();
+											</script>
 										</td>
 										<td class="align-middle" id="resultPrice${cartItem.ctid}">
 											<fmt:formatNumber 
@@ -217,7 +224,7 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_count_result">수량: ${size}종(1개)</div>
+										<div class="item_count_result">수량: ${size}종(<%=countAll%>개)</div>
 										<div class="item_price_result">
 											<span>총 상품 금액: ${sumPrice}원</span> <img
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
@@ -225,7 +232,7 @@
 												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
 											<span style="color: tomato">주문금액 합계: 원</span>
 										</div>
-									</div>
+									</div>	
 								</td>
 							</tr>
 						</tbody>
@@ -297,7 +304,9 @@
 		</div>
 		<script>
 			$("#order_confirm").click(() => {
-				location.href = "<%=application.getContextPath()%>/order/content?" + qs;
+				if (qs != "") {
+					location.href = "<%=application.getContextPath()%>/order/content?" + qs;
+				}
 			});
 		</script>
 		<%@ include file="/WEB-INF/views/common/Footer.jsp"%>

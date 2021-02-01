@@ -31,10 +31,15 @@ public class BookAdminPageController {
 	private WriterService writerService;
 	
 	@GetMapping("/create")
-	public String create(@RequestParam(required = false) String result, Model model) throws Exception {
+	public String create(@RequestParam(required = false) String warningIsbn, 
+			@RequestParam(required = false) String warningWriter, 
+			Model model) throws Exception {
 		
-		if (result != null) {
-			model.addAttribute("result", result);
+		if (warningIsbn != null) {
+			model.addAttribute("warningIsbn", warningIsbn);
+		}
+		if (warningWriter != null) {
+			model.addAttribute("warningWriter", warningWriter);
 		}
 		
 		return "admin/BookCreate";
