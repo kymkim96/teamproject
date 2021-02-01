@@ -43,8 +43,8 @@
 	
 					<div id="divheader2">
 						<form name="searchForm" id="searchForm" method="post" action="<%=application.getContextPath()%>/search/searchresult">
-							<input id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
-							<button type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"></button>
+							<input style="width:400px;" id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
+							<button class ="btn" type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"></button>
 						</form>
 					</div>
 	

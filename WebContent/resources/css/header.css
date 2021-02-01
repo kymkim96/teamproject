@@ -103,21 +103,6 @@ header {
 }
 
 
-#searchForm button{
-	
-	text-decoration: none;
-}
-
-
-#searchForm searchb{
-	display:inline-block;
-	width:700px;
-	margin : 20px;
-	margin-left: 50px;
-}
-
-
-
 #divheader2 {
 	
 	padding: 25px;
