@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="searchs">
 	<select id="selectAll" resultType="book">
-		select isbn, btitle, bsubTitle, bimgLink, bimgFilename, bpublisher, btranslator, bprice,bfprice, bdiscount, bdeliveryFee,bpublish_date, bcontent, wname
+		select isbn, btitle, bsubTitle, bimgLink, bimgFilename, bpublisher, btranslator, bprice,bfprice, bdiscount, bdeliveryFee,bpublish_date, bcontent, BFINAL_PRICE
 		from books
 		order by isbn desc
 	</select>
@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="selectByPk" parameterType="string" resultType="book">
-		select isbn, btitle, bsubTitle, bimgLink, bimgFilename, bpublisher, btranslator, bprice, bdiscount, bfprice,  bdeliveryFee,bpublish_date, bcontent, wname
+		select isbn, btitle, bsubTitle, bimgLink, bimgFilename, bpublisher, btranslator, bprice, bdiscount, bfprice,  bdeliveryFee,bpublish_date, bcontent, BFINAL_PRICE
 		from books
 		where btitle=#{btitle}
 	
@@ -23,14 +23,14 @@
 	
 	
 	<select id="selectByPage" parameterType="pager" resultType="book">
-	select rno, isbn, btitle, bimg_Link,  bpublisher,bpublish_date, bprice, bdiscount, bcontent
+	select rno, isbn, btitle, bimg_Link,  bpublisher,bpublish_date, bprice, bdiscount, bcontent,BFINAL_PRICE
 	
 	From(
-	    select rownum as rno, isbn, btitle, bimg_Link, bpublisher, bpublish_date, bprice, bdiscount, bcontent
+	    select rownum as rno, isbn, btitle, bimg_Link, bpublisher, bpublish_date, bprice, bdiscount, bcontent,BFINAL_PRICE
 	    
 	    From(
 	        select 	           
-	            	isbn, btitle, bimg_Link,  bpublisher,bpublish_date, bprice, bdiscount, bcontent
+	            	isbn, btitle, bimg_Link,  bpublisher,bpublish_date, bprice, bdiscount, bcontent,BFINAL_PRICE
 	            	
 	        from	
 	        		

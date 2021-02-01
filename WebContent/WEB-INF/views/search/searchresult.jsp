@@ -40,7 +40,7 @@
 			                                <ul>
 		                                		<li style="margin:10px;"> <h4 style="color:#B8A791;"><strong>${book.btitle}</strong></h4> </li>
 			                                 	<li> <c:forEach var="writer" items ="${book.bookWriterlist}">${writer.wname} </c:forEach>  | ${book.bpublisher } | <fmt:formatDate value="${book.bpublishDate}" pattern="yyyy.MM.dd"/></li>                                	
-			                                 	<li> <h3><span class="price1">${book.bprice} → </span><span class="price2">${book.bdiscount}</span></h3></li>
+			                                 	<li> <h3><span class="price1">${book.bprice} → </span><span class="price2">${book.bfinalPrice}(↓${ book.bdiscount}%)</span></h3></li>
 			                                 	<li> ${book.bcontent}</li>
 			                          		</ul>
 		                              	</div>

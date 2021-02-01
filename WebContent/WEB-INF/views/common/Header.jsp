@@ -20,7 +20,13 @@
 					<button class="btn btn-sm">영업점안내</button>
 					<button class="btn btn-sm">고객센터</button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/book-admin/update">수정</a></button>
-					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/book-admin/create">등록</a></button>
+					
+					<c:if test="${sessionUaid=='admin'}">
+							
+						<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/book-admin/create">등록</a></button>
+							
+					</c:if>
+					
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/cart/index">나의쇼핑</a></button>
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/cart/index">쇼핑카트</a></button>
 					<c:if test="${sessionUaid == null }">

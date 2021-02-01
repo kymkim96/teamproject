@@ -28,6 +28,10 @@ public class BookDto {
 	private String bvideoLink;
 	private String categoriesCategoryName;
 	private List<WriterDto> bookWriterlist;
+	private String[] bwriters;
+	private int bfinalPrice;
+	private int bfprice;
+	
 	public List<WriterDto> getBookWriterlist() {
 		return bookWriterlist;
 	}
@@ -40,11 +44,6 @@ public class BookDto {
 	public void setBfinalPrice(int bfinalPrice) {
 		this.bfinalPrice = bfinalPrice;
 	}
-	private String[] bwriters;
-	
-	private int bfinalPrice;
-	private int bfprice;
-	
 	
 	public String getIsbn() {
 		return isbn;
