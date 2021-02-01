@@ -18,7 +18,7 @@
 		select 
 		    ctid, ctprice, ctcount, ctdiscount,
 		    bimg_filename, bcontent_type, bimg_link,
-		    btitle, bpublisher, isbn
+		    btitle, bpublisher, isbn, bdelivery_fee, bfinal_price
 		from cart_items ct, books b
 		where 
 			ct.BOOKS_ISBN =b.isbn

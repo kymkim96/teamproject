@@ -34,15 +34,15 @@ public class BookDto {
 	public void setBookWriterlist(List<WriterDto> bookWriterlist) {
 		this.bookWriterlist = bookWriterlist;
 	}
-	public double getBfinalPrice() {
+	public int getBfinalPrice() {
 		return bfinalPrice;
 	}
-	public void setBfinalPrice(double bfinalPrice) {
+	public void setBfinalPrice(int bfinalPrice) {
 		this.bfinalPrice = bfinalPrice;
 	}
 	private String[] bwriters;
 	
-	private double bfinalPrice;
+	private int bfinalPrice;
 	private int bfprice;
 	
 	

@@ -67,6 +67,10 @@ public class OrderController {
 				cartItem = cartItemService.getCartItem(ctid_temp);
 				cartItemlist.add(cartItem);
 			}
+			
+			for (CartItemReadResponseDto item : cartItemlist) {
+				
+			}
 			model.addAttribute("cartItemlist", cartItemlist);
 			//----------------------------------------------------------------------
 		}
@@ -83,8 +87,6 @@ public class OrderController {
 				
 		//Ct아이디 불러올거임
 		CartItemReadResponseDto cartItem = new CartItemReadResponseDto();
-		
-		
 		
 		//데이터가 넘어왔나 안넘어왔나
 		if(orderdata.getOaddress()==null) {
@@ -108,17 +110,6 @@ public class OrderController {
 		//order 아이템을 저장할거임
 		OrderItemDto orderItem = new OrderItemDto();
 				
-		//주문정보가져오기
-		OrderDto order = new OrderDto();
-		
-		order.setUsersUaid(orderdata.getUsersUaid());
-		order.setOaddress(orderdata.getOaddress());
-		
-		
-		//order ototal - jsp에서 처리할지 여기서 처리할지 정하기!
-		//order oamount - jsp에서 처리할지 여기서 처리할지 정하기!
-		
-		
 		for(int ctid_temp : ctid) {
 			//Cart item을 한개만 가져오면 됨!
 			cartItem = cartItemService.getCartItem(ctid_temp);
@@ -132,7 +123,7 @@ public class OrderController {
 		
 		//ctid 업데이틀 해줘야 함
 		//orderService.order(order, orderItemlist);
-		orderService.order(order, orderItemlist,ctid);
+		orderService.order(orderdata, orderItemlist,ctid);
 		
 		//*/
 		

@@ -108,7 +108,7 @@
 										
 										<!-- ------------------------------------------------------------------- -->
 										
-										<td class="align-middle">${cartItem.ctprice}</td>
+										<td class="align-middle">${cartItem.bfinalPrice}</td>
 										
 										<!-- ------------------------------------------------------------------- -->
 										<td class="align-middle">${cartItem.ctcount}</td>
@@ -171,8 +171,8 @@
 								
 								
 			                  	<input id="usersUaid" name="usersUaid"   type="hidden" value="${sessionUaid}"/>
-			                  	<input id="ototal" name="ototal" type="hidden" value="50000"/><!-- 하드코딩 -->
-			                  	<input id="oamount" name="oamount" type="hidden" value="5"/><!-- 하드코딩 -->
+			                  	<input id="ototal" name="ototal" type="hidden" value="200"/><!-- 하드코딩 -->
+			                  	<input id="oamount" name="oamount" type="hidden" value="100000"/><!-- 하드코딩 -->
 			                  	
 			                    
 			                    <div class="form-group">
