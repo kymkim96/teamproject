@@ -87,12 +87,12 @@ article {
 li {
    list-style: none;
    flex: 1; 
-   margin-top: 20px;
+  /*  margin-top: 20px; */
 }
 
 #data>a {
    color: black;
-}
+} 
 
 .price2 {
    color: red;
@@ -112,7 +112,6 @@ li {
 }
 
 #shopping {
-   
    flex:1; 
    box-sizing: border-box;
    /*  position: absolute;  */ 
