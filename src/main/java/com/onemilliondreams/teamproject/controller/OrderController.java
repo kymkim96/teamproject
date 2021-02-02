@@ -141,12 +141,12 @@ public class OrderController {
 		//Ct아이디 가져와서 저장할거임
 		List<OrderItemDto> orderItemlist = new ArrayList<>();
 		//order 아이템을 저장할거임
-		OrderItemDto orderItem = new OrderItemDto();
 				
 		for(int ctid_temp : ctid) {
 			//Cart item을 한개만 가져오면 됨!
 			cartItem = cartItemService.getCartItem(ctid_temp);
 			
+			OrderItemDto orderItem = new OrderItemDto();
 			orderItem.setOtcount(cartItem.getCtcount());
 			orderItem.setOtdiscount(cartItem.getCtdiscount());
 			orderItem.setOtprice(cartItem.getCtprice());
@@ -156,7 +156,7 @@ public class OrderController {
 		
 		//ctid 업데이틀 해줘야 함
 		//orderService.order(order, orderItemlist);
-		orderService.order(orderdata, orderItemlist,ctid);
+		orderService.order(orderdata, orderItemlist, ctid);
 		
 		//*/
 		return "redirect:/order/ordered";

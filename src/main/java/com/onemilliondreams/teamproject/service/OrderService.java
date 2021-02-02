@@ -32,7 +32,7 @@ public class OrderService {
 		//생성된 주문 번호
 		int oid = order.getOid();	
 				
-		for(OrderItemDto ot: orderItemlist) {
+		for(OrderItemDto ot : orderItemlist) {
 			
 		   ot.setOrdersOid(oid);
 		   orderDao.insertOrderItem(ot);

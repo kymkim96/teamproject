@@ -32,7 +32,7 @@
 			<!-- 안내 제목 -->
 			<div class="general_info">
 				<span class="shopping_cart_title">주문완료</span> <span>기한 안에 입금하지 않으면 주문이 자동 취소됩니다.</span> <img
-					src="<%=application.getContextPath()%>/resources/img/process3.PNG"
+					src="<%=application.getContextPath()%>/resources/img/process3.png"
 					width="300px">
 			</div>
 			
@@ -52,7 +52,7 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_count_result">주문날자: <fmt:formatDate value="${order.odate}" pattern="YYYY-MM-dd"/></div>
+										<div class="item_count_result mr-2">주문날짜: <fmt:formatDate value="${order.odate}" pattern="YYYY-MM-dd"/></div>
 										<div class="item_count_result">수량: ${order.ototal}종</div>
 										<div class="item_price_result">
 											<span style="color: tomato">총 결제 금액: ${order.oamount}원</span>
@@ -134,9 +134,8 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_price_result">
+										<div class="d-flex">
 											<span> 배송지: ${order.oaddress}</span> 
-								
 										</div>
 									</div>
 								</td>
