@@ -99,7 +99,7 @@ public class BookDto {
 	public String getBvideoLink() {
 		return bvideoLink;
 	}
-	public String getCategoriesCategoryName() {
+	public String getcategoriesCategoryName() {
 		return categoriesCategoryName;
 	}
 	public void setIsbn(String isbn) {
@@ -156,7 +156,7 @@ public class BookDto {
 	public void setBvideoLink(String bvideoLink) {
 		this.bvideoLink = bvideoLink;
 	}
-	public void setCategoriesCategoryName(String categoriesCategoryName) {
+	public void setcategoriesCategoryName(String categoriesCategoryName) {
 		this.categoriesCategoryName = categoriesCategoryName;
 	}
 	public int getBfprice() {
