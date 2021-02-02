@@ -65,7 +65,7 @@
 	<update id="update" parameterType="review">
 		update
 		    reviews
-		set rcontent = #{rcontent}
+		set rcontent = #{rcontent}, rstar = #{rstar}
 		where
 		    USERS_UID =  #{usersUid}
         and BOOKS_ISBN = #{booksIsbn}

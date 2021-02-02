@@ -10,7 +10,7 @@
 		action="<%=application.getContextPath()%>/review/reviewupdate1" method="post">
 		
         <input id="usersUid" name="usersUid"   type="hidden" value="${sessionUaid}"/>
-        <input id="booksIsbn" name="booksIsbn" type="hidden" value="${book.isbn}"/>
+        <input id="booksIsbn" name="booksIsbn" type="hidden" value="${isbn}"/>
         
  
         <div class="form-group">
