@@ -65,17 +65,31 @@
 					
 					<div id="detail_info">
 						<ul>
-							<li><div id="infoL">정가 : </div> <div id="infoR">${book.bprice}원</div></li>
+							<li>
+							<div id="infoL">정가 : </div> 
+							<div id="infoR">
+								<fmt:formatNumber 
+									value="${book.bprice}"
+								/>원
+							</div></li>
 							<li><div id="infoL">판매가격 : </div>
 							<div id="infoR">
-								<div style="display: inline; font-size: 25px; color: red;">${book.bfinalPrice}원</div>
+								<div style="display: inline; font-size: 25px; color: red;">
+									<fmt:formatNumber 
+										value="${book.bfinalPrice}"
+									/>원
+								</div>
 								<div style="display: inline;">[${book.bdiscount}% 할인]</div>
 							</div>
 								
 								</li>
 							<li><div id="infoL">배송비 : </div> <div id="infoR">
 								<c:if test="${(book.bdeliveryFee == null)||(book.bdeliveryFee == 0)}">무료</c:if>
-								<c:if test="${(book.bdeliveryFee != null)&&(book.bdeliveryFee != 0)}">${book.bdeliveryFee}원</c:if>
+								<c:if test="${(book.bdeliveryFee != null)&&(book.bdeliveryFee != 0)}">
+									<fmt:formatNumber 
+											value="${book.bdeliveryFee}"
+										/>원
+								</c:if>
 							</div></li>
 							
 						</ul><hr/>

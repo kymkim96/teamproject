@@ -1,5 +1,6 @@
 package com.onemilliondreams.teamproject.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -48,11 +49,22 @@ public class ListController {
 		pager.setCategoriesCategoryName(categoriesCategoryName);
 		List<BookDto> list = listService.getList(pager);
 		
+		List<BookDto> newList = new ArrayList<BookDto>();
+		for (BookDto book : list) {
+			Integer bfinalPrice = book.getBfinalPrice();
+			if (bfinalPrice == null || bfinalPrice == 0) {
+				Integer bprice = book.getBprice();
+				bfinalPrice = (int) Math.ceil(bprice - bprice * (double) book.getBdiscount()/100);
+				book.setBfinalPrice(bfinalPrice);
+			}
+			newList.add(book);
+		}
+		
 		 Integer size = list.size(); 
 		 logger.info(size.toString());
 		
 		model.addAttribute("pager", pager);
-		model.addAttribute("list", list);
+		model.addAttribute("list", newList);
 		model.addAttribute("categoriesCategoryName", categoriesCategoryName);
 		return "list/book_list";
 		}
