@@ -56,6 +56,7 @@ public class ReviewController {
 	public String reviewupdate1(ReviewDto review) {
 		logger.info("hi");
 		reviewService.updateReview(review);
+		logger.info(review.getBooksIsbn());
 		return "redirect:/detail?param1="+review.getBooksIsbn();
 	}
 	
