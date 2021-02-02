@@ -53,7 +53,9 @@
 	                  <li><h3><span class="price1">정가 : ${book.bprice}원 </span><br/>
 	                  										<span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bfinalPrice}원</span></h3></li>
 	                  									
-	                  <li><h5>${book.bcontent}</h5></li>
+	                  <li>
+	                  	<h5>${book.bcontent}</h5>
+	                  </li>
 	                </ul>
 	             </div>
 	    
