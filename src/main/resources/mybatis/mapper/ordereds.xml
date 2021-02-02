@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ordereds">
-	<select id="ordered" parameterType="string" resultType="ordered">
+	<select id="ordered" parameterType="int" resultType="ordered">
+		select	ot.OTID,
+				ot.OTPRICE,
+				ot.OTCOUNT,
+				ot.ORDERS_OID,
+				ot.OTDISCOUNT,
+				ot.BOOKS_ISBN,
+				b.BTITLE,
+				b.BPUBLISHER,
+				b.BDELIVERY_FEE,
+				b.BIMG_LINK,
+				b.BIMG_FILENAME,
+				b.BCONTENT_TYPE,
+				b.BFINAL_PRICE
+
+		from 	order_items ot, books b
+		where 	
+				ot.books_isbn = b.isbn
+				and ot.ORDERS_OID = #{oid}
+	</select>
+	
+
+	
+	<select id="orderlist" parameterType="string" resultType="order">
 		select	OID,
 				OAMOUNT,
 				OADDRESS,
@@ -10,7 +33,6 @@
 				OTOTAL
 		from 	orders 
 		where 	users_uaid= #{usersUaid}
-	
 	</select>
 	
 </mapper>

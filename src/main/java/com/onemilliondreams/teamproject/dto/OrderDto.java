@@ -1,6 +1,7 @@
 package com.onemilliondreams.teamproject.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderDto {
 	private int oid;
@@ -10,6 +11,14 @@ public class OrderDto {
 	private int ototal;
 	private String usersUaid;
 	
+	private List<OrderedDto> odlist;
+	
+	public List<OrderedDto> getOdlist() {
+		return odlist;
+	}
+	public void setOdlist(List<OrderedDto> odlist) {
+		this.odlist = odlist;
+	}
 	public int getOid() {
 		return oid;
 	}

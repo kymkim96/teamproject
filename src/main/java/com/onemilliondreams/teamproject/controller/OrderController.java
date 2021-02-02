@@ -23,6 +23,7 @@ import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
 import com.onemilliondreams.teamproject.dto.OrderDto;
 import com.onemilliondreams.teamproject.dto.OrderItemDto;
 import com.onemilliondreams.teamproject.dto.OrderedDto;
+import com.onemilliondreams.teamproject.dto.WriterDto;
 import com.onemilliondreams.teamproject.service.CartItemService;
 import com.onemilliondreams.teamproject.service.OrderService;
 import com.onemilliondreams.teamproject.service.OrderedService;
@@ -163,6 +164,7 @@ public class OrderController {
 	
 	
 	
+
 	@GetMapping("/ordered")
 	public String ordered(HttpSession session, Model model) {
 		
@@ -170,7 +172,23 @@ public class OrderController {
 		//ordered list 가져오기
 		String usersUaid = session.getAttribute("sessionUaid").toString();
 		//List<OrderedDto> list = orderedService.selectOrdered(usersUaid);
-		List<OrderedDto> list = orderedService.selectOrderlist(usersUaid);
+		
+		
+		List<OrderDto> list1 = orderedService.selectOrderlist(usersUaid);
+		List<OrderDto> list = new ArrayList<>();
+		
+		for(OrderDto order : list1) {
+			
+			int oid = order.getOid();
+			
+			List<OrderedDto> list_temp = new ArrayList<OrderedDto>();
+			list_temp =orderedService.selectOrdered(oid);
+			
+			
+			order.setOdlist(list_temp);
+			list.add(order);
+		}
+		
 		model.addAttribute("list",list);
 		
 		
