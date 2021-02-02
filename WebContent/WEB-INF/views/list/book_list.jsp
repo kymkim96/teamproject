@@ -50,10 +50,14 @@
 	               	<ul id="data">
 	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li>
 	                  <li><h4>발행자 : ${book.bpublisher}</h4></li>
-	                  <li><h3><span class="price1">정가 : ${book.bprice}원 </span><br/>
+	                  <li><h3><span class="price1" style= "text-decoration: line-through;">정가 : ${book.bprice}원 </span><br/>
 	                  										<span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bfinalPrice}원</span></h3></li>
 	                  									
-	                  <li><h5>${book.bcontent}</h5></li>
+	                  <li>
+		                  <h5 style=" width:800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+		                  	${book.bcontent}          
+		                  </h5>
+	                  </li>
 	                </ul>
 	             </div>
 	    
