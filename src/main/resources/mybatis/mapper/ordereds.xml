@@ -20,6 +20,7 @@
 		where 	
 				ot.books_isbn = b.isbn
 				and ot.ORDERS_OID = #{oid}
+		
 	</select>
 	
 
@@ -33,6 +34,7 @@
 				OTOTAL
 		from 	orders 
 		where 	users_uaid= #{usersUaid}
+		order by ODATE DESC
 	</select>
 	
 </mapper>

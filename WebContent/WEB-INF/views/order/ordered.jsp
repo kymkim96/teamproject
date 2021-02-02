@@ -44,13 +44,7 @@
 				</div>
 				
 				<c:forEach var="order" items="${list}">
-				<div>
-					${order.odate}<br/>
-					${order.ototal}<br/>
-					${order.oaddress}<br/>
-				</div>
-				
-				
+							
 				
 				<div class="table_container">
 					<table class="table table-striped" style="width: 960px">
@@ -58,13 +52,10 @@
 							<tr>
 								<td colspan="7">
 									<div>
-										<div class="item_count_result">수량: 1종(1개)</div>
+										<div class="item_count_result">주문날자: <fmt:formatDate value="${order.odate}" pattern="YYYY-MM-dd"/></div>
+										<div class="item_count_result">수량: ${order.ototal}종</div>
 										<div class="item_price_result">
-											<span>총 상품 금액: ${sumPrice}원</span> <img
-												src="<%=application.getContextPath()%>/resources/img/ico_cart_plus.gif">
-											<span>배송비: 0원</span> <img
-												src="<%=application.getContextPath()%>/resources/img/ico_cart_same.gif">
-											<span style="color: tomato">주문금액 합계: 원</span>
+											<span style="color: tomato">총 결제 금액: ${order.oamount}원</span>
 										</div>
 									</div>
 								</td>
@@ -132,19 +123,32 @@
 										
 									</tr>
 								</c:forEach>
-							<%-- </c:if> --%>
+							
 
 							<c:if test="${size <= 0}">
 								<tr>
 									<td colspan="7">현재 주문한 품목이 없습니다</td>
 								</tr>
 							</c:if>
-
 							
+							<tr>
+								<td colspan="7">
+									<div>
+										<div class="item_price_result">
+											<span> 배송지: ${order.oaddress}</span> 
+								
+										</div>
+									</div>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
-			
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
 				</c:forEach>
 			</div>
 
