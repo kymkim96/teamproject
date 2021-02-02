@@ -134,6 +134,8 @@
 															countAll += parseInt(item_counts.get(i).value);
 														}
 														$(".countAll").html(countAll);
+														$("#ototal").val(countAll);
+														$("#oamount").val(${sumAmount - discountPrice + deliveryFee});
 													})
 												</script>
 												<div class="item_price_result">
