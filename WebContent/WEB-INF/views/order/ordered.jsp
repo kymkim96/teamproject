@@ -55,7 +55,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test="${size > 0}">
+							<%-- <c:if test="${sessionUaid =! null}"> --%>
 								<c:forEach var="cartItem" items="${list}">
 									<tr>
 										<td>
@@ -151,7 +151,7 @@
 										</script>
 									</tr>
 								</c:forEach>
-							</c:if>
+							<%-- </c:if> --%>
 
 							<c:if test="${size <= 0}">
 								<tr>

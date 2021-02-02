@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ordereds">
+	<select id="ordered" parameterType="string" resultType="ordered">
+		select	OID,
+				OAMOUNT,
+				OADDRESS,
+				USERS_UAID,
+				ODATE,
+				OTOTAL
+		from 	orders 
+		where 	users_uaid= #{usersUaid}
+	
+	</select>
+	
+</mapper>

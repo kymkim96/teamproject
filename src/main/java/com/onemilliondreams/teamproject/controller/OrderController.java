@@ -158,14 +158,19 @@ public class OrderController {
 		orderService.order(orderdata, orderItemlist,ctid);
 		
 		//*/
-		return "order/ordered";
+		return "redirect:/order/ordered";
 	}
 	
+	
+	
 	@GetMapping("/ordered")
-	public String ordered(HttpSession session, Model model, int oid) {
+	public String ordered(HttpSession session, Model model) {
 		
-		List<OrderedDto> list = orderedService.selectOrdered(oid);
 		
+		//ordered list 가져오기
+		String usersUaid = session.getAttribute("sessionUaid").toString();
+		//List<OrderedDto> list = orderedService.selectOrdered(usersUaid);
+		List<OrderedDto> list = orderedService.selectOrderlist(usersUaid);
 		model.addAttribute("list",list);
 		
 		
