@@ -53,9 +53,8 @@ public class DetailPageController {
 		
 		Integer bfinalPrice = book.getBfinalPrice();
 		if (bfinalPrice == null || bfinalPrice == 0) {
-			int bprice = book.getBprice();
-			bfinalPrice = (int) Math.ceil(bprice - bprice * (double)(book.getBdiscount()/100));
-			logger.info(bfinalPrice.toString());
+			Integer bprice = book.getBprice();
+			bfinalPrice = (int) Math.ceil(bprice - bprice * (double) book.getBdiscount()/100);
 			book.setBfinalPrice(bfinalPrice);
 		}
 		
