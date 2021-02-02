@@ -114,7 +114,7 @@
 													onclick="onUpdate(${cartItem.ctid}, ${cartItem.ctprice})">수정</button>
 											</div>
 											<script>
-												countAll += ($("#item_count" + ${cartItem.ctid}).val() * 1);
+												countAll += parseInt($("#item_count" + ${cartItem.ctid}).val());
 											</script>
 										</td>
 										<td class="align-middle" id="resultPrice${cartItem.ctid}">
@@ -188,7 +188,7 @@
 										$("#sumAmount").html(totalAmount.toLocaleString() + "원");
 										$("#discountPrice").html(totalDiscount.toLocaleString() + "원");
 										const finalAmount = totalAmount - totalDiscount + ${deliveryFee};
-										$("#finalAmount").html(finalAmount + "원");
+										$("#finalAmount").html(finalAmount.toLocaleString() + "원");
 									}
 									
 									function onUpdate (ctid, ctprice) {

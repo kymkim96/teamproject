@@ -2,8 +2,10 @@ package com.onemilliondreams.teamproject.controller;
 
 
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -68,10 +70,36 @@ public class OrderController {
 				cartItemlist.add(cartItem);
 			}
 			
+			Integer size = null;
+			int sumAmount = 0;
+			Integer deliveryFee = 0;
+			double sumFinalPrice = 0;
 			for (CartItemReadResponseDto item : cartItemlist) {
 				
+				// 수량비 합계 초기화
+				sumAmount += item.getCtcount() * item.getCtprice();
+				
+				// 배송비: 큰 값으로 기본값
+				if (deliveryFee < item.getBdeliveryFee()) {
+					deliveryFee = item.getBdeliveryFee();
+				}
+				
+				// 할인가격
+				if (item.getBfinalPrice() == 0) {
+					double discount = item.getCtprice() - item.getCtprice() * ((double)item.getCtdiscount()/100);
+					sumFinalPrice += discount * item.getCtcount();
+				} else {
+					sumFinalPrice += item.getBfinalPrice() * item.getCtcount();
+				}
 			}
+			String formattedAmount = NumberFormat.getInstance(Locale.KOREA).format(sumAmount);
+			size = cartItemlist.size();
+			model.addAttribute("formattedAmount", formattedAmount);
+			model.addAttribute("sumAmount", sumAmount);
+			model.addAttribute("deliveryFee", deliveryFee);
+			model.addAttribute("discountPrice", sumAmount-sumFinalPrice);
 			model.addAttribute("cartItemlist", cartItemlist);
+			model.addAttribute("size", size);
 			//----------------------------------------------------------------------
 		}
 		
