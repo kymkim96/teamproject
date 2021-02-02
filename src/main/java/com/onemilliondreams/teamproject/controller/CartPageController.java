@@ -73,6 +73,10 @@ public class CartPageController {
 		Integer size = null;
 		if (cart == null) {
 			size = 0;
+			model.addAttribute("formattedAmount", 0);
+			model.addAttribute("sumAmount", 0);
+			model.addAttribute("deliveryFee", 0);
+			model.addAttribute("discountPrice", 0);
 		} else {
 			List<CartItemReadResponseDto> cartItems = cartItemService.getCartItems(cart.getCid());
 			
