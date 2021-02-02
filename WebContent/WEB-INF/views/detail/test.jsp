@@ -214,8 +214,8 @@
 			                      <textarea id="rcontent" name="rcontent" class="form-control" rows="5" cols="50"></textarea>
 			                      
 			                    </div>
-			                  
-			                	<button class="d-inline btn btn-primary"> 저장</button>
+			                  	<br/>
+			                	<button style="border: 2px solid #998064;" class="d-inline btn "> 저장</button>
 			            </form>
 					</div>
 				
@@ -223,14 +223,19 @@
 				
 				
 				
-				
+			
 		<!-- --------------------------------------------------------------------------------------------------------------- -->	
 				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; color: #917354;">
 					<h4> 회원리뷰 </h4><hr/>
 				</div>
-								
+				<c:if test="${review_total==0}">
+					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; color: #917354;">
+						<h4> 아직 작성된 리뷰가 없습니다! </h4>
+					</div>
+				</c:if>			
 				<c:forEach var="review" items ="${reviewlist}">
-				  	<div class="set">
+				
+				  	<div class="set ">
 						<div id="pic2"><!-- <img alt="person.png" 
 						src="https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png"> -->
 						<ul  style="list-style: none; ">
@@ -281,37 +286,43 @@
 					</div>
 					<div id="reviewUpdate"> </div>   
 			  	</c:forEach>
-			  	<!-- --------------------------------------------------------------------------------------------------------------- -->	
-			  	<div id="special" class="d-flex justify-content-between align-items-center" >
-								
-								
-					<div>
-						<a class="btn btn-outline-warning btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=1#special">처음</a>
+			  	
+			  	
+			  	
+			  	<!-- --------------------------------------------------------------------------------------------------------------- -->
+			  	
+			  	<c:if test="${review_total!=0}">
+										
+			  	<div id="special" class="d-flex justify-content-center" >
+					
+					<div class="d-flex justify-content-between align-items-center" >
+						<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=1#special">처음</a>
 						
 						<c:if test="${pager.groupNo>1}">
-							<a class="btn btn-outline-warning btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=${pager.startPageNo-1}#special">이전</a>
+							<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=${pager.startPageNo-1}#special">이전</a>
 						</c:if>	
 						
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<c:if test="${i == pager.pageNo}">
-								<a class="btn btn-danger btn-sm ml-1" href="detail?param1=${BookIsbn}&pageNo=${i}#special">${i}</a>
+								<a style="background-color: #B8A791" class="btn btn-sm ml-1" href="detail?param1=${BookIsbn}&pageNo=${i}#special">${i}</a>
 							</c:if>
 							<c:if test="${i != pager.pageNo}">
-								<a class="btn btn-outline-success btn-sm ml-1" href="detail?param1=${BookIsbn}&pageNo=${i}#special">${i}</a>
+								<a style="border: 1px solid grey;" class="btn btn-sm ml-1" href="detail?param1=${BookIsbn}&pageNo=${i}#special">${i}</a>
 							</c:if>
 						</c:forEach>
 						
 						<c:if test="${pager.groupNo < pager.totalGroupNo}">
-                        			<a class="btn btn-outline-warning btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=${pager.endPageNo+1}#special">  다음    </a>
-                      		</c:if>
+                        	<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="detail?param1=${BookIsbn}&pageNo=${pager.endPageNo+1}#special">  다음    </a>
+                      	</c:if>
                       
-                      		<a class="btn btn-outline-warning btn-sm mr-1"  href="detail?param1=${BookIsbn}&pageNo=${pager.totalPageNo}#special">  맨끝 </a>
+                      	<a style="border: 2px solid #998064;" class="btn btn-sm mr-1"  href="detail?param1=${BookIsbn}&pageNo=${pager.totalPageNo}#special">  맨끝 </a>
 					</div>	
 					
 				</div>
 			  	
 			
-			
+			</c:if>
+				
 			</div>
 			
 			<!-- --------------------------------------------------------------------------------------------------------------- -->

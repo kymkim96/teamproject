@@ -196,4 +196,10 @@ public class OrderController {
 		return "order/ordered";
 	}
 	
+	@GetMapping("/searchorder")
+	public String searchorder() {
+		
+		return "order/search_order";
+	}
+	
 }

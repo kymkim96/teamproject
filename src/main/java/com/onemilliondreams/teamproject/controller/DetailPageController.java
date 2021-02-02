@@ -95,7 +95,7 @@ public class DetailPageController {
 		pager.setBooksIsbn(BookIsbn);//해당 카테고리를 추가해준다!
 		List<ReviewDto> reviewlist = reviewService.getReviewList(pager);
 		
-		
+		model.addAttribute("review_total",totalRows);
 		model.addAttribute("BookIsbn", BookIsbn);
 		model.addAttribute("reviewlist", reviewlist);
 		model.addAttribute("pager", pager);
