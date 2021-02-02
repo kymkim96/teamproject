@@ -163,7 +163,7 @@ public class BookDto {
 		return bfprice;
 	}
 	public void setBfprice(int bfprice) {
-		this.bfprice = bfprice;
+		this.bfprice = (int) getBfinalPrice();
 	}
 	public String[] getBwriters() {
 		return bwriters;
