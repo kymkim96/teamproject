@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+
 import com.onemilliondreams.teamproject.dto.AuthDto;
 @Repository
 public class AuthDao {
@@ -25,5 +26,17 @@ public class AuthDao {
 		return rows;
 		
 	}
+	
+	public int update(AuthDto authDto) {
+		
+		int rows = sst.update("auths.update", authDto);
+		return rows;
+	}
 
+	public int delete(String uaid) {
+		int rows = sst.delete("auths.delete", uaid);
+		return rows;
+	}
+	
+	
 }

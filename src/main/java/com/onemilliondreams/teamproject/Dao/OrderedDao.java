@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.onemilliondreams.teamproject.dto.OrderDto;
 import com.onemilliondreams.teamproject.dto.OrderedDto;
 
 @Repository
@@ -15,15 +16,15 @@ public class OrderedDao {
 	@Resource
 	private SqlSessionTemplate sst;
 
-	public List<OrderedDto> selectOrdered(String usersUaid){
-		List<OrderedDto> list = sst.selectList("ordereds.ordered", usersUaid);
+	public List<OrderedDto> selectOrdered(int oid){
+		List<OrderedDto> list = sst.selectList("ordereds.ordered", oid);
 		return list;
 		
 		
 	}
 
-	public List<OrderedDto> selectOrderlist(String usersUaid) {
-		List<OrderedDto> list = sst.selectList("ordereds.orderlist", usersUaid);
+	public List<OrderDto> selectOrderlist(String usersUaid) {
+		List<OrderDto> list = sst.selectList("ordereds.orderlist", usersUaid);
 		return list;
 	}
 	

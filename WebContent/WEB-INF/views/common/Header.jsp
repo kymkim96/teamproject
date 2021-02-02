@@ -34,7 +34,7 @@
 					</c:if>
 					<br/>
 					<c:if test="${sessionUaid != null }">
-					
+					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/auth/authupdate">정보수정</a></button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/common/index1">로그아웃</a></button>
 					<p id="짹짹">${sessionUaid}님 환영합니다.</p>
 					</c:if>

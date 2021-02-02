@@ -13,7 +13,8 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
          <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_soyoung.css">
-        <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+         <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/css/style_sigyung.css">
+        
    
    </head>
 
@@ -23,18 +24,13 @@
          <%@include file="/WEB-INF/views/common/Header.jsp" %>
 
          <article>
-            <div id="add">   
-            	<h3>${categoriesCategoryName}</h3>
-
-               <strong>${categoriesCategoryName}</strong>에 <strong>총 1,000권</strong>의 상품이 등록되어 있습니다.
-         	         	
-	           <div id = "choose">
-					  <!--<input type="checkbox" id="allcheckbox" name="chBox"  value="all"><laber for="allcheck">전체</laber> -->	                     
-	                  <%-- <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
-	                  <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button>  --%>
-	    	   </div>
-    		</div>     
-		
+         <div class="content">
+          <div class="general_info">
+            <c:if test="${categoriesCategoryName != null}">
+            <span class="shopping_cart_title"></span> <span><strong style="font-size:xx-large;">${categoriesCategoryName}</strong> 리스트 입니다.</span> <div style="display:inline-block; width:80px"></div>
+            </c:if>
+         </div>
+		</div>
 		
 		<!-- 상품 정보 -->
  	    <c:forEach var="book" items="${list}">	
@@ -50,8 +46,18 @@
 	               	<ul id="data">
 	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li>
 	                  <li><h4>발행자 : ${book.bpublisher}</h4></li>
-	                  <li><h3><span class="price1" style= "text-decoration: line-through;">정가 : ${book.bprice}원 </span><br/>
-	                  		  <span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bfinalPrice}원</span></h3></li>
+	                  <li><h3>
+	                  <span class="price1" style= "text-decoration: line-through;">
+	                  	정가 : 
+	                  	<fmt:formatNumber 
+							value="${book.bprice}"
+						/>원
+	                  </span><br/>
+				      <span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: 
+					      <fmt:formatNumber 
+								value="${book.bfinalPrice}"
+							/>원
+				      </span></h3></li>
 	                  									
 	                  <li>
 			              
@@ -62,18 +68,7 @@
 	                </ul>
 	             </div>
 	    
-	                 <div id ="shopping" >
-	                  <ul id="bb">
-	                    <!--<li>
-	                     <label><input type="checkbox" id="ch1" name="chBox" value="1"></label> 
-	                     <label for = "quantity">
-	                     <input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1"></label> 
-	                     </li>    -->
-	                     <li><button style=" background-color:#917354"  id="cart" class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>    <br/>  
-	                     <li><button style=" background-color:#917354"  class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li> 	
 	                
-	                  </ul>        
-	               	</div>  
        		 </div>
    </c:forEach>
 		

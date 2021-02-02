@@ -28,7 +28,7 @@
 							<div class="diva">오늘의 책</div>
 							
 						<div class="book1">
-							<a href="<%=application.getContextPath()%>/detail?param1= 9791190977036"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9791190977036"><img height="250px" width="160px"
 							src="resources/img/오늘의 책.jpg"></a>
 							
 							
