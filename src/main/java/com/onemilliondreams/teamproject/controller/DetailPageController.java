@@ -50,6 +50,15 @@ public class DetailPageController {
 		//book정보
 		BookDto book = new BookDto();
 		book = bookService.getBook(BookIsbn);
+		
+		Integer bfinalPrice = book.getBfinalPrice();
+		if (bfinalPrice == null || bfinalPrice == 0) {
+			int bprice = book.getBprice();
+			bfinalPrice = (int) Math.ceil(bprice - bprice * (double)(book.getBdiscount()/100));
+			logger.info(bfinalPrice.toString());
+			book.setBfinalPrice(bfinalPrice);
+		}
+		
 		model.addAttribute("book", book);
 		
 		//writer도 리스트로 받아야 함

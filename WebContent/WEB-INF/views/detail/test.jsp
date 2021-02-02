@@ -67,7 +67,7 @@
 						<ul>
 							<li><div id="infoL">정가 : </div> <div id="infoR">${book.bprice}원</div></li>
 							<li><div id="infoL">판매가격 : </div><div id="infoR">
-								<div style="display: inline; font-size: 25px; color: red;">${book.bprice}원</div>
+								<div style="display: inline; font-size: 25px; color: red;">${book.bfinalPrice}원</div>
 								<div style="display: inline;">[${book.bdiscount}% 할인]</div></div>
 								
 								</li>
