@@ -59,8 +59,8 @@ public class BookService {
 		// 할인율 적용하기
 		int price = requestDto.getBprice();
 		Integer discount = requestDto.getBdiscount();
-		if (discount != null) {
-			double temp = price - (price * ((double)discount/100));
+		if (discount != null || discount != 0) {
+			double temp = price - price * (double)discount/100;
 			int finalPrice = (int) Math.ceil(temp);
 			requestDto.setBfinalPrice(finalPrice);
 		} else {
@@ -97,7 +97,7 @@ public class BookService {
 		// 할인율 적용하기
 		int price = requestDto.getBprice();
 		Integer discount = requestDto.getBdiscount();
-		if (discount != null) {
+		if (discount != null || discount != 0) {
 			double temp = price - (price * ((double)discount/100));
 			int finalPrice = (int) Math.ceil(temp);
 			requestDto.setBfinalPrice(finalPrice);
