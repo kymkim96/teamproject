@@ -105,10 +105,10 @@
 												${cartItem.ctcount}개
 											</td>
 											<td class="align-middle">
-												<c:if test="${deliveryFee >= 10000}">
+												<c:if test="${sumAmount >= 10000}">
 													만원이상 배달료 무료
 												</c:if>
-												<c:if test="${deliveryFee < 10000}">
+												<c:if test="${sumAmount < 10000}">
 													<fmt:formatNumber 
 													value="${deliveryFee}"
 													/>원
@@ -134,6 +134,8 @@
 															countAll += parseInt(item_counts.get(i).value);
 														}
 														$(".countAll").html(countAll);
+														$("#ototal").val(countAll);
+														$("#oamount").val(${sumAmount - discountPrice + deliveryFee});
 													})
 												</script>
 												<div class="item_price_result">

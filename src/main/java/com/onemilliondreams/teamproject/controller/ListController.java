@@ -37,21 +37,19 @@ public class ListController {
 					
 		
 		//List<BookDto> list = listService.getBooklist(categoriesCategoryName);
-		
-		 // Integer size = list.size(); 
-		// logger.info(size.toString());
-		 
 		//model.addAttribute("list", list);
 	
-
 	
 		//pager
 		int totalRows = listService.getTotalRows(categoriesCategoryName);//카테고리이름에 해당하는 총 행 수 
-		PagerDto pager = new PagerDto(2, 5, totalRows, pageNo);
+		PagerDto pager = new PagerDto(3, 2, totalRows, pageNo);
 		
 		
 		pager.setCategoriesCategoryName(categoriesCategoryName);
 		List<BookDto> list = listService.getList(pager);
+		
+		 Integer size = list.size(); 
+		 logger.info(size.toString());
 		
 		model.addAttribute("pager", pager);
 		model.addAttribute("list", list);

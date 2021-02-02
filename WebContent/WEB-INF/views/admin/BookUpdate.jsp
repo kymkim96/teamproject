@@ -32,8 +32,8 @@
 	                        </div>
 	                        <span id="warningIsbn">${result}</span>
 	                        <div class="form-group">
-	                            <label for="btitle_form">제목:</label>
-	                            <input type="text" class="form-control col-sm-8" id="btitle_form" name="btitle" value="${book.btitle}">
+	                            <label for="btitleInput">제목:</label>
+	                            <input type="text" class="form-control col-sm-8" id="btitleInput" name="btitle" value="${book.btitle}">
 	                        </div>
 	                        <span id="warningTitle"></span>
 	                        <div class="form-group">

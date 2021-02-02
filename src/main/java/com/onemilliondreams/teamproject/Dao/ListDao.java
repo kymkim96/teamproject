@@ -32,7 +32,7 @@ public class ListDao {
 		}
 		
 		public List<BookDto> selectByPage(PagerDto pager) {
-			List<BookDto>list = sst.selectList("books.selectByPage", pager);
+			List<BookDto> list = sst.selectList("books.selectByPage", pager);
 			return list;
 		}
 		

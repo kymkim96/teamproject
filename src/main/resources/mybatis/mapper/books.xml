@@ -35,6 +35,7 @@
 			 			   BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name,BFINAL_PRICE
 					 from BOOKS
 					     where categories_category_name=#{categoriesCategoryName}
+					     		
 						 order by isbn desc
 		            )
 		   		 where rownum &lt;= #{endRowNo} 
