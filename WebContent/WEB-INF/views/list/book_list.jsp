@@ -30,8 +30,8 @@
          	         	
 	           <div id = "choose">
 					  <!--<input type="checkbox" id="allcheckbox" name="chBox"  value="all"><laber for="allcheck">전체</laber> -->	                     
-	                  <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
-	                  <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button> 
+	                  <%-- <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button>
+	                  <button class="chk"   onclick="document.location='<%=application.getContextPath()%>/cart/index'">위시리스트</button>  --%>
 	    	   </div>
     		</div>     
 		
@@ -43,41 +43,42 @@
         	 <div id="item1">
          	  	<img alt="book.jpg" 
          	  		 src='<c:if test="${book.bimgLink != null}">${book.bimgLink}</c:if>
-         		 	   	  <c:if test="${book.bimgLink == null}">${book.bimgFilename}</c:if>' height="350px"> 
+         		 	   	  <c:if test="${book.bimgLink == null}">${book.bimgFilename}</c:if>' height="400px"> 
          		 	
          
 	             <div id ="book_data" >
 	               	<ul id="data">
 	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li>
-	                  <li>${writer.wname}</li>
+	                  <li><h4>발행자 : ${book.bpublisher}</h4></li>
 	                  <li><h3><span class="price1">정가 : ${book.bprice}원 </span><br/>
-	                  										<span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bprice}</span></h3></li>
+	                  										<span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bfinalPrice}원</span></h3></li>
+	                  									
 	                  <li><h5>${book.bcontent}</h5></li>
 	                </ul>
 	             </div>
 	    
-	               <div id ="shopping" >
+	                <div id ="shopping" >
 	                  <ul id="bb">
 	                     <li>
-	                     <!-- <label><input type="checkbox" id="ch1" name="chBox" value="1"></label> 
+	                     <label><input type="checkbox" id="ch1" name="chBox" value="1"></label> 
 	                     <label for = "quantity">
-	                     <input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1"></label>-->
+	                     <input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1"></label>
 	                     </li>    
 	                     <li><button id="cart" class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>      
 	                     <li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li> 	
-	                	 
+	                
 	                  </ul>        
-	               	</div>
+	               	</div> 
        		 </div>
    </c:forEach>
 		
 		
-		
 		<!-- pager -->
 		<div class="d-flex justify-content-center">
-             	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=1">처음</a>				
-               
-               	<c:if test="${pager.groupNo>1}">
+			 		
+             	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=1">맨처음</a>				
+             
+               <c:if test="${pager.groupNo>1}">
                 	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.startPageNo-1}">이전</a>
              	</c:if>	
              	   				 	
@@ -95,9 +96,8 @@
       		  	</c:if>
       							 
                 	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.totalPageNo}">맨끝</a>
+            	
         </div>
-    			 
-
       </article>
    
 
