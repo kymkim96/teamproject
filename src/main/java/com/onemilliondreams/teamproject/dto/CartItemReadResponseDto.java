@@ -15,6 +15,7 @@ public class CartItemReadResponseDto {
 	private String btitle;
 	private String bpublisher;
 	private int bdeliveryFee;
+	private int bfinalPrice;
 	private List<WriterDto> bookWriterlist;
 	
 	public String getIsbn() {
@@ -88,5 +89,11 @@ public class CartItemReadResponseDto {
 	}
 	public void setBdeliveryFee(int bdeliveryFee) {
 		this.bdeliveryFee = bdeliveryFee;
+	}
+	public int getBfinalPrice() {
+		return bfinalPrice;
+	}
+	public void setBfinalPrice(int bfinalPrice) {
+		this.bfinalPrice = bfinalPrice;
 	}
 }

@@ -28,23 +28,22 @@ public class BookDto {
 	private String bvideoLink;
 	private String categoriesCategoryName;
 	private List<WriterDto> bookWriterlist;
+	private String[] bwriters;
+	private int bfinalPrice;
+	private int bfprice;
+	
 	public List<WriterDto> getBookWriterlist() {
 		return bookWriterlist;
 	}
 	public void setBookWriterlist(List<WriterDto> bookWriterlist) {
 		this.bookWriterlist = bookWriterlist;
 	}
-	public double getBfinalPrice() {
+	public int getBfinalPrice() {
 		return bfinalPrice;
 	}
-	public void setBfinalPrice(double bfinalPrice) {
+	public void setBfinalPrice(int bfinalPrice) {
 		this.bfinalPrice = bfinalPrice;
 	}
-	private String[] bwriters;
-	
-	private double bfinalPrice;
-	private int bfprice;
-	
 	
 	public String getIsbn() {
 		return isbn;

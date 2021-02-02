@@ -20,7 +20,13 @@
 					<button class="btn btn-sm">영업점안내</button>
 					<button class="btn btn-sm">고객센터</button>
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/book-admin/update">수정</a></button>
-					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/book-admin/create">등록</a></button>
+					
+					<c:if test="${sessionUaid=='admin'}">
+							
+						<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/book-admin/create">등록</a></button>
+							
+					</c:if>
+					
 					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/cart/index">나의쇼핑</a></button>
 					<button class="btn btn-light"><a href=" <%=application.getContextPath()%>/cart/index">쇼핑카트</a></button>
 					<c:if test="${sessionUaid == null }">
@@ -43,8 +49,9 @@
 	
 					<div id="divheader2">
 						<form name="searchForm" id="searchForm" method="post" action="<%=application.getContextPath()%>/search/searchresult">
-							<input style="width:400px;" id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
-							<button class ="btn" type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"></button>
+							<input style="width:400px; height:39px; margin:0px; padding-left:5px; border:2px solid #998064;" id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
+							<button style="margin:-7px;  padding:0px; border:1px solid #998064;" class ="btn" type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"/></button>
+							<a class="btn"  style="margin:2px;padding:0px; border:2px solid #998064;" href="<%=application.getContextPath()%>/cart/index"><img style="width:44px; height:40px" src="<%=application.getContextPath()%>/resources/img/장바구니.png"/></a>
 						</form>
 					</div>
 	
