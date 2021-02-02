@@ -41,7 +41,7 @@ public class AuthService {
 		if(dbdata ==null) {
 			return "wrongUaid";
 		} else if(dbdata.getUapassword().equals(dto.getUapassword())) {
-			if (dbdata.getRole().equals("admin")) {
+			if (dbdata.getRole() != null && dbdata.getRole().equals("admin")) {
 				return dbdata.getRole();
 			}
 			return "success";
