@@ -23,8 +23,6 @@
 		
 	</select>
 	
-
-	
 	<select id="orderlist" parameterType="string" resultType="order">
 		select	OID,
 				OAMOUNT,
@@ -36,5 +34,4 @@
 		where 	users_uaid= #{usersUaid}
 		order by ODATE DESC
 	</select>
-	
 </mapper>

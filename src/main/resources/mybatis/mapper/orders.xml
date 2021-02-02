@@ -2,12 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="orders">
 		
+	<select id="selectOrder" parameterType="int" resultType="order">
+		select	OID,
+				OAMOUNT,
+				OADDRESS,
+				USERS_UAID,
+				ODATE,
+				OTOTAL
+		from 	orders 
+		where 	oid=#{oid}
+		order by ODATE DESC
+	</select>
+		
 	<insert id="insertorder" parameterType="order" >
 		<selectKey keyProperty="oid" resultType="int" order="BEFORE">
 			select ORDERS_OID_SEQ.nextval from dual
 		</selectKey>
-			insert into orders (oid, oamount, OADDRESS, odate, ototal, users_uaid)
-			values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal},#{usersUaid})
+			<if test="usersUaid != null">
+				insert into orders (oid, oamount, OADDRESS, odate, ototal, users_uaid)
+				values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal},#{usersUaid})			
+			</if>
+			
+			<if test="usersUaid == null">
+				insert into orders (oid, oamount, OADDRESS, odate, ototal)
+				values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal}
+			</if>
 	</insert>
 	
 	<insert id="insertorderitem"  parameterType="order">

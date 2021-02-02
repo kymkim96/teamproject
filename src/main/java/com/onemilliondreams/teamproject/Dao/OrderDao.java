@@ -30,4 +30,10 @@ public class OrderDao {
 		return rows;
 	}
 	
+	public OrderDto selectOrder(int oid) {
+		
+		OrderDto order = sst.selectOne("orders.selectOrder", oid);
+		return order;
+	}
+	
 }

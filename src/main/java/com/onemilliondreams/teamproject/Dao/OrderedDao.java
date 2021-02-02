@@ -27,5 +27,4 @@ public class OrderedDao {
 		List<OrderDto> list = sst.selectList("ordereds.orderlist", usersUaid);
 		return list;
 	}
-	
 }

@@ -43,7 +43,11 @@ public class OrderService {
 		}
 	}
 	
-
+	public OrderDto getOrder(int oid) {
+		
+		OrderDto order = orderDao.selectOrder(oid);
+		return order;
+	}
 	
 	
 	

@@ -108,7 +108,6 @@ public class OrderController {
 			//----------------------------------------------------------------------
 		}
 		
-		
 		return "order/order";
 	}
 	
@@ -134,9 +133,6 @@ public class OrderController {
 			logger.info("얼추 다 들어온듯");
 		}
 		
-		
-		
-		
 		//*
 		//Ct아이디 가져와서 저장할거임
 		List<OrderItemDto> orderItemlist = new ArrayList<>();
@@ -158,40 +154,44 @@ public class OrderController {
 		//orderService.order(order, orderItemlist);
 		orderService.order(orderdata, orderItemlist, ctid);
 		
-		//*/
+		if (orderdata.getUsersUaid() == null) {
+			return "redirect:/order/ordered?oid=" + orderdata.getOid();
+		}
+		
 		return "redirect:/order/ordered";
 	}
 	
-	
-	
-
 	@GetMapping("/ordered")
-	public String ordered(HttpSession session, Model model) {
-		
+	public String ordered(@RequestParam(value="oid", required = false) int paramOid, HttpSession session, Model model) {
 		
 		//ordered list 가져오기
-		String usersUaid = session.getAttribute("sessionUaid").toString();
-		//List<OrderedDto> list = orderedService.selectOrdered(usersUaid);
+		String usersUaid = (String) session.getAttribute("sessionUaid");
 		
-		
-		List<OrderDto> list1 = orderedService.selectOrderlist(usersUaid);
 		List<OrderDto> list = new ArrayList<>();
 		
-		for(OrderDto order : list1) {
+		if (usersUaid == null) {
+			List<OrderedDto> guestOrders = orderedService.selectOrdered(paramOid);
+			OrderDto order = orderService.getOrder(paramOid);
+			order.setOdlist(guestOrders);
 			
-			int oid = order.getOid();
-			
-			List<OrderedDto> list_temp = new ArrayList<OrderedDto>();
-			list_temp =orderedService.selectOrdered(oid);
-			
-			
-			order.setOdlist(list_temp);
 			list.add(order);
+		} else {
+			List<OrderDto> list1 = orderedService.selectOrderlist(usersUaid);
+			
+			for(OrderDto order : list1) {
+				
+				int oid = order.getOid();
+				
+				List<OrderedDto> list_temp = new ArrayList<OrderedDto>();
+				list_temp =orderedService.selectOrdered(oid);
+				
+				
+				order.setOdlist(list_temp);
+				list.add(order);
+			}
 		}
 		
-		model.addAttribute("list",list);
-		
-		
+		model.addAttribute("list", list);
 		
 		return "order/ordered";
 	}
