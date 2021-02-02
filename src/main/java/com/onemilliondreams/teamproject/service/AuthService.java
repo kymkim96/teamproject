@@ -50,6 +50,17 @@ public class AuthService {
 		return "wrongUapassword";
 	}
 	
+	public String checkUaPassword(AuthDto dto) {
+		
+		AuthDto dbdata = authDao.selectAuth(dto.getUaid());
+		if(dbdata.getUapassword().equals(dto.getUapassword())) {
+			
+			return "중복";
+		}
+		
+		return "성공";
+	}
+	
 	  public void updateAuth(AuthDto authdto) {
 		   authDao.update(authdto); //리턴값 필요없어서 안받음
 	   }

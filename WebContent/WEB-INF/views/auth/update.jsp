@@ -20,13 +20,12 @@
 		
 				
 			
-			<div id="form2">
-				<form id="formf" name="authupdate" method="post" action="<%=application.getContextPath()%>/auth/authupdate">	
+				<form id="formf" name="authupdate" method="post" onsubmit="f1()">	
 					<input type="hidden" name="uaid" value="${auth}"/>
 					<div id="input1">
 						
 						<input  type="password" placeholder="패스워드" id="uapassword" name="uapassword"/>
-						<span  id="error1"></span>
+						<span  id="error"></span>
 					</div>	
 						<div class="loginForm1" >
 							<button><p>비밀번호 변경</p></button>
@@ -34,12 +33,60 @@
 						
 					
 				</form>
+				<script>
+			function f1(){
+								
+				 event.preventDefault(); 
+           		//
+           		$("#error").html("");
+           	
+           		//입력값 받기
+           		var validation = true;
+           		
+           	
+           		const uapassword = $("#uapassword").val();
+	          		if(uapassword ===""){
+	      				$("#error").html("필수 입력 사항입니다.");
+	      				validation = false;
+       				}
+           			
+           		if(!validation){
+           			return;
+           		}
+				$.ajax({
+					url:"authupdate",
+					method:"post",
+					data:{uaid:"${auth}", uapassword:uapassword},
+					success: function(data) {
+						if(data.result ==="중복"){
+							alert("기존 비밀번호와 다른 비밀번호를 입력해 주세요.");
+							
+						}else {
+							
+							alert("새로운 비밀번호로 로그인 해주세요.");
+							location.href="<%=application.getContextPath()%>/auth/login1";
+						}
+						
+						
+					}
+				
+				});
+				
+			}
+			
+			</script>
 					<div class="loginForm1" >
 						<c:if test="${sessionUaid!=null}">
-							<a href="<%=application.getContextPath()%>/auth/authdelete?uaid=${sessionUaid}">회원탈퇴</a>
+							<a onclick="f2()" href="<%=application.getContextPath()%>/auth/authdelete?uaid=${sessionUaid}">회원탈퇴</a>
 						</c:if>
 					</div>
-				
+					<script>
+					const f2= ()=>{
+						alert("회원탈퇴가 정상적으로 처리되었습니다.")
+						
+					};
+					
+					</script>
 		
 		
 			</div>
@@ -50,7 +97,7 @@
 			
 			
 		
-		</div>
+		
 		
 	</body>
 	

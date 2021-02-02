@@ -100,9 +100,23 @@ public class AuthController {
 	}
 	
 	@PostMapping("/authupdate")
-	public String authupdate(AuthDto authDto) {
-		authService.updateAuth(authDto);
-		return "redirect:/auth/login1";
+	public void authupdate(AuthDto authDto, HttpServletResponse response)throws Exception {
+		String result = authService.checkUaPassword(authDto);
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		if(result.equals("중복")) {
+			JSONObject root = new JSONObject();
+			root.put("result", result);
+			pw.println(root.toString());
+		}else {
+			authService.updateAuth(authDto);
+			JSONObject root= new JSONObject();
+			root.put("result",result);
+			pw.println(root.toString());
+		}
+		pw.flush();
+		pw.close();
+		
 	}
 
 	@GetMapping("/authdelete")

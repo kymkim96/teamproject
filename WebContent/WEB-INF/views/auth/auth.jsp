@@ -40,9 +40,7 @@
 					
 					$("#qr2").show();
 				});								
-			});
-						
-						
+			});					
 			function f1(){
 								
 				 event.preventDefault(); 
