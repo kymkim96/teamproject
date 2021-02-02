@@ -11,4 +11,20 @@
 		from carts
 		where users_uaid=#{uaid}
 	</select>
+	
+	<insert id="insert" parameterType="cart">
+		<selectKey keyProperty="cid" resultType="int" order="BEFORE">
+			select carts_cid_seq.nextval from dual
+		</selectKey>
+		
+		<if test="usersUaid == null">
+			insert into carts (cid, camount, ctotal)
+			values (#{cid}, 0, 0)
+		</if>
+		
+		<if test="usersUaid != null">
+			insert into carts (cid, camount, ctotal, users_uaid)
+			values (#{cid}, 0, 0, #{usersUaid})
+		</if>
+	</insert>
 </mapper>

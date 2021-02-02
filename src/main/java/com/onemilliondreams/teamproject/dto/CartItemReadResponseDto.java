@@ -1,5 +1,7 @@
 package com.onemilliondreams.teamproject.dto;
 
+import java.util.List;
+
 public class CartItemReadResponseDto {
 
 	private int ctid;
@@ -12,6 +14,8 @@ public class CartItemReadResponseDto {
 	private String bimgLink;
 	private String btitle;
 	private String bpublisher;
+	private int bdeliveryFee;
+	private List<WriterDto> bookWriterlist;
 	
 	public String getIsbn() {
 		return isbn;
@@ -72,5 +76,17 @@ public class CartItemReadResponseDto {
 	}
 	public void setBpublisher(String bpublisher) {
 		this.bpublisher = bpublisher;
+	}
+	public List<WriterDto> getBookWriterlist() {
+		return bookWriterlist;
+	}
+	public void setBookWriterlist(List<WriterDto> bookWriterlist) {
+		this.bookWriterlist = bookWriterlist;
+	}
+	public int getBdeliveryFee() {
+		return bdeliveryFee;
+	}
+	public void setBdeliveryFee(int bdeliveryFee) {
+		this.bdeliveryFee = bdeliveryFee;
 	}
 }

@@ -2,90 +2,69 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="books">
 	<select id="selectByPk" parameterType="string" resultType="book">
-		
 		select *
 		from books
 		where ISBN=#{bookIsbn}
-	
 	</select>
 	
+
 	
-	
-	
-	<select id="selectByCn" parameterType="string" resultType="book">
-		select 
-			 isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
-			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
-			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
-		from books
-		where categories_category_name=#{categoryName}
+	<select id = "countAll" parameterType="string"  resultType="int">
+		select  count(*)
+		from BOOKS
+		where categories_category_name=#{categoriesCategoryName}
 	</select>
 	
-	
-	
-	
-	<select id = "countAll"  resultType="int">
-		select count(*)
-		from books
-		where categories_category_name=#{categoryName}
-	</select>
-<!-- 	
-	<select id = "selectByPage" parameterType="pager" resultType="book">pager를 쓸 때 alias를 추가해줌.
-		
+	<select id = "selectByPage" parameterType="pager" resultType="book">
 	    select 
-	    			rno, 
-	    	 bno
-	         isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
-			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
-			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
+	    	 rno, 
+	         ISBN, BTITLE, BSUB_TITLE, BPUBLISHER, BTRANSLATOR, BPUBLISH_DATE,
+			 BBESTSELLER, BPRICE, BDISCOUNT, BDELIVERY_FEE, BCONTENT, BINDEX, BIMG_LINK,
+			 BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name, BFINAL_PRICE
 	    from (
 	            select 
-	           			 	rownum as rno, 
-	           			bno
-	         			isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
-						bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
-						bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
+	           			rownum as rno, 
+	    
+	         			 ISBN, BTITLE, BSUB_TITLE, BPUBLISHER, BTRANSLATOR, BPUBLISH_DATE,
+						 BBESTSELLER, BPRICE, BDISCOUNT, BDELIVERY_FEE, BCONTENT, BINDEX, BIMG_LINK,
+						 BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name,BFINAL_PRICE
 		        from( 
-		          	 select 
-		          	 	  bno
-						  isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
-						  bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex, bimg_link
-						  bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name
-					 from boards
-					 order by bno desc 
+		          	 select   
+						   ISBN, BTITLE, BSUB_TITLE, BPUBLISHER, BTRANSLATOR, BPUBLISH_DATE,
+						   BBESTSELLER, BPRICE, BDISCOUNT, BDELIVERY_FEE, BCONTENT, BINDEX, BIMG_LINK,
+			 			   BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name,BFINAL_PRICE
+					 from BOOKS
+					     where categories_category_name=#{categoriesCategoryName}
+						 order by isbn desc
 		            )
 		   		 where rownum &lt;= #{endRowNo} 
 		 )
 		 where rno &gt;= #{startRowNo}
-
-		
 	</select>
-	 -->
-	
-	
 	
 	<insert id="insert" parameterType="book">
 		<if test="bimgFilename == null">
 			insert into books
 			(isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
 			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex,
-			 bimg_link, bstate, bvideo_link, categories_category_name)
+			 bimg_link, bstate, bvideo_link, categories_category_name, bfinal_price)
 			values
 			(#{isbn}, #{btitle}, #{bsubTitle}, #{bpublisher}, #{btranslator}, 
 			#{bpublishDate}, #{bbestSeller}, #{bprice}, #{bdiscount}, #{bdeliveryFee}, 
-			#{bcontent}, #{bindex}, #{bimgLink}, #{bstate}, #{bvideoLink}, #{categoriesCategoryName})
+			#{bcontent}, #{bindex}, #{bimgLink}, #{bstate}, #{bvideoLink}, #{categoriesCategoryName}, 
+			#{bfinalPrice})
 		</if>
 		
 		<if test="bimgFilename != null">
 			insert into books
 			(isbn, btitle, bsub_title, bpublisher, btranslator, bpublish_date,
 			 bbestseller, bprice, bdiscount, bdelivery_fee, bcontent, bindex,
-			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name)
+			 bimg_filename, bcontent_type, bstate, bvideo_link, categories_category_name, bfinal_price)
 			values
 			(#{isbn}, #{btitle}, #{bsubTitle}, #{bpublisher}, #{btranslator}, 
 			#{bpublishDate}, #{bbestSeller}, #{bprice}, #{bdiscount}, #{bdeliveryFee}, 
 			#{bcontent}, #{bindex}, #{bimgFilename}, #{bcontentType}, #{bstate}, 
-			#{bvideoLink}, #{categoriesCategoryName})
+			#{bvideoLink}, #{categoriesCategoryName}, #{bfinalPrice})
 		</if>
 	</insert>
 	

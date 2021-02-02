@@ -42,19 +42,19 @@
 	
 	
 					<div id="divheader2">
-						<input id="석봉갓" width="500px" type="text" placeholder="찾고자 하는 도서를 입력해주세요.">
-						<img  src="<%=application.getContextPath()%>/resources/img/검색.PNG">
+						<form name="searchForm" id="searchForm" method="post" action="<%=application.getContextPath()%>/search/searchresult">
+							<input style="width:400px;" id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
+							<button class ="btn" type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"></button>
+						</form>
 					</div>
 	
 	
 				</div>
 	
 				<ul id="headerul2">
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?category_name=현대소설">현대소설</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?category_name=자기계발서">자기개발서</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?category_name=해외소설">해외소설</a></button>
-					
-	
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=현대소설">현대소설</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=자기계발서">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=해외소설">해외소설</a></button>
 				</ul>
 	
 			</header>

@@ -12,10 +12,19 @@ public class PagerDto {
 	private int rowsPerPage;	//페이지당 행 수 
 	private int startRowNo;		//페이지의 시작 행 번호
 	private int endRowNo;		//페이지의 마지막 행 번호
-	
+
 	private String booksIsbn; //selectbypager에서 where에 사용할값
-	private String categoryNames;
-	
+	private String categoriesCategoryName;
+	private String btitle;  //search slectbypager에서 사용
+
+	public String getBtitle() {
+		return btitle;
+	}
+
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
+	}
+
 	public PagerDto(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
 		this.rowsPerPage = rowsPerPage;
 		this.pagesPerGroup = pagesPerGroup; //한번에 밑에 번호[이전] 1 2 3 4 5 [다음] 사이에 몇개의 숫자를 나타낼건지
@@ -95,11 +104,13 @@ public class PagerDto {
 		this.booksIsbn = booksIsbn;
 	}
 
-	public String getCategoryNames() {
-		return categoryNames;
+	public String getCategoriesCategoryName() {
+		return categoriesCategoryName;
 	}
 
-	public void setCategoryNames(String categoryNames) {
-		this.categoryNames = categoryNames;
+	public void setCategoriesCategoryName(String categoriesCategoryName) {
+		this.categoriesCategoryName = categoriesCategoryName;
 	}
+
+	
 }

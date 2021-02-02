@@ -10,15 +10,19 @@ import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.BookDao;
 import com.onemilliondreams.teamproject.dto.BookDto;
-import com.onemilliondreams.teamproject.dto.PagerDto;
 
+import com.onemilliondreams.teamproject.dto.BookWriterDto;
 
 
 @Service
 public class BookService {
 	
 	@Resource
-	public BookDao bookDao;
+	private BookDao bookDao;
+	@Resource
+	private BookWriterService bookWriterService;
+	@Resource
+	private WriterService writerService;
 
 	private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 	
@@ -44,6 +48,9 @@ public class BookService {
 		return book;
 	}
 	
+
+	
+
 	public String saveBook(BookDto requestDto) {
 		
 		BookDto book = bookDao.getBook(requestDto.getIsbn());
@@ -51,33 +58,44 @@ public class BookService {
 			return "ISBN is already used";
 		}
 		
-		bookDao.insert(requestDto);
+		// 할인율 적용하기
+		int price = requestDto.getBprice();
+		Integer discount = requestDto.getBdiscount();
+		if (discount != null) {
+			double finalPrice = price - (price * ((double)discount/100));
+			requestDto.setBfinalPrice(finalPrice);
+		} else {
+			requestDto.setBfinalPrice(price);
+		}
+		
+		
+		int rows = bookDao.insert(requestDto);
+		// 책과 착가 매핑하기
+		if (rows > 0) {
+			if (requestDto.getBwriters() != null) {
+				for (String writer : requestDto.getBwriters()) {
+					Integer wid = writerService.getWriterByWname(writer);
+					if (wid != null && wid != -1) {
+						BookWriterDto bookWriter = new BookWriterDto();
+						bookWriter.setBooksIsbn(requestDto.getIsbn());
+						bookWriter.setWritersWid(wid);
+						bookWriterService.saveBookWriter(bookWriter);
+					} else {
+						return "writer is not correct";
+					}
+				}
+			}
+		}
+		
 		return "성공";
 	}
 
-
-	//booklist
-	public List<BookDto> getBooklist(String category_name) {
-		List<BookDto> list = bookDao.getbooklist(category_name);
-		return list;
-	}
 	
-	//pager
-	public int getTotalRows(String category_name) {
-		int totalRows = bookDao.countAll(category_name);
-		return totalRows;
-	}
 
-	/*public List<BookDto> getBookList(PagerDto pager) {
-		List<BookDto> list = bookDao.selectByPage(pager);
-		return list;
-
-	}*/
 	
 	public void updateBook(BookDto requestDto) {
 		
 		bookDao.update(requestDto);
 	}
-
 
 }

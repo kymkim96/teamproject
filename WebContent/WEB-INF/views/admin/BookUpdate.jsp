@@ -21,7 +21,7 @@
         <div class="content">
         	<h1 class="mt-3 mb-5"><b>수정 페이지</b></h1>
         	
-        	<form id="updateForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
+        	<form id="bookForm" method="post" enctype="multipart/form-data" action="<%=application.getContextPath()%>/books-update">
 	        	<div id="basic_field_layout">
 	                <h2><b>기본 필드 입력</b></h2>
 	                <div id="basic_first">
@@ -38,14 +38,58 @@
 	                        <span id="warningTitle"></span>
 	                        <div class="form-group">
 	                            <label for="bwriter">작가:</label>
-	                            <div>
+	                            <div class="mb-3">
 	                            	<input type="text" class="form-control col-sm-8" 
-	                            	id="bwriter" name="bwriter" style="display: inline-block" value="">
-	                            	<button type="button" id="bwriterSearch" class="btn btn-secondary ml-2">검색</button>
+	                            	id="bwriter" name="bwriter" style="display: inline-block">
+	                            	<button type="button" id="bwriterAdd" class="btn btn-secondary ml-2">추가</button>
+	                            </div>
+	                            <span><b>삭제할 작가명 체크</b></span>
+	                            <div class="border mt-3 p-2" id="bwriterBox">
+	                            	<c:forEach var="writer" items="${writers}">
+		                            	<div class="d-flex align-items-center mb-2" id="bwriterContent${writer.wid}">
+		                            		${writer.wname}
+		                            		<button type="button" onclick="onDelete(${writer.wid})" class="btn btn-secondary btn-sm ml-3">삭제</button>	                            	
+		                            	</div>
+	                            	</c:forEach>
 	                            </div>
 	                            <small id="bwriterResult" class="form-text text-danger"></small>
 	                            <script>
-	                            	$("#bwriterSearch").click(function() {});
+	                            	$("#bwriterAdd").click(function() {
+	                            		const wname = $("#bwriter").val();
+	                            		$.ajax({
+	                            			url: '<%=application.getContextPath()%>/bookwriter-create',
+	                            			method: 'post',
+	                            			data: {
+	                            				isbn: "${book.isbn}",
+	                            				wname,
+	                            			},
+	                            			success: (data) => {
+	                            				if (data.result === '해당 작가가 존재하지 않습니다.') {
+	                            					$("#bwriterResult").html(data.result);
+	                            					$("#bwriterResult").css({ "color": "red" });
+	                            					return;
+	                            				}
+	                            				
+	                            				$("#bwriterBox").append('<div class="d-flex align-items-center mb-2">');
+	                            				$("#bwriterBox").append(wname);
+	                            				$("#bwriterBox").append('<button type="button" onclick="onDelete(' + data.wid + ')" class="btn btn-secondary btn-sm ml-3">삭제</button>');
+	                            				$("#bwriterBox").append('</div>');
+	                            			}
+	                            		});
+	                            	});
+	                            	const onDelete = (wid) => {
+	                            		$.ajax({
+	                            			url: '<%=application.getContextPath()%>/bookwriter-delete',
+	                            			method: 'post',
+	                            			data: {
+	                            				booksIsbn: "${book.isbn}",
+	                            				writersWid: wid,
+	                            			},
+	                            			success: (data) => {
+	                            				$("#bwriterContent" + wid).detach();
+	                            			}
+	                            		})
+	                            	}
 	                            </script>
 	                        </div>
 	                        <span id="warningWriter"></span>
@@ -140,9 +184,9 @@
 	                    <div id="category_calander_first">
 	                    	<table class="category_table">
 		                        <tr>
-		                            <td class="category_items">카테고리1</td>
-		                            <td class="category_items">카테고리2</td>
-		                            <td class="category_items">카테고리3</td>
+		                           <td class="category_items">현대소설</td>
+		                           <td class="category_items">자기계발서</td>
+		                           <td class="category_items">해외소설</td>
 		                        </tr>
 		                        <tr>
 		                            <td class="category_items">카테고리4</td>
@@ -215,12 +259,12 @@
 		                id="btn-update" 
 		                class="btn btn-outline-secondary btn-lg" 
 		                style="margin-right: 10px;" 
-		                onclick="submit()">
+		                onclick="submitForm()">
 	                	수정
 	                </button>
 	            </div>
         	</form>
-        	<script src="<%=application.getContextPath()%>/resources/js/submit.js"></script>
+        	<script src="<%=application.getContextPath()%>/resources/js/submitForm.js"></script>
         </div>
 			
 			<%@ include file="/WEB-INF/views/common/Footer.jsp" %>

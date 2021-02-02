@@ -7,9 +7,16 @@ public class CartItemDto {
 	private int ctcount;
 	private int ctdiscount;
 	private String booksIsbn;
-	private String orderItemsOtid;
+	private int orderItemsOtid;
+	private int cartsCid;
 	
 	
+	public int getCartsCid() {
+		return cartsCid;
+	}
+	public void setCartsCid(int cartsCid) {
+		this.cartsCid = cartsCid;
+	}
 	public int getCtid() {
 		return ctid;
 	}
@@ -37,13 +44,13 @@ public class CartItemDto {
 	public String getBooksIsbn() {
 		return booksIsbn;
 	}
-	public String getOrderItemsOtid() {
+	public int getOrderItemsOtid() {
 		return orderItemsOtid;
 	}
 	public void setBooksIsbn(String booksIsbn) {
 		this.booksIsbn = booksIsbn;
 	}
-	public void setOrderItemsOtid(String orderItemsOtid) {
+	public void setOrderItemsOtid(int orderItemsOtid) {
 		this.orderItemsOtid = orderItemsOtid;
 	}
 }

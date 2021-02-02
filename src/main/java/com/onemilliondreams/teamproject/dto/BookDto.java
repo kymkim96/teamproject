@@ -1,6 +1,7 @@
 package com.onemilliondreams.teamproject.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +27,23 @@ public class BookDto {
 	private String bstate;
 	private String bvideoLink;
 	private String categoriesCategoryName;
+	private List<WriterDto> bookWriterlist;
+	public List<WriterDto> getBookWriterlist() {
+		return bookWriterlist;
+	}
+	public void setBookWriterlist(List<WriterDto> bookWriterlist) {
+		this.bookWriterlist = bookWriterlist;
+	}
+	public double getBfinalPrice() {
+		return bfinalPrice;
+	}
+	public void setBfinalPrice(double bfinalPrice) {
+		this.bfinalPrice = bfinalPrice;
+	}
+	private String[] bwriters;
 	
-	private int bfprice;//book final price;
+	private double bfinalPrice;
+	private int bfprice;
 	
 	
 	public String getIsbn() {
@@ -84,7 +100,7 @@ public class BookDto {
 	public String getBvideoLink() {
 		return bvideoLink;
 	}
-	public String getCategoriesCategoryName() {
+	public String getcategoriesCategoryName() {
 		return categoriesCategoryName;
 	}
 	public void setIsbn(String isbn) {
@@ -141,7 +157,7 @@ public class BookDto {
 	public void setBvideoLink(String bvideoLink) {
 		this.bvideoLink = bvideoLink;
 	}
-	public void setCategoriesCategoryName(String categoriesCategoryName) {
+	public void setcategoriesCategoryName(String categoriesCategoryName) {
 		this.categoriesCategoryName = categoriesCategoryName;
 	}
 	public int getBfprice() {
@@ -150,4 +166,12 @@ public class BookDto {
 	public void setBfprice(int bfprice) {
 		this.bfprice = bfprice;
 	}
+	public String[] getBwriters() {
+		return bwriters;
+	}
+	public void setBwriters(String[] bwriters) {
+		this.bwriters = bwriters;
+	}
+
+	
 }

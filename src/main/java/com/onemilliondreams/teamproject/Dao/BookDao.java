@@ -38,24 +38,6 @@ public class BookDao {
 	}
 	
 
-	//카테고리네임
-	public List<BookDto> getbooklist(String category_name) {
-		List<BookDto> list = sst.selectList("books.selectByCn", category_name);		
-		logger.info(category_name);
-		return list;
-	}
-	
-	public int countAll(String category_name) {
-		int count = sst.selectOne("books.countAll", category_name);
-		return count;
-	}
-	
-
-	/*public List<BookDto> selectByPage(PagerDto pager) {
-		List<BookDto>list = sst.selectList("books.selectByPage", pager);
-		return list;
-	
-	}*/
 	
 	
 	public int update(BookDto requestDto) {	

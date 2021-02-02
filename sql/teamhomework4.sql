@@ -1,5 +1,5 @@
 -- 생성자 Oracle SQL Developer Data Modeler 20.2.0.167.1538
---   위치:        2021-01-28 15:07:38 KST
+--   위치:        2021-02-01 15:44:47 KST
 --   사이트:      Oracle Database 11g
 --   유형:      Oracle Database 11g
 
@@ -27,7 +27,8 @@ CREATE TABLE books (
     bcontent_type             VARCHAR2(100),
     bstate                    VARCHAR2(30),
     bvideo_link               VARCHAR2(1000),
-    categories_category_name  VARCHAR2(100)
+    categories_category_name  VARCHAR2(100),
+    bfinal_price              NUMBER(7)
 );
 
 ALTER TABLE books ADD CONSTRAINT books_pk PRIMARY KEY ( isbn );
@@ -41,13 +42,12 @@ ALTER TABLE books_writers ADD CONSTRAINT books_writers_pk PRIMARY KEY ( books_is
                                                                         writers_wid );
 
 CREATE TABLE cart_items (
-    ctid              NUMBER(3) NOT NULL,
-    ctprice           NUMBER(7) NOT NULL,
-    ctcount           NUMBER(3) NOT NULL,
-    ctdiscount        NUMBER(3) DEFAULT 0,
-    books_isbn        VARCHAR2(50),
-    order_items_otid  VARCHAR2(10),
-    carts_cid         NUMBER(3) NOT NULL
+    ctid        NUMBER(3) NOT NULL,
+    ctprice     NUMBER(7) NOT NULL,
+    ctcount     NUMBER(3) NOT NULL,
+    ctdiscount  NUMBER(3) DEFAULT 0,
+    books_isbn  VARCHAR2(50),
+    carts_cid   NUMBER(3) NOT NULL
 );
 
 ALTER TABLE cart_items
@@ -74,8 +74,9 @@ CREATE TABLE order_items (
     otid        VARCHAR2(10) NOT NULL,
     otprice     NUMBER(7) NOT NULL,
     otcount     NUMBER(3) NOT NULL,
-    orders_oid  NUMBER(10) NOT NULL,
-    otdiscount  NUMBER(3)
+    orders_oid  NUMBER(10),
+    otdiscount  NUMBER(3),
+    books_isbn  VARCHAR2(50)
 );
 
 ALTER TABLE order_items ADD CONSTRAINT order_items_pk PRIMARY KEY ( otid );
@@ -139,19 +140,20 @@ ALTER TABLE cart_items
     ADD CONSTRAINT cart_items_carts_fk FOREIGN KEY ( carts_cid )
         REFERENCES carts ( cid );
 
-ALTER TABLE cart_items
-    ADD CONSTRAINT cart_items_order_items_fk FOREIGN KEY ( order_items_otid )
-        REFERENCES order_items ( otid )
-            ON DELETE SET NULL;
-
 ALTER TABLE carts
     ADD CONSTRAINT carts_users_fk FOREIGN KEY ( users_uaid )
         REFERENCES users ( uaid )
             ON DELETE SET NULL;
 
 ALTER TABLE order_items
+    ADD CONSTRAINT order_items_books_fk FOREIGN KEY ( books_isbn )
+        REFERENCES books ( isbn )
+            ON DELETE SET NULL;
+
+ALTER TABLE order_items
     ADD CONSTRAINT order_items_orders_fk FOREIGN KEY ( orders_oid )
-        REFERENCES orders ( oid );
+        REFERENCES orders ( oid )
+            ON DELETE SET NULL;
 
 ALTER TABLE orders
     ADD CONSTRAINT orders_users_fk FOREIGN KEY ( users_uaid )

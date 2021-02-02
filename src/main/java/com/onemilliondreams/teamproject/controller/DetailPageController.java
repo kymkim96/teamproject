@@ -3,6 +3,7 @@ package com.onemilliondreams.teamproject.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.onemilliondreams.teamproject.dto.BookDto;
 import com.onemilliondreams.teamproject.dto.PagerDto;
+import com.onemilliondreams.teamproject.dto.ReviewCountDto;
 import com.onemilliondreams.teamproject.dto.ReviewDto;
 import com.onemilliondreams.teamproject.dto.WriterDto;
 import com.onemilliondreams.teamproject.service.BookService;
@@ -42,6 +44,7 @@ public class DetailPageController {
 	public String detail1(
 			@RequestParam("param1") String BookIsbn ,
 			@RequestParam(defaultValue="1") int pageNo,
+			HttpSession session,
 			Model model) {
 		
 		//book정보
@@ -56,6 +59,22 @@ public class DetailPageController {
 		//review정보		
 		List<ReviewDto> list1 = reviewService.getReviewList(BookIsbn);
 		model.addAttribute("list1", list1);
+		
+		
+		//내가 이책을 샀는지 안샀는지!
+		ReviewCountDto rcd = new ReviewCountDto();
+		
+		String temp;
+		if(session.getAttribute("sessionUaid")==null) {
+			temp = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		}else {
+			temp = session.getAttribute("sessionUaid").toString();
+		}
+		rcd.setSessionUaid(temp); 
+		rcd.setBookIsbn(BookIsbn);
+		int count  = reviewService.getOrderRow(rcd);
+		model.addAttribute("ordered", count);
+		
 		
 		//review-pager
 		int totalRows = reviewService.getTotalRows(BookIsbn);//ISBN에 해당하는 총 리뷰 개수
