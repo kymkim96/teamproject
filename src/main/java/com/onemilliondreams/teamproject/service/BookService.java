@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.onemilliondreams.teamproject.Dao.BookDao;
 import com.onemilliondreams.teamproject.dto.BookDto;
+
 import com.onemilliondreams.teamproject.dto.BookWriterDto;
+
 
 @Service
 public class BookService {
@@ -58,7 +60,8 @@ public class BookService {
 		int price = requestDto.getBprice();
 		Integer discount = requestDto.getBdiscount();
 		if (discount != null) {
-			double finalPrice = price - (price * ((double)discount/100));
+			double temp = price - (price * ((double)discount/100));
+			int finalPrice = (int) Math.ceil(temp);
 			requestDto.setBfinalPrice(finalPrice);
 		} else {
 			requestDto.setBfinalPrice(price);
@@ -86,14 +89,7 @@ public class BookService {
 		return "성공";
 	}
 
-
-
-	public List<BookDto> getBooklist(String category_name) {
-		List<BookDto> list = bookDao.getbooklist(category_name);
-		return list;
-	}
 	
-
 
 	
 	public void updateBook(BookDto requestDto) {
@@ -102,7 +98,8 @@ public class BookService {
 		int price = requestDto.getBprice();
 		Integer discount = requestDto.getBdiscount();
 		if (discount != null) {
-			double finalPrice = price - (price * ((double)discount/100));
+			double temp = price - (price * ((double)discount/100));
+			int finalPrice = (int) Math.ceil(temp);
 			requestDto.setBfinalPrice(finalPrice);
 		} else {
 			requestDto.setBfinalPrice(price);

@@ -29,8 +29,8 @@
 			                        </div>
 			                        <span id="warningIsbn">${warningIsbn}</span>
 			                        <div class="form-group">
-			                            <label for="btitle">제목:</label>
-			                            <input type="text" class="form-control col-sm-8" id="btitle" name="btitle">
+			                            <label for="btitleInput">제목:</label>
+			                            <input type="text" class="form-control col-sm-8" id="btitleInput" name="btitle">
 			                        </div>
 			                        <span id="warningTitle"></span>
 			                        <div class="form-group">

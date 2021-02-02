@@ -16,7 +16,7 @@ const submitForm = () => {
 		});
 		return;
 	}
-	if ($("#btitle").val() == null || $("#btitle").val() == "") {
+	if ($("#btitleInput").val() == null || $("#btitleInput").val() == "") {
 		$("#warningTitle").html("* 제목은 반드시 입력해야 합니다.");
 		$("#warningTitle").css({
 			"color": "red",

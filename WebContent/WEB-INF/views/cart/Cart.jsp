@@ -106,7 +106,7 @@
 											<div>
 												<input type="number" id="item_count${cartItem.ctid}" class="item_count"
 												    name="item_count" value="${cartItem.ctcount}" 
-												    onchange="getCount(${cartItem.ctid}, ${cartItem.ctprice})"
+												    onchange="getCount(${cartItem.ctid}, ${cartItem.ctprice}, ${cartItem.ctdiscount})"
 													min="0" step="1"/>
 												<button type="button"
 													class="btn btn-outline-secondary btn-sm" 
@@ -114,11 +114,12 @@
 													onclick="onUpdate(${cartItem.ctid}, ${cartItem.ctprice})">수정</button>
 											</div>
 											<script>
-												countAll += ($("#item_count" + ${cartItem.ctid}).val() * 1);
+												countAll += parseInt($("#item_count" + ${cartItem.ctid}).val());
 											</script>
 										</td>
 										<td class="align-middle" id="resultPrice${cartItem.ctid}">
 											<input type="hidden" class="resultPrice" value="${cartItem.ctprice * cartItem.ctcount}">
+											<input type="hidden" class="resultDiscount" value="${cartItem.ctprice * cartItem.ctcount * (cartItem.ctdiscount/100)}">
 											<div>
 												<fmt:formatNumber 
 													value="${cartItem.ctprice * cartItem.ctcount}"
@@ -148,9 +149,8 @@
 								</c:forEach>
 								<script>
 									let ctcount;
-									const getCount = function(ctid, ctprice) {
+									const getCount = function(ctid, ctprice, ctdiscount) {
 										ctcount = event.target.value;
-										
 										// 총 개수 갱신
 										var numbers = $("#cart_table").find("input[type=number]");
 										var totalNum = 0;
@@ -164,18 +164,31 @@
 										const tempAmount = temp.toLocaleString("ko-KR", { style: "currency", currency: "KRW"});
 										$("#resultPrice" + ctid + " div").html(tempAmount);
 										
-										const resultPrice = $("#resultPrice" + ctid).find("input[type=hidden]");
+										const resultPrice = $("#resultPrice" + ctid).find(".resultPrice");
 										resultPrice.val(temp);
+										const resultDiscount = $("#resultPrice" + ctid).find(".resultDiscount");
+										console.log(resultDiscount);
+										resultDiscount.val(temp * (ctdiscount/100));
 										
 										let amounts = $(".resultPrice");
+										let discounts = $(".resultDiscount")
 										let totalAmount = 0;
+										let totalDiscount = 0;
 										for (let i=0; i<amounts.length; i++) {
-											totalAmount += parseInt(amounts.get(i).value); 
+											totalAmount += parseInt(amounts.get(i).value);
+										}
+										for (let i=0; i<discounts.length; i++) {
+											totalDiscount += parseInt(discounts.get(i).value)
 										}
 										
 										$("#resultAmount").html(totalAmount.toLocaleString());
 										const finalPrice = totalAmount + ${deliveryFee};
 										$("#finalPrice").html(finalPrice.toLocaleString());	
+										
+										$("#sumAmount").html(totalAmount.toLocaleString() + "원");
+										$("#discountPrice").html(totalDiscount.toLocaleString() + "원");
+										const finalAmount = totalAmount - totalDiscount + ${deliveryFee};
+										$("#finalAmount").html(finalAmount.toLocaleString() + "원");
 									}
 									
 									function onUpdate (ctid, ctprice) {
@@ -300,14 +313,14 @@
 					<div class="row">
 						<div class="col-2 price_content">${size}종(<span class="countAll">0</span>개)</div>
 						<div class="col price_content">
-							<b>
+							<b id="sumAmount">
 								<fmt:formatNumber 
 								value="${sumAmount}"
 								/>원
 							</b>
 						</div>
 						<div class="col price_content">
-							<b>
+							<b id="discountPrice">
 								<fmt:formatNumber 
 								value="${discountPrice}"
 								/>원
@@ -321,7 +334,7 @@
 							</b>
 						</div>
 						<div class="col price_content" style="border-right: none">
-							<b style="color: tomato">
+							<b style="color: tomato" id="finalAmount">
 								<fmt:formatNumber 
 									value="${sumAmount - discountPrice + deliveryFee}"
 									/>원

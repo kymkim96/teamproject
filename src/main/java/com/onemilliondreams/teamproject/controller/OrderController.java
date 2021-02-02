@@ -2,8 +2,10 @@ package com.onemilliondreams.teamproject.controller;
 
 
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -67,7 +69,37 @@ public class OrderController {
 				cartItem = cartItemService.getCartItem(ctid_temp);
 				cartItemlist.add(cartItem);
 			}
+			
+			Integer size = null;
+			int sumAmount = 0;
+			Integer deliveryFee = 0;
+			double sumFinalPrice = 0;
+			for (CartItemReadResponseDto item : cartItemlist) {
+				
+				// 수량비 합계 초기화
+				sumAmount += item.getCtcount() * item.getCtprice();
+				
+				// 배송비: 큰 값으로 기본값
+				if (deliveryFee < item.getBdeliveryFee()) {
+					deliveryFee = item.getBdeliveryFee();
+				}
+				
+				// 할인가격
+				if (item.getBfinalPrice() == 0) {
+					double discount = item.getCtprice() - item.getCtprice() * ((double)item.getCtdiscount()/100);
+					sumFinalPrice += discount * item.getCtcount();
+				} else {
+					sumFinalPrice += item.getBfinalPrice() * item.getCtcount();
+				}
+			}
+			String formattedAmount = NumberFormat.getInstance(Locale.KOREA).format(sumAmount);
+			size = cartItemlist.size();
+			model.addAttribute("formattedAmount", formattedAmount);
+			model.addAttribute("sumAmount", sumAmount);
+			model.addAttribute("deliveryFee", deliveryFee);
+			model.addAttribute("discountPrice", sumAmount-sumFinalPrice);
 			model.addAttribute("cartItemlist", cartItemlist);
+			model.addAttribute("size", size);
 			//----------------------------------------------------------------------
 		}
 		
@@ -83,8 +115,6 @@ public class OrderController {
 				
 		//Ct아이디 불러올거임
 		CartItemReadResponseDto cartItem = new CartItemReadResponseDto();
-		
-		
 		
 		//데이터가 넘어왔나 안넘어왔나
 		if(orderdata.getOaddress()==null) {
@@ -108,17 +138,6 @@ public class OrderController {
 		//order 아이템을 저장할거임
 		OrderItemDto orderItem = new OrderItemDto();
 				
-		//주문정보가져오기
-		OrderDto order = new OrderDto();
-		
-		order.setUsersUaid(orderdata.getUsersUaid());
-		order.setOaddress(orderdata.getOaddress());
-		
-		
-		//order ototal - jsp에서 처리할지 여기서 처리할지 정하기!
-		//order oamount - jsp에서 처리할지 여기서 처리할지 정하기!
-		
-		
 		for(int ctid_temp : ctid) {
 			//Cart item을 한개만 가져오면 됨!
 			cartItem = cartItemService.getCartItem(ctid_temp);
@@ -132,7 +151,7 @@ public class OrderController {
 		
 		//ctid 업데이틀 해줘야 함
 		//orderService.order(order, orderItemlist);
-		orderService.order(order, orderItemlist,ctid);
+		orderService.order(orderdata, orderItemlist,ctid);
 		
 		//*/
 		

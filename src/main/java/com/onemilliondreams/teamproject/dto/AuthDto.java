@@ -4,6 +4,14 @@ public class AuthDto {
 	String uaid;
 	String uapassword;
 	String uaname;
+	String role;
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getUaid() {
 		return uaid;
 	}

@@ -19,7 +19,6 @@
 					
 					<button class="btn btn-sm">영업점안내</button>
 					<button class="btn btn-sm">고객센터</button>
-					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/book-admin/update">수정</a></button>
 					
 					<c:if test="${sessionUaid=='admin'}">
 							
@@ -49,8 +48,9 @@
 	
 					<div id="divheader2">
 						<form name="searchForm" id="searchForm" method="post" action="<%=application.getContextPath()%>/search/searchresult">
-							<input style="width:400px;" id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
-							<button class ="btn" type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"></button>
+							<input style="width:400px; height:39px; margin:0px; padding-left:5px; border:2px solid #998064;" id="btitle" name="btitle"  type="text" placeholder="찾고자 하는 도서를 입력해주세요."/>
+							<button style="margin:-7px;  padding:0px; border:1px solid #998064;" class ="btn" type="submit"><img src="<%=application.getContextPath()%>/resources/img/검색.PNG"/></button>
+							<a class="btn"  style="margin:2px;padding:0px; border:2px solid #998064;" href="<%=application.getContextPath()%>/cart/index"><img style="width:44px; height:40px" src="<%=application.getContextPath()%>/resources/img/장바구니.png"/></a>
 						</form>
 					</div>
 	
@@ -58,11 +58,9 @@
 				</div>
 	
 				<ul id="headerul2">
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list1?category_name=현대소설">현대소설</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list2?category_name=자기계발서">자기개발서</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list3?category_name=해외소설">해외소설</a></button>
-					
-	
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=현대소설">현대소설</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=자기계발서">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=해외소설">해외소설</a></button>
 				</ul>
 	
 			</header>

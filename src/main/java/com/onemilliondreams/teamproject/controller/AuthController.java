@@ -44,6 +44,10 @@ public class AuthController {
 		String result = authService.login(dto);
 		if(result.equals("success")) {
 			session.setAttribute("sessionUaid", dto.getUaid());
+		} else if (result.equals("admin")) {
+			session.setAttribute("sessionUaid", dto.getUaid());
+			session.setAttribute("role", result);
+			result = "success";
 		}
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter pw = response.getWriter();
@@ -52,9 +56,6 @@ public class AuthController {
 		pw.println(root.toString());
 		pw.flush();
 		pw.close();
-		
-		
-		
 	}
 	
 	

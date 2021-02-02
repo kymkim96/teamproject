@@ -82,6 +82,8 @@ public class DetailPageController {
 		//review-pager
 		int totalRows = reviewService.getTotalRows(BookIsbn);//ISBN에 해당하는 총 리뷰 개수
 		PagerDto pager = new PagerDto(3, 5, totalRows, pageNo);
+		
+		
 		pager.setBooksIsbn(BookIsbn);//해당 카테고리를 추가해준다!
 		List<ReviewDto> reviewlist = reviewService.getReviewList(pager);
 		

@@ -88,10 +88,25 @@
 						<hr/>
 					</div>	
 					
-					<div>
-						<button id="goCart" type="button" class="btn btn-lg" 
-						style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
-						<div id="goCartResult" style="margin-left: 30px; margin-top: 30px;"></div>
+					<div class="d-flex">
+						<div>
+							<button id="goCart" type="button" class="btn btn-lg" 
+							style="margin-left: 50px; background-color:#917354; color: white; ">장바구니 가기 </button>
+							<div id="goCartResult" style="margin-left: 30px; margin-top: 30px;"></div>
+						</div>
+						
+						<c:if test="${sessionUaid != null && role eq 'admin'}">
+							<div>
+								<button id="updateBtn" type="button" class="btn btn-lg" 
+								style="margin-left: 50px; background-color:#917354; color: white;"
+								onclick="updateHref(${book.isbn})">수정</button>
+							</div>
+							<script>
+								const updateHref = function(isbn) {
+									location.href = "<%=application.getContextPath()%>/book-admin/update?isbn=" + isbn;
+								}
+							</script>		
+						</c:if>
 					</div>
 					
 					<script>

@@ -26,7 +26,7 @@
 		<div class="content">
 			<!-- 홈 계층 메뉴바 -->
 			<div class="menubar">
-				<span id="home_link">홈</span> <span>></span> <span>쇼핑카트</span>
+				<span id="home_link">홈</span> <span>></span> <span>쇼핑카트</span> <span>></span> <span>주문/결제</span> <span>></span> <span>주문완료</span>
 			</div>
 
 			<!-- 안내 제목 -->
