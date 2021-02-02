@@ -13,6 +13,17 @@
 		select count(*) from reviews
 		Where BOOKS_ISBN=#{BookIsbn}
 	</select>
+	
+	
+	<select id="countReview" parameterType="review_count" resultType="int">
+		select count(*)
+		from 
+		    reviews    
+		where
+		    USERS_UID =  #{sessionUaid}
+        and BOOKS_ISBN = #{bookIsbn}
+	</select>
+	
 
 	<select id="selectByPage" parameterType="pager" resultType="review">
 		select 
@@ -41,5 +52,23 @@
 		values 
 		(reviews_rid_seq.nextval, #{rstar},sysdate,#{rcontent},#{usersUid},#{booksIsbn})
 	</insert>
-
+	
+	<delete id="delete" parameterType="review_count">
+		delete
+		from 
+		    reviews    
+		where
+		    USERS_UID =  #{sessionUaid}
+        and BOOKS_ISBN = #{bookIsbn}
+	</delete>
+	
+	<update id="update" parameterType="review">
+		update
+		    reviews
+		set rcontent = #{rcontent}
+		where
+		    USERS_UID =  #{usersUid}
+        and BOOKS_ISBN = #{booksIsbn}
+	
+	</update>
 </mapper>

@@ -73,6 +73,9 @@ public class DetailPageController {
 		rcd.setSessionUaid(temp); 
 		rcd.setBookIsbn(BookIsbn);
 		int count  = reviewService.getOrderRow(rcd);
+		int review = reviewService.getReviewRow(rcd);
+		
+		model.addAttribute("review_count", review);
 		model.addAttribute("ordered", count);
 		
 		

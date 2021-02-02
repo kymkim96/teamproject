@@ -45,9 +45,22 @@ public class ReviewService {
 
 	public int getOrderRow(ReviewCountDto rcd) {
 		int count = reviewDao.getOrderRow(rcd);
-		
-		
 		return count;
+	}
+
+
+	public int getReviewRow(ReviewCountDto rcd) {
+		int count = reviewDao.getReviewRow(rcd);
+		return count;
+	}
+
+	public void deleteReview(ReviewCountDto rcd) {
+		reviewDao.delete(rcd);
+	}
+
+	public void updateReview(ReviewDto review) {
+		reviewDao.update(review);
+		
 	}
 	
 }

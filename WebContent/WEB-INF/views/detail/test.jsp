@@ -158,7 +158,7 @@
 				
 				
 				<!-- 여러번 작성하게 하는걸 방지 하려면 어떻게 해야하는거지? -->
-				<c:if test="${ordered!=0}">
+				<c:if test="${ordered!=0&&review_count==0}"> <!-- 여기서 리뷰값도 찾아야 하는거지?! -->
 					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
 					color: #917354;">
 						<h4> 회원리뷰 작성하기 </h4><hr/>
@@ -194,8 +194,7 @@
 				
 				
 		<!-- --------------------------------------------------------------------------------------------------------------- -->	
-				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; 
-				color: #917354;">
+				<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; color: #917354;">
 					<h4> 회원리뷰 </h4><hr/>
 				</div>
 								
@@ -219,11 +218,34 @@
 																
 						</ul>
 						</div>
-						<div id="review"><p>
-							${review.rcontent}
-						</p></div>
+						<div id="review">
+							<p>${review.rcontent}</p>
+						</div>	
 						<hr/>
-					</div>	    
+						
+						
+						<c:if test="${review.usersUid==sessionUaid}">
+							<button  id="review_edit" class="btn btn-sm" onclick="javascript:func1()"
+								style="background-color:#917354; color: white; "> 리뷰 <br/>수정하기 </button>
+								<script type="text/javascript">
+									function func1(){
+										$.ajax({
+											url:"<%=application.getContextPath()%>/review/reviewupdate",
+											method: "get",
+											success:(data) =>{
+												$("#reviewUpdate").html(data);
+											}
+										});												
+									};
+								</script>
+							
+							<button id="review_delete" class="btn btn-sm" 
+								onclick="location.href='<%=application.getContextPath()%>/review/reviewdelete?param1=${sessionUaid}&param2=${review.booksIsbn}'"
+								style="background-color:#B8A791; color:white ; "> 리뷰 <br/> 삭제하기 </button>
+						</c:if>
+						
+					</div>
+					<div id="reviewUpdate"> </div>   
 			  	</c:forEach>
 			  	<!-- --------------------------------------------------------------------------------------------------------------- -->	
 			  	<div id="special" class="d-flex justify-content-between align-items-center" >
@@ -254,7 +276,7 @@
 					
 				</div>
 			  	
-			  	
+			
 			
 			</div>
 			
