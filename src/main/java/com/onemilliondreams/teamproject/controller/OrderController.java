@@ -162,7 +162,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/ordered")
-	public String ordered(@RequestParam(value="oid", required = false) int paramOid, HttpSession session, Model model) {
+	public String ordered(@RequestParam(value="oid", required = false) Integer paramOid, HttpSession session, Model model) {
 		
 		//ordered list 가져오기
 		String usersUaid = (String) session.getAttribute("sessionUaid");
@@ -180,7 +180,7 @@ public class OrderController {
 			
 			for(OrderDto order : list1) {
 				
-				int oid = order.getOid();
+				Integer oid = order.getOid();
 				
 				List<OrderedDto> list_temp = new ArrayList<OrderedDto>();
 				list_temp =orderedService.selectOrdered(oid);
