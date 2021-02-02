@@ -37,31 +37,51 @@
 		 	 <div><br/></div>
        
         	 <div id="item1">
+         	   	<a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">
          	  	<img alt="book.jpg" 
          	  		 src='<c:if test="${book.bimgLink != null}">${book.bimgLink}</c:if>
-         		 	   	  <c:if test="${book.bimgLink == null}"><%=application.getContextPath() %>/books-image?isbn=${book.isbn}</c:if>' height="350px"> 
+         		 	   	  <c:if test="${book.bimgLink == null}"><%=application.getContextPath() %>/books-image?isbn=${book.isbn}</c:if>' height="350px"> </a>
          		 	
          
 	             <div id ="book_data" >
 	               	<ul id="data">
-	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li>
-	                  <li><h4>발행자 : ${book.bpublisher}</h4></li>
-	                  <li><h3>
-	                  <span class="price1" style= "text-decoration: line-through;">
-	                  	정가 : 
-	                  	<fmt:formatNumber 
-							value="${book.bprice}"
-						/>원
-	                  </span><br/>
-				      <span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: 
-					      <fmt:formatNumber 
-								value="${book.bfinalPrice}"
-							/>원
-				      </span></h3></li>
-	                  									
+	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li><br/>
+	                  <li><h4>발행자 : ${book.bpublisher}</h4></li><br/>
 	                  <li>
-			              
-			             <h5 style=" display:-webkit-box; word-wrap:break-word; -webkit-line-clamp:3; -webkit-box-orient:vertical; width:800px;  overflow: hidden; text-overflow: ellipsis;"> 
+		                  <h4>
+		                	<c:if test="${book.bdiscount == 0}">
+			               		<span>
+			                  		정가 : 
+			                	
+			                  	<fmt:formatNumber 
+									value="${book.bprice}"/>원
+			                  	</span><br/>
+		               		</c:if>
+		                
+		                
+		                	<c:if test="${book.bdiscount != 0}">
+			                 	<span style="text-decoration: line-through;">
+			                  		정가 : 
+			                  	<fmt:formatNumber 
+									value="${book.bprice}"/>원
+			                  	</span><br/>
+			                 
+						      	<span class="price2">할인율 : 
+							       <fmt:formatNumber
+							      value="${book.bdiscount}" />% <br/>
+						     	</span> 
+						   
+						      	<span>판매가격: <fmt:formatNumber 
+							     		value="${book.bfinalPrice}"/>원		
+						      	</span>
+					      	</c:if>
+					      </h4>
+				      </li>
+	                
+	                  <br/>	
+	                  						
+	                  <li>    
+			             <h5 style=" display:-webkit-box; word-wrap:break-word; -webkit-line-clamp:3; -webkit-box-orient:vertical; width:1000px;  overflow: hidden; text-overflow: ellipsis;"> 
 			              		${book.bcontent}          
 		                  </h5>
 	                  </li>
