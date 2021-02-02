@@ -32,7 +32,12 @@ public class WriterDao {
 
 	public int selectByName(String wname) {
 		
-		Integer wid = sst.selectOne("writers.selectByName", wname);
+		List<WriterDto> writers = sst.selectList("writers.selectByName", wname);
+		
+		Integer wid = null;
+		if (writers != null) {
+			wid = writers.get(0).getWid();
+		}
 		
 		if (wid == null) {
 			wid = -1;
