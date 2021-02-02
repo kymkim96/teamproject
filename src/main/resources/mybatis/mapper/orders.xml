@@ -30,7 +30,7 @@
 		    and u.uaid = #{sessionUaid}
 	</select>
 	
-	
+
 
 
 

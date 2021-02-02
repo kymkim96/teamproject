@@ -31,8 +31,7 @@
 
 			<!-- 안내 제목 -->
 			<div class="general_info">
-				<span class="shopping_cart_title">쇼핑카트</span> <span>최대 90일까지
-					보관되며, 이후에는 위시리스트에 자동 보관됩니다.</span> <img
+				<span class="shopping_cart_title">주문완료</span> <span>기한 안에 입금하지 않으면 주문이 자동 취소됩니다.</span> <img
 					src="<%=application.getContextPath()%>/resources/img/process.PNG"
 					width="300px">
 			</div>
@@ -57,7 +56,7 @@
 						</thead>
 						<tbody>
 							<c:if test="${size > 0}">
-								<c:forEach var="cartItem" items="${cartItems}">
+								<c:forEach var="cartItem" items="${list}">
 									<tr>
 										<td>
 											<div class="cart_product_name">

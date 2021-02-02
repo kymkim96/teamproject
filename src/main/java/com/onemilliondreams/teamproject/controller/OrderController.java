@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.onemilliondreams.teamproject.dto.CartItemReadResponseDto;
 import com.onemilliondreams.teamproject.dto.OrderDto;
 import com.onemilliondreams.teamproject.dto.OrderItemDto;
+import com.onemilliondreams.teamproject.dto.OrderedDto;
 import com.onemilliondreams.teamproject.service.CartItemService;
 import com.onemilliondreams.teamproject.service.OrderService;
+import com.onemilliondreams.teamproject.service.OrderedService;
 
 @Controller
 @RequestMapping("/order")
@@ -31,6 +33,8 @@ public class OrderController {
 	private OrderService orderService;
 	@Resource 
 	private CartItemService cartItemService;
+	@Resource
+	private OrderedService orderedService;
 
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	
@@ -126,14 +130,19 @@ public class OrderController {
 		orderService.order(orderdata, orderItemlist,ctid);
 		
 		//*/
+		return "order/ordered";
+	}
+	
+	@GetMapping("/ordered")
+	public String ordered(HttpSession session, Model model, int oid) {
 		
+		List<OrderedDto> list = orderedService.selectOrdered(oid);
 		
+		model.addAttribute("list",list);
 		
 		
 		
 		return "order/ordered";
 	}
-	
-	
 	
 }
