@@ -2,15 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="books">
 	<select id="selectByPk" parameterType="string" resultType="book">
-		
 		select *
 		from books
 		where ISBN=#{bookIsbn}
-	
 	</select>
 	
-	<select id="selectByCn" parameterType="string" resultType="book">
-		
+
+	
+	<select id = "countAll" parameterType="string"  resultType="int">
+		select  count(*)
+		from BOOKS
+		where categories_category_name=#{categoriesCategoryName}
+	</select>
+	
+	<select id = "selectByPage" parameterType="pager" resultType="book">
+	    select 
+	    	 rno, 
+	         ISBN, BTITLE, BSUB_TITLE, BPUBLISHER, BTRANSLATOR, BPUBLISH_DATE,
+			 BBESTSELLER, BPRICE, BDISCOUNT, BDELIVERY_FEE, BCONTENT, BINDEX, BIMG_LINK,
+			 BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name, BFINAL_PRICE
+	    from (
+	            select 
+	           			rownum as rno, 
+	    
+	         			 ISBN, BTITLE, BSUB_TITLE, BPUBLISHER, BTRANSLATOR, BPUBLISH_DATE,
+						 BBESTSELLER, BPRICE, BDISCOUNT, BDELIVERY_FEE, BCONTENT, BINDEX, BIMG_LINK,
+						 BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name,BFINAL_PRICE
+		        from( 
+		          	 select   
+						   ISBN, BTITLE, BSUB_TITLE, BPUBLISHER, BTRANSLATOR, BPUBLISH_DATE,
+						   BBESTSELLER, BPRICE, BDISCOUNT, BDELIVERY_FEE, BCONTENT, BINDEX, BIMG_LINK,
+			 			   BIMG_FILENAME, BCONTENT_TYPE, BSTATE, BVIDEO_LINK, categories_category_name,BFINAL_PRICE
+					 from BOOKS
+					     where categories_category_name=#{categoriesCategoryName}
+						 order by isbn desc
+		            )
+		   		 where rownum &lt;= #{endRowNo} 
+		 )
+		 where rno &gt;= #{startRowNo}
 	</select>
 	
 	<insert id="insert" parameterType="book">

@@ -40,15 +40,15 @@ public class AuthService {
 		AuthDto dbdata = authDao.selectAuth(dto.getUaid());
 		if(dbdata ==null) {
 			return "wrongUaid";
-		}else if(dbdata.getUapassword().equals(dto.getUapassword())) {
+		} else if(dbdata.getUapassword().equals(dto.getUapassword())) {
+			if (dbdata.getRole().equals("admin")) {
+				return dbdata.getRole();
+			}
 			return "success";
-		} else {
-			
-			
-	}return "wrongUapassword";
-	
-	
-}
+		} 
+		
+		return "wrongUapassword";
+	}
 	
 	
 	

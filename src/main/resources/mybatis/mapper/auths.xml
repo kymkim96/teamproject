@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="auths">
 	<select id="selectAuth" parameterType="string" resultType="auth">
-		select uaid,uaname,uapassword
+		select uaid,uaname,uapassword, role
 		from users
 		where uaid=#{uaid}
 	</select> 

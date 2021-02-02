@@ -1,13 +1,16 @@
 package com.onemilliondreams.teamproject.dto;
 
 public class CategoryDto {
-	private String category_name;
-	
-	public String getCategory_name() {
-		return category_name;
+	private String categoryName;
+
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
+	
+
+	
 }

@@ -10,11 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.onemilliondreams.teamproject.Dao.CategoryDao;
 import com.onemilliondreams.teamproject.dto.BookDto;
-import com.onemilliondreams.teamproject.dto.CategoryDto;
-import com.onemilliondreams.teamproject.service.BookService;
+import com.onemilliondreams.teamproject.dto.PagerDto;
+
+import com.onemilliondreams.teamproject.service.ListService;
 
 
 @Controller
@@ -23,52 +24,57 @@ public class ListController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ListController.class);
 	
-	
-	
-	@RequestMapping("/book_list1")
-	public String book_list1() {
-		logger.info("실행");
-		return "list/book_list1";
-	}
-	
-	
-	
-	//전체 상품리스트들이 가져옴 한 페이지에
+
 	@Resource
-	private BookService bookService; 
+	private ListService listService; 
+
+
+	@GetMapping("/book_list")
+	public String book_list(
+							@RequestParam(defaultValue="1") int pageNo, 
+							Model model, 
+							String categoriesCategoryName) {
+					
+		
+		//List<BookDto> list = listService.getBooklist(categoriesCategoryName);
+		
+		 // Integer size = list.size(); 
+		// logger.info(size.toString());
+		 
+		//model.addAttribute("list", list);
 	
-	@GetMapping("/book_list1")
-	public String book_list1(Model model,String category_name) {
+
+	
+		//pager
+		int totalRows = listService.getTotalRows(categoriesCategoryName);//카테고리이름에 해당하는 총 행 수 
+		PagerDto pager = new PagerDto(2, 5, totalRows, pageNo);
 		
-		List<BookDto> list = bookService.getBooklist("자기계발서 ");
+		
+		pager.setCategoriesCategoryName(categoriesCategoryName);
+		List<BookDto> list = listService.getList(pager);
+		
+		model.addAttribute("pager", pager);
 		model.addAttribute("list", list);
-		
-		return "book_list1";
-	} 
+		model.addAttribute("categoriesCategoryName", categoriesCategoryName);
+		return "list/book_list";
+		}
+
+	
+}
+	
+
+
+
 
 	
 	
-	
-	@Resource
-	private CategoryDao categoryDao;
-	
-	@RequestMapping("/book_list2")
-	public String book_list2(String category_name) {//자기계발서
-		CategoryDto cate = categoryDao.selectByPk(category_name);
-		logger.info("category_name: "+cate.getCategory_name());
-		
-		return "list/book_list2";
-	}
+
+	 
 	
 	
-	@RequestMapping("/book_list3")
-	public String book_list3() {
-		logger.info("실행");
-		return "list/book_list3";
-	}
+
 	
-	
-	}
-	
+
+
 
 

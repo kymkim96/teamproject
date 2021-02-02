@@ -19,7 +19,6 @@
 					
 					<button class="btn btn-sm">영업점안내</button>
 					<button class="btn btn-sm">고객센터</button>
-					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/book-admin/update">수정</a></button>
 					
 					<c:if test="${sessionUaid=='admin'}">
 							
@@ -59,11 +58,9 @@
 				</div>
 	
 				<ul id="headerul2">
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list1?category_name=현대소설">현대소설</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list2?category_name=자기계발서">자기개발서</a></button>
-					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list3?category_name=해외소설">해외소설</a></button>
-					
-	
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=현대소설">현대소설</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=자기계발서">자기개발서</a></button>
+					<button class="btn btn-sm"><a href="<%=application.getContextPath()%>/list/book_list?categoriesCategoryName=해외소설">해외소설</a></button>
 				</ul>
 	
 			</header>
