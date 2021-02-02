@@ -14,4 +14,16 @@
 	
 	</insert>
 
+	<update id="update" parameterType="auth">
+		update users
+		set uapassword=#{uapassword}
+		where uaid=#{uaid}
+	</update>
+	
+	<delete id="delete" parameterType="string">
+		delete from users where uaid=#{uaid}
+	</delete>
+
+
+
 </mapper>

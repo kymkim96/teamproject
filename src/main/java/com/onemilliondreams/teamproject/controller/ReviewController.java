@@ -57,8 +57,6 @@ public class ReviewController {
 	public String reviewupdate1(ReviewDto review) {
 		
 		reviewService.updateReview(review);
-
-
 		return "redirect:/detail?param1=" + review.getBooksIsbn();
 
 	}

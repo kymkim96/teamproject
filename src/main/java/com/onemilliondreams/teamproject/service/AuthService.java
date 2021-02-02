@@ -50,9 +50,22 @@ public class AuthService {
 		return "wrongUapassword";
 	}
 	
+	  public void updateAuth(AuthDto authdto) {
+		   authDao.update(authdto); //리턴값 필요없어서 안받음
+	   }
+
+
+
+
+		public void deleteAuth(String uaid) {
+			authDao.delete(uaid);
+			
+		}
 	
-	
-	
+		 public AuthDto getAuth(String uaid) {
+			   AuthDto authdto = authDao.selectAuth(uaid);
+			   return authdto;
+		   }
 	
 
 }
