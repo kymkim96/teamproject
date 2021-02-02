@@ -51,28 +51,29 @@
 	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li>
 	                  <li><h4>발행자 : ${book.bpublisher}</h4></li>
 	                  <li><h3><span class="price1" style= "text-decoration: line-through;">정가 : ${book.bprice}원 </span><br/>
-	                  										<span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bfinalPrice}원</span></h3></li>
+	                  		  <span class="price2">할인율 : ${book.bdiscount}%  <br/> 판매가격: ${book.bfinalPrice}원</span></h3></li>
 	                  									
 	                  <li>
-		                  <h5 style=" width:800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-		                  	${book.bcontent}          
+			              
+			             <h5 style=" display:-webkit-box; word-wrap:break-word; -webkit-line-clamp:3; -webkit-box-orient:vertical; width:800px;  overflow: hidden; text-overflow: ellipsis;"> 
+			              		${book.bcontent}          
 		                  </h5>
 	                  </li>
 	                </ul>
 	             </div>
 	    
-	                <div id ="shopping" >
+	                 <div id ="shopping" >
 	                  <ul id="bb">
-	                     <li>
+	                    <!--<li>
 	                     <label><input type="checkbox" id="ch1" name="chBox" value="1"></label> 
 	                     <label for = "quantity">
-	                     <input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1"></label>
-	                     </li>    
-	                     <li><button id="cart" class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>      
-	                     <li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li> 	
+	                     <input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50" value="1"></label> 
+	                     </li>    -->
+	                     <li><button style=" background-color:#917354"  id="cart" class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>    <br/>  
+	                     <li><button style=" background-color:#917354"  class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li> 	
 	                
 	                  </ul>        
-	               	</div> 
+	               	</div>  
        		 </div>
    </c:forEach>
 		
