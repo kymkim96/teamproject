@@ -45,7 +45,7 @@
 				
 				<c:forEach var="order" items="${list}">
 							
-				
+				${order.oid}
 				<div class="table_container">
 					<table class="table table-striped" style="width: 960px">
 						<thead>

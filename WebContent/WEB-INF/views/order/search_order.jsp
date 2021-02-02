@@ -19,10 +19,7 @@
 			<div><br/><br/><br/></div>
 			<a href="index" ><img height="150px" src="<%=application.getContextPath()%>/resources/img/omd.png"/></a>
 			
-			<form name="searchorder" method="post" action="<%=application.getContextPath()%>/order/ordered">
-				
-				
-				<input  type="hidden" name="uaid" value="${auth}"/>
+			<form name="searchorder" method="get" action="<%=application.getContextPath()%>/order/ordered">
 				<div id="input1">
 					<div><br/></div>
 					<div class ="subInfo" id="reviews" style="margin-bottom: 10px; font-family: 'NEXON Lv1 Gothic OTF Bold'; color: #917354;">
