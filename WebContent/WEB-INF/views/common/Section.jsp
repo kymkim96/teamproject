@@ -28,7 +28,7 @@
 							<div class="diva">오늘의 책</div>
 							
 						<div class="book1">
-							<a href="<%=application.getContextPath()%>/detail?param1= 9791190977036"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9791190977036"><img height="250px" width="160px"
 							src="resources/img/오늘의 책.jpg"></a>
 							
 							
@@ -61,7 +61,7 @@
 								
 							</ol>	
 							
-							<a href="view/detail/2.html"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9788968481475"><img height="250px" width="160px"
 							src="resources/img/이것이자바다.PNG"></a>
 							
 							</div>	
@@ -78,7 +78,7 @@
 					<div class="didi">
 						<div class="diva">위클리북</div>
 						<div class="book1">
-							<a href="view/detail/3.html"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9791190313605"><img height="250px" width="160px"
 							src="resources/img/위클리북.jpg"></a>
 							
 							<ul>
@@ -96,7 +96,7 @@
 					<div class="didi">
 						<div class="diva">금주의이벤트</div>
 						<div class="book1">
-							<a href="view/detail/4.html"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9791196986759"><img height="250px" width="160px"
 							src="resources/img/금주의이벤트.jpg"></a>
 							
 							<ul>
@@ -118,7 +118,7 @@
 					<div class="didi">
 						<div class="diva">이슈&북</div>
 						<div class="book1">
-							<a href="view/detail/5.html"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9791186647349"><img height="250px" width="160px"
 							src="resources/img/이슈&북.jpg"></a>
 							
 							<ul>
@@ -136,7 +136,7 @@
 					<div class="didi">
 						<div class="diva">기대신간</div>
 						<div class="book1">
-							<a href="view/detail/6.html"><img height="250px" width="160px"
+							<a href="<%=application.getContextPath()%>/detail?param1=9791162541807"><img height="250px" width="160px"
 							src="resources/img/기대신간.jpg"></a>
 							
 							<ul>
