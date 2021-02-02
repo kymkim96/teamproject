@@ -43,7 +43,7 @@
         	 <div id="item1">
          	  	<img alt="book.jpg" 
          	  		 src='<c:if test="${book.bimgLink != null}">${book.bimgLink}</c:if>
-         		 	   	  <c:if test="${book.bimgLink == null}">${book.bimgFilename}</c:if>' height="400px"> 
+         		 	   	  <c:if test="${book.bimgLink == null}"><%=application.getContextPath() %>/books-image?isbn=${book.isbn}</c:if>' height="350px"> 
          		 	
          
 	             <div id ="book_data" >
