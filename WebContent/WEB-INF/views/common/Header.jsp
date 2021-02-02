@@ -19,7 +19,6 @@
 					
 					<button class="btn btn-sm">영업점안내</button>
 					<button class="btn btn-sm">고객센터</button>
-					<button class="btn btn-light"><a href="<%=application.getContextPath()%>/book-admin/update">수정</a></button>
 					
 					<c:if test="${sessionUaid=='admin'}">
 							
