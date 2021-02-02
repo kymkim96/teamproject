@@ -44,9 +44,10 @@ public class ReviewController {
 	
 	//review update
 	@GetMapping("/reviewupdate")
-	public String reviewupdate(Model model, HttpSession session) {
+	public String reviewupdate(String isbn, Model model, HttpSession session) {
 		
 		session.getAttribute("sessionUaid");
+		model.addAttribute("isbn", isbn);
 		
 		return "detail/review_update";
 	}
@@ -54,9 +55,10 @@ public class ReviewController {
 	
 	@PostMapping("/reviewupdate1")
 	public String reviewupdate1(ReviewDto review) {
-		logger.info("hi");
+		
 		reviewService.updateReview(review);
-		return "redirect:/detail?param1="+review.getBooksIsbn();
+
+		return "redirect:/detail?param1=" + review.getBooksIsbn();
 	}
 	
 	

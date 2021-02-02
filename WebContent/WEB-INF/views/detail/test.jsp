@@ -247,6 +247,9 @@
 										$.ajax({
 											url:"<%=application.getContextPath()%>/review/reviewupdate",
 											method: "get",
+											data: {
+												isbn: ${book.isbn},
+											},
 											success:(data) =>{
 												$("#reviewUpdate").html(data);
 											}
