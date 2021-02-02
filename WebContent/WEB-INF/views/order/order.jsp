@@ -103,7 +103,7 @@
 											<td class="align-middle">
 												<input type="hidden" class="item_count" value="${cartItem.ctcount}">
 												${cartItem.ctcount}개
-											</td>
+						       					</td>
 											<td class="align-middle">
 												<c:if test="${sumAmount >= 10000}">
 													만원이상 배달료 무료

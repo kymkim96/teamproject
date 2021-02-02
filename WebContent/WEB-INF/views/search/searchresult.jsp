@@ -22,7 +22,7 @@
 		<div class="content">
 			<div class="general_info">
 				<c:if test="${btitle != null}">
-				<span class="shopping_cart_title">검색결과</span> <span>${btitle}(으)로 검색한 결과입니다.</span> <div style="display:inline-block; width:80px"></div>
+				<span class="shopping_cart_title">검색결과</span> <span><strong style="font-size:xx-large;">${btitle}</strong>(으)로 검색한 결과입니다.</span> <div style="display:inline-block; width:80px"></div>
 				</c:if>
 			</div>
 			
@@ -45,19 +45,7 @@
 			                          		</ul>
 		                              	</div>
 		                             
-		                            	<div id ="shopping">
-											<ul id="bb">
-												<li>
-												<label><input type="checkbox" id="ch1" name="chBox" value="1"></label>
-												<label for = "quantity">
-												<input type="number" placeholder="수량" id="quantity" name="quantity" min="1" max="50">
-												</label>
-												</li>	
-												<li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">바로구매</button></li>
-												<li><button class="btn btn-primary" onclick="document.location='<%=application.getContextPath()%>/cart/index'">쇼핑카트담기</button></li>
-											</ul>
-						
-										</div>
+		                            	
 									</div>
 							
 									
