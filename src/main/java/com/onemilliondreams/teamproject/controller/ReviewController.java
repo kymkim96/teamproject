@@ -58,7 +58,9 @@ public class ReviewController {
 		
 		reviewService.updateReview(review);
 
+
 		return "redirect:/detail?param1=" + review.getBooksIsbn();
+
 	}
 	
 	
