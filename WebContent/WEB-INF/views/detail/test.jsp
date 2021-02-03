@@ -205,7 +205,7 @@
 			                  	<!-- 각 버튼을 누르면 숫자를 리턴할수 잇게 해야하는,,? 자바스크립트로 구현? -->
 			                    <div class="form-group">
 			                      <label for="rstar">별점</label>
-			                      <input type="number" class="form-control" id="rstar" name="rstar"/>
+			                      <input type="number" class="form-control" id="rstar" name="rstar" min="0" max="5"/>
 			                      <small class="form-text text-muted">필수 입력 사항입니다.</small>
 			                    </div>
 			                    

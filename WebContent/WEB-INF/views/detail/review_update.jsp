@@ -15,7 +15,7 @@
  
         <div class="form-group">
           <label for="rstar">별점</label>
-          <input type="number" class="form-control" id="rstar" name="rstar"/>
+          <input type="number" class="form-control" id="rstar" name="rstar" min="0" max="5"/>
           <small class="form-text text-muted">필수 입력 사항입니다.</small>
         </div> 	 	
           

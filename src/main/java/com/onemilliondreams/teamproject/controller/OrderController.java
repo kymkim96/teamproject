@@ -172,7 +172,17 @@ public class OrderController {
 		
 		List<OrderDto> list = new ArrayList<>();
 		
+		
 		if (usersUaid == null) {
+			String result  = orderedService.confirm(paramOid);
+			
+			if(result.equals("success")) {
+				model.addAttribute("orderConfirm",result);
+			} else if (result.equals("notOrder")) {
+				model.addAttribute("orderConfirm",result);
+				return "order/search_order";
+			}
+			
 			List<OrderedDto> guestOrders = orderedService.selectOrdered(paramOid);
 			OrderDto order = orderService.getOrder(paramOid);
 			order.setOdlist(guestOrders);
@@ -198,6 +208,8 @@ public class OrderController {
 		
 		return "order/ordered";
 	}
+	
+	
 	
 	@GetMapping("/searchorder")
 	public String searchorder() {

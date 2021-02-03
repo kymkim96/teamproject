@@ -45,7 +45,7 @@
 				
 				<c:forEach var="order" items="${list}">
 							
-				${order.oid}
+				 <h4> 주문 번호 : ${order.oid}</h4>
 				<div class="table_container">
 					<table class="table table-striped" style="width: 960px">
 						<thead>
@@ -152,8 +152,8 @@
 			</div>
 
 			<div class="button_line">
-				<button type="button" id="list_home_link"
-					class="btn btn-outline-secondary btn-lg">쇼핑 계속하기</button>
+				<a type="button" id="list_home_link" href="<%=application.getContextPath()%>/auth/index" 
+					class="btn btn-outline-secondary btn-lg">쇼핑 계속하기</a>
 			</div>
 		</div>
 
