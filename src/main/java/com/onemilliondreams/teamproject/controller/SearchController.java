@@ -49,7 +49,7 @@ public class SearchController {
 			List<WriterDto> writerList = new ArrayList<WriterDto>();
 			writerList = writerService.getWriterList(dto.getIsbn());
 			if (writerList != null) {
-				dto.setBookWriterlist(writerService.getWriterList(dto.getIsbn()));
+				dto.setBookWriterlist(writerList);
 			}
 			list2.add(dto);
 		}

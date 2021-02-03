@@ -24,7 +24,7 @@
 					<input type="hidden" name="uaid" value="${auth}"/>
 					<div id="input1">
 						
-						<input  type="password" placeholder="패스워드" id="uapassword" name="uapassword"/>
+						<input  type="password" placeholder="변경할 비밀번호를 입력해주세요." id="uapassword" name="uapassword"/>
 						<span  id="error"></span>
 					</div>	
 						<div class="loginForm1" >
@@ -47,6 +47,7 @@
            		const uapassword = $("#uapassword").val();
 	          		if(uapassword ===""){
 	      				$("#error").html("필수 입력 사항입니다.");
+	      				
 	      				validation = false;
        				}
            			
