@@ -28,6 +28,7 @@ public class OrderService {
 	@Transactional
 	public void order(OrderDto order, List<OrderItemDto> orderItemlist,int[] ctid) {
 		//orders 테이블에 주문 정보 저장
+		logger.info(order.getUsersUaid());
 		orderDao.insertOrder(order);
 		//생성된 주문 번호
 		int oid = order.getOid();	

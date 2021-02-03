@@ -169,7 +169,6 @@
 						</div>
 						
 						<div class="table_container">
-		                  	<input id="usersUaid" name="usersUaid"   type="hidden" value="${sessionUaid}"/>
 		                  	<input id="ototal" name="ototal" type="hidden" value="200"/><!-- 하드코딩 -->
 		                  	<input id="oamount" name="oamount" type="hidden" value="100000"/><!-- 하드코딩 -->
 		                    

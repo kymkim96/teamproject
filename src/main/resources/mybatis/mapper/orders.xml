@@ -25,7 +25,7 @@
 			
 			<if test="usersUaid == null">
 				insert into orders (oid, oamount, OADDRESS, odate, ototal)
-				values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal}
+				values (#{oid},#{oamount},#{oaddress},sysdate,#{ototal})
 			</if>
 	</insert>
 	

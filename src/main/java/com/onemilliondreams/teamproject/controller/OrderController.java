@@ -115,16 +115,19 @@ public class OrderController {
 	public String addorder(
 			@RequestParam(value="ctid", required=false)int[] ctid, 
 			Model model,
-			OrderDto orderdata) {
+			OrderDto orderdata, HttpSession session) {
 				
+		String usersUaid = (String) session.getAttribute("sessionUaid");
+		if (usersUaid != null) {
+			orderdata.setUsersUaid(usersUaid);
+		}
+		
 		//Ct아이디 불러올거임
 		CartItemReadResponseDto cartItem = new CartItemReadResponseDto();
 		
 		//데이터가 넘어왔나 안넘어왔나
 		if(orderdata.getOaddress()==null) {
 			logger.info("주소가 안받아진거임");
-		}else if(orderdata.getUsersUaid()==null) {
-			logger.info("아이디가안들어왔음");
 		}else if(ctid != null) {
 			logger.info("ctid가 있음");
 		}else {
@@ -154,7 +157,7 @@ public class OrderController {
 		//orderService.order(order, orderItemlist);
 		orderService.order(orderdata, orderItemlist, ctid);
 		
-		if (orderdata.getUsersUaid() == null) {
+		if (orderdata.getUsersUaid() == null || orderdata.getUsersUaid().equals("")) {
 			return "redirect:/order/ordered?oid=" + orderdata.getOid();
 		}
 		
