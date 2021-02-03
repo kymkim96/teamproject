@@ -53,7 +53,7 @@
 								<td colspan="7">
 									<div>
 										<div class="item_count_result mr-2">주문날짜: <fmt:formatDate value="${order.odate}" pattern="YYYY-MM-dd"/></div>
-										<div class="item_count_result">수량: ${order.ototal}종</div>
+										<div class="item_count_result">수량: ${order.ototal}개</div>
 										<div class="item_price_result">
 											<span style="color: tomato">총 결제 금액: ${order.oamount}원</span>
 										</div>
