@@ -115,7 +115,7 @@
 							<div>
 								<button id="updateBtn" type="button" class="btn btn-lg" 
 								style="margin-left: 50px; background-color:#917354; color: white;"
-								onclick="updateHref(${book.isbn})">수정</button>
+								onclick="updateHref('${book.isbn}')">수정</button>
 							</div>
 							<script>
 								const updateHref = function(isbn) {
