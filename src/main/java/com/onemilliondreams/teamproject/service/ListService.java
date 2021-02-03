@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.onemilliondreams.teamproject.Dao.ListDao;
 import com.onemilliondreams.teamproject.dto.BookDto;
 import com.onemilliondreams.teamproject.dto.PagerDto;
+import com.onemilliondreams.teamproject.dto.WriterDto;
 
 @Service
 public class ListService {
@@ -32,4 +33,10 @@ public class ListService {
 		List<BookDto> list = listDao.selectByPage(pager);
 		return list;
 	}
+
+
+	
+
+
+	
 }

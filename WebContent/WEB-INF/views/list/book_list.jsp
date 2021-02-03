@@ -46,7 +46,8 @@
 	             <div id ="book_data" >
 	               	<ul id="data">
 	                  <li><h4><strong><a href="<%=application.getContextPath()%>/detail?param1=${book.isbn}">${book.btitle} </a></strong></h4></li><br/>
-	                  <li><h4>발행자 : ${book.bpublisher}</h4></li><br/>
+	                  <li><h4><c:forEach var="writer" items="${book.bookWriterlist}">저자 : ${writer.wname} </c:forEach></h4></li><br/>
+	                  <li><h4>출판사 : ${book.bpublisher}</h4></li><br/>
 	                  <li>
 		                  <h4>
 		                	<c:if test="${book.bdiscount == 0}">
@@ -96,26 +97,26 @@
 		<!-- pager -->
 		<div class="d-flex justify-content-center">
 			 		
-             	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=1">맨처음</a>				
+             	<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=1">맨처음</a>				
              
                <c:if test="${pager.groupNo>1}">
-                	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.startPageNo-1}">이전</a>
+                	<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.startPageNo-1}">이전</a>
              	</c:if>	
              	   				 	
                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
                		<c:if test="${i == pager.pageNo}">
-               			<a class="btn btn-danger btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${i}">${i}</a>
+               			<a style="background-color:#B8A791; border:1px solid grey;" class="btn btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${i}">${i}</a>
                		</c:if>
                		<c:if test="${i != pager.pageNo}">
-               			<a class="btn btn-outline-success btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${i}">${i}</a>
+               			<a style="background-color:#B8A791; border:1px solid grey;" class="btn btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${i}">${i}</a>
                		</c:if>
             	</c:forEach>
                 				 	 
              	<c:if test="${pager.groupNo<pager.totalGroupNo}">	 
-                	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.endPageNo+1}">다음</a>
+                	<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.endPageNo+1}">다음</a>
       		  	</c:if>
       							 
-                	<a class="btn btn-outline-warning btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.totalPageNo}">맨끝</a>
+                	<a style="border: 2px solid #998064;" class="btn btn-sm mr-1" href="book_list?categoriesCategoryName=${categoriesCategoryName}&pageNo=${pager.totalPageNo}">맨끝</a>
             	
         </div>
       </article>
