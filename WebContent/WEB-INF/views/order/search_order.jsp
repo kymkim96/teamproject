@@ -17,7 +17,7 @@
 	<body>
 		<div id="wrapper">
 			<div><br/><br/><br/></div>
-			<a href="index" ><img height="150px" src="<%=application.getContextPath()%>/resources/img/omd.png"/></a>
+			<a href="<%=application.getContextPath()%>/auth/index" ><img height="150px" src="<%=application.getContextPath()%>/resources/img/omd.png"/></a>
 			
 			<form name="searchorder" method="get" action="<%=application.getContextPath()%>/order/ordered">
 				<div id="input1">
